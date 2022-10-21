@@ -1,14 +1,24 @@
-.single-product{
+.card{
+    box-shadow: 5px 5px 10px 5px rgba(223, 182, 0, 0.966);
+    transform-style: preserve-3d;
+}
+.card:hover{
+    transform: rotateY(180deg);
+}
+
+.card-back, .card-front{
     background: #02010c;
     border-radius: 10px;
     cursor: pointer;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 
 }
-.single-product:hover{
+.card-back,.card-front:hover{
     box-shadow: 5px 5px 10px 5px rgba(223, 182, 0, 0.966);
 }
 
-.single-product h6{
+.card-back,.card-front h6{
     color:darkorange;
     text-align: center;
 }  
@@ -20,4 +30,13 @@
     font-size: 1.3rem;
     font-weight: 500;
 
+}
+.description{
+    color: darkorange;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.card-back{
+    position: absolute;
+    transform: rotateY(180deg);
 }

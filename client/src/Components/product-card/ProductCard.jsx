@@ -1,30 +1,39 @@
 import React from "react";
 
-import "./ProductCard.css";
+//import "./ProductCard.css";
+import "./styles.css";
+
+//<div className="product-img">
 
 const ProductCard = (props) => {
+  const { title, imgUrl, price, description } = props.item;
+  return (
+    <div className="card">
+      <div className="face front">
+          <img src={imgUrl} alt="#"/>
+        
 
-    const {title,imgUrl,price} = props.item;
-    return (
-        <div className="single-product">
+        <h6>{title}</h6>
 
-            <div className="product-img">
-                <img src={imgUrl}  alt="#" className="w-100" />
-            </div>
+        <div className="d-flex align-items-center justify-content-between">
+          <span className="price d-flex align-items-center">
+            {""}
+            Price:$<span>{price}</span>
+          </span>
+        </div>
+      </div>
 
-
-            <h6>{title}</h6>
-
-            <div className="d-flex align-items-center justify-content-between">
-                <span className="price d-flex align-items-center">
-                    {""}
-                    Price:$<span>{price}</span>
-                </span>
-            </div>
-
+      <div className="face back">
+        <div className="description">
+          <p>{description}</p>
+        </div>
+        <div className="link">
+          <a href="#">description</a>
 
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default ProductCard;
