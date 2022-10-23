@@ -2,6 +2,8 @@ import React from "react";
 
 //import "./ProductCard.css";
 import "./styles.css";
+import { CardActionArea, Grid } from "@mui/material";
+import { Card } from "reactstrap";
 
 //<div className="product-img">
 
@@ -10,8 +12,7 @@ const ProductCard = (props) => {
   return (
     <div className="card">
       <div className="face front">
-          <img src={imgUrl} alt="#"/>
-        
+        <img src={imgUrl} alt="#" />
 
         <h6>{title}</h6>
 
@@ -29,7 +30,6 @@ const ProductCard = (props) => {
         </div>
         <div className="link">
           <a href="#">description</a>
-
         </div>
       </div>
     </div>
