@@ -7,6 +7,7 @@ import MenuPageTest from "./pages/MenuPageTest.jsx";
 import AssistancePageTest from "./pages/AssistancePageTest.jsx";
 import OrderPageTest from "./pages/OrderPageTest.jsx";
 import ContactPageTest from "./pages/ContactPageTest.jsx";
+import ActiveOrdersPage from "./pages/ActiveOrdersPage.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/menu" element={<MenuPageTest />} />
         <Route path="/asistencia" element={<AssistancePageTest />} />
         <Route path="/pedidos" element={<OrderPageTest />} />
+        <Route path="/pedidosActivos" element={<ActiveOrdersPage/>} />
         <Route path="/contacto" element={<ContactPageTest />} />
       </Routes>
     </div>

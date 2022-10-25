@@ -30,6 +30,10 @@ function ResponsiveAppBar() {
       path: "/pedidos",
     },
     {
+      name:"Pedidos Activos",
+      path:"/pedidosActivos"
+    },
+    {
       name: "Contacto",
       path: "/contacto",
     },
