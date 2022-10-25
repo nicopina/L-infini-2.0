@@ -5,6 +5,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Card, CardContent } from "@mui/material";
+import { Button } from "@mui/material";
 
 function ActiveOrdersPage() {
   //   const { activeOrders } = useOrders();
@@ -75,51 +77,72 @@ function ActiveOrdersPage() {
     },
   ];
 
+    activeOrders.sort((a, b) => {
+        return new Date(a.created_at) - new Date(b.created_at);
+    });
+
   return (
     <TableContainer component={Paper}>
-    {activeOrders.map((order, index) => (
-      <Table sx={{ minWidth: 700 }} aria-label="spanning table" key={index}>
-        <TableBody>
-          <TableRow>
-            <TableCell align="center" colSpan={1}>
-              <p>id</p>
-            </TableCell>
-            <TableCell align="center" colSpan={2}>
-              <p>{order.id}</p>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align="center" colSpan={1}>
-              <p>Mesa</p>
-            </TableCell>
-            <TableCell align="center" colSpan={2}>
-              <p>{order.table}</p>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell align="center" colSpan={1}>
-              <p>Hora pedido</p>
-            </TableCell>
-            <TableCell align="center" colSpan={2}>
-              <p>{order.created_at}</p>
-            </TableCell>
-          </TableRow>
-          {order.orderList.map((item) => (
-            <TableRow key={item.id}>
-              <TableCell align="center" colSpan={0}>
-                <p>{item.name}</p>
-              </TableCell>
-              <TableCell align="center" colSpan={1}>
-                <p>{item.quantity}</p>
-              </TableCell>
-              <TableCell align="center" colSpan={0}>
-                <input type="checkbox" />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ))}
+      {activeOrders.map((order, index) => (
+        <Card
+          key={index}
+          style={{ backgroundColor: "#606060", margin: "10px" }}
+        >
+          <CardContent>
+            <Table
+              sx={{ minWidth: 700 }}
+              aria-label="spanning table"
+              key={index}
+            >
+              <TableBody>
+                <TableRow>
+                  <TableCell
+                    align="center"
+                    colSpan={0}
+                    style={{ backgroundColor: "#A0A0A0" }}
+                  >
+                    <p>ID</p>
+                    <p>{order.id}</p>
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    colSpan={1}
+                    style={{ backgroundColor: "#808080" }}
+                  >
+                    <p>Mesa</p>
+                    <p>{order.table}</p>
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    colSpan={2}
+                    style={{ backgroundColor: "#A0A0A0" }}
+                  >
+                    <p>Hora Pedido</p>
+                    <p>{order.created_at}</p>
+                  </TableCell>
+                </TableRow>
+                {order.orderList.map((item) => (
+                  <TableRow
+                    key={item.id}
+                    style={{ backgroundColor: "#C0C0C0" }}
+                  >
+                    <TableCell align="center" colSpan={0}>
+                      <p>{item.name}</p>
+                    </TableCell>
+                    <TableCell align="center" colSpan={1}>
+                      <p>{item.quantity}</p>
+                    </TableCell>
+                    <TableCell align="center" colSpan={0}>
+                      <input type="checkbox" />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <Button variant="contained" style={{ backgroundColor: "green" }}>Pedido Listo</Button>
+          </CardContent>
+        </Card>
+      ))}
     </TableContainer>
   );
 }
