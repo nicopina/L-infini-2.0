@@ -1,11 +1,10 @@
 import React from "react";
 
-//import "./ProductCard.css";
-import "./styles.css";
+import "./ProductCard.css";
 import { CardActionArea, Grid } from "@mui/material";
 import { Card } from "reactstrap";
 
-//<div className="product-img">
+
 
 const ProductCard = (props) => {
   const { title, imgUrl, price, description } = props.item;

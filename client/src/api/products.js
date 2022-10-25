@@ -60,3 +60,4 @@ export const fastFoodProducts = [
     description: "Burger with cheese, lettuce, tomato, onion, and pickles sss dddd dddd dddd ddd ddd d d d d d f d dffddfdf fdfddfdfdf fddfdfd fddfdfdffd dfdfdfd fddfdfdf dfdfdfdf dfdfdfdf dfdfdfd dfdfdfs",
   },
 ];
+// description debe realizarse validacion de longitud de caracteres para que no se desborde el card.
