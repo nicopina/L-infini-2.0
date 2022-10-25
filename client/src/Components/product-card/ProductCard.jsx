@@ -24,8 +24,8 @@ const ProductCard = (props) => {
         </div>
       </div>
 
-      <div className="face back">
-        <div className="description">
+      <div className="face back d-flex align-items-center justify-content-between">
+        <div className="description d-flex align-items-center">
           <p>{description}</p>
         </div>
         <div className="link">

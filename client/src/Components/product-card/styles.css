@@ -39,7 +39,7 @@
     position: absolute;
     transform: perspective(600px) rotateY(180deg);
     background:black;
-    padding: 65px;
+    padding: 15px;
     color: #000000;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@
 
 .card .back .link {
     border-top: solid 1px #f3f3f3;
-    height: 50px;
+    height: 300px;
     line-height: 50px;
 }
 
@@ -60,9 +60,7 @@
 
 
 
-.card .back p {
-    letter-spacing: 1px;
-} 
+
 
 .card:hover .front {
 
@@ -86,7 +84,34 @@
     color: darkorange;
     font-size: 1.2rem;
     font-weight: 500;
-    display: block;
+    display: flex;
 }
 
+
+@media screen and (max-width: 1240px) {
+    .description{
+        color: darkorange;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: flex;
+    }
+    .card .back {
+        position: absolute;
+        transform: perspective(600px) rotateY(180deg);
+        background:black;
+        padding: 15px;
+        color: #000000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        box-shadow: 5px 5px 10px 5px #000;
+    }
+    .card .back .link {
+        border-top: solid 1px #f3f3f3;
+        height:300px;
+        line-height: 50px;
+    }
+    
+}
 

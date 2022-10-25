@@ -57,6 +57,6 @@ export const fastFoodProducts = [
     title: "Grill Chicken",
     price: 195,
     imgUrl: burger01,
-    description: "Burger with cheese, lettuce, tomato, onion, and pickles",
+    description: "Burger with cheese, lettuce, tomato, onion, and pickles sss dddd dddd dddd ddd ddd d d d d d f d dffddfdf fdfddfdfdf fddfdfd fddfdfdffd dfdfdfd fddfdfdf dfdfdfdf dfdfdfdf dfdfdfd dfdfdfs",
   },
 ];
