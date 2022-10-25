@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar/NavBar.jsx";
+import Navbar from "./components/Static Components/NavBar.jsx";
 import HomePageTest from "./pages/HomePageTest.jsx";
 import MenuPageTest from "./pages/MenuPageTest.jsx";
 import AssistancePageTest from "./pages/AssistancePageTest.jsx";
 import OrderPageTest from "./pages/OrderPageTest.jsx";
 import ContactPageTest from "./pages/ContactPageTest.jsx";
 import ActiveOrdersPage from "./pages/ActiveOrdersPage.jsx";
-
+import Footer from "./components/Static Components/Footer";
 function App() {
   const [count, setCount] = useState(0);
-
   return (
     <div className="App">
       <Navbar />
@@ -28,6 +27,7 @@ function App() {
         <Route path="/pedidosActivos" element={<ActiveOrdersPage/>} />
         <Route path="/contacto" element={<ContactPageTest />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
