@@ -58,16 +58,12 @@
     color: #f3f3f3;
 }
 
-
-
-
-
-.card:hover .front {
+.card:active .front {
 
     transform: perspective(600px) rotateY(180deg);
 }
 
-.card:hover .back {
+.card:active .back {
     transform: perspective(600px) rotateY(360deg);
 }
 
@@ -85,6 +81,15 @@
     font-size: 1.2rem;
     font-weight: 500;
     display: flex;
+}
+.shopping_icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #F76E11;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
 }
 
 

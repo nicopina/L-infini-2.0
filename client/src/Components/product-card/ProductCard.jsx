@@ -1,8 +1,7 @@
 import React from "react";
 
 import "./ProductCard.css";
-import { CardActionArea, Grid } from "@mui/material";
-import { Card } from "reactstrap";
+
 
 
 
@@ -19,6 +18,9 @@ const ProductCard = (props) => {
           <span className="price d-flex align-items-center">
             {""}
             Price:$<span>{price}</span>
+          </span>
+          <span className="shopping_icon"> 
+            <i class="ri-shopping-cart-line"></i>
           </span>
         </div>
       </div>
