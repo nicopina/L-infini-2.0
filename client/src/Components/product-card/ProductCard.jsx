@@ -20,7 +20,7 @@ const ProductCard = (props) => {
             Price:$<span>{price}</span>
           </span>
           <span className="shopping_icon"> 
-            <i class="ri-shopping-cart-line"></i>
+            <box-icon name='cart' type='solid'></box-icon>
           </span>
         </div>
       </div>

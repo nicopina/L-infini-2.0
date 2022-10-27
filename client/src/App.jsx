@@ -1,7 +1,11 @@
 import Home from "./pages/Home";
+import { Cart } from "./Components/ShoppingCart/Cart";
 function App() {
   return (
-    <Home />
+    <div className="App">
+      <Home />
+       <Cart />
+    </div>
   );
 }
 
