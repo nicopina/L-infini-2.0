@@ -1,15 +1,28 @@
-import { BoxIconElement } from "boxicons";
 import React from "react";
+import { useContext } from "react";
 import Image from "../../public/images/burger1.png";
 import "./Cart.css";
+
+import{DataContext} from "../Contexto/DataContext";
 
 
 
 export const Cart = () => {
+    const value=useContext(DataContext);
+    const[menu,setMenu]=value.menu;
+
+    const togglefalse=()=>{
+        setMenu(false);
+    }
+
+
+    const show1=menu? "carritos show":"carritos";
+    const show2=menu? "carrito show":"carrito";
+
   return (
-    <div className="carritos show">
-      <div className="carrito show">
-        <div className="carrito_close">
+    <div className={show1}>
+      <div className={show2}>
+        <div className="carrito_close" onClick={togglefalse}>
             <box-icon name='x'></box-icon>
         </div>
         <h2>Su carrito</h2>
