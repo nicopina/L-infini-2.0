@@ -19,7 +19,7 @@ export const Cart = () => {
             <div className="carrito_item">
                 <img src={Image} alt='#'/>
                 <div>
-                    <h3>title</h3>
+                    <h3>Hambuerguesa Extra Quesa XL</h3>
                     <p className="price">$345</p>
                 </div>
                 <div>

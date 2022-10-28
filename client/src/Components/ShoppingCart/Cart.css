@@ -14,6 +14,7 @@
     position: fixed;
     top: 10%;
     left: 10%;
+    right: 10%;
     transform: translateX(-50%, 50%);
     scale:(.5);
     width: 70%;
@@ -21,7 +22,7 @@
     border-radius: 8px;
     overflow-x:scroll;
     transition: all 300ms ease-in-out;
-    background-color: rgb(28, 29, 30);
+    background-color: black;
     opacity: 0;
     visibility: hidden;
 
@@ -59,8 +60,8 @@
 .carrito_center{
     width: 90%;
     margin: 0 auto;
-    border: 1px solid red;
-    background-color: lightgoldenrodyellow;
+    /* border: 1px solid red; */
+    /* background-color: black; */
 
 }
 .carrito_item{
@@ -68,44 +69,49 @@
     grid-template-columns: 1fr 2fr 1fr 1fr;
     width: 80%;
     margin: 2rem auto;
-    box-shadow: 0 1px 10px #08a05c;
+    margin-left: 3rem;
+    /* box-shadow: 0 1px 10px #08a05c; */
     border-radius: 5px;
 }
 .carrito_item h3{
     margin-top: 1.5rem;
     font-weight: 600;
+    margin-left: 1rem;
     font-size: 1.5rem;
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 .carrito_item .price{
-   color:darkorange;
+   color:white;
    font-size: 2rem;
    font-weight: bold;
    text-align: start;
-   margin-left: -1rem;
+   margin-left: 4rem;
+   margin-top: 3rem;
 
 }
-.carrito_item ri-arrow-up-s-fill{
-    height: 30px;
-    width: 50px;
-}
+
 .carrito_item .cantidad{
     font-size: 2rem;
     font-weight: bold;
+    margin-left: 5rem;
+    color: white;
+    margin-top: 1.5rem;
 }
 .carrito_item box-icon{
-    fill: #08a05c;
-    height: 30px;
+    fill: white;
+    height: 20px;
     width: 50px;
     cursor: pointer;
-    margin-top: .3rem;
+    margin-top: 2rem;
+    margin-left: 4rem;
 
 }
 .carrito_item .remove_item box-icon{
     width: 60px;
     height: 80px;
     fill:crimson;
-    margin-top: 2rem;
+    margin-top: 4rem;
 
 }
 .carrito_footer{
@@ -126,12 +132,234 @@
     background-color:darkorange;
     border:0;
     outline:0;
-    cursor: pointer;
+    /* cursor: pointer; */
+}
+.carrito_footer .btn:hover{
+    background-color:darkorange;
+    color: white;
 }
 
 
 .carrito_item img{
     width: 20rem;
     height: 100%;
+    border: 1px solid white;
+
+}
+
+
+/* ------- Media Querys ------- */
+
+@media only screen and (max-width: 1240px){
+    .carrito_item{
+     width: 92%;
+    }
+    .carrito_item .remove_item box-icon{
+        width: 3rem;
+        left: 0px;
+    
+    }
+ }
+
+
+
+ 
+@media only screen and (max-width: 1160px){
+    .carrito_center{
+        width: 70%;
+        margin-left: 0px;
+    }
+    .carrito_item .cantidad{
+       margin-left: 3rem;
+       font-size: 2rem ;
+        
+    }
+    .carrito_item box-icon{
+        left: 2rem;
+        margin-left: 2rem;
+    
+    }
+    .carrito_item .remove_item box-icon{
+        width: 3rem;
+        left: 2rem;
+    
+    }
+    .carrito_item img{
+        width: 16rem;
+        height: 100%;
+        border: 1px solid white;
+    
+    }
+    .carrito_item .price{
+        color:white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: start;
+        margin-left: 2rem;
+        margin-top: 3rem;
+     
+     }
+    .carrito_item {
+        margin-left: 4rem;
+        width: 70%;
+    }
+    .carrito{
+        width: 80%;
+        left: 0px;
+    }
+    .carrito_footer h3{
+        font-size:1.5rem;
+        
+    }
+   
+    
+} 
+
+@media only screen and (max-width: 840px){
+    .carrito_center{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .carrito_item .cantidad{
+       margin-left: 2rem;
+       font-size: 1.5rem ;
+        
+    }
+    .carrito_item box-icon{
+        margin-left: 2rem;
+        width: 1rem;
+    
+    }
+    .carrito_item h3{
+        font-size:1rem;
+        font-weight: 700;
+    }
+    .carrito_item img{
+        width: 13rem;
+        height: 100%;
+        border: 1px solid white;
+    
+    }
+    .carrito_item .price{
+        color:white;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: start;
+        margin-left: 1rem;
+        margin-top: 3rem;
+     
+     }
+    .carrito_item {
+        margin-left: 3rem;
+        width: 70%;
+    }
+    .carrito{
+        width: 80%;
+        left: 0px;
+    }
+    .carrito_footer h3{
+        font-size:1em;
+        
+    }
+    .carrito_item .remove_item box-icon{
+        width: 3rem;;
+    
+    }
+   
+    
+}
+
+@media only screen and (max-width: 660px){
+    .carrito_center{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .carrito_item .cantidad{
+       margin-left: 2rem;
+       font-size: 1rem ;
+        
+    }
+    .carrito_item box-icon{
+        margin-left: 2rem;
+        width: 0.8rem;
+    
+    }
+    .carrito_item h3{
+        font-size:0.8rem;
+        font-weight: 700;
+    }
+    .carrito_item img{
+        width: 10rem;
+        height: 100%;
+        border: 1px solid white;
+    
+    }
+    .carrito_item .price{
+        color:white;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: start;
+        margin-left: 1rem;
+        margin-top: 3rem;
+     
+     }
+    .carrito_item {
+        margin-left: 3rem;
+        width: 70%;
+    }
+    .carrito{
+        width: 80%;
+        left: 0px;
+    }
+    .carrito_footer h3{
+        font-size:1em;
+        
+    }
+    .carrito_item .remove_item box-icon{
+        width: 3rem;;
+    
+    }
+   
+    
+}
+@media only screen and (max-width: 570px){
+    .carrito_center{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .carrito_item .cantidad{
+       margin-left: 0.2rem;
+       font-size: 1rem ;
+        
+    }
+    .carrito_item box-icon{
+        margin-left: 0.2rem;
+        width: 0.8rem;
+    
+    }
+    .carrito_item img{
+        width: 8rem;
+        height: 100%;
+        border: 1px solid white;
+    
+    }
+    .carrito_item {
+        margin-left: 0rem;
+        width: 70%;
+    }
+   
+    
+}
+@media only screen and (max-width: 390px){
+    .carrito_item img{
+        width: 6rem;
+        height: 100%;
+        border: 1px solid white;
+
+    }
+    .carrito_item .remove_item box-icon{
+        width: 2rem;;
+    
+    }
 
 }
