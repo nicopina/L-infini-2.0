@@ -57,7 +57,7 @@ export const Cart = () => {
 
 
           {
-               carrito.length===0?<h2 style={{textAlign:"center",fontSize:"3rem"}}>Carrito vacio</h2>:<>
+               carrito.length===0?<h2>Carrito vacio</h2>:<>
         {
           carrito.map((item) => (
             <div className="carrito_item" key={item.id}>

@@ -17,7 +17,10 @@ export const Header = () => {
     <header>
       <ul>
         <li>
+          <span>
           <a href="#">Inicio</a>
+          </span>
+
         </li>
 
         <li>
@@ -25,7 +28,7 @@ export const Header = () => {
         </li>
       </ul>
       <div className="cart" onClick={toggleMenu}>
-        <box-icon name="cart" type="solid"></box-icon>
+        <box-icon name="cart"></box-icon>
         <span className="item_total">{carrito.length}</span>
       </div>
     </header>

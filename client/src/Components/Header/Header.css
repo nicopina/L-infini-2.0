@@ -9,22 +9,26 @@ header{
     flex-wrap: wrap;
     position: relative;
     box-sizing: border-box;
-    background-color:darkorange;
-    box-shadow: 0 5px 10px #08a05c;
+    background-color:black;
+    box-shadow: 0 5px 10px white;
 }
 
-a{
-    color:white;
-    text-decoration: none;
+header ul li a{
+    text-decoration: none; 
     text-transform: uppercase;
+    font-weight: bold;
+    color: white;
 
 }
-a:hover{
-    color: #08a05c;
+header ul li a:hover{
+    color:darkorange;
+    
 }
 
-li{
+header ul li{
     list-style: none;
+    padding: 0 2rem;
+    
 }
 
 header  ul{
@@ -32,27 +36,19 @@ header  ul{
     padding: 0;
     margin: 0;
 }
-header ul li{
-    padding: 0 2rem;
-    
-}
 
-header ul li a{
-    font-weight: bold;
-
-}
 
 header .cart {
     position: relative;
     cursor: pointer;
     padding: 0 4rem;
     width: 2rem;
+    fill: white;
 }
 
 head .cart box-icon{
     width: 45px;
     height: 45px;
-
 }
 
 header .cart span{

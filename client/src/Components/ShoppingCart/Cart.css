@@ -29,8 +29,8 @@
 }
 .carrito h2{
     text-align: center;
-    font-size: 2rem;
-    color: darkorange;
+    font-size: 1.5rem;
+    color: white;
 
 }
 .carritos.show{
@@ -51,11 +51,12 @@
     cursor: pointer;
     transform: all 300ms ease-in-out;
     margin: 3rem 0 0 2rem;
+    fill: crimson;
 
 }
 
 .carrito_close box-icon:hover{
-    fill: crimson;
+    fill: red;
 }
 .carrito_center{
     width: 90%;
