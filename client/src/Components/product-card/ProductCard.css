@@ -59,7 +59,7 @@
     color: #f3f3f3;
 }
 
-.card:active .front {
+.card:focus.front {
 
     transform: perspective(600px) rotateY(180deg);
 }
@@ -92,6 +92,17 @@
     justify-content: center;
     cursor: pointer;
 }
+
+/* .btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #F76E11;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+} */
+
 
 
 @media screen and (max-width: 1240px) {

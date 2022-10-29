@@ -1,7 +1,7 @@
 import Home from "./pages/Home";
 import { Cart } from "./Components/ShoppingCart/Cart";
 import { Header } from "./Components/Header/Header";
-import { DataProvider } from "./Components/Contexto/DataContext";
+import { DataProvider } from "./Contexto/DataContext";
 
 function App() {
   return (

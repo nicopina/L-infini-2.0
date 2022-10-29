@@ -1,12 +1,17 @@
-import React from "react";
+import React,{useContext} from "react";
 
 import "./ProductCard.css";
 
+import { DataContext } from "../../Contexto/DataContext";
 
 
 
 const ProductCard = (props) => {
-  const { title, imgUrl, price, description } = props.item;
+ 
+  const { id,title, imgUrl, price, description } = props.item;
+
+  const value=useContext(DataContext);
+  const addCarrito=value.addCarrito;
   return (
     <div className="card">
       <div className="face front">
@@ -19,9 +24,9 @@ const ProductCard = (props) => {
             {""}
             Price:$<span>{price}</span>
           </span>
-          <span className="shopping_icon"> 
-            <box-icon name='cart' type='solid'></box-icon>
-          </span>
+            <button className="shopping_icon" onClick={()=>addCarrito(id)}>
+              <box-icon name='cart' type='solid'></box-icon>
+            </button>
         </div>
       </div>
 
