@@ -9,27 +9,34 @@ import OrderPageTest from "./pages/OrderPageTest.jsx";
 import ContactPageTest from "./pages/ContactPageTest.jsx";
 import ActiveOrdersPage from "./pages/ActiveOrdersPage.jsx";
 import Footer from "./components/Static Components/Footer";
-import Home from "./pages/Home";
+import { DataProvider } from "./Context/DataContext";
+import MenuPack from "./Components/MenuPack/MenuPack";
+import {Cart} from "./Components/ShoppingCart/Cart";
+
 function App() {
   const [count, setCount] = useState(0);
+  const mesa = "1";
   return (
-    <div className="App">
-      <Navbar/>
-      <h1>Hector Juan Soza Pollman</h1>
-      <img
-        src="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"
-        alt="300x377"
-      />
-      <Routes>
-        <Route path="/" element={<HomePageTest />} />
-        <Route path="/menu" element={<Home />} />
-        <Route path="/asistencia" element={<AssistancePageTest />} />
-        <Route path="/pedidos" element={<OrderPageTest />} />
-        <Route path="/pedidosActivos" element={<ActiveOrdersPage/>} />
-        <Route path="/contacto" element={<ContactPageTest />} />
-      </Routes>
-      <Footer />
-    </div>
+    <DataProvider>
+      <div className="App">
+        <Navbar />
+        <h1>Hector Juan Soza Pollman</h1>
+        <img
+          src="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"
+          alt="300x377"
+        />
+        <Cart />
+        <Routes>
+          <Route path="/" element={<HomePageTest />} />
+          <Route path={`/menu`} element={<MenuPack />} />
+          <Route path="/asistencia" element={<AssistancePageTest />} />
+          <Route path="/pedidos" element={<OrderPageTest />} />
+          <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
+          <Route path="/contacto" element={<ContactPageTest />} />
+        </Routes>
+        <Footer />
+      </div>
+    </DataProvider>
   );
 }
 

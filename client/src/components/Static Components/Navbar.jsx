@@ -10,6 +10,9 @@ import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { DataContext } from "../../Context/DataContext";
+import { Cart } from "../ShoppingCart/Cart";
 
 function ResponsiveAppBar() {
   const pages = [
@@ -30,14 +33,23 @@ function ResponsiveAppBar() {
       path: "/pedidos",
     },
     {
-      name:"Pedidos Activos",
-      path:"/pedidosActivos"
+      name: "Pedidos Activos",
+      path: "/pedidosActivos",
     },
     {
       name: "Contacto",
       path: "/contacto",
     },
   ];
+
+  const value = useContext(DataContext);
+  const [menu, setMenu] = value.menu;
+  const [carrito] = value.carrito;
+
+  const toggleMenu = () => {
+    console.log("click");
+    setMenu(!menu);
+  };
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -117,6 +129,10 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
+            <div className="cart" onClick={toggleMenu}>
+            <box-icon name="cart" ></box-icon>
+            <span className="item_total">{carrito.length}</span>
+          </div>
           </Box>
           <AllInclusiveIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
@@ -147,6 +163,10 @@ function ResponsiveAppBar() {
                 </Link>
               </MenuItem>
             ))}
+            <div className="cart" onClick={toggleMenu}>
+            <box-icon name="cart" ></box-icon>
+            <span className="item_total">{carrito.length}</span>
+          </div>
           </Box>
         </Toolbar>
       </Container>

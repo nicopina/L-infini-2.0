@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 
 import "./ProductCard.css";
 
-import { DataContext } from "../../Contexto/DataContext";
+import { DataContext } from "../../Context/DataContext";
 
 
 
