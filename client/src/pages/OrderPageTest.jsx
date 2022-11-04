@@ -6,10 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import { Card, CardContent , Button } from "@mui/material";
 
 export default function OrderPageTest() {
-
   const orderList = [
     {
       id: 1,
@@ -37,41 +36,61 @@ export default function OrderPageTest() {
     },
   ];
 
-  const total = orderList.reduce((a, b) => a + (b.price*b.quantity), 0);
+
+  const total = orderList.reduce((a, b) => a + b.price * b.quantity, 0);
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="center" colSpan={0}/>
-            <TableCell colSpan={1}>Producto</TableCell>
-            <TableCell align="right" colSpan={2}>Cantidad</TableCell>
-            <TableCell align="right" colSpan={3}>Precio</TableCell>
-            <TableCell align="right" colSpan={4}>Subtotal</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {orderList.map((order, index) => (
-            <TableRow key={index}>
-              <TableCell colSpan={0}>
-                <img src={order.photo} alt={"X"} height="30px" />
-              </TableCell>
-              <TableCell colSpan={1}>{order.name}</TableCell>
-              <TableCell colSpan={2} align="right">{order.quantity}</TableCell>
-              <TableCell colSpan={3} align="right">{order.price}</TableCell>
-              <TableCell colSpan={4} align="right">{order.price * order.quantity}</TableCell>
-            </TableRow>
-          ))}
-          <TableRow>
-            <TableCell colSpan={0}/>
-            <TableCell colSpan={1}/>
-            <TableCell colSpan={2}/>
-            <TableCell colSpan={3}>Total</TableCell>
-            <TableCell align="right" colSpan={4}>{total}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Card>
+      <CardContent>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" colSpan={0} />
+                <TableCell colSpan={1}>Producto</TableCell>
+                <TableCell align="right" colSpan={2}>
+                  Cantidad
+                </TableCell>
+                <TableCell align="right" colSpan={3}>
+                  Precio
+                </TableCell>
+                <TableCell align="right" colSpan={4}>
+                  Subtotal
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {orderList.map((order, index) => (
+                <TableRow key={index}>
+                  <TableCell colSpan={0}>
+                    <img src={order.photo} alt={"X"} height="30px" />
+                  </TableCell>
+                  <TableCell colSpan={1}>{order.name}</TableCell>
+                  <TableCell colSpan={2} align="right">
+                    {order.quantity}
+                  </TableCell>
+                  <TableCell colSpan={3} align="right">
+                    {order.price}
+                  </TableCell>
+                  <TableCell colSpan={4} align="right">
+                    {order.price * order.quantity}
+                  </TableCell>
+                </TableRow>
+              ))}
+              <TableRow>
+                <TableCell colSpan={0} />
+                <TableCell colSpan={1} />
+                <TableCell colSpan={2} />
+                <TableCell colSpan={3}>Total</TableCell>
+                <TableCell align="right" colSpan={4}>
+                  {total}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Button variant="contained" style={{ backgroundColor: "green" }}>Pedir</Button>
+      </CardContent>
+    </Card>
   );
 }
