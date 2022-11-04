@@ -2,6 +2,9 @@ import React,{useState,useEffect,createContext} from 'react'
 import { fastFoodProducts } from "../api/products";
 
 
+//hacer atributo cantidad 1 en tabla orden y luego llamarla aqui para pasar por el value.
+
+
 export const DataContext=createContext();
 export const DataProvider=(props)=>{
 
@@ -30,6 +33,7 @@ export const DataProvider=(props)=>{
              const data=productos.filter(producto=>{
                     return producto.id === id
             })
+            data[0].cantidad=1; //agregar cantidad=1 a la data dado que se agrego al carrito
             setCarrito([...carrito,...data])
          }else{
             alert("El producto ya se ha agregado al carrito")
@@ -37,8 +41,7 @@ export const DataProvider=(props)=>{
     }
     //  ---- Para al refrescar la pagina quede guardado el carrito(no me funciona)-------------------
     // useEffect(()=>{
-    //     const dataCarrito=JSON.parse(localStorage.getItem("dataCarrito")
-    //     );
+    //     const dataCarrito=JSON.parse(localStorage.getItem("dataCarrito"))
     //     if(dataCarrito){
     //         setCarrito(dataCarrito)
     //     }

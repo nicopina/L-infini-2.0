@@ -9,7 +9,6 @@ export const fastFoodProducts = [
     price: 95,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
-    cantidad:1,  // importante para saber cuanta canitdad de producto se va a comprar
   },
   {
     id: "06",
@@ -17,7 +16,6 @@ export const fastFoodProducts = [
     price: 250,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
-    cantidad:1,
   },
   {
     id: "07",
@@ -25,7 +23,6 @@ export const fastFoodProducts = [
     price: 195,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
-    cantidad:1,
   },
   {
     id: "08",
@@ -33,7 +30,6 @@ export const fastFoodProducts = [
     price: 275,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
-    cantidad:1,
   },
   {
     id: "09",
@@ -41,7 +37,6 @@ export const fastFoodProducts = [
     price: 275,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
-    cantidad:1,
   },
   {
     id: "10",
@@ -49,7 +44,6 @@ export const fastFoodProducts = [
     price: 95,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
-    cantidad:1,
   },
   {
     id: "11",
@@ -57,7 +51,6 @@ export const fastFoodProducts = [
     price: 250,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
-    cantidad:1,
   },
   {
     id: "12",
@@ -65,7 +58,6 @@ export const fastFoodProducts = [
     price: 195,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles sss dddd dddd dddd ddd ddd d d d d d f d dffddfdf fdfddfdfdf fddfdfd fddfdfdffd dfdfdfd fddfdfdf dfdfdfdf dfdfdfdf dfdfdfd dfdfdfs",
-    cantidad:1,
   },
 ];
 // description debe realizarse validacion de longitud de caracteres para que no se desborde el card.

@@ -15,12 +15,12 @@
     border-radius: 10px;
     overflow: hidden;
     transition: .5s;
-    box-shadow: 5px 5px 10px 5px rgba(223, 182, 0, 0.966);
+    box-shadow: 1px 1px 5px 1px rgba(223, 182, 0, 0.966);
 }
 
 .card .front {
     transform: perspective(600px) rotateY(0deg);
-    box-shadow: 5px 5px 10px 5px rgba(223, 182, 0, 0.966);
+    box-shadow: 1px 1px 5px 1px rgba(223, 182, 0, 0.966);
 }
 .card .front img {
     width: 100%;
