@@ -1,9 +1,8 @@
 import React from "react";
 import { useContext } from "react";
-import Image from "../../public/images/burger1.png";
 import "./Cart.css";
 
-import { DataContext } from "../../Contexto/DataContext";
+import { DataContext } from "../../Context/DataContext";
 
 export const Cart = () => {
   const value = useContext(DataContext);
