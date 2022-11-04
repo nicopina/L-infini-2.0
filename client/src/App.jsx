@@ -9,6 +9,7 @@ import OrderPageTest from "./pages/OrderPageTest.jsx";
 import ContactPageTest from "./pages/ContactPageTest.jsx";
 import ActiveOrdersPage from "./pages/ActiveOrdersPage.jsx";
 import Footer from "./components/Static Components/Footer";
+import Home from "./pages/Home";
 function App() {
   const [count, setCount] = useState(0);
   return (
@@ -21,7 +22,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<HomePageTest />} />
-        <Route path="/menu" element={<MenuPageTest />} />
+        <Route path="/menu" element={<Home />} />
         <Route path="/asistencia" element={<AssistancePageTest />} />
         <Route path="/pedidos" element={<OrderPageTest />} />
         <Route path="/pedidosActivos" element={<ActiveOrdersPage/>} />
