@@ -1,10 +1,10 @@
 import { Router } from "express";
 import {
-    getRequests,
-    getRequest,
-    createRequest,
-    updateRequest,
-    deleteRequest
+  getRequests,
+  getRequest,
+  createRequest,
+  updateRequest,
+  deleteRequest,
 } from "../controllers/requests.controller.js";
 
 const router = Router();
@@ -16,4 +16,3 @@ router.put("/requests/:id", updateRequest);
 router.delete("/requests/:id", deleteRequest);
 
 export default router;
-
