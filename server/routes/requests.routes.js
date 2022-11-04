@@ -5,7 +5,7 @@ import {
   createRequest,
   updateRequest,
   deleteRequest,
-} from "../controllers/requests.controller.js";
+} from "../controllers/requests.controllers.js";
 
 const router = Router();
 
