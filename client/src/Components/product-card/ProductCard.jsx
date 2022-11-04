@@ -25,7 +25,7 @@ const ProductCard = (props) => {
             Price:$<span>{price}</span>
           </span>
             <button className="shopping_icon" onClick={()=>addCarrito(id)}>
-              <box-icon name='cart' type='solid'></box-icon>
+              <box-icon name='cart'></box-icon>
             </button>
         </div>
       </div>
