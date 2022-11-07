@@ -1,8 +1,8 @@
 import React from "react";
-import { useContext } from "react";
+
 import { createRequest } from "../../api/requests.api.js";
 
-import {BASE_URL} from "../../config.js";
+
 
 const request = {
   "table_id": "M1",
