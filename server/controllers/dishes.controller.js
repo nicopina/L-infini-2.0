@@ -7,22 +7,22 @@ export const getDish = async (req, res) => {
       [req.params.id]
     );
     if (rows.length > 0) {
-      res.json(rows[0]);
+      return res.json(rows[0]);
     }
-    res.status(404).json({ message: "Dish not found" });
+    return res.status(404).json({ message: "Dish not found" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
 export const getDishes = async (req, res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM Dishes");
-    res.json(rows);
+    return res.json(rows);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -32,10 +32,10 @@ export const createDish = async (req, res) => {
     const [result] = await promisePool.query("INSERT INTO Dishes SET ?", [
       req.body,
     ]);
-    res.json({ message: "Dish saved" });
+    return res.json({ message: "Dish saved" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -46,12 +46,12 @@ export const updateDish = async (req, res) => {
       [req.body, req.params.id]
     );
     if (result.affectedRows > 0) {
-      res.status(200).json({ message: "Dish updated" });
+      return res.status(200).json({ message: "Dish updated" });
     }
     res.status(404).json({ message: "Dish not found" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -62,11 +62,11 @@ export const deleteDish = async (req, res) => {
       [req.params.id]
     );
     if (result.affectedRows > 0) {
-      res.status(200).json({ message: "Dish deleted" });
+      return res.status(200).json({ message: "Dish deleted" });
     }
-    res.status(404).json({ message: "Dish not found" });
+    return res.status(404).json({ message: "Dish not found" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
