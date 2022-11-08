@@ -12,6 +12,7 @@ import Footer from "./components/Static Components/Footer";
 import { DataProvider } from "./Context/DataContext";
 import MenuPack from "./Components/MenuPack/MenuPack";
 import {Cart} from "./Components/ShoppingCart/Cart";
+import MenuDishStateTest from "./pages/MenuDishStateTest.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/pedidos" element={<OrderPageTest />} />
           <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
           <Route path="/contacto" element={<ContactPageTest />} />
+          <Route path="/state" element={<MenuDishStateTest />} />
         </Routes>
         <Footer />
       </div>
