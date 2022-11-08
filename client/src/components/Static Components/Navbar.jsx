@@ -14,6 +14,8 @@ import { useContext } from "react";
 import { DataContext } from "../../Context/DataContext";
 import { Cart } from "../ShoppingCart/Cart";
 
+import "./Navbar.css";
+
 function ResponsiveAppBar() {
   const pages = [
     {
@@ -70,8 +72,8 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{ width: "100%" }}>
-      <Container maxWidth="xl">
+    <AppBar  position="static" style={{ width: "100%" }}>
+      <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}

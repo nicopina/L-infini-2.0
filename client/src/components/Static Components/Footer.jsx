@@ -12,6 +12,8 @@ import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
 
+import "./Footer.css";
+
 function Footer() {
   return (
     <footer>
