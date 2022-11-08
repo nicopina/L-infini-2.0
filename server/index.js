@@ -1,5 +1,6 @@
 import express from 'express';
 import {PORT} from './config.js';
+import cors from 'cors';
 
 import indexRoutes from './routes/index.routes.js';
 import tablesRoutes from './routes/tables.routes.js';
@@ -8,6 +9,8 @@ import ordersRoutes from './routes/orders.routes.js';
 import orderSummariesRoutes from './routes/orderSummaries.routes.js';
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 

@@ -5,7 +5,7 @@ function ItemActiveOrder(props) {
   const [checked, setChecked] = useState(false);
 
   const onCheckboxClick = () => {
-    props.item.status = !props.item.status;
+    props.item.statuss = !props.item.statuss;
     props.onCheckboxClicked();
   };
 
@@ -29,7 +29,7 @@ function ItemActiveOrder(props) {
           color: "black",
         }}
       >
-        <img src={props.item.photo} alt={props.item.name} width="100px" />
+        <img src={props.item.photo_url} alt={props.item.name} width="100px" />
       </Grid>
       <Grid
         item
@@ -75,7 +75,7 @@ function ItemActiveOrder(props) {
       >
         <input
           onClick={onCheckboxClick}
-          defaultChecked={props.item.status}
+          defaultChecked={props.item.statuss}
           type="checkbox"
         />
       </Grid>
