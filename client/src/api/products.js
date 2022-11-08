@@ -1,6 +1,7 @@
 // ======= imported  all products images from images folder ========
 
 import burger01 from '../public/images/burger1.png';
+import cafe from '../public/images/cafe.png';
 
 export const fastFoodProducts = [
   {
@@ -33,10 +34,10 @@ export const fastFoodProducts = [
   },
   {
     id: "09",
-    title: "Soza Cafe",
+    title: "UCENIN MILKshake",
     price: 275,
-    imgUrl: burger01,
-    description: "Se lanzan al momento de la entrega",
+    imgUrl: cafe,
+    description: "rico en proteinas",
   },
   {
     id: "10",
