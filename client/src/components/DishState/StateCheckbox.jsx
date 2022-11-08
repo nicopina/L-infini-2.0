@@ -4,7 +4,6 @@ import { updateDishRequest } from "../../api/dishes.api";
 
 const StateCheckbox = (props) => {
   function changeState(id, state) {
-    console.log({ is_active: state });
     updateDishRequest(id, { is_active: state });
   }
   var state = props.state;

@@ -27,7 +27,7 @@ const ProductCardTest = (props) => {
         <div className="d-flex align-items-center justify-content-between">
           <span className="price d-flex align-items-center">
             {""}
-            Estado:$<span>{price}</span>
+            Estado:
           </span>
             <StateCheckbox id = {id} state = {is_active}/>
         </div>
