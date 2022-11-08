@@ -1,9 +1,16 @@
 import { Card, CardContent, Grid } from "@mui/material";
 import { Button } from "@mui/material";
 import OrderActiveOrders from "../components/ActiveOrders/OrderActiveOrders";
+import { getActiveOrders } from "../api/orders.api"
 
 function ActiveOrdersPage() {
   //   const { activeOrders } = useOrders();
+  async function showActiveOrders () {
+    getActiveOrders().then((response) => {
+      console.log(response)
+    })
+  }
+  showActiveOrders();
   const activeOrders = [
     {
       id: 1,

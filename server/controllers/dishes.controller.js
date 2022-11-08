@@ -3,7 +3,7 @@ import { promisePool } from "../db.js";
 export const getDish = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
-      "SELECT * FROM dishes WHERE id = ?",
+      "SELECT * FROM Dishes WHERE id = ?",
       [req.params.id]
     );
     if (rows.length > 0) {
