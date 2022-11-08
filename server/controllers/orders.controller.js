@@ -69,3 +69,13 @@ export const deleteOrder = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const getActiveOrders = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query("SELECT * FROM Orders");
+    res.json(rows);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
