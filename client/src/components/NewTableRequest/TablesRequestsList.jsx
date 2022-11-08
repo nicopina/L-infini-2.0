@@ -1,31 +1,40 @@
-import React from 'react';
-import { getRequests } from '../../api/requests.api';
-import { Container, Row, Col } from "reactstrap";
+import React from "react";
+import { getRequests } from "../../api/requests.api";
+import TableRequest from "./TableRequest";
 
-function getTablesRequests() {
-  const response = getRequests();
-  if (response.status === 200) {
-    console.log(response.data);
-    return response.data;
-  }
-}
+
+var funcion = async function getTablesRequests() {
+  const response= await getRequests();
+  return response.data;
+};
+
+/*
+function sortRequests(requests) {
+  requests.sort((a, b) => {
+    return a.status - b.status;
+  });
+}*/
 
 function TablesRequestsList() {
+  const [requests, setRequests] = React.useState([]);
 
-    const data = getTablesRequests();
-  return (
-    <section>
-      <Container>
-        <Row>
-          {data.map((item) => (
-            <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
-              {""}
-            
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </section>
-);};
+    async function getRequestsData() {
+      funcion().then((response) => {
+        setRequests(response);
+        
+      });
+    }
+
+    getRequestsData();
+  
+
+    return (
+      <h3>
+
+        {requests?.map(item => item.status != 2 ? <div key = {item.id}>{<TableRequest datos = {item}/>}</div> : null)}
+      </h3>
+    );
+  };
+
 
 export default TablesRequestsList;

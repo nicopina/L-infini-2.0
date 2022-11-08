@@ -21,7 +21,7 @@ function App() {
     <DataProvider>
       <div className="App">
         <Navbar />
-        <NewTableRequest />
+
         <h1>Hector Juan Soza Pollman</h1>
         <img
           src="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"

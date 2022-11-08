@@ -6,7 +6,7 @@ import { createRequest } from "../../api/requests.api.js";
 
 const request = {
   "table_id": "M1",
-  "status": 1,
+  "status": 0,
   "type": 1,
 };
 
@@ -21,7 +21,7 @@ function NewTableRequest() {
   return (
 
     <div className="boton">
-      <button onClick={create}>Necesito ayuda!!</button>
+      <button onClick={create} title = "LLama a un(a) meser@ a la mesa.">Necesito ayuda!!</button>
       
     </div>
   );
