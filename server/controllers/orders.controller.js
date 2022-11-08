@@ -3,10 +3,10 @@ import { promisePool } from "../db.js";
 export const getOrders = async (req, res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM Orders");
-    res.json(rows);
+    return res.json(rows);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -17,12 +17,12 @@ export const getOrder = async (req, res) => {
       [req.params.id]
     );
     if (rows.length > 0) {
-      res.json(rows[0]);
+      return res.json(rows[0]);
     }
-    res.status(404).json({ message: "Order not found" });
+    return res.status(404).json({ message: "Order not found" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -31,10 +31,10 @@ export const createOrder = async (req, res) => {
     const [result] = await promisePool.query("INSERT INTO Orders SET ?", [
       req.body,
     ]);
-    res.json({ message: "Order saved" });
+    return res.json({ message: "Order saved" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -45,12 +45,12 @@ export const updateOrder = async (req, res) => {
       [req.body, req.params.id]
     );
     if (result.affectedRows > 0) {
-      res.status(200).json({ message: "Order updated" });
+      return res.status(200).json({ message: "Order updated" });
     }
     res.status(404).json({ message: "Order not found" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -61,11 +61,26 @@ export const deleteOrder = async (req, res) => {
       [req.params.id]
     );
     if (result.affectedRows > 0) {
-      res.status(200).json({ message: "Order deleted" });
+      return res.status(200).json({ message: "Order deleted" });
     }
-    res.status(404).json({ message: "Order not found" });
+    return res.status(404).json({ message: "Order not found" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const getOrdersByOrderSummaryId = async (id) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT * FROM Dishes INNER JOIN Orders ON Dishes.id = Orders.dish_id WHERE Orders.sumary_id = ?",
+      [id]
+    );
+    return rows;
+    // return res.status(404).json({ message: "Order not found" });
+  } catch (error) {
+    console.log(error);
+    // return res.status(500).json({ message: "Internal server error" });
+  }
+};
+

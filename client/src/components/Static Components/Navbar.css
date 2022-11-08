@@ -1,17 +1,19 @@
+
+
+.NavBar{
+    background-color: #1b1919;
+}
 .cart {
     position: relative;
     cursor: pointer;
-    padding: 0 4rem;
-    width: 2rem;
     fill: white;
 }
 
 .cart box-icon{
-    width: 45px;
-    height: 45px;
+    fill: white;
 }
 
-.cart span{
+/* .cart span{
     position:absolute;
     top: -1rem;
     right: 1rem;
@@ -30,5 +32,5 @@
 
 
 
-}
+} */
 

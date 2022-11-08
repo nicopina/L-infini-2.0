@@ -7,10 +7,10 @@ function OrderActiveOrders(props) {
   const [checked, setChecked] = useState(false);
 
   function checkboxCheck() {
-    let allChecked = true;
+    setChecked(true);
     props.order.orderList.forEach((item) => {
-      if (!item.status) {
-        allChecked = false;
+      if (!item.statuss) {
+        setChecked(false);
       }
     });
     setChecked(allChecked);
@@ -56,7 +56,7 @@ function OrderActiveOrders(props) {
         lg={5}
         style={{ backgroundColor: "#55711D", margin: "15px", padding: "1px" }}
       >
-        <p>Mesa {props.order.table}</p>
+        <p>Mesa {props.order.table_id}</p>
       </Grid>
       <Grid
         className="orderActiveOrders__value"

@@ -5,7 +5,7 @@
     width: 100%;
     height: 100%;
     transition: all 300ms ease-in-out;
-    background-color: rgba(0,0,0, .6);
+    background-color: rgb(255, 253, 253);
     z-index: 2;
     padding-bottom: 5rem;
     visibility: hidden;
@@ -22,7 +22,7 @@
     border-radius: 8px;
     overflow-x:scroll;
     transition: all 300ms ease-in-out;
-    background-color: black;
+    background-color: rgb(222, 215, 215);
     opacity: 0;
     visibility: hidden;
 
@@ -30,7 +30,7 @@
 .carrito h2{
     text-align: center;
     font-size: 1.5rem;
-    color: white;
+    color: rgb(24, 23, 23);
 
 }
 .carritos.show{
@@ -45,14 +45,13 @@
 
 
 .carrito_close box-icon{
-    display: inline-block;
     width: 50px;
     height: 30px;
     cursor: pointer;
     transform: all 300ms ease-in-out;
     margin: 2rem 0 0 2rem;
     fill: crimson;
-
+    display: flex;
 }
 
 .carrito_close box-icon:hover{
@@ -80,10 +79,10 @@
     margin-left: 1rem;
     font-size: 1.5rem;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: rgb(19, 18, 18);
 }
 .carrito_item .price{
-   color:white;
+   color:rgb(23, 22, 22);
    font-size: 2rem;
    font-weight: bold;
    text-align: start;
@@ -96,11 +95,11 @@
     font-size: 2rem;
     font-weight: bold;
     margin-left: 5rem;
-    color: white;
+    color: rgb(4, 4, 4);
     margin-top: 1.5rem;
 }
 .carrito_item box-icon{
-    fill: white;
+    fill: rgb(26, 25, 25);
     height: 20px;
     width: 50px;
     cursor: pointer;
@@ -123,20 +122,21 @@
     font-size:2rem;
     font-weight: 700;
     letter-spacing: 1px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .carrito_footer .btn{
     display: inline-block;
     padding: .3rem 1rem;
     font-size: 1.2rem;
-    background-color:darkorange;
+    background-color:rgb(12, 12, 12);
     border:0;
     outline:0;
+    color: white;
     /* cursor: pointer; */
 }
 .carrito_footer .btn:hover{
-    background-color:darkorange;
+    background-color:rgb(28, 77, 22);
     color: white;
 }
 
@@ -144,7 +144,7 @@
 .carrito_item img{
     width: 20rem;
     height: 100%;
-    border: 1px solid white;
+    border: 1px solid rgb(65, 63, 63);
 
 }
 
@@ -192,7 +192,6 @@
     
     }
     .carrito_item .price{
-        color:white;
         font-size: 1.5rem;
         font-weight: bold;
         text-align: start;
@@ -242,7 +241,7 @@
     
     }
     .carrito_item .price{
-        color:white;
+
         font-size: 1rem;
         font-weight: bold;
         text-align: start;
@@ -296,7 +295,6 @@
     
     }
     .carrito_item .price{
-        color:white;
         font-size: 1rem;
         font-weight: bold;
         text-align: start;

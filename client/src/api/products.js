@@ -1,49 +1,50 @@
 // ======= imported  all products images from images folder ========
 
 import burger01 from '../public/images/burger1.png';
+import cafe from '../public/images/cafe.png';
 
 export const fastFoodProducts = [
   {
     id: "05",
-    title: "Burger",
+    title: "Ucenin Burger",
     price: 95,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
   },
   {
     id: "06",
-    title: "Chicken",
+    title: "Chicken UCENIN",
     price: 250,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
   },
   {
     id: "07",
-    title: "Grill Chicken",
+    title: "Hawaiian UCENIN",
     price: 195,
     imgUrl: burger01,
     description: "Burger with cheese, lettuce, tomato, onion, and pickles",
   },
   {
     id: "08",
-    title: "Barbeque",
+    title: "Shoritos a la telgie",
     price: 275,
     imgUrl: burger01,
-    description: "Burger with cheese, lettuce, tomato, onion, and pickles",
+    description: "fragancia hawaiana",
   },
   {
     id: "09",
-    title: "Pizza",
+    title: "UCENIN MILKshake",
     price: 275,
-    imgUrl: burger01,
-    description: "Burger with cheese, lettuce, tomato, onion, and pickles",
+    imgUrl: cafe,
+    description: "rico en proteinas",
   },
   {
     id: "10",
-    title: "Burger",
+    title: "Burger Colega Juguetona",
     price: 95,
     imgUrl: burger01,
-    description: "Burger with cheese, lettuce, tomato, onion, and pickles",
+    description: "Hamburguesa libre de gluten ",
   },
   {
     id: "11",

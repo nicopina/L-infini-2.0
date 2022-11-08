@@ -39,6 +39,7 @@ export const DataProvider=(props)=>{
             alert("El producto ya se ha agregado al carrito")
          }
     }
+    
     //  ---- Para al refrescar la pagina quede guardado el carrito(no me funciona)-------------------
     // useEffect(()=>{
     //     const dataCarrito=JSON.parse(localStorage.getItem("dataCarrito"))
@@ -50,6 +51,10 @@ export const DataProvider=(props)=>{
     // useEffect(()=>{
     //     localStorage.setItem("dataCarrito",JSON.stringify(carrito))
     // }, [carrito])
+
+
+
+
 
     useEffect(()=>{
         const getTotal=()=>{
