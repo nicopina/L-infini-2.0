@@ -1,7 +1,6 @@
  
 .card {
     position: relative;
-    background: #02010c;
     border-radius: 10px;
     cursor: pointer;
     margin-top: 10%;
@@ -10,21 +9,21 @@
 }
 
 .card .face {
-    background-color: black;
+    background-color: rgb(255, 253, 253);
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 10px;
     overflow: hidden;
     transition: .5s;
-    box-shadow: 5px 5px 10px 5px rgba(223, 182, 0, 0.966);
+    box-shadow: 5px 5px 10px 5px rgb(84, 82, 82);
 }
 
 .card .front {
     height: 100%;
     height: 100%;
     transform: perspective(600px) rotateY(0deg);
-    box-shadow: 1px 1px 5px 1px rgba(223, 182, 0, 0.966);
+    box-shadow: 1px 1px 5px 1px rgba(255, 253, 253,);
 }
 .card .front img {
     width: 100%;
@@ -36,14 +35,14 @@
     width: 100%;
     height: 45px;
     line-height: 45px;
-    color: rgb(255, 255, 255);
+    color: rgb(10, 10, 10);
     text-align: center;
 }
 
 .card .back {
     position: absolute;
     transform: perspective(900px) rotateY(180deg);
-    background:rgb(0, 0, 0);
+    background-color: rgb(255, 253, 253);
     padding: 0px;
     color: #000000;
     display: flex;
@@ -55,14 +54,12 @@
     height: 100%;
 }   
 
-.card .back .link {
-    border-top: solid 1px #f3f3f3;
-    height: 300px;
-    line-height: 50px;
-}
+
 
 .card .back .link a {
-    color: #f3f3f3;
+    color: #070606;
+    position: center;
+    line-height: 18em;
 }
 
 .card:focus.front {
@@ -75,24 +72,24 @@
 }
 
 .price{
-    color: rgb(238, 243, 248);
+    color: rgb(10, 10, 10);
 }
 .price span{
-    color:darkorange;
+    color:rgb(10, 10, 10);
     font-size: 1.3rem;
     font-weight: 500;
 
 }
 .description{
-    color: darkorange;
+    color:rgb(10, 10, 10);
     font-size: 1rem;
     font-weight: 500;
-    display: flex;
+    position: absolute;
     margin-top: 5%;
 }
 .shopping_icon{
     border-radius: 5px;
-    background-color: #F76E11;
+    background-color: #22201f;
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -104,7 +101,6 @@
 
 @media screen and (max-width: 560px) {
     .description{
-        color: darkorange;
         font-size: 0.6rem;
         font-weight: 500;
         display: flex;
@@ -115,7 +111,6 @@
         line-height: 50px;
     }
     .price span{
-        color:darkorange;
         font-size: 1rem;
         font-weight: 500;
     
@@ -124,7 +119,6 @@
         width: 100%;
         height: 30px;
         line-height: 45px;
-        color: rgb(255, 255, 255);
         text-align: center;
     }
     .price{
@@ -134,7 +128,6 @@
     .shopping_icon{
         padding: 0px;
         cursor: pointer;
-        background-color: #f76E11;
         
     }
     .shopping_icon .box-icon{
