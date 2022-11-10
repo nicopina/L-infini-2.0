@@ -8,7 +8,7 @@
     
 }
 
-.card .face {
+.card .face-back{
     background-color: rgb(255, 253, 253);
     width: 100%;
     height: 100%;
@@ -19,30 +19,32 @@
     box-shadow: 5px 5px 10px 5px rgb(84, 82, 82);
 }
 
-.card .front {
+.card .face-front {
     height: 100%;
-    height: 100%;
+    width: 100%;
     transform: perspective(600px) rotateY(0deg);
     box-shadow: 1px 1px 5px 1px rgba(255, 253, 253,);
+    background-color: rgb(255, 253, 253);
 }
-.card .front img {
-    padding: 3%;
+.card img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    padding: 3px;
 }
 
-.card .front h6 {
+
+.card .face-front h6 {
     width: 100%;
     height: 45px;
-    line-height: 45px;
+    line-height: 20px;
     color: rgb(10, 10, 10);
     text-align: center;
 }
 
-.card .back {
+.card .face-back {
     position: absolute;
-    transform: perspective(900px) rotateY(180deg);
+    transform: perspective(600px) rotateY(180deg);
     background-color: rgb(255, 253, 253);
     padding: 0px;
     color: #000000;
@@ -57,38 +59,38 @@
 
 
 
-.card .back .link a {
+.card .face-back .link a {
     color: #070606;
-    position: center;
+    position: relative;
     line-height: 18em;
 }
 
-.card:focus.front {
+.card:focus.face-front {
 
     transform: perspective(600px) rotateY(180deg);
 }
 
-.card:active .back {
+.card:active .face-back {
     transform: perspective(900px) rotateY(360deg);
 }
 
-.price{
+.card .price{
     color: rgb(10, 10, 10);
 }
-.price span{
+.card .price span{
     color:rgb(10, 10, 10);
     font-size: 1.3rem;
     font-weight: 500;
 
 }
-.description{
-    color:rgb(10, 10, 10);
+.card .description{
+    color:rgb(47, 46, 46);
     font-size: 1rem;
     font-weight: 500;
     position: absolute;
     margin-top: 5%;
 }
-.shopping_icon{
+.card .shopping_icon{
     border-radius: 5px;
     background-color: #22201f;
     display: flex;
@@ -96,12 +98,12 @@
     cursor: pointer;
     
 }
-.shopping_icon box-icon{
+.card .shopping_icon box-icon{
     fill: white;
 }
 
 @media screen and (max-width: 560px) {
-    .description{
+    .card.description{
         font-size: 0.6rem;
         font-weight: 500;
         display: flex;
@@ -111,7 +113,7 @@
         height:400px;
         line-height: 50px;
     }
-    .price span{
+    .card.price span{
         font-size: 1rem;
         font-weight: 500;
     
@@ -122,16 +124,16 @@
         line-height: 45px;
         text-align: center;
     }
-    .price{
+    .card.price{
         font-size: 1rem;
     }
     
-    .shopping_icon{
+    .card .shopping_icon{
         padding: 0px;
         cursor: pointer;
         
     }
-    .shopping_icon .box-icon{
+    .card .shopping_icon .box-icon{
         fill: white;
         padding: 0px;
 
