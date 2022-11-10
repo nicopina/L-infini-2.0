@@ -5,7 +5,8 @@ import WaiterAssistanceButton from "./WaiterAssistanceButton";
 function TableRequest(props) {
   const request = props.datos;
   let date = new Date(request.created_at);
-  let hour = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+  let hour =
+    date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
   let status = "";
   switch (request.status) {
@@ -37,7 +38,9 @@ function TableRequest(props) {
         <Col>Estado: {status}</Col>
         <Col>Tipo: {type}</Col>
         <Col>Hora: {hour}</Col>
-        <Col><WaiterAssistanceButton/></Col>
+        <Col>
+          <WaiterAssistanceButton />
+        </Col>
       </Row>
     </Card>
   );
