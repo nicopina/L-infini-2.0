@@ -1,8 +1,10 @@
 import React from "react";
 import { createRequest } from "../../api/requests.api.js";
 
+const tableId = localStorage.getItem("TableId");
+
 const request = {
-  table_id: "M1",
+  table_id: tableId,
   status: 0,
   type: 0,
 };
