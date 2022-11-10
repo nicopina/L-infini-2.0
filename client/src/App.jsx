@@ -29,7 +29,7 @@ function App() {
         />
         <Cart />
         <Routes>
-          <Route path="/" element={<HomePageTest />} />
+          <Route path="/:tableId" element={<HomePageTest />} />
           <Route path={`/menu`} element={<MenuPack />} />
           <Route path="/asistencia" element={<AssistancePageTest />} />
           <Route path="/pedidos" element={<OrderPageTest />} />
