@@ -16,7 +16,7 @@ export default function OrderPageTest() {
       price: 1000,
       quantity: 1,
       photo:
-        "https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg",
+        "https://cdn.discordapp.com/attachments/966850902319321183/1039345950612783234/unknown.png",
     },
     {
       id: 2,
@@ -24,15 +24,15 @@ export default function OrderPageTest() {
       price: 500,
       quantity: 5,
       photo:
-        "https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg",
+        "https://cdn.discordapp.com/attachments/966850902319321183/1039350350269906985/unknown.png",
     },
     {
       id: 3,
       name: "Coca cola",
       price: 500,
-      quantity: 3,
+      quantity: 4,
       photo:
-        "https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg",
+        "https://cdn.discordapp.com/attachments/966850902319321183/1039366852175990914/unknown.png",
     },
   ];
 
