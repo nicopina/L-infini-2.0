@@ -2,17 +2,20 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Static Components/NavBar.jsx";
+import Footer from "./components/Static Components/Footer";
+
 import HomePageTest from "./pages/HomePageTest.jsx";
 import MenuPageTest from "./pages/MenuPageTest.jsx";
 import AssistancePageTest from "./pages/AssistancePageTest.jsx";
 import OrderPageTest from "./pages/OrderPageTest.jsx";
 import ContactPageTest from "./pages/ContactPageTest.jsx";
 import ActiveOrdersPage from "./pages/ActiveOrdersPage.jsx";
-import Footer from "./components/Static Components/Footer";
-import { DataProvider } from "./Context/DataContext";
 import MenuPack from "./Components/MenuPack/MenuPack";
-import {Cart} from "./Components/ShoppingCart/Cart";
 import MenuDishStateTest from "./pages/MenuDishStateTest.jsx";
+import DishesPage from "./pages/DishesPage.jsx";
+
+import { DataProvider } from "./Context/DataContext";
+import {Cart} from "./Components/ShoppingCart/Cart";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -29,13 +32,16 @@ function App() {
         />
         <Cart />
         <Routes>
+          {/* User routes*/}
           <Route path="/:tableId" element={<HomePageTest />} />
           <Route path={`/menu`} element={<MenuPack />} />
           <Route path="/asistencia" element={<AssistancePageTest />} />
           <Route path="/pedidos" element={<OrderPageTest />} />
-          <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
           <Route path="/contacto" element={<ContactPageTest />} />
           <Route path="/state" element={<MenuDishStateTest />} />
+          {/* Chef routes */}
+          <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
+          <Route path="/platos" element={<DishesPage/>} />
         </Routes>
         <Footer />
       </div>
