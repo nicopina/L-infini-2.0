@@ -82,11 +82,12 @@ export const getActiveOrderSummaries = async (req, res) => {
       const orderList = await getOrdersByOrderSummaryId(order.id);
       activeOrders.push({ ...order, orderList });
     }
-    console.log('here');
+    // console.log('here');
     return res.json(activeOrders);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
 

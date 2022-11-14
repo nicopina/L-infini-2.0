@@ -1,11 +1,12 @@
-import { Grid } from "@mui/material";
+import { Checkbox, Grid } from "@mui/material";
 import { useState } from "react";
+import { okOrderRequest } from "../../api/orders.api";
 
 function ItemActiveOrder(props) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(!props.item.statuss);
 
   const onCheckboxClick = () => {
-    props.item.statuss = !props.item.statuss;
+    okOrderRequest(props.item.id)
     props.onCheckboxClicked();
   };
 
@@ -73,10 +74,9 @@ function ItemActiveOrder(props) {
           color: "black",
         }}
       >
-        <input
+        <Checkbox
           onClick={onCheckboxClick}
-          defaultChecked={props.item.statuss}
-          type="checkbox"
+          checked={!!props.item.statuss}
         />
       </Grid>
     </Grid>

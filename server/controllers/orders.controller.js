@@ -84,3 +84,20 @@ export const getOrdersByOrderSummaryId = async (id) => {
   }
 };
 
+export const okOrder = async (req, res) => {
+  try {
+    const [result] = await promisePool.query(
+      "UPDATE Orders SET statuss = NOT statuss WHERE id = ?",
+      [req.params.id]
+    );
+    if (result.affectedRows > 0) {
+      return res.status(200).json({ message: "Order updated" });
+    }
+    res.status(404).json({ message: "Order not found" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+
