@@ -14,7 +14,7 @@ const ProductCard = (props) => {
   const addCarrito=value.addCarrito;
   return (
     <div className="card">
-      <div className="face front">
+      <div className="face-front">
         <img src={imgUrl} alt="#" />
 
         <h6>{title}</h6>
@@ -30,7 +30,7 @@ const ProductCard = (props) => {
         </div>
       </div>
 
-      <div className="face back d-flex align-items-center justify-content-between">
+      <div className="face-back d-flex align-items-center justify-content-between">
         <div className="description d-flex align-items-center">
           <p>{description}</p>
         </div>

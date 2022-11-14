@@ -21,6 +21,7 @@ function App() {
     <DataProvider>
       <div className="App">
         <Navbar />
+
         <h1>Hector Juan Soza Pollman</h1>
         <img
           src="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"
@@ -28,7 +29,7 @@ function App() {
         />
         <Cart />
         <Routes>
-          <Route path="/" element={<HomePageTest />} />
+          <Route path="/:tableId" element={<HomePageTest />} />
           <Route path={`/menu`} element={<MenuPack />} />
           <Route path="/asistencia" element={<AssistancePageTest />} />
           <Route path="/pedidos" element={<OrderPageTest />} />
