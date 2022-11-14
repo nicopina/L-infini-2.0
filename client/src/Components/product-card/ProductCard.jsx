@@ -8,21 +8,21 @@ import { DataContext } from "../../Context/DataContext";
 
 const ProductCard = (props) => {
  
-  const { id,title, imgUrl, price, description } = props.item;
+  const { id,name,value,description,photo_url } = props.item;
 
-  const value=useContext(DataContext);
-  const addCarrito=value.addCarrito;
+  const valuee=useContext(DataContext);
+  const addCarrito=valuee.addCarrito;
   return (
     <div className="card">
       <div className="face-front">
-        <img src={imgUrl} alt="#" />
+        <img src={photo_url} alt="#" />
 
-        <h6>{title}</h6>
+        <h6>{name}</h6>
 
         <div className="d-flex align-items-center justify-content-between">
           <span className="price d-flex align-items-center">
             {""}
-            Price:$<span>{price}</span>
+            Price:$<span>{value}</span>
           </span>
             <button className="shopping_icon" onClick={()=>addCarrito(id)}>
               <box-icon name='cart'></box-icon>

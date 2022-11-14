@@ -1,5 +1,6 @@
 import React,{useState,useEffect,createContext} from 'react'
 import { fastFoodProducts } from "../api/products";
+import{getDishesRequest} from "../api/dishes.api";
 
 
 //hacer atributo cantidad 1 en tabla orden y luego llamarla aqui para pasar por el value.
@@ -12,15 +13,25 @@ export const DataProvider=(props)=>{
     const[menu,setMenu]=useState(false); // inicializador de estado
     const[carrito,setCarrito]=useState([]); // inicializador de estado
     const[total,setTotal]=useState(0); // inicializador de estado
+
+
+    async function getDishes() {
+        getDishesRequest().then((response) => {
+            setProductos(response.data);
+        });
+    }
+
+ 
    
     useEffect(()=>{
-        const producto=fastFoodProducts;
-
-        if(producto){
-            setProductos(producto)
-        }else{
-            setProductos([])
-        }
+        //const producto=fastFoodProducts;
+       getDishes();
+    
+        // if(producto){
+        //     setProductos(producto)
+        // }else{
+        //     setProductos([])
+        // }
         
     },[])
 
