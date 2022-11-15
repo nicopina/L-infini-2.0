@@ -9,12 +9,16 @@ function ActiveOrdersPage() {
   const [activeOrders, setActiveOrders] = useState([]);
 
   async function showActiveOrders() {
-    getActiveOrderSummariesRequest().then((response) => {
-      setActiveOrders(response.data);
-    });
+    setTimeout(() => {
+      getActiveOrderSummariesRequest().then((response) => {
+        setActiveOrders(response.data);
+      });
   }
+  , 3000);
+  }
+
   showActiveOrders();
-  
+
   return (
     <Grid
       container

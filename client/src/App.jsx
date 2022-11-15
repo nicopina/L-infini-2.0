@@ -13,6 +13,7 @@ import ActiveOrdersPage from "./pages/ActiveOrdersPage.jsx";
 import MenuPack from "./Components/MenuPack/MenuPack";
 import MenuDishStateTest from "./pages/MenuDishStateTest.jsx";
 import DishesPage from "./pages/DishesPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 
 import { DataProvider } from "./Context/DataContext";
 import {Cart} from "./Components/ShoppingCart/Cart";
@@ -32,6 +33,7 @@ function App() {
         />
         <Cart />
         <Routes>
+          {<Route path="/login" element={<LoginPage />} />}
           {/* User routes*/}
           <Route path="/:tableId" element={<HomePageTest />} />
           <Route path={`/menu`} element={<MenuPack />} />
