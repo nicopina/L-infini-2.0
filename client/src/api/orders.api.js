@@ -24,3 +24,7 @@ export const deleteOrderRequest = async (id) => {
 export const getActiveOrders = async () => {
   return await axios.get(`${BASE_URL}/orders/active`);
 }
+
+export const okOrderRequest = async (id) => {
+  return await axios.put(`${BASE_URL}/orders/ok/${id}`);
+}

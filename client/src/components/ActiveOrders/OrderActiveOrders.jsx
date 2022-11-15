@@ -4,19 +4,32 @@ import { useState } from "react";
 import "./OrderActiveOrders.css";
 
 function OrderActiveOrders(props) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState();
 
-  function checkboxCheck() {
+  // function checkboxCheck() {
+  //   console.log("checkboxCheck");
+  //   setChecked(false);
+  //   props.order.orderList.forEach((item) => {
+  //     if (!!item.statuss) {
+  //       setChecked(true);
+  //     }
+  //   });
+  // }
+
+  //function that active the button when all the items are checked
+  function buttonActive() {
+    console.log("buttonActive");
     setChecked(true);
+    // let active = true;
     props.order.orderList.forEach((item) => {
       if (!item.statuss) {
         setChecked(false);
+        // active = false;
       }
     });
-    setChecked(allChecked);
+    // return active;
   }
 
-  // checkboxCheck();
 
   if (props.order.orderList.length === 0) {
     return (
@@ -29,13 +42,13 @@ function OrderActiveOrders(props) {
   }
 
   return (
-    <Grid 
+    <Grid
       container
       spacing={2}
       className="orderActiveOrders"
       alignContent={"center"}
       justifyContent={"center"}
-      backgroundColor ="#98B85A"
+      backgroundColor="#98B85A"
       margin="5px 10px"
     >
       <Grid
@@ -56,7 +69,7 @@ function OrderActiveOrders(props) {
         lg={5}
         style={{ backgroundColor: "#55711D", margin: "15px", padding: "1px" }}
       >
-        <p>Mesa {props.order.table_id}</p>
+        <p>Mesa {props.order.table}</p>
       </Grid>
       <Grid
         className="orderActiveOrders__value"
@@ -72,7 +85,7 @@ function OrderActiveOrders(props) {
         <ItemActiveOrder
           item={item}
           key={index}
-          onCheckboxClicked={checkboxCheck}
+          onCheckboxClicked={buttonActive}
         />
       ))}
       <Grid
@@ -85,7 +98,11 @@ function OrderActiveOrders(props) {
         alignContent={"center"}
         justifyContent={"center"}
       >
-        <Button onClick={() => console.log('ok')} variant="contained" disabled={!checked}>
+        <Button
+          onClick={() => console.log("ok")}
+          variant="contained"
+          disabled={!checked}
+        >
           OK
         </Button>
       </Grid>
