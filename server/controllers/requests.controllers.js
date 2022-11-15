@@ -1,5 +1,9 @@
 import { promisePool } from "../db.js";
 
+/**
+ * It's a function that gets all the requests from the database and sends them to the client.
+ * @param res - the response object that contains the requests.
+ */
 export const getRequests = async (req, res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM Tables_Requests ORDER BY status ASC, id ASC");
@@ -10,6 +14,13 @@ export const getRequests = async (req, res) => {
   }
 };
 
+/**
+ * It's a function that takes in a request and a response, and then it tries to get a request from the
+ * database, and if it finds one, it sends it back to the user, and if it doesn't, it sends back a 404
+ * error.
+ * @param req - The request object that contains the request id.
+ * @param res - the response object that contains JSON with the request.
+ */
 export const getRequest = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
@@ -26,6 +37,13 @@ export const getRequest = async (req, res) => {
   }
 };
 
+/**
+ * It takes a request and a response, and then it tries to insert the request body into the database.
+ * If it succeeds, it returns a message saying "Request saved". If it fails, it returns a message
+ * saying "Internal server error".
+ * @param req - the request object that contains the request.
+ * @param res - the response object that contains a JSON with a message.
+ */
 export const createRequest = async (req, res) => {
   try {
     const [result] = await promisePool.query(
@@ -39,6 +57,11 @@ export const createRequest = async (req, res) => {
   }
 };
 
+/**
+ * It updates a request in the database.
+ * @param req - request object that contains the request id and the json with the new request.
+ * @param res - the response object that contains a JSON with a message.
+ */
 export const updateRequest = async (req, res) => {
   try {
     const [result] = await promisePool.query(
@@ -55,6 +78,11 @@ export const updateRequest = async (req, res) => {
   }
 };
 
+/**
+ * It deletes a request from the database based on the id of the request.
+ * @param req - request object that contains the request id.
+ * @param res - the response object that contains a JSON with a message.
+ */
 export const deleteRequest = async (req, res) => {
   try {
     const [result] = await promisePool.query(
