@@ -6,7 +6,7 @@ import { getOrdersByOrderSummaryId } from "./orders.controller.js";
  * @param res - the response object
  * @returns An array of order summaries.
  */
-export const getOrderSummaries = async (res) => {
+export const getOrderSummaries = async (req,res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM Orders_sumaries");
     return res.json(rows);

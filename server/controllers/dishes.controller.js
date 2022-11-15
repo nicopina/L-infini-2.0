@@ -28,7 +28,7 @@ export const getDish = async (req, res) => {
  * @param res - The response object.
  * @returns An array of all the dishes in the database.
  */
-export const getDishes = async (res) => {
+export const getDishes = async (req,res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM Dishes");
     return res.json(rows);

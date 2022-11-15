@@ -5,7 +5,7 @@ import { promisePool } from "../db.js";
  * @param res - The response object.
  * @returns An array of orders.
  */
-export const getOrders = async (res) => {
+export const getOrders = async (req,res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM Orders");
     return res.json(rows);
