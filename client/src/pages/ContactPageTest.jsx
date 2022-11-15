@@ -1,13 +1,21 @@
+import swal from 'sweetalert';
+
+
 function ContactPageTest () {
+    const mostraralerta = () => {
+    swal({
+        title: "Gracias por contactarnos!",
+        text: "Nos pondremos en contacto a la brevedad",
+        icon: "success",
+        button: "Aceptar",
+        });
+    }
+
     return (
-        <div>
-        <h1>Contacto</h1>
-        <p>Este es el contenido de la página de contacto</p>
-        
-        <a href="https://fixum.herokuapp.com/" target="_blank">Haga click aquí para contactarnos!</a>
-        
+        <div> 
+            <br />
+            <button onClick={()=>mostraralerta()}> Contactanos </button>
         </div>
     );
 }
-
 export default ContactPageTest;
