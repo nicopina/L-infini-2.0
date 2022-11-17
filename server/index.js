@@ -8,6 +8,8 @@ import dishesRoutes from './routes/dishes.routes.js';
 import ordersRoutes from './routes/orders.routes.js';
 import requestsRoutes from './routes/requests.routes.js';
 import orderSummariesRoutes from './routes/orderSummaries.routes.js';
+import usersRoutes from './routes/users.routes.js';
+import rolesRoutes from './routes/roles.routes.js';
 
 const app = express();
 
@@ -22,6 +24,8 @@ app.use(dishesRoutes);
 app.use(ordersRoutes);
 app.use(requestsRoutes);
 app.use(orderSummariesRoutes);
+app.use(usersRoutes);
+app.use(rolesRoutes);
 
 app.listen(PORT, () => {
     console.log('Server is listening on port', PORT);

@@ -14,6 +14,7 @@ import MenuPack from "./Components/MenuPack/MenuPack";
 import MenuDishStateTest from "./pages/MenuDishStateTest.jsx";
 import DishesPage from "./pages/DishesPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import ManageUsersPage from "./pages/ManageUsersPage";
 
 import { DataProvider } from "./Context/DataContext";
 import {Cart} from "./Components/ShoppingCart/Cart";
@@ -44,6 +45,10 @@ function App() {
           {/* Chef routes */}
           <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
           <Route path="/platos" element={<DishesPage/>} />
+          {/* Admin routes */}
+          <Route path="/administrarUsuarios" element={<ManageUsersPage />} />
+          {/* All */}
+          <Route path="/*" element={<HomePageTest />} />
         </Routes>
         <Footer />
       </div>
