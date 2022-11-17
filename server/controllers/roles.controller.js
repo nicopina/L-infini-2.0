@@ -18,14 +18,14 @@ const Roles = [
 ]
 
 export const getRoles = async (req,res) => {
-//   try {
-//     const [rows] = await promisePool.query("SELECT * FROM Roles");
-//     return res.json(rows);
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({ message: "Internal server error" });
-//   }
-    return res.json(Roles);
+  try {
+    const [rows] = await promisePool.query("SELECT * FROM Roles");
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+    // return res.json(Roles);
 };
 
 export const getRole = async (req, res) => {
