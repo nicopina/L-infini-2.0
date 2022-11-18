@@ -16,16 +16,23 @@ export const DataProvider=(props)=>{
 
 
     async function getDishes() {
-        getDishesRequest().then((response) => {
-            setProductos(response.data);
-        });
+        // getDishesRequest().then((response) => {
+        //     setProductos(response.data);
+        // });
+        
+        const dish= await getDishesRequest();
+        const dishes_Actives=dish.data.filter((dish)=>dish.is_active===1);
+        setProductos(dishes_Actives);
     }
+
+  
 
  
    
     useEffect(()=>{
         //const producto=fastFoodProducts;
        getDishes();
+
     
         // if(producto){
         //     setProductos(producto)
@@ -70,7 +77,7 @@ export const DataProvider=(props)=>{
     useEffect(()=>{
         const getTotal=()=>{
             const res=carrito.reduce((prev,item)=>{
-                return prev+(item.price*item.cantidad)
+                return prev+(item.valuee*item.cantidad)
             },0)
             setTotal(res);
         }
