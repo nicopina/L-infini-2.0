@@ -2,34 +2,26 @@ import { Grid, Button } from "@mui/material";
 import ItemActiveOrder from "./ItemActiveOrder";
 import { useState } from "react";
 import "./OrderActiveOrders.css";
+import { useEffect } from "react";
+import { getIfAllItemsAreOkRequest } from "../../api/orders.api";
 
 function OrderActiveOrders(props) {
   const [checked, setChecked] = useState();
 
-  // function checkboxCheck() {
-  //   console.log("checkboxCheck");
-  //   setChecked(false);
-  //   props.order.orderList.forEach((item) => {
-  //     if (!!item.statuss) {
-  //       setChecked(true);
-  //     }
-  //   });
-  // }
-
-  //function that active the button when all the items are checked
-  function buttonActive() {
-    console.log("buttonActive");
-    setChecked(true);
-    // let active = true;
-    props.order.orderList.forEach((item) => {
-      if (!item.statuss) {
+  async function buttonActive() {
+    await getIfAllItemsAreOkRequest(props.order.id).then((response) => {
+      if (response.data.length == props.order.orderList.length){
+        setChecked(true);
+      }
+      else  {
         setChecked(false);
-        // active = false;
       }
     });
-    // return active;
   }
 
+  useEffect (() => {
+    buttonActive();
+  }, []);
 
   if (props.order.orderList.length === 0) {
     return (

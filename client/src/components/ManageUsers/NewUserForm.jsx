@@ -5,7 +5,12 @@ import { createUserRequest } from "../../api/users.api";
 
 function NewUserForm(props) {
   const [roles, setRoles] = useState([]);
-  const {setSeed} = props;
+  const [message, setMessage] = useState("");
+  const { setSeed } = props;
+
+  useEffect(() => {
+    console.log(message);
+  }, [message]);
 
   useEffect(() => {
     getRolesRequest().then((response) => {
@@ -13,8 +18,7 @@ function NewUserForm(props) {
     });
   }, []);
 
-  const onSubmitHandler = (event) => {
-    // console.log(event.target.rut.value);
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     const newUser = {
       rut: event.target.rut.value,
@@ -24,8 +28,13 @@ function NewUserForm(props) {
       role: event.target.role.value,
       is_active: event.target.is_active.checked,
     };
-    createUserRequest(newUser);
+
+    const response = await createUserRequest(newUser);
+    setMessage(response.data);
     setSeed(Math.random());
+
+    // createUserRequest(newUser);
+    // setSeed((seed) => seed + 1);
   };
 
   return (
@@ -61,6 +70,7 @@ function NewUserForm(props) {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      {/* <p>{message}</p> */}
     </div>
   );
 }

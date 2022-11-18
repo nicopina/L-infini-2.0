@@ -21,10 +21,10 @@ export const deleteOrderRequest = async (id) => {
   return await axios.delete(`${BASE_URL}/orders/${id}`);
 };
 
-export const getActiveOrders = async () => {
-  return await axios.get(`${BASE_URL}/orders/active`);
-}
+export const getActiveOrdersRequest = async () => {
+  return await axios.get(`${BASE_URL}/active-orders`);
+};
 
-export const okOrderRequest = async (id) => {
-  return await axios.put(`${BASE_URL}/orders/ok/${id}`);
-}
+export const getIfAllItemsAreOkRequest = async (id) => {
+  return await axios.get(`${BASE_URL}/items-ok/${id}`);
+};

@@ -1,23 +1,19 @@
 import { Card, CardContent, Grid } from "@mui/material";
 import { Button } from "@mui/material";
 import OrderActiveOrders from "../components/ActiveOrders/OrderActiveOrders";
-// import { getActiveOrders } from "../api/orders.api";
 import { useState } from "react";
-import { getActiveOrderSummariesRequest } from "../api/orderSummaries.api";
+import { getActiveOrdersRequest } from "../api/orders.api";
+import { useEffect } from "react";
 
 function ActiveOrdersPage() {
   const [activeOrders, setActiveOrders] = useState([]);
 
-  async function showActiveOrders() {
-    setTimeout(() => {
-      getActiveOrderSummariesRequest().then((response) => {
-        setActiveOrders(response.data);
-      });
-  }
-  , 3000);
-  }
-
-  showActiveOrders();
+  useEffect (() => {
+    getActiveOrdersRequest().then((response) => {
+      setActiveOrders(response.data);
+    }
+    );
+  }, []);
 
   return (
     <Grid
