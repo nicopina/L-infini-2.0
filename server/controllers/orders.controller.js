@@ -121,7 +121,8 @@ export const deleteOrder = async (req, res) => {
     );
     const activeOrders = [];
     for (const order of rows) {
-      const orderList = await getOrderItemsByOrderId(order.id);
+      req.params.id = order.id;
+      const orderList = await getOrderItemsByOrderId(req);
       activeOrders.push({ ...order, orderList });
     }
     return res.json(activeOrders);

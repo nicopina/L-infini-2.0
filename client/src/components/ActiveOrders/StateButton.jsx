@@ -12,16 +12,19 @@ function StateButton (props) {
 
     const onButtonClick = () => {
         if (state === 0) {
-            updateOrderItemRequest(props.item.id,{'state':1});
-            setState(1);
+            updateOrderItemRequest(props.item.id,{'state':1}).then((response) => {
+                setState(1);
+            });
         }
         else if (state === 1) {
-            updateOrderItemRequest(props.item.id,{'state':2});
-            setState(2);
+            updateOrderItemRequest(props.item.id,{'state':2}).then((response) => {
+                setState(2);
+            });
         }
         else if (state === 2) {
-            updateOrderItemRequest(props.item.id,{'state':0});
-            setState(0);
+            updateOrderItemRequest(props.item.id,{'state':0}).then((response) => {
+                setState(0);
+            });
         }
     };
     
@@ -43,7 +46,7 @@ function StateButton (props) {
 
     return (
         <div>
-            <button onClick={onButtonClick} style={{'backgroundColor':color,color:'black'}}>{text}</button>
+            <button onClick={(e) => {onButtonClick(e)}} style={{'backgroundColor':color,color:'black'}}>{text}</button>
         </div>
     );
 }

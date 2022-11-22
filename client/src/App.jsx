@@ -16,8 +16,11 @@ import DishesPage from "./pages/DishesPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ManageUsersPage from "./pages/ManageUsersPage";
 
+// import RequireAuth from "./components/RequireAuth";
+
 import { DataProvider } from "./Context/DataContext";
-import {Cart} from "./Components/ShoppingCart/Cart";
+import { Cart } from "./Components/ShoppingCart/Cart";
+import RegisterPage from "./pages/RegisterPagee";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,18 +38,24 @@ function App() {
         <Cart />
         <Routes>
           {<Route path="/login" element={<LoginPage />} />}
+
           {/* User routes*/}
+          <Route path="/register" element={<RegisterPage/>} />
           <Route path="/:tableId" element={<HomePageTest />} />
           <Route path={`/menu`} element={<MenuPack />} />
           <Route path="/asistencia" element={<AssistancePageTest />} />
           <Route path="/pedidos" element={<OrderPageTest />} />
           <Route path="/contacto" element={<ContactPageTest />} />
           <Route path="/state" element={<MenuDishStateTest />} />
+
           {/* Chef routes */}
-          <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
-          <Route path="/platos" element={<DishesPage/>} />
+          {/* <Route element={<RequireAuth />}> */}
+            <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
+            <Route path="/platos" element={<DishesPage />} />
+          {/* </Route> */}
           {/* Admin routes */}
           <Route path="/administrarUsuarios" element={<ManageUsersPage />} />
+
           {/* All */}
           <Route path="/*" element={<HomePageTest />} />
         </Routes>
