@@ -42,6 +42,10 @@ function ResponsiveAppBar() {
       name: "Contacto",
       path: "/contacto",
     },
+    {
+      name: "Reportes",
+      path: "/reportes",
+    }
   ];
 
   const value = useContext(DataContext);

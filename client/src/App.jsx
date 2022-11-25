@@ -18,6 +18,8 @@ import ManageUsersPage from "./pages/ManageUsersPage";
 
 import { DataProvider } from "./Context/DataContext";
 import {Cart} from "./Components/ShoppingCart/Cart";
+import Reports from "./pages/Reports";
+import DayReportPage from "./pages/DayReportPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -42,6 +44,8 @@ function App() {
           <Route path="/pedidos" element={<OrderPageTest />} />
           <Route path="/contacto" element={<ContactPageTest />} />
           <Route path="/state" element={<MenuDishStateTest />} />
+          <Route path="/reportes" element={<Reports />} />
+          <Route path="/reportes/diario" element={<DayReportPage />} />
           {/* Chef routes */}
           <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
           <Route path="/platos" element={<DishesPage/>} />
