@@ -1,68 +1,32 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import "./App.css";
-import Navbar from "./components/Static Components/NavBar.jsx";
-import Footer from "./components/Static Components/Footer";
+import { useContext, useEffect, useState } from "react";
 
-import HomePageTest from "./pages/HomePageTest.jsx";
-import MenuPageTest from "./pages/MenuPageTest.jsx";
-import AssistancePageTest from "./pages/AssistancePageTest.jsx";
-import OrderPageTest from "./pages/OrderPageTest.jsx";
-import ContactPageTest from "./pages/ContactPageTest.jsx";
-import ActiveOrdersPage from "./pages/ActiveOrdersPage.jsx";
-import MenuPack from "./Components/MenuPack/MenuPack";
-import MenuDishStateTest from "./pages/MenuDishStateTest.jsx";
-import DishesPage from "./pages/DishesPage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import ManageUsersPage from "./pages/ManageUsersPage";
-
-// import RequireAuth from "./components/RequireAuth";
-
-import { DataProvider } from "./Context/DataContext";
-import { Cart } from "./Components/ShoppingCart/Cart";
-import RegisterPage from "./pages/RegisterPagee";
+import UserView from "./components/UserView/UserView";
+import AdminView from "./components/AdminView/AdminView";
+import ChefView from "./components/ChefView/ChefView";
+import WaiterView from "./components/WaiterView/WaiterView";
+import NotFound from "./components/NotFound/NotFound";
+import { UserContext } from "./Context/UserContext";
+import { Routes , Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const mesa = "1";
-  return (
-    <DataProvider>
-      <div className="App">
-        <Navbar />
+  const user = useContext(UserContext)[0];
+  const [seed, setSeed] = useState(0);
+  console.log(user + "App");
 
-        <h1>Hector Juan Soza Pollman</h1>
-        <img
-          src="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"
-          alt="300x377"
-        />
-        <Cart />
-        <Routes>
-          {<Route path="/login" element={<LoginPage />} />}
+  useEffect(() => {
+    setSeed(Math.floor(Math.random() * 5000));
+  }, [user]);
 
-          {/* User routes*/}
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path="/:tableId" element={<HomePageTest />} />
-          <Route path={`/menu`} element={<MenuPack />} />
-          <Route path="/asistencia" element={<AssistancePageTest />} />
-          <Route path="/pedidos" element={<OrderPageTest />} />
-          <Route path="/contacto" element={<ContactPageTest />} />
-          <Route path="/state" element={<MenuDishStateTest />} />
 
-          {/* Chef routes */}
-          {/* <Route element={<RequireAuth />}> */}
-            <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
-            <Route path="/platos" element={<DishesPage />} />
-          {/* </Route> */}
-          {/* Admin routes */}
-          <Route path="/administrarUsuarios" element={<ManageUsersPage />} />
-
-          {/* All */}
-          <Route path="/*" element={<HomePageTest />} />
-        </Routes>
-        <Footer />
-      </div>
-    </DataProvider>
-  );
+  if (user.role === null) { // if user is not logged in
+    return <UserView />;x
+  } else if (user.role === 1) { // if user is admin
+    return <AdminView />;
+  } else if (user.role === 2) { // if user is chef
+    return <ChefView />;
+  } else if (user.role === 3) { // if user is waiter
+    return <WaiterView />;
+  }
 }
 
 export default App;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { signInRequest } from "../api/auth.api.js";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -14,9 +15,16 @@ function LoginPage() {
     password: "",
   });
 
-  function onSubmitHandler() {
-    console.log(body);
+  async function onSubmitHandler() {
+    await signInRequest(body).then((response) => {
+      if (response.status === 200) {
+        //save token in local storage
+        localStorage.setItem("token", response.data);
+        navigate(from);
+      }
+    });
   }
+
 
   function inputChangeHandler(e) {
     const { name, value } = e.target;

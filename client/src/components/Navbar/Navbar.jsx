@@ -10,48 +10,149 @@ import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../Context/DataContext";
 import { Cart } from "../ShoppingCart/Cart";
+import { UserContext } from "../../Context/UserContext";
 
 import "./Navbar.css";
 
+const Userpages = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Menu",
+    path: "/menu",
+  },
+  {
+    name: "Asistencia",
+    path: "/asistencia",
+  },
+  {
+    name: "Pedidos",
+    path: "/pedidos",
+  },
+  {
+    name: "Contacto",
+    path: "/contacto",
+  },
+  {
+    name: "Login",
+    path: "/login",
+  },
+];
+const Waiterpages = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Menu",
+    path: "/menu",
+  },
+  {
+    name: "Asistencias",
+    path: "/asistencias",
+  },
+  {
+    name: "Pedidos Activos",
+    path: "/pedidosActivos",
+  },
+  {
+    name: "Platos",
+    path: "/platos",
+  },
+  {
+    name: "Logout",
+    path: "/logout",
+  },
+];
+
+const Chefpages = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Menu",
+    path: "/menu",
+  },
+  {
+    name: "Pedidos Activos",
+    path: "/pedidosActivos",
+  },
+  {
+    name: "Platos",
+    path: "/platos",
+  },
+  {
+    name: "Logout",
+    path: "/logout",
+  },
+];
+
+const Adminpages = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Menu",
+    path: "/menu",
+  },
+  {
+    name: "Asistencias",
+    path: "/asistencias",
+  },
+  {
+    name: "Pedidos Activos",
+    path: "/pedidosActivos",
+  },
+  {
+    name: "Platos",
+    path: "/platos",
+  },
+  {
+    name: "Usuarios",
+    path: "/usuarios",
+  },
+  {
+    name: "Logout",
+    path: "/logout",
+  },
+];
+
 function ResponsiveAppBar() {
-  const pages = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "Menu",
-      path: "/menu",
-    },
-    {
-      name: "Asistencia",
-      path: "/asistencia",
-    },
-    {
-      name: "Pedidos",
-      path: "/pedidos",
-    },
-    {
-      name: "Pedidos Activos",
-      path: "/pedidosActivos",
-    },
-    {
-      name: "Contacto",
-      path: "/contacto",
-    },
-  ];
+  const user = useContext(UserContext)[0];
+  const [pages, setPages] = useState(Userpages);
+
+  useEffect(() => {
+    if (user.role === null) {
+      // if user is not logged in
+      setPages(Userpages);
+    } else if (user.role === 1) {
+      // if user is admin
+      setPages(Adminpages);
+    } else if (user.role === 2) {
+      // if user is chef
+      setPages(Chefpages);
+    } else if (user.role === 3) {
+      // if user is waiter
+      setPages(Waiterpages);
+    }
+  }, [user]);
 
   const value = useContext(DataContext);
-  const [menu, setMenu] = value.menu;
-  const [carrito] = value.carrito;
+  // console.log(value);
+  // const [menu, setMenu] = value.menu;
+  // const [carrito] = value.carrito;
 
-  const toggleMenu = () => {
-    console.log("click");
-    setMenu(!menu);
-  };
+  // const toggleMenu = () => {
+  //   console.log("click");
+  //   setMenu(!menu);
+  // };
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -72,7 +173,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar  position="static" style={{ width: "100%" }}>
+    <AppBar position="static" style={{ width: "100%" }}>
       <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon
@@ -125,16 +226,16 @@ function ResponsiveAppBar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page, index) => (
+              {pages?.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Link to={page.path}>{page.name}</Link>
                 </MenuItem>
               ))}
             </Menu>
-            <div className="cart" onClick={toggleMenu}>
+            {/* <div className="cart" onClick={toggleMenu}>
             <box-icon name="cart" ></box-icon>
             <span className="item_total">{carrito.length}</span>
-          </div>
+          </div> */}
           </Box>
           <AllInclusiveIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
@@ -158,17 +259,17 @@ function ResponsiveAppBar() {
             l'infini
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page, index) => (
+            {pages?.map((page, index) => (
               <MenuItem key={index} onClick={handleCloseNavMenu}>
                 <Link to={page.path} style={{ color: "white" }}>
                   {page.name}
                 </Link>
               </MenuItem>
             ))}
-            <div className="cart" onClick={toggleMenu}>
+            {/* <div className="cart" onClick={toggleMenu}>
             <box-icon name="cart" ></box-icon>
             <span className="item_total">{carrito.length}</span>
-          </div>
+          </div> */}
           </Box>
         </Toolbar>
       </Container>

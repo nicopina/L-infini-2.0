@@ -3,7 +3,7 @@ import MenuPack from "../Components/MenuPack/MenuPack";
 
 const Home = () => {
   return(
-    <MenuPack />
+    // <MenuPack />
   )
 };
 export default Home;
