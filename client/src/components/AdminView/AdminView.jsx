@@ -10,6 +10,7 @@ import Navbar from "../Navbar/Navbar.jsx";
 import LogoutPage from "../../pages/LogoutPage.jsx";
 
 import { DataProvider } from '../../Context/Datacontext.jsx';
+import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 
 function AdminView() {
   return (
@@ -27,6 +28,7 @@ function AdminView() {
         <Route path="/platos" element={<DishesPage/>}/>
         <Route path="/usuarios" element={<ManageUsersPage/>}/>
         <Route path="/logout" element={<LogoutPage/>}/>
+        <Route path="/registroPlatos" element={<DishRegisterPage/>}/>
       </Routes>
 
       <Footer />
