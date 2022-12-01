@@ -14,7 +14,7 @@ import MenuPack from "./Components/MenuPack/MenuPack";
 import MenuDishStateTest from "./pages/MenuDishStateTest.jsx";
 import DishesPage from "./pages/DishesPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-
+import FormDish from "./Components/FormDish";
 import { DataProvider } from "./Context/DataContext";
 import {Cart} from "./Components/ShoppingCart/Cart";
 
@@ -41,6 +41,7 @@ function App() {
           <Route path="/pedidos" element={<OrderPageTest />} />
           <Route path="/contacto" element={<ContactPageTest />} />
           <Route path="/state" element={<MenuDishStateTest />} />
+          <Route path="/Dish" element={<FormDish />} />
           {/* Chef routes */}
           <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
           <Route path="/platos" element={<DishesPage/>} />
