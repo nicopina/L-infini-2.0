@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import {createDishRequest} from '../api/dishes.api';
 
 import "./FormDish.css";
 
@@ -14,6 +15,8 @@ const Formulario = () => {
 					ImageUrl: '',
 					price:"",
 					description:"",
+					Categoria:"",
+					Disponible:""
 				}}
 				validate={(valores) => {
 					let errores = {};
@@ -36,6 +39,8 @@ const Formulario = () => {
 				onSubmit={(valores, {resetForm}) => {
 					resetForm();
 					console.log('Formulario enviado');
+					console.log(valores);
+					createDishRequest(valores);
 					cambiarFormularioEnviado(true);
 					setTimeout(() => cambiarFormularioEnviado(false), 5000);
 				}}
