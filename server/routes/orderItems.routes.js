@@ -16,6 +16,6 @@ router.get("/orderItems/:id", getOrderItem);
 router.post("/orderItems", createOrderItem);
 router.put("/orderItems/:id", updateOrderItem);
 router.delete("/orderItems/:id", deleteOrderItem);
-router.get("/orderItems/order/:id", getOrderItemsByOrderId);
+router.get("/orderItemsByID/:id", getOrderItemsByOrderId);
 
 export default router;

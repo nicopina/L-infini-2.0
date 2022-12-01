@@ -3,10 +3,12 @@ import ItemActiveOrder from "./ItemActiveOrder";
 import { useState } from "react";
 import "./OrderActiveOrders.css";
 import { useEffect } from "react";
-import { getIfAllItemsAreOkRequest } from "../../api/orders.api";
+import { getIfAllItemsAreOkRequest , updateOrderRequest } from "../../api/orders.api";
+import OrderDeliveredButton from "./OrderDeliveredButton";
 
 function OrderActiveOrders(props) {
   const [checked, setChecked] = useState();
+  const [seed, setSeed] = useState(0);
 
   async function buttonActive() {
     await getIfAllItemsAreOkRequest(props.order.id).then((response) => {
@@ -19,9 +21,20 @@ function OrderActiveOrders(props) {
     });
   }
 
+  function orderMade() {
+    const order = {
+      id: props.order.id,
+      table_id : props.order.table_id,
+      state: !props.order.state,
+    };
+    updateOrderRequest(order.id,order);
+    setSeed(seed + 1);
+  }
+
+
   useEffect (() => {
-    buttonActive();
-  }, []);
+    setSeed(seed + 1);
+  }, [checked]);
 
   if (props.order.orderList.length === 0) {
     return (
@@ -90,13 +103,14 @@ function OrderActiveOrders(props) {
         alignContent={"center"}
         justifyContent={"center"}
       >
-        <Button
-          onClick={() => console.log("ok")}
+        {/* <Button
+          onClick={orderMade}
           variant="contained"
           disabled={!checked}
         >
           OK
-        </Button>
+        </Button> */}
+        <OrderDeliveredButton checked={checked} onClick={orderMade}/>
       </Grid>
     </Grid>
   );

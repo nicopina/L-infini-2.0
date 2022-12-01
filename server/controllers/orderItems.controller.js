@@ -104,11 +104,11 @@ export const deleteOrderItem = async (req, res) => {
  * @param id - the id of the orderItem summary
  * @returns An array of orderItems.
  */
-export const getOrderItemsByOrderId = async (id) => {
+export const getOrderItemsByOrderId = async (req,res) => {
   try {
     const [rows] = await promisePool.query(
       "SELECT * FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE OrderItems.order_id = ?",
-      [id]
+      [req.params.id]
     );
     return rows;
     // return res.status(404).json({ message: "Order not found" });

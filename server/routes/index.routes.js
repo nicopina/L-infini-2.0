@@ -10,5 +10,13 @@ router.get('/ping', async (req, res) => {
     res.json('pong');
 });
 
+router.get('/' , (req,res) => {
+    res.json({
+        author: 'Ad Infinitum',
+        description: 'API for the project',
+        version: '1.0.0'
+    });
+});
+
 
 export default router;

@@ -2,7 +2,11 @@ import axios from "axios";
 import { BASE_URL } from "../config";
 
 export const createUserRequest = async (user) => {
-  return await axios.post(`${BASE_URL}/users`, user);
+  return await axios.post(`${BASE_URL}/users`, user , {
+    headers: {
+      "x-access-token": localStorage.getItem("token"),
+    },
+  });
 };
 
 export const getUsersRequest = async () => {
@@ -18,5 +22,13 @@ export const updateUserRequest = async (rut, user) => {
 };
 
 export const deleteUserRequest = async (rut) => {
-  return await axios.delete(`${BASE_URL}/users/${rut}`);
+  return await axios.delete(`${BASE_URL}/users/${rut}`, {
+    headers: {
+      "x-access-token": localStorage.getItem("token"),
+    },
+  });
 };
+
+export const getRoleRequest = async (rut) => {
+  return await axios.get(`${BASE_URL}/users/role/${rut}`);
+}
