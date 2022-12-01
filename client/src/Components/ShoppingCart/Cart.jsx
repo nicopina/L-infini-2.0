@@ -61,10 +61,10 @@ export const Cart = () => {
           carrito.map((item) => (
             <div className="carrito_item" key={item.id}>
                 
-              <img src={item.imgUrl} alt="#" />
+              <img src={item.imageUrl} alt="#" />
               <div>
-                <h3>{item.title}</h3>
-                <p className="price">${item.price}</p>
+                <h3>{item.namee}</h3>
+                <p className="price">${item.valuee}</p>
               </div>
               <div>
                 <box-icon name="up-arrow" type="solid" onClick={()=>suma(item.id)}></box-icon>
