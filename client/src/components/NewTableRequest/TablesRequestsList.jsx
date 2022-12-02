@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { getRequests } from "../../api/requests.api";
 import TableRequest from "./TableRequest";
 
@@ -18,15 +18,13 @@ function sortRequests(requests) {
 function TablesRequestsList() {
   const [requests, setRequests] = React.useState([]);
 
-    async function getRequestsData() {
-      funcion().then((response) => {
-        setRequests(response);
-        
-      });
-    }
-
-    getRequestsData();
-  
+    
+  useEffect(() => {
+    funcion().then((response) => {
+      setRequests(response);
+    });
+  }, []);
+    
 
     return (
       <h3>

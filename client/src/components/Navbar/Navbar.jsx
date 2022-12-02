@@ -115,6 +115,10 @@ const Adminpages = [
     path: "/platos",
   },
   {
+    name: "Mesas",
+    path: "/mesas",
+  },
+  {
     name: "Usuarios",
     path: "/usuarios",
   },
@@ -145,14 +149,13 @@ function ResponsiveAppBar() {
   }, [user]);
 
   const value = useContext(DataContext);
-  // console.log(value);
-  // const [menu, setMenu] = value.menu;
-  // const [carrito] = value.carrito;
+  const [menu, setMenu] = value.menu;
+  const [carrito] = value.carrito;
 
-  // const toggleMenu = () => {
-  //   console.log("click");
-  //   setMenu(!menu);
-  // };
+  const toggleMenu = () => {
+    console.log("click");
+    setMenu(!menu);
+  };
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -232,10 +235,10 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-            {/* <div className="cart" onClick={toggleMenu}>
-            <box-icon name="cart" ></box-icon>
-            <span className="item_total">{carrito.length}</span>
-          </div> */}
+            <div className="cart" onClick={toggleMenu}>
+              <box-icon name="cart"></box-icon>
+              <span className="item_total">{carrito.length}</span>
+            </div>
           </Box>
           <AllInclusiveIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
@@ -266,10 +269,11 @@ function ResponsiveAppBar() {
                 </Link>
               </MenuItem>
             ))}
-            {/* <div className="cart" onClick={toggleMenu}>
-            <box-icon name="cart" ></box-icon>
-            <span className="item_total">{carrito.length}</span>
-          </div> */}
+            <div className="cart" onClick={toggleMenu}>
+              <box-icon name="cart"></box-icon>
+              <span className="item_total">{carrito.length}</span>
+            </div>
+              {menu? <Cart /> : ""}
           </Box>
         </Toolbar>
       </Container>

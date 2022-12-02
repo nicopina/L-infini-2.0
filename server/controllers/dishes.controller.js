@@ -46,7 +46,8 @@ export const getDishes = async (req,res) => {
  */
 export const createDish = async (req, res) => {
   try {
-    console.log(req.body);
+    req.body.created_at = new Date();
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query("INSERT INTO Dishes SET ?", [
       req.body,
     ]);
@@ -65,6 +66,7 @@ export const createDish = async (req, res) => {
  */
 export const updateDish = async (req, res) => {
   try {
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "UPDATE Dishes SET ? WHERE id = ?",
       [req.body, req.params.id]
@@ -100,3 +102,15 @@ export const deleteDish = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const getActiveDishes = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT * FROM Dishes WHERE is_active = 1"
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}

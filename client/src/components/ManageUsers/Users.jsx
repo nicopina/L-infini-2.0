@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {
   getUsersRequest,
   deleteUserRequest,
+  updateUserRequest,
 } from "../../api/users.api";
 
 import RoleOption from "./RoleOption";
@@ -16,8 +17,15 @@ function Users(props) {
   const [seed , setSeed] = useState(0);
 
   const deleteHandler = (user) => {
-    deleteUserRequest(user.rut);
-    setSeed(seed + 1);
+    deleteUserRequest(user.rut).then((response) => {
+      setSeed(seed + 1);
+    });
+  };
+
+  const updateHandler = (user) => {
+    updateUserRequest(user.rut, user).then((response) => {
+      setSeed(seed + 1);
+    });
   };
 
   useEffect(() => {
@@ -27,10 +35,10 @@ function Users(props) {
   }, [seed]);
 
   const columns = [
-    { field: "rut", headerName: "Rut", width: 100 },
-    { field: "name", headerName: "Nombre", width: 150 },
-    { field: "lastname", headerName: "Apellido", width: 150 },
-    {field: "password", headerName: "Contraseña", width: 150},
+    { field: "rut", headerName: "Rut", width: 100 ,editable:false},
+    { field: "name", headerName: "Nombre", width: 150 ,editable:true},
+    { field: "lastname", headerName: "Apellido", width: 150 ,editable:true},
+    {field: "password", headerName: "Contraseña", width: 150,editable:true},
     {
       field: "role",
       headerName: "Rol",
@@ -54,6 +62,16 @@ function Users(props) {
       renderCell: (params) => (
         <button onClick={() => deleteHandler(params.row)}>
           Eliminar
+        </button>
+      ),
+    },
+    {
+      field: "update",
+      headerName: "Editar",
+      width: 100,
+      renderCell: (params) => (
+        <button onClick={() => updateHandler(params.row)}>
+          Editar
         </button>
       ),
     },

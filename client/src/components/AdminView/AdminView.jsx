@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import ActiveOrdersPage from "../../pages/ActiveOrdersPage.jsx";
 import DishesPage from "../../pages/DishesPage.jsx";
@@ -10,6 +10,9 @@ import Navbar from "../Navbar/Navbar.jsx";
 import LogoutPage from "../../pages/LogoutPage.jsx";
 
 import { DataProvider } from '../../Context/Datacontext.jsx';
+import MenuPack from "../MenuPack/MenuPack.jsx";
+import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
+import ManageTables from "../../pages/ManageTables.jsx";
 
 function AdminView() {
   return (
@@ -22,13 +25,17 @@ function AdminView() {
         alt="300x377"
       />
       <Routes >
-        <Route path="*" element={<NotFound/>} />
+        <Route path="*" element={<Navigate to='/menu'/>} />
+        <Route path="/menu" element={<MenuPack/>} />
+
         <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
+        <Route path ="/asistencias" element={<AssistancePageTest/>}/>
+
         <Route path="/platos" element={<DishesPage/>}/>
         <Route path="/usuarios" element={<ManageUsersPage/>}/>
         <Route path="/logout" element={<LogoutPage/>}/>
+        <Route path="/mesas" element={<ManageTables/>} />
       </Routes>
-
       <Footer />
     </div>
   </DataProvider>
