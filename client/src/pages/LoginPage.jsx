@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInRequest } from "../api/auth.api.js";
+import { UserContext } from "../Context/UserContext.jsx";
 
 function LoginPage() {
+  const [user, setUser] = useContext(UserContext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from || "/";
-
-  // const [rut, setRut] = useState("");
-  // const [password, setPassword] = useState("");
 
   const [body, setBody] = useState({
     rut: "",
@@ -20,7 +20,10 @@ function LoginPage() {
       if (response.status === 200) {
         //save token in local storage
         localStorage.setItem("token", response.data);
-        navigate(from);
+        //reload page
+        window.location.reload().then(() => {
+          navigate(from);
+        });
       }
     });
   }

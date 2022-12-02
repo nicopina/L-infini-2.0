@@ -11,7 +11,6 @@ import { Routes , Route } from "react-router-dom";
 function App() {
   const user = useContext(UserContext)[0];
   const [seed, setSeed] = useState(0);
-  console.log(user + "App");
 
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));

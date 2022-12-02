@@ -35,10 +35,9 @@ const verifyRut = (rut) => {
 
 export const getUsers = async (req,res) => {
   try {
-    const [rows] = await promisePool.query("SELECT * FROM Users");
+    const [rows] = await promisePool.query("SELECT rut,name,lastname,is_active,role FROM Users");
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
     // return res.json(Users);
@@ -54,14 +53,12 @@ export const getUser = async (req, res) => {
     }
     return res.status(404).json({ message: "User not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
 
 export const createUser = async (req, res) => {
   try {
-    console.log(req.body);
     verifyRut(req.body.rut);
 
     if (verifyRut(req.body.rut) === true) {
@@ -70,13 +67,16 @@ export const createUser = async (req, res) => {
     return res.status(400).json({ message: "Rut is not valid" });
    
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };
 
 export const updateUser = async (req, res) => {
   try {
+    if(req.body.password){
+      req.body.password = await authController.encryptPassword(req.body.password);
+    }
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "UPDATE Users SET ? WHERE rut = ?",
       [req.body, req.params.rut]
@@ -86,7 +86,6 @@ export const updateUser = async (req, res) => {
     }
     res.status(404).json({ message: "User not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -101,14 +100,12 @@ export const deleteUser = async (req, res) => {
     }
     res.status(404).json({ message: "User not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
 
 export const userExists = async (rut) => {
   try {
-    console.log(rut);
     const [rows] = await promisePool.query("SELECT * FROM Users WHERE rut = ?", [
       rut,
     ]);
@@ -117,8 +114,6 @@ export const userExists = async (rut) => {
     }
     return false;
   } catch (error) {
-    console.log(error);
-    // return res.status(500).json({ message: "Internal server error" });
   }
 }
 
@@ -132,7 +127,6 @@ export const getRole = async (req , res) => {
     }
     return res.status(404).json({ message: "User not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 }

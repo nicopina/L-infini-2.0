@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { authJwt } from "../middleware/index.js";
 
 import {
     getRoles,
@@ -12,8 +13,8 @@ const router = Router();
 
 router.get("/roles", getRoles);
 router.get("/roles/:id", getRole);
-router.post("/roles", createRole);
-router.put("/roles/:id", updateRole);
-router.delete("/roles/:id", deleteRole);
+router.post("/roles",[authJwt.verifyToken,authJwt.isAdmin], createRole);
+router.put("/roles/:id",[authJwt.verifyToken,authJwt.isAdmin], updateRole);
+router.delete("/roles/:id",[authJwt.verifyToken,authJwt.isAdmin], deleteRole);
 
 export default router;

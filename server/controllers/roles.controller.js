@@ -41,15 +41,12 @@ export const getRole = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-    // const role = Roles.find(role => role.id === req.params.role);
-    // if (role) {
-    //     return res.json(role);
-    // }
-    // return res.status(404).json({ message: "Role not found" });
 };
 
 export const createRole = async (req, res) => {
   try {
+    req.body.created_at = new Date();
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query("INSERT INTO Roles SET ?", [
       req.body,
     ]);
@@ -58,16 +55,12 @@ export const createRole = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-    // const role = Roles.find(role => role.id === req.body.id);
-    // if (role) {
-    //     return res.status(400).json({ message: "Role already registered" });
-    // }
-    // Roles.push(req.body);
-    // return res.json({ message: "Role saved" });
+
 };
 
 export const updateRole = async (req, res) => {
   try {
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "UPDATE Roles SET ? WHERE id = ?",
       [req.body, req.params.id]

@@ -45,6 +45,8 @@ export const getOrderItem = async (req, res) => {
  */
 export const createOrderItem = async (req, res) => {
   try {
+    req.body.created_at = new Date();
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query("INSERT INTO OrderItems SET ?", [
       req.body,
     ]);
@@ -63,6 +65,7 @@ export const createOrderItem = async (req, res) => {
  */
 export const updateOrderItem = async (req, res) => {
   try {
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "UPDATE OrderItems SET ? WHERE id = ?",
       [req.body, req.params.id]
@@ -117,27 +120,5 @@ export const getOrderItemsByOrderId = async (req,res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-
-/**
- * It takes an order id as a parameter, and then updates the status of the order with that id
- * @param req - The request object containing the order id.
- * @param res - The response object containing a message if the order was updated successfully.
- * @returns the status of the order.
- */
-// export const okOrder = async (req, res) => {
-//   try {
-//     const [result] = await promisePool.query(
-//       "UPDATE Orders SET statuss = NOT statuss WHERE id = ?",
-//       [req.params.id]
-//     );
-//     if (result.affectedRows > 0) {
-//       return res.status(200).json({ message: "Order updated" });
-//     }
-//     res.status(404).json({ message: "Order not found" });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({ message: "Internal server error" });
-//   }
-// }
 
 

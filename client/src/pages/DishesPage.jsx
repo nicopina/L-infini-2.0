@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { getDishesRequest, getDishRequest , updateDishRequest} from "../api/dishes.api";
 
 function DishesPage() {
   const [dishes, setDishes] = useState([]);
+  const [seed, setSeed] = useState(0);
 
-  async function showDishes() {
+  useEffect(() => {
     getDishesRequest().then((response) => {
       setDishes(response.data);
     });
-  }
-  showDishes();
+  }, []);
 
   const changeState = (dish) => {
     dish.is_active = !dish.is_active;
-    updateDishRequest(dish.id, dish);
+    updateDishRequest(dish.id, dish).then((response) => {
+      setSeed(seed + 1);
+    });
   };
 
   return (

@@ -28,6 +28,7 @@ function OrderActiveOrders(props) {
       state: !props.order.state,
     };
     updateOrderRequest(order.id,order);
+    window.location.reload();
     setSeed(seed + 1);
   }
 
@@ -74,7 +75,7 @@ function OrderActiveOrders(props) {
         lg={5}
         style={{ backgroundColor: "#55711D", margin: "15px", padding: "1px" }}
       >
-        <p>Mesa {props.order.table}</p>
+        <p>Mesa {props.order.table_id}</p>
       </Grid>
       <Grid
         className="orderActiveOrders__value"
@@ -110,7 +111,7 @@ function OrderActiveOrders(props) {
         >
           OK
         </Button> */}
-        <OrderDeliveredButton checked={checked} onClick={orderMade}/>
+        <OrderDeliveredButton checked={checked} orderMade={orderMade}/>
       </Grid>
     </Grid>
   );

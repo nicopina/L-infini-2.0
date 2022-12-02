@@ -1,6 +1,6 @@
 import React,{useState,useEffect,createContext} from 'react'
 import { fastFoodProducts } from "../api/products";
-import{getDishesRequest} from "../api/dishes.api";
+import{getActiveDishesRequest} from "../api/dishes.api";
 
 
 //hacer atributo cantidad 1 en tabla orden y luego llamarla aqui para pasar por el value.
@@ -11,34 +11,20 @@ export const DataProvider=(props)=>{
 
     const[productos,setProductos]=useState([]); // inicializador de estado
     const[menu,setMenu]=useState(false); // inicializador de estado
-    const[carrito,setCarrito]=useState([]); // inicializador de estado
     const[total,setTotal]=useState(0); // inicializador de estado
+    const[carrito,setCarrito]=useState([]); // inicializador de estado
+    
+    // if (localStorage.getItem("dataCarrito") === null) {
+    //     const[carrito,setCarrito]=useState(JSON.parse(localStorage.getItem("dataCarrito"))); 
+    // }else{
+    //     const[carrito,setCarrito]=useState([]); 
+    // }
 
-
-    async function getDishes() {
-        // getDishesRequest().then((response) => {
-        //     setProductos(response.data);
-        // });
-        
-        const dish= await getDishesRequest();
-        const dishes_Actives=dish.data.filter((dish)=>dish.is_active===1);
-        setProductos(dishes_Actives);
-    }
-
-  
-
- 
    
     useEffect(()=>{
-        //const producto=fastFoodProducts;
-       getDishes();
-
-    
-        // if(producto){
-        //     setProductos(producto)
-        // }else{
-        //     setProductos([])
-        // }
+        getActiveDishesRequest().then((response) => {
+            setProductos(response.data);
+        });
         
     },[])
 
@@ -59,22 +45,20 @@ export const DataProvider=(props)=>{
     }
     
     //  ---- Para al refrescar la pagina quede guardado el carrito(no me funciona)-------------------
-    // useEffect(()=>{
-    //     const dataCarrito=JSON.parse(localStorage.getItem("dataCarrito"))
-    //     if(dataCarrito){
-    //         setCarrito(dataCarrito)
-    //     }
-    // }, [])
+    useEffect(()=>{
+        const dataCarrito= JSON.parse(localStorage.getItem("dataCarrito"))
+        // console.log(dataCarrito);
+        if(dataCarrito){
+            setCarrito(dataCarrito)
+        }
+    }, [])
 
     // useEffect(()=>{
     //     localStorage.setItem("dataCarrito",JSON.stringify(carrito))
     // }, [carrito])
 
-
-
-
-
     useEffect(()=>{
+        localStorage.setItem("dataCarrito",JSON.stringify(carrito))
         const getTotal=()=>{
             const res=carrito.reduce((prev,item)=>{
                 return prev+(item.valuee*item.cantidad)

@@ -6,7 +6,7 @@ import { promisePool } from "../db.js";
  */
 export const getRequests = async (req, res) => {
   try {
-    const [rows] = await promisePool.query("SELECT * FROM Tables_Requests ORDER BY status ASC, id ASC");
+    const [rows] = await promisePool.query("SELECT * FROM Tables_Requests ORDER BY state ASC, id ASC");
     res.json(rows);
   } catch (error) {
     console.log(error);

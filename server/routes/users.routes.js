@@ -11,7 +11,7 @@ import {
 
 const router = Router();
 
-router.get("/users", getUsers);
+router.get("/users",[authJwt.verifyToken], getUsers);
 router.get("/users/:rut", getUser);
 router.post("/users" ,[authJwt.verifyToken,authJwt.isAdmin], createUser);
 router.put("/users/:rut",[authJwt.verifyToken,authJwt.isAdmin], updateUser);
