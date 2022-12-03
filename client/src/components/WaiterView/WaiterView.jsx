@@ -7,7 +7,7 @@ import { Routes, Route , Navigate } from "react-router-dom";
 import LogoutPage from "../../pages/LogoutPage";
 import NotFound from "../NotFound/NotFound";
 import MenuPack from "../MenuPack/MenuPack";
-import Notifications from "../DishState/Notifications";
+import Notifications from "../Notifications/Notifications";
 
 function WaiterView() {
   return ( 
