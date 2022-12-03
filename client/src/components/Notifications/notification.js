@@ -1,6 +1,6 @@
 import addNotification from "react-push-notification";
 
-export const buttonClick = () => {
+export const SendMessage = () => {
   addNotification({
     title: "Aviso Urgente",
     subtitle: "Peligro inminente",
@@ -11,19 +11,13 @@ export const buttonClick = () => {
   });
 };
 
-let identificadorIntervaloDeTiempo;
-
-export function repetirCadaXSegundos(array) {
-  mandarMensaje(array);
-}
-
-export function mandarMensaje(array) {
+export function sendMessages(array) {
   var message;
   array.map((element) => {
     if(element.type == 0){
-      message = 'La mesa '+element.id+' solicita que le entreguen la cuenta.';
+      message = 'La mesa '+element.table_id+' solicita que le entreguen la cuenta.';
     }if(element.type == 1){
-      message = 'La mesa '+element.id+' requiere asistencia.';
+      message = 'La mesa '+element.table_id+' requiere asistencia.';
     }
     if (element.state == 0) {
       addNotification({

@@ -13,8 +13,8 @@ function WaiterView() {
   return ( 
     <div>
       <Navbar />
+      <Notifications />
       <Routes>
-        <Route path="/test" element={<Notifications />} />
         <Route path="/menu" element={<MenuPack />} />
         <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
         <Route path="/platos" element={<DishesPage />} />

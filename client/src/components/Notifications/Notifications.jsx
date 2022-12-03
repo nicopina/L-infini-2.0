@@ -1,18 +1,19 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import { buttonClick, mandarMensaje } from "./notification";
+import { sendMessages } from "./notification";
 import { getRequests } from "../../api/requests.api";
 
 const Notifications = () => {
   const [requests, setRequests] = useState([]);
 
+  var awaitTimeSec = 10;
+
   useEffect(() => {
     const interval = setInterval(() => {
       getRequests().then((response) => {
-        mandarMensaje(response.data);
+        sendMessages(response.data);
         setRequests(response.data);
       });
-    }, 10000);
+    }, awaitTimeSec * 1000);
   }, []);
 };
 
