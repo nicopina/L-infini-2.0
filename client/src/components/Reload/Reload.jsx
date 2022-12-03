@@ -1,8 +1,8 @@
 import React from 'react'
-
+import "./Reload.css";
 function Reload() {
   return (
-    <button onClick={() => window.location.reload()}>Reload</button>
+    <button class="button" onClick={() => window.location.reload()}>Recargar Pagina</button>
   )
 }
 

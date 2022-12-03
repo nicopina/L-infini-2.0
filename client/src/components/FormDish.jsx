@@ -15,8 +15,8 @@ const Formulario = () => {
 					photo_url: '',
 					value:"",
 					description:"",
-					category:"",
-					is_active:""
+					category:1,
+					is_active:1,
 				}}
 				validate={(valores) => {
 					let errores = {};
@@ -34,6 +34,9 @@ const Formulario = () => {
 					}else if (!/^[0-9]+$/.test(valores.value)) {
 						errores.value = 'El precio solo puede contener numeros';
 					}
+					//casteo a int
+					valores.is_active = parseInt(valores.is_active);
+					valores.category = parseInt(valores.category);
 					return errores;
 				}}
 				onSubmit={(valores, {resetForm}) => {
@@ -71,9 +74,9 @@ const Formulario = () => {
 						<div>
                             <label htmlFor="category">Categoria</label>
 							<Field className="Lista" name="category" as="select">
-								<option value="Colacion">Colacion</option>
-								<option value="Comida Rapida">Comida Rapida</option>
-								<option value="Bebidas">Bebidas</option>
+								<option value="1">Colacion</option>
+								<option value="2">Comida Rapida</option>
+								<option value="3">Bebidas</option>
 							</Field>
 						</div>
 
@@ -82,8 +85,8 @@ const Formulario = () => {
 						<div>
                             <label htmlFor="Disponibilidad">Disponibilidad</label>
 							<Field className="Lista" name="is_active" as="select">
-								<option value="Disponible">Disponible</option>
-								<option value="No Disponible">No Disponible Rapida</option>
+								<option value='1'>Disponible</option>
+								<option value='0'>No Disponible Rapida</option>
 							</Field>
 						</div>
 

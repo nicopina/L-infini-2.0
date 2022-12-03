@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import ActiveOrdersPage from "../../pages/ActiveOrdersPage.jsx";
@@ -17,8 +17,17 @@ import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 import Reports from "../../pages/Reports";
 import DishReportPage from "./Reports/DishReportPage.jsx";
 
+import { UserContext } from "../../Context/UserContext.jsx";
+import { useEffect } from "react";
 
 function AdminView() {
+
+  const [user , setUser , table , setTable] = useContext(UserContext)
+
+  useEffect (() => {
+    setTable(0);
+  },[])
+
   return (
     <DataProvider>
     <div className="App">

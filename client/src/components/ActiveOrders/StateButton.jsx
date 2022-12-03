@@ -36,7 +36,7 @@ function StateButton (props) {
             setText("Pendiente");
         } else if (state == 1) {
             setColor("yellow");
-            setText("En preparación");
+            setText("Preparando");
         } else if (state == 2) {
             setColor("green");
             setText("Listo");
@@ -46,7 +46,7 @@ function StateButton (props) {
 
     return (
         <div>
-            <button onClick={(e) => {onButtonClick(e)}} style={{'backgroundColor':color,color:'black'}}>{text}</button>
+            <button onClick={(e) => {onButtonClick(e)}} style={{'backgroundColor':color,color:'black',borderRadius: "10px"}}>{text}</button>
         </div>
     );
 }

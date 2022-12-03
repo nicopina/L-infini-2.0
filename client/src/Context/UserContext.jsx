@@ -8,6 +8,7 @@ export const UserProvider = (props) => {
         name: "",
         role: localStorage.getItem("role"),
     }); // inicializador de estado
+    const [table , setTable] = useState(localStorage.getItem("table") || undefined);
     
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -34,8 +35,14 @@ export const UserProvider = (props) => {
         }
     }, []);
 
+    useEffect(() => {
+        if (table !== undefined) {
+            localStorage.setItem("table", table);
+        }
+    }, [table]);
+
     return (
-        <UserContext.Provider value={[user, setUser]}>
+        <UserContext.Provider value={[user, setUser , table ,setTable]}>
             {props.children}
         </UserContext.Provider>
     );
