@@ -13,12 +13,23 @@ export const UserProvider = (props) => {
         const token = localStorage.getItem("token");
         if (token !== null) {
             getUserByTokenRequest(token).then((response) => {
-                localStorage.setItem("role", response.data.role);
-                setUser({
-                    rut: response.data.rut,
-                    name: response.data.name,
-                    role: response.data.role,
-                });
+                if(response.status === 200){    
+                    localStorage.setItem("role", response.data.role);
+                    setUser({
+                        rut: response.data.rut,
+                        name: response.data.name,
+                        role: response.data.role,
+                    });
+                }
+                else {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("role");
+                    setUser({
+                        rut: "",
+                        name: "",
+                        role: null,
+                    });
+                }
             });
         }
     }, []);

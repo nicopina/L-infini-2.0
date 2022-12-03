@@ -85,7 +85,7 @@ export const Cart = () => {
 
           <div className="carrito_footer">
             <h3>Total: ${total}</h3>
-            <button className="btn">Confirmar Pedido</button>
+            {total > 0 ? '<button className="btn">Confirmar Pedido</button>' : ""}
           </div>
         </div>
       </div>

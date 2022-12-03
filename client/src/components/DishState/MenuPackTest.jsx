@@ -3,14 +3,15 @@ import { Container, Row, Col } from "reactstrap";
 import ProductCardTest from "../DishState/ProductCardTest";
 import { useState } from "react";
 
-import  {getDishesRequest}  from "../../api/dishes.api";
+import  {getActiveDishesRequest}  from "../../api/dishes.api";
 
 
 const MenuPackTest = () => {
   const [dishes, setDishes] = useState([]);
 
   async function getDishes() {
-    getDishesRequest().then((response) => {
+    getActiveDishesRequest().then((response) => {
+      console.log(response.data);
       setDishes(response.data);
     });
   }

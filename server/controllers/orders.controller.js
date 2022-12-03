@@ -54,6 +54,8 @@ export const getOrder = async (req, res) => {
  */
 export const createOrder = async (req, res) => {
   try {
+    req.body.created_at = new Date();
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "INSERT INTO Orders SET ?",
       [req.body]
@@ -73,6 +75,7 @@ export const createOrder = async (req, res) => {
  */
 export const updateOrder = async (req, res) => {
   try {
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "UPDATE Orders SET ? WHERE id = ?",
       [req.body, req.params.id]

@@ -10,7 +10,11 @@ export const createUserRequest = async (user) => {
 };
 
 export const getUsersRequest = async () => {
-  return await axios.get(`${BASE_URL}/users`);
+  return await axios.get(`${BASE_URL}/users`, {
+    headers: {
+      "x-access-token": localStorage.getItem("token"),
+    },
+  });
 };
 
 export const getUserRequest = async (rut) => {
@@ -18,7 +22,12 @@ export const getUserRequest = async (rut) => {
 };
 
 export const updateUserRequest = async (rut, user) => {
-  return await axios.put(`${BASE_URL}/users/${rut}`, user);
+  // console.log(localStorage.getItem("token"));
+  return await axios.put(`${BASE_URL}/users/${rut}`, user , {
+    headers: {
+      "x-access-token": localStorage.getItem("token"),
+    },
+  });
 };
 
 export const deleteUserRequest = async (rut) => {
