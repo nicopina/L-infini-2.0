@@ -13,10 +13,13 @@ function ItemActiveOrder(props) {
   return (
     <Grid
       container
-      backgroundColor="#55711D"
+      backgroundColor="#868686"
       margin="5px 10px"
       alignContent={"center"}
       justifyContent={"center"}
+      puddding="10px"
+      borderRadius="10px"
+      fontFamily={"Roboto"}
     >
       <Grid
         item
@@ -24,10 +27,11 @@ function ItemActiveOrder(props) {
         md={3}
         lg={3}
         style={{
-          backgroundColor: "#596B34",
+          backgroundColor: "#AAAAAA",
           margin: "10px",
           padding: "10px",
           color: "black",
+          borderRadius: "10px",
         }}
       >
         <img src={props.item.photo_url} alt={props.item.name} width="100px" />
@@ -38,10 +42,11 @@ function ItemActiveOrder(props) {
         md={4}
         lg={3}
         style={{
-          backgroundColor: "#C0C0C0",
+          backgroundColor: "#AAAAAA",
           margin: "10px",
           padding: "1px",
           color: "black",
+          borderRadius: "10px",
         }}
         alignContent={"center"}
         justifyContent={"center"}
@@ -54,10 +59,11 @@ function ItemActiveOrder(props) {
         md={2}
         lg={3}
         style={{
-          backgroundColor: "#596B34",
+          backgroundColor: "#AAAAAA",
           margin: "10px",
           padding: "1px",
           color: "black",
+          borderRadius: "10px",
         }}
       >
         <p>{props.item.quantity}</p>
@@ -68,10 +74,11 @@ function ItemActiveOrder(props) {
         md={1}
         lg={1}
         style={{
-          backgroundColor: "#C0C0C0",
+          backgroundColor: "#BFB1B1",
           margin: "10px",
           padding: "1px",
           color: "black",
+          borderRadius: "10px",
         }}
       >
         {/* <Checkbox
