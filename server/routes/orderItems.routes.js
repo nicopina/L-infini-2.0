@@ -7,6 +7,8 @@ import {
     updateOrderItem,
     deleteOrderItem,
     getOrderItemsByOrderId,
+    getOrderItemsTopBestN,
+    getOrderItemsTopWorstN,
 } from "../controllers/orderItems.controller.js";
 
 const router = Router();
@@ -17,5 +19,7 @@ router.post("/orderItems", createOrderItem);
 router.put("/orderItems/:id", updateOrderItem);
 router.delete("/orderItems/:id", deleteOrderItem);
 router.get("/orderItemsByID/:id", getOrderItemsByOrderId);
+router.get("/orderItems/top/:n", getOrderItemsTopBestN);
+router.get("/orderItems/topWorst/:n", getOrderItemsTopWorstN);
 
 export default router;

@@ -121,4 +121,34 @@ export const getOrderItemsByOrderId = async (req,res) => {
   }
 };
 
+export const getOrderItemsTopBestN = async (req,res) => {
+  try {
+    
+    const [rows] = await promisePool.query(
+      "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id GROUP BY OrderItems.dish_id ORDER BY quantity DESC LIMIT ?",
+      [parseInt(req.params.n)]
+
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+
+export const getOrderItemsTopWorstN = async (req,res) => {
+  try {
+    
+    const [rows] = await promisePool.query(
+      "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id GROUP BY OrderItems.dish_id ORDER BY quantity ASC LIMIT ?",
+      [parseInt(req.params.n)]
+
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
 
