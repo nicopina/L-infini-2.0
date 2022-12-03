@@ -17,6 +17,12 @@ import { UserContext } from "../../Context/UserContext";
 
 import "./Navbar.css";
 
+const Emptypages = [
+  { name: "Login",
+    path: "/login",
+  },
+]
+
 const Userpages = [
   {
     name: "Home",
@@ -115,6 +121,10 @@ const Adminpages = [
     path: "/platos",
   },
   {
+    name: "Registro",
+    path: "/registroPlatos",
+  },
+  {
     name: "Mesas",
     path: "/mesas",
   },
@@ -129,11 +139,13 @@ const Adminpages = [
 ];
 
 function ResponsiveAppBar() {
-  const user = useContext(UserContext)[0];
+  const [user,setUser,table,setTable] = useContext(UserContext);
   const [pages, setPages] = useState(Userpages);
 
   useEffect(() => {
-    if (user.role === null) {
+    if (table === undefined) {
+      setPages(Emptypages);
+    } else if (user.role === null) {
       // if user is not logged in
       setPages(Userpages);
     } else if (user.role === 1) {

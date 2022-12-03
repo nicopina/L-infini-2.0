@@ -148,6 +148,18 @@ export const getIfAllItemsAreOk = async (req, res) => {
   }
 }
 
+export const getLastOrderId = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT id FROM Orders ORDER BY id DESC LIMIT 1"
+    );
+    return res.json(rows[0].id);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 
 
 
