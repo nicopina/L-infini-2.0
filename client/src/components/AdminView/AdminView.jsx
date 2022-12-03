@@ -16,7 +16,6 @@ import ManageTables from "../../pages/ManageTables.jsx";
 import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 import { UserContext } from "../../Context/UserContext.jsx";
 import { useEffect } from "react";
-import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 
 function AdminView() {
 
