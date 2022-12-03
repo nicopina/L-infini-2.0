@@ -1,7 +1,7 @@
 import React from "react";
-
+import swal from "sweetalert";
 import { createRequest } from "../../api/requests.api.js";
-
+import "./NewTableRequest.css";
 const tableId = localStorage.getItem("TableId");
 
 const request = {
@@ -15,14 +15,33 @@ function create(){
   createRequest(request);
 
 }
+function tuFuncionDefinida() {
+  create();
+  ContactPageTest();
+}
+function ContactPageTest () {
+  swal({
+    title: "Estas segura de que quieres pedir la cuenta?",
+    text: "una vez que lo hagas no podras volver a pedir la cuenta",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      swal("!Tu cuenta Ha sido solicitada con exito!", {
+        icon: "success",
+      });
+    } else {
+      swal("Tu cuenta no fue solicitada!", {icon: "error",});
+    }
+      });
 
+}
 function NewTableRequest() {
 
   return (
-
-    <div className="boton">
-      <button onClick={create} title = "LLama a un(a) meser@ a la mesa.">Necesito ayuda!!</button>
-      
+    <div>
+      <button class="button" onClick={tuFuncionDefinida} role="button" title= "Pide la cuenta al mesero.">Solicitar Ayuda</button>
     </div>
   );
 }
