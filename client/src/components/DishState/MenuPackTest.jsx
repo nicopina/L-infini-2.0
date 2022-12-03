@@ -1,35 +1,46 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
-import ProductCardTest from "../DishState/ProductCardTest";
-import { useState } from "react";
-
-import  {getActiveDishesRequest}  from "../../api/dishes.api";
-
+import { useEffect } from "react";
+import addNotification from "react-push-notification";
 
 const MenuPackTest = () => {
-  const [dishes, setDishes] = useState([]);
-
-  async function getDishes() {
-    getActiveDishesRequest().then((response) => {
-      console.log(response.data);
-      setDishes(response.data);
+  const buttonClick = () => {
+    addNotification({
+      title: "Aviso Urgente",
+      subtitle: "Peligro inminente",
+      message:
+        'Cuidado, la infame asaltante sexual "Loreto Telgie" ha sido avistada en tu zona',
+      theme: "darkblue",
+      native: true, // when using native, your OS will handle theming.
     });
+  };
+
+  let identificadorIntervaloDeTiempo;
+
+  function repetirCadaSegundo() {
+    identificadorIntervaloDeTiempo = setInterval(mandarMensaje, 10000);
   }
 
-  getDishes();
+  function mandarMensaje() {
+    addNotification({
+      title: "Aviso Urgente",
+      subtitle: "Peligro inminente",
+      message:
+        'Cuidado, la infame asaltante sexual "Loreto Telgie" ha sido avistada en tu zona',
+      theme: "darkblue",
+      native: true, // when using native, your OS will handle theming.
+    });
+    console.log("notificado")
+  }
+
+  useEffect(() => {
+    repetirCadaSegundo();
+  }, []);
 
   return (
     <section>
-      <Container>
-        <Row>
-          {dishes.map((item) => (
-            <Col lg="3" md="4" sm="6" xs="6" key={item.id} className="mb-4">
-              {""}
-              <ProductCardTest item={item} />{" "}
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      <button onClick={buttonClick} className="button">
+        Hello world.
+      </button>
     </section>
   );
 };

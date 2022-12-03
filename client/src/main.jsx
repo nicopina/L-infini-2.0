@@ -7,15 +7,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "boxicons";
 import { UserProvider } from "./Context/UserContext";
 import { DataProvider } from "./Context/DataContext";
+import { Notifications } from "react-push-notification";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-        <UserProvider>
-            <DataProvider>
+      <UserProvider>
+        <DataProvider>
+          <Notifications />
           <App />
-            </DataProvider>
-        </UserProvider>
+        </DataProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
