@@ -6,7 +6,6 @@ import Footer from "../Static Components/Footer.jsx";
 import OrderPageTest from "../../pages/OrderPageTest.jsx";
 import ContactPageTest from "../../pages/ContactPageTest.jsx";
 import MenuPack from "../MenuPack/MenuPack";
-import MenuDishStateTest from "../../pages/MenuDishStateTest.jsx";
 import LoginPage from "../../pages/LoginPage.jsx";
 import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
 
@@ -37,7 +36,6 @@ function UserView() {
           <Route path="/asistencia" element={<AssistancePageTest />} />
           <Route path="/pedidos" element={<OrderPageTest />} />
           <Route path="/contacto" element={<ContactPageTest />} />
-          <Route path="/state" element={<MenuDishStateTest />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
   

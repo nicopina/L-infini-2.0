@@ -7,14 +7,14 @@ import { Routes, Route , Navigate } from "react-router-dom";
 import LogoutPage from "../../pages/LogoutPage";
 import NotFound from "../NotFound/NotFound";
 import MenuPack from "../MenuPack/MenuPack";
-import MenuPackTest from "../DishState/MenuPackTest";
+import Notifications from "../DishState/Notifications";
 
 function WaiterView() {
   return ( 
     <div>
       <Navbar />
       <Routes>
-        <Route path="/test" element={<MenuPackTest />} />
+        <Route path="/test" element={<Notifications />} />
         <Route path="/menu" element={<MenuPack />} />
         <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
         <Route path="/platos" element={<DishesPage />} />
