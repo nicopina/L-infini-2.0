@@ -3,6 +3,9 @@ import { useContext } from "react";
 import "./Cart.css";
 
 import { DataContext } from "../../Context/DataContext";
+import {createOrderRequest} from "../../api/orders.api";
+import { getLastOrderIdRequest } from "../../api/orders.api";
+import { createOrderItemRequest} from "../../api/orderItems.api";
 
 export const Cart = () => {
 
@@ -44,6 +47,40 @@ export const Cart = () => {
       setCarrito([...carrito]);
     });
   };
+
+  function sendOrder() {
+
+    getLastOrderIdRequest().then((response) => {
+      if (response.status === 200) {
+        const newOrder = {
+          id: response.data + 1,
+          table_id: localStorage.getItem("table"),
+          state: 0,
+        };
+        // console.log(newOrder);
+        createOrderRequest(newOrder).then((response) => {
+          if (response.status === 200) {
+            carrito.map(
+              (item) => {
+                const newOrderItem = {
+                  order_id: newOrder.id,
+                  dish_id: item.id,
+                  quantity: item.cantidad,
+                  state: 0,
+                };
+                createOrderItemRequest(newOrderItem).then((response) => {
+                  if (response.status === 200) {
+                  }
+                });
+              });
+            localStorage.removeItem("dataCarrito");
+            setCarrito([]);
+            alert("Orden creada");
+          }
+        });
+      }
+    });
+  }
 
   const show1 = menu ? "carritos show" : "carritos";
   const show2 = menu ? "carrito show" : "carrito";
@@ -89,7 +126,7 @@ export const Cart = () => {
 
           <div className="carrito_footer">
             <h3>Total: ${total}</h3>
-            {total > 0 ? <button className="btn" onClick={()=> console.log('enviar')}>Confirmar Pedido</button> : ""}
+            {total > 0 ? <button className="btn" onClick={sendOrder}>Confirmar Pedido</button> : ""}
           </div>
         </div>
       </div>
