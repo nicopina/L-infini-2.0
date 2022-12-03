@@ -115,6 +115,10 @@ const Adminpages = [
     path: "/platos",
   },
   {
+    name: "Registro",
+    path: "/registroPlatos",
+  },
+  {
     name: "Mesas",
     path: "/mesas",
   },

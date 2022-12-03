@@ -11,28 +11,28 @@ const Formulario = () => {
 			<Formik
 			/*Para resetear formulario*/
 				initialValues={{
-					Dish_name: '',
-					ImageUrl: '',
-					price:"",
+					name: '',
+					photo_url: '',
+					value:"",
 					description:"",
-					Categoria:"",
-					Disponible:""
+					category:"",
+					is_active:""
 				}}
 				validate={(valores) => {
 					let errores = {};
 
 					// Validacion nombre
-					if((valores.Dish_name).length >21) {
-						errores.Dish_name = 'El nombre debe tener menos de 20 caracteres';
-					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.Dish_name)) {
-						errores.Dish_name = 'El nombre solo puede contener letras y espacios'
+					if((valores.name).length >21) {
+						errores.name = 'El nombre debe tener menos de 20 caracteres';
+					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
+						errores.name = 'El nombre solo puede contener letras y espacios'
 					}
 
 					// validacion precio
-					if((valores.price).length > 6) {
-						errores.price = 'El precio debe ser inferior a $100.000';
-					}else if (!/^[0-9]+$/.test(valores.price)) {
-						errores.price = 'El precio solo puede contener numeros';
+					if((valores.value).length > 6) {
+						errores.value = 'El precio debe ser inferior a $100.000';
+					}else if (!/^[0-9]+$/.test(valores.value)) {
+						errores.value = 'El precio solo puede contener numeros';
 					}
 					return errores;
 				}}
@@ -51,27 +51,26 @@ const Formulario = () => {
 							<label htmlFor="Dish">Plato</label>
 							<Field className="Text-Box"
 								type="text"
-								id="Dish_name" 
-								name="Dish_name" 
-								placeholder="Hamburguesa"
+								id="name" 
+								name="name" 
 								maxlength="20"
 							/>
-							<ErrorMessage name="Dish_name" component={() => (<div className="error">{errors.Dish_name}</div>)} />
+							<ErrorMessage name="name" component={() => (<div className="error">{errors.name}</div>)} />
 						</div>
 						<div>
-							<label htmlFor="ImageUrl">URL Imagen</label>
+							<label htmlFor="photo_url">URL Imagen</label>
 							<Field className="Text-Box"
 								type="text" 
-								id="imageUrl" 
-								name="ImageUrl" 
+								id="photo_url" 
+								name="photo_url" 
 								placeholder="" 
 							/>
 			
 						</div>
 
 						<div>
-                            <label htmlFor="Categoria">Categoria</label>
-							<Field className="Lista" name="Categoria" as="select">
+                            <label htmlFor="category">Categoria</label>
+							<Field className="Lista" name="category" as="select">
 								<option value="Colacion">Colacion</option>
 								<option value="Comida Rapida">Comida Rapida</option>
 								<option value="Bebidas">Bebidas</option>
@@ -82,7 +81,7 @@ const Formulario = () => {
 
 						<div>
                             <label htmlFor="Disponibilidad">Disponibilidad</label>
-							<Field className="Lista" name="Disponible" as="select">
+							<Field className="Lista" name="is_active" as="select">
 								<option value="Disponible">Disponible</option>
 								<option value="No Disponible">No Disponible Rapida</option>
 							</Field>
@@ -93,14 +92,14 @@ const Formulario = () => {
 						</div>
 
 						<div>
-							<label htmlFor="Price">Precio</label>
+							<label htmlFor="value">Precio</label>
 							<Field className="Text-Box"
 								type="text" 
-								id="price" 
-								name="price" 
+								id="value" 
+								name="value"
 								placeholder="2000" 
 							/>
-							<ErrorMessage name="price" component={() => (<div className="error">{errors.price}</div>)} />
+							<ErrorMessage name="value" component={() => (<div className="error">{errors.value}</div>)} />
 			
 						</div>
 
