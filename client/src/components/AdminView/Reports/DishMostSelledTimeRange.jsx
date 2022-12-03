@@ -2,10 +2,6 @@ import { Card, CardBody, CardHeader, CardTitle, ListGroup, ListGroupItem } from 
 import { getOrderItemsTopWorstN } from "../../../api/orderItems.api";
 import React, { useEffect } from "react";
 
-var getTop = async function getTopN(){
-    const response = await getOrderItemsTopWorstN(3);
-    return response.data;
-}
 
 
 function DishMostSelledTimeRange(){
@@ -13,7 +9,7 @@ function DishMostSelledTimeRange(){
     const [top, setTop] = React.useState([]);
 
     useEffect(() => {
-        getTop().then((response) => {
+        getOrderItemsTopWorstN(3).then((response) => {
             setTop(response);
         });
     }, []);

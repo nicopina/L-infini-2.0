@@ -152,3 +152,17 @@ export const getOrderItemsTopWorstN = async (req,res) => {
   }
 }
 
+export const getOrderItemsTopBestNByDate = async (req,res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE OrderItems.created_at >= ? AND OrderItems.created_at <= ? GROUP BY OrderItems.dish_id ORDER BY quantity DESC LIMIT ?",
+      [req.params.start_date, req.params.end_date, parseInt(req.params.n)]
+
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+

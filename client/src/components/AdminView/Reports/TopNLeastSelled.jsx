@@ -1,42 +1,54 @@
-import { Card, CardBody, CardHeader, CardTitle, ListGroup, ListGroupItem } from "reactstrap";
+import { Form, Card, CardBody, CardHeader, CardTitle, ListGroup, ListGroupItem } from "reactstrap";
 import { getOrderItemsTopWorstN } from "../../../api/orderItems.api";
 import React, { useEffect } from "react";
 
-var getTop = async function getTopN(){
-    const response = await getOrderItemsTopWorstN(3);
-    return response.data;
-}
 
 
-function TopNLeastSelled(){
+function TopNLeastSelled(params){
 
+    const [number_2, setNumber_2] = React.useState(params.number_2);
+
+    const [seed, setSeed] = React.useState(0);
     const [top, setTop] = React.useState([]);
 
     useEffect(() => {
-        getTop().then((response) => {
-            setTop(response);
+        console.log("aa"+number_2);
+        getOrderItemsTopWorstN(number_2).then((response) => {
+            setTop(response.data);
         });
-    }, []);
+        // setSeed(Math.floor(Math.random() * 20));
+    }, [number_2]);
 
-    console.log(top);
-
+    function handlerOnChange(event){
+        console.log(event.target.value + " newValue");
+        setNumber_2(event.target.value);
+    }
+ 
     var cont = 1;
     return(
-        <Card>
+        
+        <Card key = "top5worst">
   
-            <CardBody>
+            <CardBody key = "bodyWorst">
             <CardHeader>   
-                <CardTitle>Top 5 platos menos vendidos</CardTitle>
+                <CardTitle>Top platos menos vendidos</CardTitle>
+                <Form>
+                    <label>Seleccione la cantidad de platos del Top &nbsp; </label>
+                    <select onChange={handlerOnChange} name="n_worst" multiple={false} id="n_dishes_worst" defaultValue={number_2[0]}>
 
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                    </select>
+                    
+                </Form>
             </CardHeader>
 
             <ListGroup>
-                {top?.map(item => <ListGroupItem key = {item.id}> {cont++}.- {item.name} {item.quantity}</ListGroupItem>)}
+                {top?.map((item, index) => <ListGroupItem key = {"Worst"+index}> {cont++}.- {item.name} {item.quantity}</ListGroupItem>)}
             </ListGroup>
 
-            </CardBody>
-
-            
+            </CardBody>     
         </Card>
 
     );
