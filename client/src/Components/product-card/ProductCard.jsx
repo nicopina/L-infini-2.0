@@ -1,19 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import "./ProductCard.css";
 
 import { DataContext } from "../../Context/DataContext";
 
 const ProductCard = (props) => {
+
+  const photo_default = "https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg";
+
   const { id, name, value, description, photo_url } = props.item;
 
+  
   const valuee = useContext(DataContext);
   const addCarrito = valuee.addCarrito;
 
   return (
     <div className="card">
       <div className="face-front">
-        <img src={photo_url} alt="#" />
+        <img src={photo_url || photo_default} alt="#" />
 
         <h6>{name}</h6>
 

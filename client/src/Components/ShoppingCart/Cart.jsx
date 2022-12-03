@@ -5,6 +5,9 @@ import "./Cart.css";
 import { DataContext } from "../../Context/DataContext";
 
 export const Cart = () => {
+
+  const photo_default = "https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg";
+
   const value = useContext(DataContext);
   const [menu, setMenu] = value.menu;
   const [carrito, setCarrito] = value.carrito;
@@ -61,10 +64,17 @@ export const Cart = () => {
           carrito.map((item) => (
             <div className="carrito_item" key={item.id}>
                 
+<<<<<<< Updated upstream
               <img src={item.imgUrl} alt="#" />
               <div>
                 <h3>{item.title}</h3>
                 <p className="price">${item.price}</p>
+=======
+              <img src={item.photo_url || photo_default} alt="#" />
+              <div>
+                <h3>{item.name}</h3>
+                <p className="price">${item.value}</p>
+>>>>>>> Stashed changes
               </div>
               <div>
                 <box-icon name="up-arrow" type="solid" onClick={()=>suma(item.id)}></box-icon>
@@ -85,7 +95,7 @@ export const Cart = () => {
 
           <div className="carrito_footer">
             <h3>Total: ${total}</h3>
-            {total > 0 ? '<button className="btn">Confirmar Pedido</button>' : ""}
+            {total > 0 ? <button className="btn" onClick={()=> console.log('enviar')}>Confirmar Pedido</button> : ""}
           </div>
         </div>
       </div>

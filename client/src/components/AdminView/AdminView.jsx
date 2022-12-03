@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import ActiveOrdersPage from "../../pages/ActiveOrdersPage.jsx";
@@ -13,8 +13,21 @@ import { DataProvider } from '../../Context/Datacontext.jsx';
 import MenuPack from "../MenuPack/MenuPack.jsx";
 import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
 import ManageTables from "../../pages/ManageTables.jsx";
+<<<<<<< Updated upstream
+=======
+import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
+import { UserContext } from "../../Context/UserContext.jsx";
+import { useEffect } from "react";
+>>>>>>> Stashed changes
 
 function AdminView() {
+
+  const [user , setUser , table , setTable] = useContext(UserContext)
+
+  useEffect (() => {
+    setTable(0);
+  },[])
+
   return (
     <DataProvider>
     <div className="App">
