@@ -12,18 +12,15 @@ export const DataProvider=(props)=>{
     const[productos,setProductos]=useState([]); // inicializador de estado
     const[menu,setMenu]=useState(false); // inicializador de estado
     const[total,setTotal]=useState(0); // inicializador de estado
-    const[carrito,setCarrito]=useState([]); // inicializador de estado
-    
-    // if (localStorage.getItem("dataCarrito") === null) {
-    //     const[carrito,setCarrito]=useState(JSON.parse(localStorage.getItem("dataCarrito"))); 
-    // }else{
-    //     const[carrito,setCarrito]=useState([]); 
-    // }
+    const[carrito,setCarrito]=useState(JSON.parse(localStorage.getItem("dataCarrito"))||[]); // inicializador de estado
+
 
    
     useEffect(()=>{
         getActiveDishesRequest().then((response) => {
-            setProductos(response.data);
+            if (response.status === 200) {
+              setProductos(response.data);
+            }
         });
         
     },[])
@@ -47,21 +44,16 @@ export const DataProvider=(props)=>{
     //  ---- Para al refrescar la pagina quede guardado el carrito(no me funciona)-------------------
     useEffect(()=>{
         const dataCarrito= JSON.parse(localStorage.getItem("dataCarrito"))
-        // console.log(dataCarrito);
-        if(dataCarrito){
+        if(dataCarrito?.length>0){
             setCarrito(dataCarrito)
         }
     }, [])
-
-    // useEffect(()=>{
-    //     localStorage.setItem("dataCarrito",JSON.stringify(carrito))
-    // }, [carrito])
 
     useEffect(()=>{
         localStorage.setItem("dataCarrito",JSON.stringify(carrito))
         const getTotal=()=>{
             const res=carrito.reduce((prev,item)=>{
-                return prev+(item.valuee*item.cantidad)
+                return prev+(item.value*item.cantidad)
             },0)
             setTotal(res);
         }
