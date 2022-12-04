@@ -4,7 +4,7 @@ import {
   deleteUserRequest,
   updateUserRequest,
 } from "../../api/users.api";
-
+import swal from "sweetalert";
 import RoleOption from "./RoleOption";
 
 import Box from "@mui/material/Box";
@@ -33,7 +33,6 @@ function Users(props) {
       setUsers(response.data);
     });
   }, [seed]);
-
   const columns = [
     { field: "rut", headerName: "Rut", width: 100 ,editable:false},
     { field: "name", headerName: "Nombre", width: 150 ,editable:true},
@@ -58,9 +57,9 @@ function Users(props) {
     {
       field: "delete",
       headerName: "Eliminar",
-      width: 100,
+      width: 150,
       renderCell: (params) => (
-        <button onClick={() => deleteHandler(params.row)}>
+        <button onClick={() => updateHandler(params.row)}>
           Eliminar
         </button>
       ),
@@ -68,7 +67,7 @@ function Users(props) {
     {
       field: "update",
       headerName: "Editar",
-      width: 100,
+      width: 150,
       renderCell: (params) => (
         <button onClick={() => updateHandler(params.row)}>
           Editar
