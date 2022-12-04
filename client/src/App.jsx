@@ -5,11 +5,11 @@ import AdminView from "./components/AdminView/AdminView";
 import ChefView from "./components/ChefView/ChefView";
 import WaiterView from "./components/WaiterView/WaiterView";
 import NotFound from "./components/NotFound/NotFound";
-import NoTableView from "./components/NoTableView/NoTableView";
 import { UserContext } from "./Context/UserContext";
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar/Navbar";
+import NoTablePage from "./pages/NoTablePage";
 
 function App() {
   // const user = useContext(UserContext)[0];
@@ -22,7 +22,7 @@ function App() {
 
   if (user.role === null) {
     if (table === undefined) {
-      return <NoTableView />;
+      return <NoTablePage />;
     }
     // if user is not logged in
     return <UserView />;

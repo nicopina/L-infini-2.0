@@ -8,12 +8,13 @@ import ContactPageTest from "../../pages/ContactPageTest.jsx";
 import MenuPack from "../MenuPack/MenuPack";
 import LoginPage from "../../pages/LoginPage.jsx";
 import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
-import Notable from "../NoTable.jsx";
+import Notable from "../NoTable/NoTable.jsx";
 
 // import RequireAuth from "./components/RequireAuth";
 
 import { DataProvider } from "../../Context/Datacontext.jsx";
 import { UserContext } from "../../Context/UserContext";
+import OrderState from "../OrderState/OrderState.jsx";
 
 function UserView() {
   const [user, setUser, table, setTable] = useContext(UserContext);
@@ -22,17 +23,12 @@ function UserView() {
     <DataProvider>
       <div className="App">
         <Navbar />
-        <h1>Hector Juan Soza Pollman</h1>
-        <img
-          src="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"
-          alt="300x377"
-        />
         <Routes>
           <Route path="/newTable/:id" element={<Notable />} />
           <Route path="*" element={<Navigate to="/menu" />} />
           <Route path="/menu" element={<MenuPack />} />
+          <Route path="/pedidos" element={<OrderState />} />
           <Route path="/asistencia" element={<AssistancePageTest />} />
-          <Route path="/pedidos" element={<OrderPageTest />} />
           <Route path="/contacto" element={<ContactPageTest />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
