@@ -93,10 +93,6 @@ const Adminpages = [
     path: "/menu",
   },
   {
-    name: "Pedidos",
-    path: "/pedidos",
-  },
-  {
     name: "Asistencias",
     path: "/asistencias",
   },

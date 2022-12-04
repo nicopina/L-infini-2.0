@@ -32,17 +32,34 @@ function TableRequest(props) {
   }
 
   return (
-    <Card key={request.id}>
-      <Row>
-        <Col>Mesa: {request.table_id}</Col>
-        <Col>Estado: {status}</Col>
-        <Col>Tipo: {type}</Col>
-        <Col>Hora: {hour}</Col>
-        <Col>
-          <WaiterAssistanceButton />
-        </Col>
-      </Row>
-    </Card>
+    <div>
+      <Card
+        key={request.id}
+        style={{
+          padding: "10px",
+          margin: "10px",
+        }}
+      >
+        <Row>
+          <Col>Mesa: {request.table_id}</Col>
+          <Col>Estado: {status}</Col>
+          <Col>Tipo: {type}</Col>
+          <Col>Hora: {hour}</Col>
+        </Row>
+        <Row>
+          <Col
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "10px",
+            }}
+          >
+            <WaiterAssistanceButton />
+          </Col>
+        </Row>
+      </Card>
+    </div>
   );
 }
 

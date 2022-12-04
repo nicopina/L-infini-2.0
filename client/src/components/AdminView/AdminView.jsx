@@ -11,7 +11,7 @@ import LogoutPage from "../../pages/LogoutPage.jsx";
 
 import { DataProvider } from '../../Context/Datacontext.jsx';
 import MenuPack from "../MenuPack/MenuPack.jsx";
-import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
+import AssistancesPage from "../../pages/AssistancesPage.jsx";
 import ManageTables from "../../pages/ManageTables.jsx";
 import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 import Reports from "../../pages/Reports";
@@ -35,8 +35,8 @@ function AdminView() {
       <Routes >
         <Route path="*" element={<Navigate to='/menu'/>} />
         <Route path="/menu" element={<MenuPack/>} />
-        <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
-        <Route path ="/asistencias" element={<AssistancePageTest/>}/>
+        <Route path ="/asistencias" element={<AssistancesPage/>}/>
+        <Route path="/pedidosActivos" element={<ActiveOrdersPage/>}/>
         <Route path="/platos" element={<DishesPage/>}/>
         <Route path="/usuarios" element={<ManageUsersPage/>}/>
         <Route path="/logout" element={<LogoutPage/>}/>

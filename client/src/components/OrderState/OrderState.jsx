@@ -29,12 +29,26 @@ function OrderState() {
   //         <h1>Mesa: {order.table_id}</h1>
   //         <h1>Estado: {order.state_name}</h1>
   return (
-    <div classname='table'>
+    <div className='table' 
+    style={{
+      marginTop: '100px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+    }}
+    >
+      <h3>Estado de la Orden</h3>
       <Reload/>
       <h3>Estado de la Orden</h3>
       {orders.map((order,index) => (
-        <TableContainer>
-          <Table stickyHeader aria-label="sticky table" classname={ClassNames.tablematerial}>
+        <TableContainer key={index}
+        style={{
+          margin: '10px',
+          maxWidth: '95%',
+        }}
+        >
+          <Table stickyHeader aria-label="sticky table" className={ClassNames.tablematerial}>
             <TableHead>
               <TableRow>
                 <TableCell fontSize='20' align="left">ID de la Orden</TableCell>

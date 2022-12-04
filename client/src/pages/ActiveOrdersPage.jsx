@@ -16,16 +16,31 @@ function ActiveOrdersPage() {
   }, []);
 
   return (
-    <div>
-      <Reload/>
+    <div
+      style={{
+        marginTop: "100px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+     >
       <Grid
         container
         columns={12}
         alignContent={"center"}
         justifyContent={"center"}
-      >
-        <Grid item xs={12} sm={12} lg={12}>
+        >
+        <Grid item xs={12} sm={12} lg={12} 
+        style = {{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+        >
           <h1>Pedidos activos</h1>
+          <Reload/>
         </Grid>
         {activeOrders.map((order, index) => (
           <OrderActiveOrders order={order} key={index} />
