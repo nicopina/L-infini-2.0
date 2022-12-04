@@ -56,6 +56,7 @@ function Dishes() {
             borderRadius: "10px 10px 0 0",
           }}
         >
+          <Col></Col>
           <Col>Plato</Col>
           <Col>Estado</Col>
           <Col>Eliminar</Col>

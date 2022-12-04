@@ -21,6 +21,9 @@
     justify-content: center;
     flex-direction: column;
 }
+img{
+  max-height: 50px;
+}
 
 .delete-button {
     height: 50px;
