@@ -29,12 +29,12 @@ const Userpages = [
     path: "/menu",
   },
   {
-    name: "Asistencia",
-    path: "/asistencia",
-  },
-  {
     name: "Pedidos",
     path: "/pedidos",
+  },
+  {
+    name: "Asistencia",
+    path: "/asistencia",
   },
   {
     name: "Contacto",
@@ -91,6 +91,10 @@ const Adminpages = [
   {
     name: "Menu",
     path: "/menu",
+  },
+  {
+    name: "Pedidos",
+    path: "/pedidos",
   },
   {
     name: "Asistencias",
@@ -172,7 +176,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{ width: "100%" }}>
+    <AppBar position="static" style={{ width: "100%" , position : 'absolute', top:'0'}}>
       <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon
@@ -196,7 +200,7 @@ function ResponsiveAppBar() {
             l'infini
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }} >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -257,7 +261,7 @@ function ResponsiveAppBar() {
           >
             l'infini
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} style={{'display':'flex' , 'alignItems': 'flex-end'}}>
             {pages?.map((page, index) => (
               <MenuItem key={index} onClick={handleCloseNavMenu}>
                 <Link to={page.path} style={{ color: "white" }}>
@@ -265,11 +269,11 @@ function ResponsiveAppBar() {
                 </Link>
               </MenuItem>
             ))}
-            <div className="cart" onClick={toggleMenu}>
+            <div className="cart" onClick={toggleMenu} style={{'display':'flex', 'alignItems':'flex-end'}}>
               <box-icon name="cart"></box-icon>
               <span className="item_total">{carrito.length}</span>
-            </div>
               {menu? <Cart /> : ""}
+            </div>
           </Box>
         </Toolbar>
       </Container>

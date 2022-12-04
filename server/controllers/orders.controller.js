@@ -10,12 +10,12 @@ export const getOrders = async (req,res) => {
   try {
     console.log('here');
     const [rows] = await promisePool.query("SELECT * FROM Orders");
-    const orders = [];
-    for (const order of rows) {
-      const orderList = await getOrderItemsByOrderId(order.id);
-      orders.push({ ...order, orderList });
-    }
-    return res.json(orders);
+    // const orders = [];
+    // for (const order of rows) {
+    //   const orderList = await getOrderItemsByOrderId(order.id);
+    //   orders.push({ ...order, orderList });
+    // }
+    return res.json(rows);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
@@ -159,6 +159,26 @@ export const getLastOrderId = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export const getActiveOrderByTableId = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT * , CASE WHEN state = 0 THEN 'En preparación' WHEN state = 1 THEN 'Listo' END AS state_name FROM Orders WHERE state = 0 AND table_id = ?",
+      [req.params.id]
+    );
+    const activeOrders = [];
+    for (const order of rows) {
+      req.params.id = order.id;
+      const orderList = await getOrderItemsByOrderId(req);
+      activeOrders.push({ ...order, orderList });
+    }
+    return res.json(activeOrders);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 
 
 

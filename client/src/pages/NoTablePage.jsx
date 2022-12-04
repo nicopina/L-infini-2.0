@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Static Components/Footer";
-import LoginPage from "../../pages/LoginPage";
-import NoTable from "../NoTable";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Static Components/Footer";
+import LoginPage from "./LoginPage";
+import NoTable from "../components/NoTable/NoTable";
 
-function NoTableView() {
+function NoTablePage() {
   return (
-    <>
+    <div className="App" style={{'width':'100%'}}>
       <Navbar />
       <Routes>
         {/* <Route path="/newTable/:id" element={<Navigate to="/menu" />} /> */}
@@ -15,8 +15,8 @@ function NoTableView() {
         <Route path="*" element={<NoTable/>} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 
-export default NoTableView;
+export default NoTablePage;

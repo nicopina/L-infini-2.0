@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <UserProvider>
         <DataProvider>
           <Notifications />
-          <App />
+            <App />
         </DataProvider>
       </UserProvider>
     </BrowserRouter>

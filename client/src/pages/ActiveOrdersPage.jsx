@@ -9,8 +9,6 @@ import Reload from "../components/Reload/Reload";
 function ActiveOrdersPage() {
   const [activeOrders, setActiveOrders] = useState([]);
 
-  
-
   useEffect(() => {
     getActiveOrdersRequest().then((response) => {
       setActiveOrders(response.data);

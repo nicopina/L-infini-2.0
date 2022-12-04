@@ -16,7 +16,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer>
+    <footer style={{"bottom":"0", "width": "100%"}}>
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}

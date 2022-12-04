@@ -7,8 +7,16 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Static Components/Footer";
 import LogoutPage from "../../pages/LogoutPage";
 import MenuPack from "../MenuPack/MenuPack";
+import {useEffect, useContext} from 'react';
+import {UserContext} from '../../Context/UserContext.jsx';
 
 function ChefView() {
+  const [user , setUser , table , setTable] = useContext(UserContext)
+
+  useEffect (() => {
+    setTable(0);
+  },[])
+
   return (
     <div>
       <Navbar/>
