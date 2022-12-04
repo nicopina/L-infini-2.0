@@ -19,7 +19,7 @@ function DishMostSelledTimeRange(params) {
   useEffect(() => {
     const inicial_seg = fechas.fecha_inicial.getTime();
     const final_seg = fechas.fecha_final.getTime();
-    getOrderItemsTopBestNByDate(inicial_seg, final_seg, 5).then((response) => {
+    getOrderItemsTopBestNByDate(inicial_seg, final_seg, 10).then((response) => {
       setTop(response.data);
       console.log(response.data);
     });

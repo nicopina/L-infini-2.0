@@ -191,7 +191,34 @@ export const getCountOrdersToday = async (req, res) => {
   }
 }
 
+export const getCountOrdersMonth = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT COUNT(*) AS count FROM Orders WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)"
+    );
+    return res.json(rows[0].count);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
 
+export const getCountOrdersOneFullDate = async (req, res) => {
+  
+  console.log("Time ORDERS:",req.params.date);
+  var aux =  new Date(parseInt(req.params.date));
+  req.params.date = aux.getFullYear() + "-" + (aux.getMonth()+1) + "-" + aux.getDate();
+  console.log("Fecha_ ORDERS_FIX_QUERY:",req.params.date);
 
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT COUNT(*) AS count FROM Orders WHERE DATE(created_at) = ?",
+      [req.params.date]
+    );
+    return res.json(rows[0].count);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
 
-
+}

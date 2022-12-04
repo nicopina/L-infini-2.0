@@ -7,6 +7,7 @@ function SalesDaily(params) {
   const [profitToday, setProfitToday] = useState(params.profitToday);
   const [countOrdersToday, setCountOrderItemsToday] = useState(params.countOrdersToday);
 
+
   useEffect(() => {
     getProfitToday().then((response) => {
       setProfitToday(response.data[0].profit);
@@ -18,6 +19,7 @@ function SalesDaily(params) {
         setCountOrderItemsToday(response.data);
     });
     }, []);
+  
 
 
   function formatearFecha(fecha) {
@@ -34,6 +36,12 @@ function SalesDaily(params) {
     return dd + "/" + mm + "/" + yyyy;
   }
 
+  var formatedProfitToday = profitToday.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  
+  var formatedAverageProfitToday = parseInt(profitToday/countOrdersToday).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  var formatedCountOrdersToday = parseInt(countOrdersToday).toString();
+
+
   return (
     <div>
       <Card>
@@ -43,9 +51,9 @@ function SalesDaily(params) {
           </CardTitle>
         </CardHeader>
         <CardBody>
-          <h2>El total de ventas del día de hoy es de: ${profitToday}</h2>
-           <h2>El total de pedidos realizados hoy es de: {countOrdersToday}</h2>
-           <h2>El promedio de ventas por pedido es de: ${parseInt(profitToday/countOrdersToday)}</h2>
+          <h2>Total de ventas del día de hoy: ${formatedProfitToday}</h2>
+           <h2>Total de pedidos realizados hoy: {formatedCountOrdersToday}</h2>
+           <h2>Promedio de ventas por pedido hoy: ${formatedAverageProfitToday}</h2>
         </CardBody>
       </Card>
     </div>

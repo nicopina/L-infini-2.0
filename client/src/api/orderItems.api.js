@@ -45,4 +45,6 @@ export const getProfitEntireMonth = async () => {
   return await axios.get(`${BASE_URL}/orderItems/profit/actual_month`);
 }
 
-
+export const getProfitByOneDate = async (date) => {
+  return await axios.get(`${BASE_URL}/orderItems/profit/${date}`);
+}
