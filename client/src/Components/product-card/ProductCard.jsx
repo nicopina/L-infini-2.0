@@ -6,6 +6,8 @@ import { DataContext } from "../../Context/DataContext";
 
 const ProductCard = (props) => {
 
+  const role = localStorage.getItem("role");
+  console.log(role)
   const photo_default = "https://i.pinimg.com/originals/15/50/ee/1550ee86d49cbcc3f530ac53d538cd60.jpg";
 
   const { id, name, value, description, photo_url } = props.item;
@@ -26,9 +28,11 @@ const ProductCard = (props) => {
             {""}
             Price:$<span>{value}</span>
           </span>
+          {role === null ? (
           <button className="shopping_icon" onClick={() => addCarrito(id)}>
             <box-icon name="cart"></box-icon>
           </button>
+          ) : "" }
         </div>
       </div>
 

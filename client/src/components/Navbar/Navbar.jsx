@@ -17,11 +17,7 @@ import { UserContext } from "../../Context/UserContext";
 
 import "./Navbar.css";
 
-const Emptypages = [
-  { name: "Login",
-    path: "/login",
-  },
-]
+const Emptypages = [{ name: "Login", path: "/login" }];
 
 const Userpages = [
   {
@@ -125,13 +121,13 @@ const Adminpages = [
     path: "/logout",
   },
   {
-    name:"RegistroCategoriaPlatos",
-    path:"/registroCategoriaPlatos",
+    name: "RegistroCategoriaPlatos",
+    path: "/registroCategoriaPlatos",
   },
 ];
 
 function ResponsiveAppBar() {
-  const [user,setUser,table,setTable] = useContext(UserContext);
+  const [user, setUser, table, setTable] = useContext(UserContext);
   const [pages, setPages] = useState(Userpages);
 
   useEffect(() => {
@@ -180,7 +176,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar >
+    <AppBar>
       <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon
@@ -204,7 +200,13 @@ function ResponsiveAppBar() {
             l'infini
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none"  } , width: "100%"}}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              width: "100%",
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -239,10 +241,14 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-            <div className="cart" onClick={toggleMenu}>
-              <box-icon name="cart"></box-icon>
-              <span className="item_total">{carrito.length}</span>
-            </div>
+            {user.role === null ? (
+              <div className="cart" onClick={toggleMenu}>
+                <box-icon name="cart"></box-icon>
+                <span className="item_total">{carrito.length}</span>
+              </div>
+            ) : (
+              ""
+            )}
           </Box>
           <AllInclusiveIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
@@ -273,11 +279,16 @@ function ResponsiveAppBar() {
                 </Link>
               </MenuItem>
             ))}
-            <div className="cart" onClick={toggleMenu}>
-              <box-icon name="cart"></box-icon>
-              <span className="item_total">{carrito.length}</span>
-              {menu? <Cart /> : ""}
-            </div>
+
+            {user.role === null ? (
+              <div className="cart" onClick={toggleMenu}>
+                <box-icon name="cart"></box-icon>
+                <span className="item_total">{carrito.length}</span>
+                {menu ? <Cart /> : ""}
+              </div>
+            ) : (
+              ""
+            )}
           </Box>
         </Toolbar>
       </Container>

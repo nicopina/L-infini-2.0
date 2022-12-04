@@ -9,6 +9,7 @@ import "./MenuPack.css";
 
 const MenuPack = () => {
   const value = useContext(DataContext);
+
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
