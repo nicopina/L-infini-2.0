@@ -204,7 +204,7 @@ function ResponsiveAppBar() {
             l'infini
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }} >
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none"  } , width: "100%"}}>
             <IconButton
               size="large"
               aria-label="account of current user"

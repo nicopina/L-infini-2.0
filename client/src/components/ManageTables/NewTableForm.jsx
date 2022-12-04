@@ -18,7 +18,7 @@ function NewTableForm(params) {
         ID:
         <input type="text" name="id" />
       </label>
-      <button type="submit">Add Table</button>
+      <button className="button" type="submit">Add Table</button>
     </form>
   );
 }

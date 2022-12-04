@@ -21,6 +21,7 @@ function TablesRequestsList() {
     
 
     return (
+      
       <h3>
 
         {requests?.map(item => item.status != 2 ? <div key = {item.id}>{<TableRequest datos = {item}/>}</div> : null)}
