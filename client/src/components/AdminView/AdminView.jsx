@@ -27,20 +27,13 @@ function AdminView() {
 
   return (
     <DataProvider>
-    <div className="App">
+    <div className="App" style={{'width':'100%'}}>
       <Navbar />
-      <h1>Hector Juan Soza Pollman</h1>
-      <img
-        src="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"
-        alt="300x377"
-      />
       <Routes >
         <Route path="*" element={<Navigate to='/menu'/>} />
         <Route path="/menu" element={<MenuPack/>} />
-
         <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
         <Route path ="/asistencias" element={<AssistancePageTest/>}/>
-
         <Route path="/platos" element={<DishesPage/>}/>
         <Route path="/usuarios" element={<ManageUsersPage/>}/>
         <Route path="/logout" element={<LogoutPage/>}/>

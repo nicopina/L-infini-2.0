@@ -32,3 +32,8 @@ export const getIfAllItemsAreOkRequest = async (id) => {
 export const getLastOrderIdRequest = async () => {
   return await axios.get(`${BASE_URL}/last-order-id`);
 }
+
+export const getActiveOrderByTableIdRequest = async (id) => {
+  return await axios.get(`${BASE_URL}/active-orders/${id}`);
+}
+

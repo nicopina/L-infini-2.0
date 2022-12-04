@@ -8,8 +8,16 @@ import LogoutPage from "../../pages/LogoutPage";
 import NotFound from "../NotFound/NotFound";
 import MenuPack from "../MenuPack/MenuPack";
 import Notifications from "../Notifications/Notifications";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../Context/UserContext.jsx";
 
 function WaiterView() {
+  const [user , setUser , table , setTable] = useContext(UserContext)
+
+  useEffect (() => {
+    setTable(0);
+  },[])
+
   return ( 
     <div>
       <Navbar />

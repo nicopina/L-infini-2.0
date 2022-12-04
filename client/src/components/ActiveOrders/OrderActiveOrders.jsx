@@ -107,13 +107,6 @@ function OrderActiveOrders(props) {
         alignContent={"center"}
         justifyContent={"center"}
       >
-        {/* <Button
-          onClick={orderMade}
-          variant="contained"
-          disabled={!checked}
-        >
-          OK
-        </Button> */}
         <OrderDeliveredButton checked={checked} orderMade={orderMade}/>
       </Grid>
     </Grid>
