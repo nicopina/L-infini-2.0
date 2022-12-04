@@ -6,6 +6,8 @@ import "./ContactForm.css";
 import { Card } from "reactstrap";
 
 const ContactForm = () => {
+  const [message, setMessage] = useState("");
+
   const formData = (event) => {
     const { name } = event.target;
     event.preventDefault();
@@ -43,15 +45,29 @@ const ContactForm = () => {
               type="text"
               name="email"
               placeholder="tucorreo@example.com"
+              maxLength={50}
+              required
             />
           </label>
           <label>
             <span>Ingresa tu nombre</span>
-            <input type="text" name="name" placeholder="Nombre" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Nombre"
+              required
+              maxLength={50}
+            />
           </label>
           <label>
             <span>Comentanos el motivo de tu contacto</span>
-            <textarea type="text" name="message" placeholder="Mensaje" />
+            <textarea
+              type="text"
+              name="message"
+              placeholder="Mensaje"
+              required
+              maxLength={400}
+            />
           </label>
           <button type="submit">Enviar</button>
         </form>
