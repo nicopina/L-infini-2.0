@@ -1,16 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import {getProfitEntireMonth} from '../../../api/orderItems.api';
 import {Card, CardHeader, CardTitle, CardBody} from 'reactstrap';
+import {getCountOrdersMonth} from '../../../api/orders.api';
 
 function SalesActualMonth(params){
 
     const [profitEntireMonth, setProfitEntireMonth] = useState(params.profitEntireMonth);
+    const [countOrdersMonth, setCountOrdersMonth] = useState(params.countOrdersMonth);
+
 
     useEffect(() => {
         getProfitEntireMonth().then((response) => {
             setProfitEntireMonth(response.data[0].profit);
         });
     }, []);
+
+    useEffect(() => {
+        getCountOrdersMonth().then((response) => {
+            setCountOrdersMonth(response.data);
+        });
+    }, []);
+
 
     function obtenerMesTexto(){
         var mes = new Date().getMonth();
@@ -42,6 +52,10 @@ function SalesActualMonth(params){
         }
     }
 
+    var formatedProfit = profitEntireMonth.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    var formatedCountOrdersMonth = countOrdersMonth.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    var formatedAverageProfit = parseInt(profitEntireMonth/countOrdersMonth).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
     return(
         <div>
             <Card>
@@ -51,7 +65,9 @@ function SalesActualMonth(params){
                     </CardTitle>
                 </CardHeader>
                 <CardBody>
-                    <h2>El total de ventas del mes actual es de: ${profitEntireMonth}</h2>
+                    <h2>Total de ventas del mes actual: ${formatedProfit}</h2>
+                    <h2>Total de pedidos realizados en el mes actual: {formatedCountOrdersMonth}</h2>
+                    <h2>Promedio de ventas por pedido en el mes actual: ${formatedAverageProfit}</h2>
                     
  
                 </CardBody>

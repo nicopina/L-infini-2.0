@@ -40,3 +40,11 @@ export const getActiveOrderByTableIdRequest = async (id) => {
 export const getCountOrdersToday = async () => {
   return await axios.get(`${BASE_URL}/orders/count/today`);
 }
+
+export const getCountOrdersMonth = async () => {
+  return await axios.get(`${BASE_URL}/orders/count/actual_month`);
+}
+
+export const getCountOrdersOneFullDate = async (date) => {
+  return await axios.get(`${BASE_URL}/orders/count/${date}`);
+}
