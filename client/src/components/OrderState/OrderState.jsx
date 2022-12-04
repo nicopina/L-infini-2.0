@@ -5,6 +5,7 @@ import Reload from '../Reload/Reload';
 import {TableContainer,Table,TableHead,TableBody,TableRow,TableCell} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import { ClassNames } from '@emotion/react';
+import "./OrderState.css";
 
 const style = makeStyles({
   tablematerial: {
