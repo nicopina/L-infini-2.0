@@ -1,14 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useContext, useEffect , useState} from "react";
-import { UserContext } from "../Context/UserContext";
-import {getTableRequest} from "../api/tables.api";
-import NoTablePage from "../pages/NoTablePage";
+import { UserContext } from "../../Context/UserContext";
+import {getTableRequest} from "../../api/tables.api";
+import NoTablePage from "../../pages/NoTablePage";
+import './NewAllocatedTable.css';
+  
 
 function NewAllocatedTable() {
   const { id } = useParams();
   const [user, setUser, table, setTable] = useContext(UserContext);
   const [exist, setExist] = useState(false);
-  
+
+ 
 
   useEffect(() => {
     if (id !== undefined) {
@@ -24,7 +27,9 @@ function NewAllocatedTable() {
     return <NoTablePage />;
   }  
   
-  return <div>NewAllocatedTable</div>;
+  return <div className="Message">
+      NewAllocatedTable
+    </div>;
 }
 
 export default NewAllocatedTable;

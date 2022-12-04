@@ -15,7 +15,7 @@ import Notable from "../NoTable/NoTable.jsx";
 import { DataProvider } from "../../Context/Datacontext.jsx";
 import { UserContext } from "../../Context/UserContext";
 import OrderState from "../OrderState/OrderState.jsx";
-import NewAllocatedTable from "../NewAllocatedTable.jsx";
+import NewAllocatedTable from "../NewAllocatedTable/NewAllocatedTable.jsx";
 
 function UserView() {
   const [user, setUser, table, setTable] = useContext(UserContext);

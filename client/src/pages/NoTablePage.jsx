@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Static Components/Footer";
 import LoginPage from "./LoginPage";
 import NoTable from "../components/NoTable/NoTable";
-import NewAllocatedTable from "../components/NewAllocatedTable";
+import NewAllocatedTable from "../components/NewAllocatedTable/NewAllocatedTable";
 import {useState} from 'react';
 
 function NoTablePage() {
