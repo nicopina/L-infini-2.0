@@ -40,8 +40,24 @@ function Tables() {
   ];
 
   return (
-    <>
-      <Box sx={{ height: 400, width: "100%" }} key={seed}>
+    <div 
+    style={{
+      marginTop: "100px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+    }}
+    >
+      <h1>Mesas</h1>
+      <Box sx={{ height: 400, width: "100%" }} key={seed} 
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+      >
         <DataGrid
           rows={tables}
           columns={columns}
@@ -50,10 +66,13 @@ function Tables() {
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
           getRowId={(row) => row.id}
-        />
+          style={{
+            minWidth: "300px",
+          }}
+          />
       </Box>
       <NewTableForm setSeed={setSeed} />
-    </>
+      </div>
   );
 }
 

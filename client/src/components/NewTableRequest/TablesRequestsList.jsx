@@ -15,16 +15,6 @@ function TablesRequestsList() {
       setRequests(response);
     });
   }, []);
-    
-
-    return (
-      
-      <h3>
-
-        {requests?.map(item => item.status != 2 ? <div key = {item.id}>{<TableRequest datos = {item}/>}</div> : null)}
-      </h3>
-    );
-  };
 
   return (
     <h3>
