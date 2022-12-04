@@ -51,41 +51,41 @@ function OrderActiveOrders(props) {
     <Grid
       container
       spacing={2}
-      className="orderActiveOrders"
+      className = 'center'
       alignContent={"center"}
       justifyContent={"center"}
-      backgroundColor="#50515F"
+      backgroundColor="#000000"
       margin="5px 10px"
       borderRadius="10px"
       textAlign={"center"}
     >
       <Grid
-        className="orderActiveOrders__value"
+        className = 'center'
         item
         xs={12}
         sm={3}
         lg={3}
-        style={{ backgroundColor: "#AAAAAA", margin: "15px", padding: "1px", borderRadius: "10px" }}
+        style={{ backgroundColor: "#E2E1E1", margin: "15px", padding: "1px", borderRadius: "10px" }}
       >
         <p>ID:{props.order.id}</p>
       </Grid>
       <Grid
-        className="orderActiveOrders__value"
+        className = 'center'
         item
         xs={12}
         sm={4}
         lg={5}
-        style={{ backgroundColor: "#AAAAAA", margin: "15px", padding: "1px", borderRadius: "10px" }}
+        style={{ backgroundColor: "#E2E1E1", margin: "15px", padding: "1px", borderRadius: "10px" }}
       >
         <p>Mesa {props.order.table_id}</p>
       </Grid>
       <Grid
-        className="orderActiveOrders__value"
+        className = 'center'
         item
         xs={12}
         sm={3}
         lg={3}
-        style={{ backgroundColor: "#AAAAAA", margin: "15px", padding: "1px" , borderRadius: "10px"}}
+        style={{ backgroundColor: "#E2E1E1", margin: "15px", padding: "1px" , borderRadius: "10px"}}
       >
         <p>{props.order.created_at}</p>
       </Grid>
@@ -101,12 +101,13 @@ function OrderActiveOrders(props) {
         xs={12}
         md={12}
         lg={12}
-        backgroundColor="#AAAAAA"
-        margin="15px"
+        backgroundColor="#000000"
+        margin="10px"
         borderRadius={"10px"}
         alignContent={"center"}
         justifyContent={"center"}
-      >
+        className = 'center'
+        >
         <OrderDeliveredButton checked={checked} orderMade={orderMade}/>
       </Grid>
     </Grid>
