@@ -12,7 +12,7 @@ import tablesRoutes from './routes/tables.routes.js';
 import requestsRoutes from './routes/requests.routes.js';
 import rolesRoutes from './routes/roles.routes.js';
 import authRoutes from './routes/auth.routes.js';
-
+import dishCategoriesRoutes from './routes/dishesCategories.routes.js';
 import {createRoles} from './libs/initialSetup.js';
 
 const app = express();
@@ -34,6 +34,7 @@ app.use(usersRoutes);
 app.use(rolesRoutes);
 app.use(orderItemsRoutes);
 app.use(authRoutes);
+app.use(dishCategoriesRoutes);
 
 app.listen(PORT, () => {
     console.log('Server is listening on port', PORT);

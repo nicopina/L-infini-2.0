@@ -109,7 +109,7 @@ const Adminpages = [
     path: "/platos",
   },
   {
-    name: "Registro",
+    name: "RegistroPlatos",
     path: "/registroPlatos",
   },
   {
@@ -127,6 +127,10 @@ const Adminpages = [
   {
     name: "Logout",
     path: "/logout",
+  },
+  {
+    name:"RegistroCategoriaPlatos",
+    path:"/registroCategoriaPlatos",
   },
 ];
 

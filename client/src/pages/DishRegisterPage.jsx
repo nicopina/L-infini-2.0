@@ -1,6 +1,6 @@
 
 import React from 'react'
-import FormDish from "../Components/FormDish";
+import FormDish from "../components/ManageDishes/FormDish";
 function DishRegisterPage() {
   return (
     <FormDish/>

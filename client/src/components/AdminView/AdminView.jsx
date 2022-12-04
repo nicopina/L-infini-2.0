@@ -19,6 +19,7 @@ import DishReportPage from "./Reports/DishReportPage.jsx";
 
 import { UserContext } from "../../Context/UserContext.jsx";
 import { useEffect } from "react";
+import DishCategoryRegisterPage from "../../pages/DishCategoryRegisterPage.jsx";
 
 function AdminView() {
 
@@ -44,7 +45,7 @@ function AdminView() {
         <Route path="/mesas" element={<ManageTables/>} />
         <Route path="/reportes" element= {<Reports/>} />
         <Route path="/reportes/platos" element= {<DishReportPage/>} />
-
+        <Route path="/registroCategoriaPlatos" element={<DishCategoryRegisterPage/>} />
       </Routes>
       <Footer />
     </div>

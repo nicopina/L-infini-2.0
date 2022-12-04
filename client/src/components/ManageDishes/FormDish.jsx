@@ -1,14 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import {createDishRequest} from '../api/dishes.api';
+import {createDishRequest} from '../../api/dishes.api';
+import {getDishesCategoriesRequest} from '../../api/dishesCategories.api';
+
 
 import "./FormDish.css";
 
 const Formulario = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
+	const [dishCategory, setDishCategory] = useState([]);
+	/* obtengo valores de categorias y tipos de platos */
+	useEffect(() => {
+		getDishesCategoriesRequest().then((response) => {
+		setDishCategory(response.data);
+			});
+		}, []);
+
 	return (
 		<>
 			<Formik
+			
 			/*Para resetear formulario*/
 				initialValues={{
 					name: '',
@@ -27,6 +38,11 @@ const Formulario = () => {
 					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
 						errores.name = 'El nombre solo puede contener letras y espacios'
 					}
+					//validacion phot_url
+					if((valores.photo_url).length >255) {
+						errores.photo_url = 'El URL de la imagen no debe sobrepasar los 255 caracteres';
+					}
+
 
 					// validacion precio
 					if((valores.value).length > 6) {
@@ -42,7 +58,6 @@ const Formulario = () => {
 				onSubmit={(valores, {resetForm}) => {
 					resetForm();
 					console.log('Formulario enviado');
-					console.log(valores);
 					createDishRequest(valores);
 					cambiarFormularioEnviado(true);
 					setTimeout(() => cambiarFormularioEnviado(false), 5000);
@@ -67,16 +82,21 @@ const Formulario = () => {
 								id="photo_url" 
 								name="photo_url" 
 								placeholder="" 
+								maxlength="255"
 							/>
+							<ErrorMessage name="photo_url" component={() => (<div className="error">{errors.photo_url}</div>)} />
 			
 						</div>
 
 						<div>
                             <label htmlFor="category">Categoria</label>
 							<Field className="Lista" name="category" as="select">
-								<option value="1">Colacion</option>
-								<option value="2">Comida Rapida</option>
-								<option value="3">Bebidas</option>
+								{dishCategory.map((category) => (
+									<option key={category.id} value={category.id}>
+										{category.name}
+									</option>
+								))}
+								
 							</Field>
 						</div>
 
@@ -86,7 +106,7 @@ const Formulario = () => {
                             <label htmlFor="Disponibilidad">Disponibilidad</label>
 							<Field className="Lista" name="is_active" as="select">
 								<option value='1'>Disponible</option>
-								<option value='0'>No Disponible Rapida</option>
+								<option value='0'>No Disponible</option>
 							</Field>
 						</div>
 
@@ -112,38 +132,7 @@ const Formulario = () => {
 				)}
 
 
-				{/* {( {values, errors, touched, handleSubmit, handleChange, handleBlur} ) => (
-					<form className="formulario" onSubmit={handleSubmit}>
-						<div>
-							<label htmlFor="nombre">Nombre</label>
-							<input 
-								type="text" 
-								id="nombre" 
-								name="nombre" 
-								placeholder="John Doe" 
-								value={values.nombre}
-								onChange={handleChange}
-								onBlur={handleBlur}
-							/>
-							{touched.nombre && errors.nombre && <div className="error">{errors.nombre}</div>}
-						</div>
-						<div>
-							<label htmlFor="correo">Correo</label>
-							<input 
-								type="text" 
-								id="correo" 
-								name="correo" 
-								placeholder="correo@correo.com" 
-								value={values.correo}
-								onChange={handleChange}
-								onBlur={handleBlur}
-							/>
-							{touched.correo && errors.correo && <div className="error">{errors.correo}</div>}
-						</div>
-						<button type="submit">Enviar</button>
-						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
-					</form>
-				)} */}
+			
 			</Formik>
 		</>
 	);
