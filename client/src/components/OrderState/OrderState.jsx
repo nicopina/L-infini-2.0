@@ -18,14 +18,41 @@ function OrderState() {
 
 
   return (
-    <div>
+    <div className='table' 
+    style={{
+      marginTop: '100px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+    }}
+    >
+      <h3>Estado de la Orden</h3>
       <Reload/>
       {orders.map((order,index) => (
-        <Card  key={index} style={{backgroundColor: order.state? 'yellow' : 'green', margin:'5px', padding:'15px'}}>
-          <h1>ID de la Orden: {order.id}</h1>
-          <h1>Mesa: {order.table_id}</h1>
-          <h1>Estado: {order.state_name}</h1>
-        </Card>
+        <TableContainer key={index}
+        style={{
+          margin: '10px',
+          maxWidth: '95%',
+        }}
+        >
+          <Table stickyHeader aria-label="sticky table" className={ClassNames.tablematerial}>
+            <TableHead>
+              <TableRow>
+                <TableCell fontSize='20' align="left">ID de la Orden</TableCell>
+                <TableCell fontSize='20' align="center">Mesa</TableCell>
+                <TableCell fontSize='20' align="center">Estado</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell align="left">{order.id}</TableCell>
+                <TableCell align="center">{order.table_id}</TableCell>
+                <TableCell align="center">{order.state_name}</TableCell>
+              </TableRow>
+            </TableBody>
+            </Table>       
+        </TableContainer>
       ))}
     </div>
   );

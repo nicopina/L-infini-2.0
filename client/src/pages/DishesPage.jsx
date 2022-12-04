@@ -1,5 +1,11 @@
-import { useState , useEffect } from "react";
-import { getDishesRequest, getDishRequest , updateDishRequest} from "../api/dishes.api";
+import { Grid } from "@mui/material";
+import { useState, useEffect } from "react";
+import { Card, Row, Col } from "reactstrap";
+import {
+  getDishesRequest,
+  getDishRequest,
+  updateDishRequest,
+} from "../api/dishes.api";
 
 function DishesPage() {
   const [dishes, setDishes] = useState([]);
@@ -19,16 +25,50 @@ function DishesPage() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        marginTop: "100px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
       <h1>Platos</h1>
-      <ul>
+      <Card
+        style={{
+          padding: "0 10px 10px 10px",
+          margin: "10px ",
+          minWidth: "300px",
+        }}
+      >
+        <Row
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            borderRadius: "10px 10px 0 0",
+          }}
+        >
+          <Col>Plato</Col>
+          <Col>Estado</Col>
+        </Row>
         {dishes.map((dish, index) => (
-          <li key={index}>
-            {dish.name}
-            <input type="checkbox" checked={dish.is_active} onChange={() => changeState(dish)} />
-          </li>
+            <Row key={index} 
+            style = {{
+              borderBottom: "1px solid black",
+            }}  
+            >
+              <Col>{dish.name}</Col>
+              <Col>
+                <input
+                  type="checkbox"
+                  checked={dish.is_active}
+                  onChange={() => changeState(dish)}
+                />
+              </Col>
+            </Row>
         ))}
-      </ul>
+      </Card>
     </div>
   );
 }
