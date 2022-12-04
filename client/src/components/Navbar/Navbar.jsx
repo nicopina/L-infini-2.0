@@ -25,10 +25,6 @@ const Emptypages = [
 
 const Userpages = [
   {
-    name: "Home",
-    path: "/",
-  },
-  {
     name: "Menu",
     path: "/menu",
   },
@@ -50,10 +46,6 @@ const Userpages = [
   },
 ];
 const Waiterpages = [
-  {
-    name: "Home",
-    path: "/",
-  },
   {
     name: "Menu",
     path: "/menu",
@@ -78,10 +70,6 @@ const Waiterpages = [
 
 const Chefpages = [
   {
-    name: "Home",
-    path: "/",
-  },
-  {
     name: "Menu",
     path: "/menu",
   },
@@ -100,10 +88,6 @@ const Chefpages = [
 ];
 
 const Adminpages = [
-  {
-    name: "Home",
-    path: "/",
-  },
   {
     name: "Menu",
     path: "/menu",

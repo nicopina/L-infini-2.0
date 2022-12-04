@@ -5,7 +5,7 @@ import AdminView from "./components/AdminView/AdminView";
 import ChefView from "./components/ChefView/ChefView";
 import WaiterView from "./components/WaiterView/WaiterView";
 import NotFound from "./components/NotFound/NotFound";
-import NoTableView from "./components/NoTableView";
+import NoTableView from "./components/NoTableView/NoTableView";
 import { UserContext } from "./Context/UserContext";
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
@@ -22,17 +22,7 @@ function App() {
 
   if (user.role === null) {
     if (table === undefined) {
-      return (
-        <>
-          <Navbar />
-          <Routes>
-            {/* <Route path="/newTable/:id" element={<Navigate to="/menu" />} /> */}
-            <Route path="/newTable/:id" element={<NoTableView />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="*" element={<NoTableView />} />
-          </Routes>
-        </>
-      );
+      return <NoTableView />;
     }
     // if user is not logged in
     return <UserView />;

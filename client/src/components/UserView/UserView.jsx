@@ -8,7 +8,7 @@ import ContactPageTest from "../../pages/ContactPageTest.jsx";
 import MenuPack from "../MenuPack/MenuPack";
 import LoginPage from "../../pages/LoginPage.jsx";
 import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
-import NoTableView from "../NoTableView.jsx";
+import Notable from "../NoTable.jsx";
 
 // import RequireAuth from "./components/RequireAuth";
 
@@ -17,7 +17,7 @@ import { UserContext } from "../../Context/UserContext";
 
 function UserView() {
   const [user, setUser, table, setTable] = useContext(UserContext);
-
+  console.log("UserView");
   return (
     <DataProvider>
       <div className="App">
@@ -28,7 +28,7 @@ function UserView() {
           alt="300x377"
         />
         <Routes>
-          <Route path="/newTable/:id" element={<NoTableView />} />
+          <Route path="/newTable/:id" element={<Notable />} />
           <Route path="*" element={<Navigate to="/menu" />} />
           <Route path="/menu" element={<MenuPack />} />
           <Route path="/asistencia" element={<AssistancePageTest />} />

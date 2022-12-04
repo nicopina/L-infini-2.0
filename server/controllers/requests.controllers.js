@@ -46,6 +46,8 @@ export const getRequest = async (req, res) => {
  */
 export const createRequest = async (req, res) => {
   try {
+    req.body.created_at = new Date();
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "INSERT INTO Tables_Requests SET ?",
       [req.body]
@@ -64,6 +66,7 @@ export const createRequest = async (req, res) => {
  */
 export const updateRequest = async (req, res) => {
   try {
+    req.body.updated_at = new Date();
     const [result] = await promisePool.query(
       "UPDATE Tables_Requests SET ? WHERE id = ?",
       [req.body, req.params.id]
