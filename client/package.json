@@ -27,6 +27,7 @@
     "boxicons": "^2.1.4",
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.6",
+    "emailjs-com": "^3.2.0",
     "esbuild": "^0.15.13",
     "events": "^3.3.0",
     "formik": "^2.2.9",
