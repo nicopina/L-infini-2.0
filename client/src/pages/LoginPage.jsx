@@ -2,8 +2,10 @@ import { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { signInRequest } from "../api/auth.api.js";
 import { UserContext } from "../Context/UserContext.jsx";
+import "./LoginPage.css";
 
 function LoginPage() {
+  
   const [user, setUser] = useContext(UserContext);
   const [message, setMessage] = useState("");
 
@@ -42,30 +44,30 @@ function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form>
-        <label>
-          Rut:
-          <input
+    <div className="Login">
+      <h2>Login Page</h2>
+      <label>
+        <span>Ingrese RUT: </span>
+        <input
             type="text"
             name="rut"
             value={body.rut}
             onChange={inputChangeHandler}
+            placeholder="XXXXXXXX-X"
           />
-        </label>
-        <label>
-          Contraseña:
-          <input
+      </label>
+      <label>
+        <span>Ingrese contraseña</span>
+        <input
             type="password"
             name="password"
             value={body.password}
             onChange={inputChangeHandler}
+            placeholder="********"
           />
-        </label>
-        <input type="button" onClick={onSubmitHandler} value="Login" />
-      </form>
+      </label>
       <p>{message}</p>
+      <div className="button" onClick={onSubmitHandler} value="Login">Login</div>   
     </div>
   );
 }

@@ -11,12 +11,12 @@ import LogoutPage from "../../pages/LogoutPage.jsx";
 
 import { DataProvider } from '../../Context/Datacontext.jsx';
 import MenuPack from "../MenuPack/MenuPack.jsx";
-import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
+import AssistancesPage from "../../pages/AssistancesPage.jsx";
 import ManageTables from "../../pages/ManageTables.jsx";
 import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 import Reports from "../../pages/Reports";
 import DishReportPage from "./Reports/DishReportPage.jsx";
-
+import SalesReportPage from "./Reports/SalesReportPage.jsx";
 import { UserContext } from "../../Context/UserContext.jsx";
 import { useEffect } from "react";
 import DishCategoryRegisterPage from "../../pages/DishCategoryRegisterPage.jsx";
@@ -36,8 +36,8 @@ function AdminView() {
       <Routes >
         <Route path="*" element={<Navigate to='/menu'/>} />
         <Route path="/menu" element={<MenuPack/>} />
-        <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
-        <Route path ="/asistencias" element={<AssistancePageTest/>}/>
+        <Route path ="/asistencias" element={<AssistancesPage/>}/>
+        <Route path="/pedidosActivos" element={<ActiveOrdersPage/>}/>
         <Route path="/platos" element={<DishesPage/>}/>
         <Route path="/usuarios" element={<ManageUsersPage/>}/>
         <Route path="/logout" element={<LogoutPage/>}/>
@@ -46,6 +46,8 @@ function AdminView() {
         <Route path="/reportes" element= {<Reports/>} />
         <Route path="/reportes/platos" element= {<DishReportPage/>} />
         <Route path="/registroCategoriaPlatos" element={<DishCategoryRegisterPage/>} />
+        <Route path="/reportes/ventas" element= {<SalesReportPage/>} />
+
       </Routes>
       <Footer />
     </div>

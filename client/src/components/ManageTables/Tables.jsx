@@ -5,6 +5,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import NewTableForm from "./NewTableForm";
 import { deleteTableRequest, updateTableRequest } from "../../api/tables.api";
+import { style } from "@mui/system";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import "./Tables.css";
 
 function Tables() {
   const [tables, setTables] = useState([]);
@@ -23,20 +26,38 @@ function Tables() {
   }, [seed]);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 100, editable: false },
+    { field: "id", headerName:"ID", width: 150, editable: false, style: {color: "white"} },
     {
       field: "delete",
       headerName: "Eliminar",
-      width: 100,
+      width: 200,
+      textAlign: "center",
+      Style: { textAlign: "center" },
       renderCell: (params) => (
-        <button onClick={() => handleDelete(params.row)}>Eliminar</button>
+        <button className="buttonred" onClick={() => handleDelete(params.row)}>Borrar</button>
       ),
     },
   ];
 
   return (
-    <>
-      <Box sx={{ height: 400, width: "100%" }} key={seed}>
+    <div 
+    style={{
+      marginTop: "100px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+    }}
+    >
+      <h1>Mesas</h1>
+      <Box sx={{ height: 400, width: "100%" }} key={seed} 
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                }}
+      >
         <DataGrid
           rows={tables}
           columns={columns}
@@ -45,10 +66,13 @@ function Tables() {
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
           getRowId={(row) => row.id}
-        />
+          style={{
+            minWidth: "300px",
+          }}
+          />
       </Box>
       <NewTableForm setSeed={setSeed} />
-    </>
+      </div>
   );
 }
 

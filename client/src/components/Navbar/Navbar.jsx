@@ -93,10 +93,6 @@ const Adminpages = [
     path: "/menu",
   },
   {
-    name: "Pedidos",
-    path: "/pedidos",
-  },
-  {
     name: "Asistencias",
     path: "/asistencias",
   },
@@ -184,7 +180,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" style={{ width: "100%" , position : 'absolute', top:'0'}}>
+    <AppBar >
       <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon
@@ -208,7 +204,7 @@ function ResponsiveAppBar() {
             l'infini
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }} >
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none"  } , width: "100%"}}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -269,7 +265,7 @@ function ResponsiveAppBar() {
           >
             l'infini
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} style={{'display':'flex' , 'alignItems': 'flex-end'}}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages?.map((page, index) => (
               <MenuItem key={index} onClick={handleCloseNavMenu}>
                 <Link to={page.path} style={{ color: "white" }}>
@@ -277,7 +273,7 @@ function ResponsiveAppBar() {
                 </Link>
               </MenuItem>
             ))}
-            <div className="cart" onClick={toggleMenu} style={{'display':'flex', 'alignItems':'flex-end'}}>
+            <div className="cart" onClick={toggleMenu}>
               <box-icon name="cart"></box-icon>
               <span className="item_total">{carrito.length}</span>
               {menu? <Cart /> : ""}

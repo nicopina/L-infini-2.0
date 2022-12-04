@@ -179,6 +179,18 @@ export const getActiveOrderByTableId = async (req, res) => {
   }
 }
 
+export const getCountOrdersToday = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT COUNT(*) AS count FROM Orders WHERE created_at >= CURDATE()"
+    );
+    return res.json(rows[0].count);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 
 
 

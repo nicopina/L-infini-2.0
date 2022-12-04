@@ -11,18 +11,7 @@ import { getTableRequest } from "../../api/tables.api";
 import { UserContext } from "../../Context/UserContext";
 
 function NoTable() {
-  const { id } = useParams();
-  const [user, setUser, table, setTable] = useContext(UserContext);
 
-  useEffect(() => {
-    if (id !== undefined) {
-      getTableRequest(id).then((res) => {
-        if (res.data) {
-          setTable(id);
-        }
-      });
-    }
-  }, [id]);
 
   return (
     <div style={{"display":"flex", "alignItems":"center",'width':"100%","justifyContent":"center"}}>

@@ -5,6 +5,8 @@ import ProductCard from "../Product-card/ProductCard";
 import { DataContext } from "../../Context/DataContext";
 import Reload from "../Reload/Reload";
 
+import "./MenuPack.css";
+
 const MenuPack = () => {
   const value = useContext(DataContext);
   const [productos, setProductos] = useState([]);
@@ -14,21 +16,20 @@ const MenuPack = () => {
   }, [value]);
 
   return (
-    <>
-      <section>
-        <Reload />
-        <Container>
-          <Row>
-            {productos.map((item, index) => (
-              <Col key={index} lg="3" md="4" sm="6" xs="6" className="mb-4">
-                {""}
-                <ProductCard item={item} />{" "}
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
-    </>
+    <div className="menu">
+      <h1>Menú</h1>
+      <Reload />
+      <Container>
+        <Row>
+          {productos.map((item, index) => (
+            <Col key={index} lg="3" md="4" sm="6" xs="6" className="mb-4">
+              {""}
+              <ProductCard item={item} />{" "}
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </div>
   );
 };
 
