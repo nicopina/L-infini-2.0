@@ -7,11 +7,13 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Static Components/Footer";
 import LogoutPage from "../../pages/LogoutPage";
 import MenuPack from "../MenuPack/MenuPack";
+import NotificationsChef from "../Notifications/NotificationsChef";
 
 function ChefView() {
   return (
     <div>
       <Navbar/>
+      <NotificationsChef/>
       <Routes>
         <Route path= "/menu" element={<MenuPack />} />
         <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />

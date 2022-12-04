@@ -2,10 +2,10 @@ import addNotification from "react-push-notification";
 
 export const SendMessage = () => {
   addNotification({
-    title: "Aviso Urgente",
-    subtitle: "Peligro inminente",
+    title: "L'infini",
+    subtitle: "Pedido nuevo",
     message:
-      'Cuidado, la infame asaltante sexual "Loreto Telgie" ha sido avistada en tu zona',
+      'Hay pedidos nuevos',
     theme: "darkblue",
     native: true, // when using native, your OS will handle theming.
   });
