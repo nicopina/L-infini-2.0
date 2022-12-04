@@ -1,18 +1,22 @@
 import React from "react";
 import { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { getTableRequest } from "../api/tables.api";
 import { UserContext } from "../Context/UserContext";
 
-function NoTableView() {
+function NoTable() {
   const { id } = useParams();
   const [user, setUser, table, setTable] = useContext(UserContext);
 
   useEffect(() => {
     if (id !== undefined) {
-        console.log(id)
-      setTable(id);
+      getTableRequest(id).then((res) => {
+        if (res.data) {
+          setTable(id);
+        }
+      });
     }
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -21,4 +25,4 @@ function NoTableView() {
   );
 }
 
-export default NoTableView;
+export default NoTable;

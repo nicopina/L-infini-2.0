@@ -13,6 +13,7 @@ function LogoutPage() {
         localStorage.removeItem("token");
         localStorage.removeItem("role");
         localStorage.removeItem("table");
+        window.location.reload();
     }, []);
   return (
     <div>LogoutPage</div>

@@ -5,6 +5,7 @@ import { UserContext } from "../Context/UserContext.jsx";
 
 function LoginPage() {
   const [user, setUser] = useContext(UserContext);
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,18 +17,21 @@ function LoginPage() {
   });
 
   async function onSubmitHandler() {
-    await signInRequest(body).then((response) => {
-      if (response.status === 200) {
-        //save token in local storage
-        localStorage.setItem("token", response.data);
-        //reload page
-        window.location.reload().then(() => {
-          navigate(from);
-        });
-      }
-    });
+    try {
+      await signInRequest(body).then((response) => {
+        if (response.status === 200) {
+          //save token in local storage
+          localStorage.setItem("token", response.data);
+          //reload page
+          window.location.reload().then(() => {
+            navigate(from);
+          });
+        }
+      });
+    } catch (error) {
+      setMessage("Usuario o contraseña incorrectos");
+    }
   }
-
 
   function inputChangeHandler(e) {
     const { name, value } = e.target;
@@ -51,7 +55,7 @@ function LoginPage() {
           />
         </label>
         <label>
-          Constraseña:
+          Contraseña:
           <input
             type="password"
             name="password"
@@ -59,8 +63,9 @@ function LoginPage() {
             onChange={inputChangeHandler}
           />
         </label>
-        <input type="button" onClick={onSubmitHandler} />
+        <input type="button" onClick={onSubmitHandler} value="Login" />
       </form>
+      <p>{message}</p>
     </div>
   );
 }
