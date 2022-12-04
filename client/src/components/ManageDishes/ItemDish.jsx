@@ -17,7 +17,12 @@ function ItemDish(params) {
           borderBottom: "1px solid black",
         }}
       >
-        <Col className="dish-item-column-name">{params.dish.name}</Col>
+        <Col>
+          <img className="img" src={params.dish.photo_url} height='5px'/>            
+        </Col>
+        <Col className="dish-item-column-name">
+          {params.dish.name}
+          </Col>
         <Col className="dish-item-column-state">
           <input
             type="checkbox"
