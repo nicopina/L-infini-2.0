@@ -178,8 +178,35 @@ export const getOrderItemsTopBestNByDate = async (req,res) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
+
+  }
+    
+}
+
+export const getProfitToday = async (req,res) => {
+  
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= CURDATE() AND date(OrderItems.created_at) < CURDATE() + INTERVAL 1 DAY"
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 }
 
+export const getProfitEntireMonth = async (req,res) => {
+    
+    try {
+      const [rows] = await promisePool.query(
+        "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= CURDATE() - interval (day(CURDATE())-1) day AND date(OrderItems.created_at)< CURDATE() + INTERVAL 1 DAY;"
+      );
+      return res.json(rows);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
 
-
+ 

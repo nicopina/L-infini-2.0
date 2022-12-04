@@ -37,3 +37,6 @@ export const getActiveOrderByTableIdRequest = async (id) => {
   return await axios.get(`${BASE_URL}/active-orders/${id}`);
 }
 
+export const getCountOrdersToday = async () => {
+  return await axios.get(`${BASE_URL}/orders/count/today`);
+}

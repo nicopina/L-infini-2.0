@@ -36,3 +36,13 @@ export const getOrderItemsTopWorstN = async (n) => {
 export const getOrderItemsTopBestNByDate = async (fecha_inicial, fecha_final, n) => {
   return await axios.get(`${BASE_URL}/orderItems/top/${fecha_inicial}/${fecha_final}/${n}`);
 }
+
+export const getProfitToday = async () => {
+  return await axios.get(`${BASE_URL}/orderItems/profit/today`);
+}
+
+export const getProfitEntireMonth = async () => {
+  return await axios.get(`${BASE_URL}/orderItems/profit/actual_month`);
+}
+
+

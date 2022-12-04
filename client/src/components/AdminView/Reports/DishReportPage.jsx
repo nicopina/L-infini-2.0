@@ -6,13 +6,13 @@ import DishMostSelledTimeRange from "./DishMostSelledTimeRange";
 
 function DishReportPage(){
 
-    //Function add days to today
+
+    //Defaul values
     function addDays(date, days) {
         var result = new Date(date);
         result.setDate(result.getDate() + days);
         return result;
     }
-
     const [number,setNumber] = React.useState(5);
     const [number_2,setNumber_2] = React.useState(5); 
 
