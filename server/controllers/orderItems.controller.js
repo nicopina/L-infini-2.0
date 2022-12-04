@@ -209,4 +209,24 @@ export const getProfitEntireMonth = async (req,res) => {
     }
   }
 
- 
+export const getProfitByOneDate = async (req,res) => {
+
+  console.log("Fecha_llegada:",req.params.date);
+  console.log("Fecha_llegada_FIX:",new Date(parseInt(req.params.date)));
+
+  //Format yyyy-mm-dd to query
+  var aux =  new Date(parseInt(req.params.date));
+  req.params.date = aux.getFullYear() + "-" + (aux.getMonth()+1) + "-" + aux.getDate();
+  console.log("Fecha_llegada_FIX_QUERY:",req.params.date);
+
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) = ?",
+      [req.params.date, req.params.date]
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
