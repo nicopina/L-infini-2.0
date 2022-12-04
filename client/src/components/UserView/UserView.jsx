@@ -15,6 +15,7 @@ import Notable from "../NoTable/NoTable.jsx";
 import { DataProvider } from "../../Context/Datacontext.jsx";
 import { UserContext } from "../../Context/UserContext";
 import OrderState from "../OrderState/OrderState.jsx";
+import NewAllocatedTable from "../NewAllocatedTable.jsx";
 
 function UserView() {
   const [user, setUser, table, setTable] = useContext(UserContext);
@@ -24,7 +25,7 @@ function UserView() {
       <div className="App">
         <Navbar />
         <Routes>
-          <Route path="/newTable/:id" element={<Notable />} />
+          <Route path="/newTable/:id" element={<NewAllocatedTable/>} />
           <Route path="*" element={<Navigate to="/menu" />} />
           <Route path="/menu" element={<MenuPack />} />
           <Route path="/pedidos" element={<OrderState />} />
