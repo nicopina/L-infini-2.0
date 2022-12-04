@@ -2,7 +2,15 @@ import {getActiveOrderByTableIdRequest} from '../../api/orders.api';
 import {useState, useEffect} from 'react';
 import { Card } from '@mui/material';
 import Reload from '../Reload/Reload';
+import {TableContainer,Table,TableHead,TableBody,TableRow,TableCell} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import { ClassNames } from '@emotion/react';
 
+const style = makeStyles({
+  tablematerial: {
+    minWidth: 650,
+  },
+});
 function OrderState() {
   const [orders, setOrders] = useState([]);
 
@@ -16,16 +24,32 @@ function OrderState() {
     });
   }, []);
 
-
+  // <h1>ID de la Orden: {order.id}</h1>
+  //         <h1>Mesa: {order.table_id}</h1>
+  //         <h1>Estado: {order.state_name}</h1>
   return (
-    <div>
+    <div classname='table'>
       <Reload/>
+      <h3>Estado de la Orden</h3>
       {orders.map((order,index) => (
-        <Card  key={index} style={{backgroundColor: order.state? 'yellow' : 'green', margin:'5px', padding:'15px'}}>
-          <h1>ID de la Orden: {order.id}</h1>
-          <h1>Mesa: {order.table_id}</h1>
-          <h1>Estado: {order.state_name}</h1>
-        </Card>
+        <TableContainer>
+          <Table stickyHeader aria-label="sticky table" classname={ClassNames.tablematerial}>
+            <TableHead>
+              <TableRow>
+                <TableCell fontSize='20' align="left">ID de la Orden</TableCell>
+                <TableCell fontSize='20' align="center">Mesa</TableCell>
+                <TableCell fontSize='20' align="center">Estado</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell align="left">{order.id}</TableCell>
+                <TableCell align="center">{order.table_id}</TableCell>
+                <TableCell align="center">{order.state_name}</TableCell>
+              </TableRow>
+            </TableBody>
+            </Table>       
+        </TableContainer>
       ))}
     </div>
   );
