@@ -5,6 +5,9 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import NewTableForm from "./NewTableForm";
 import { deleteTableRequest, updateTableRequest } from "../../api/tables.api";
+import { style } from "@mui/system";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import "./Tables.css";
 
 function Tables() {
   const [tables, setTables] = useState([]);
@@ -23,13 +26,15 @@ function Tables() {
   }, [seed]);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 100, editable: false },
+    { field: "id", headerName:"ID", width: 150, editable: false, style: {color: "white"} },
     {
       field: "delete",
       headerName: "Eliminar",
-      width: 100,
+      width: 200,
+      textAlign: "center",
+      Style: { textAlign: "center" },
       renderCell: (params) => (
-        <button onClick={() => handleDelete(params.row)}>Eliminar</button>
+        <button className="buttonred" onClick={() => handleDelete(params.row)}>Borrar</button>
       ),
     },
   ];
