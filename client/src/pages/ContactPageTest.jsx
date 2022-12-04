@@ -14,9 +14,6 @@ function ContactPageTest() {
   return (
     <div>
       <ContactForm />
-      {/* <form >
-            <button formAction='' onClick={()=>mostraralerta()}> Contactanos </button>
-            </form> */}
     </div>
   );
 }
