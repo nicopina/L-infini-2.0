@@ -121,6 +121,10 @@ const Adminpages = [
     path: "/usuarios",
   },
   {
+    name: "Reportes",
+    path: "/reportes",
+  },
+  {
     name: "Logout",
     path: "/logout",
   },

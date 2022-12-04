@@ -14,6 +14,9 @@ import MenuPack from "../MenuPack/MenuPack.jsx";
 import AssistancePageTest from "../../pages/AssistancePageTest.jsx";
 import ManageTables from "../../pages/ManageTables.jsx";
 import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
+import Reports from "../../pages/Reports";
+import DishReportPage from "./Reports/DishReportPage.jsx";
+
 import { UserContext } from "../../Context/UserContext.jsx";
 import { useEffect } from "react";
 
@@ -39,6 +42,9 @@ function AdminView() {
         <Route path="/logout" element={<LogoutPage/>}/>
         <Route path="/registroPlatos" element={<DishRegisterPage/>}/>
         <Route path="/mesas" element={<ManageTables/>} />
+        <Route path="/reportes" element= {<Reports/>} />
+        <Route path="/reportes/platos" element= {<DishReportPage/>} />
+
       </Routes>
       <Footer />
     </div>

@@ -8,12 +8,6 @@ var funcion = async function getTablesRequests() {
   return response.data;
 };
 
-/*
-function sortRequests(requests) {
-  requests.sort((a, b) => {
-    return a.status - b.status;
-  });
-}*/
 
 function TablesRequestsList() {
   const [requests, setRequests] = React.useState([]);
