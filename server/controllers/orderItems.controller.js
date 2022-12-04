@@ -121,4 +121,92 @@ export const getOrderItemsByOrderId = async (req,res) => {
   }
 };
 
+export const getOrderItemsTopBestN = async (req,res) => {
+  try {
+    
+    const [rows] = await promisePool.query(
+      "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id GROUP BY OrderItems.dish_id ORDER BY quantity DESC LIMIT ?",
+      [parseInt(req.params.n)]
 
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+
+export const getOrderItemsTopWorstN = async (req,res) => {
+  try {
+    
+    const [rows] = await promisePool.query(
+      "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id GROUP BY OrderItems.dish_id ORDER BY quantity ASC LIMIT ?",
+      [parseInt(req.params.n)]
+
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export const getOrderItemsTopBestNByDate = async (req,res) => {
+  try {
+
+    req.params.start_date = new Date(parseInt(req.params.start_date));
+
+    req.params.end_date = new Date(parseInt(req.params.end_date));
+
+    req.params.end_date.setHours(43,59,59,100);
+    console.log(req.params.end_date.getTime());
+
+
+    console.log(req.params.start_date);
+    console.log(req.params.start_date.getDate(), req.params.start_date.getMonth(), req.params.start_date.getFullYear());
+    console.log(req.params.end_date);
+    console.log(req.params.end_date.getDate(), req.params.end_date.getMonth(), req.params.end_date.getFullYear());
+ 
+
+    const [rows] = await promisePool.query(
+      "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE OrderItems.created_at >= ? AND OrderItems.created_at <= ? GROUP BY OrderItems.dish_id ORDER BY quantity DESC LIMIT ?",
+      [req.params.start_date, req.params.end_date, parseInt(req.params.n)]
+
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+
+  }
+    
+}
+
+export const getProfitToday = async (req,res) => {
+  
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= CURDATE() AND date(OrderItems.created_at) < CURDATE() + INTERVAL 1 DAY"
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export const getProfitEntireMonth = async (req,res) => {
+    
+    try {
+      const [rows] = await promisePool.query(
+        "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= CURDATE() - interval (day(CURDATE())-1) day AND date(OrderItems.created_at)< CURDATE() + INTERVAL 1 DAY;"
+      );
+      return res.json(rows);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
+ 

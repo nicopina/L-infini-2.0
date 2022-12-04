@@ -24,3 +24,25 @@ export const deleteOrderItemRequest = async (id) => {
 export const getOrderItemsByOrderIdRequest = async (id) => {
   return await axios.get(`${BASE_URL}/orderItems/order/${id}`);
 };
+
+export const getOrderItemsTopBestN = async (n) => {
+  return await axios.get(`${BASE_URL}/orderItems/top/${n}`);
+}
+
+export const getOrderItemsTopWorstN = async (n) => {
+  return await axios.get(`${BASE_URL}/orderItems/topWorst/${n}`);
+}
+
+export const getOrderItemsTopBestNByDate = async (fecha_inicial, fecha_final, n) => {
+  return await axios.get(`${BASE_URL}/orderItems/top/${fecha_inicial}/${fecha_final}/${n}`);
+}
+
+export const getProfitToday = async () => {
+  return await axios.get(`${BASE_URL}/orderItems/profit/today`);
+}
+
+export const getProfitEntireMonth = async () => {
+  return await axios.get(`${BASE_URL}/orderItems/profit/actual_month`);
+}
+
+

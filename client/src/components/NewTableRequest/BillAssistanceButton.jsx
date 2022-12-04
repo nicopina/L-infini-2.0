@@ -36,7 +36,7 @@ function BillAssistanceButton() {
   return (
     <div>
       <button
-        class="button"
+        className="button"
         onClick={tuFuncionDefinida}
         role="button"
         title="Pide la cuenta al mesero."

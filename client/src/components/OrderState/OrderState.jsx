@@ -2,7 +2,15 @@ import {getActiveOrderByTableIdRequest} from '../../api/orders.api';
 import {useState, useEffect} from 'react';
 import { Card } from '@mui/material';
 import Reload from '../Reload/Reload';
+import {TableContainer,Table,TableHead,TableBody,TableRow,TableCell} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import { ClassNames } from '@emotion/react';
 
+const style = makeStyles({
+  tablematerial: {
+    minWidth: 650,
+  },
+});
 function OrderState() {
   const [orders, setOrders] = useState([]);
 
@@ -16,7 +24,9 @@ function OrderState() {
     });
   }, []);
 
-
+  // <h1>ID de la Orden: {order.id}</h1>
+  //         <h1>Mesa: {order.table_id}</h1>
+  //         <h1>Estado: {order.state_name}</h1>
   return (
     <div className='table' 
     style={{
@@ -29,6 +39,7 @@ function OrderState() {
     >
       <h3>Estado de la Orden</h3>
       <Reload/>
+      <h3>Estado de la Orden</h3>
       {orders.map((order,index) => (
         <TableContainer key={index}
         style={{

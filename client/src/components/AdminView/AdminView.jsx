@@ -15,9 +15,8 @@ import AssistancesPage from "../../pages/AssistancesPage.jsx";
 import ManageTables from "../../pages/ManageTables.jsx";
 import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 import Reports from "../../pages/Reports";
-// import DishReportPage from "./Reports/DishReportPage.jsx";
-// import SalesReportPage from "./Reports/SalesReportPage.jsx";
-import OrderState from "../OrderState/OrderState.jsx";
+import DishReportPage from "./Reports/DishReportPage.jsx";
+import SalesReportPage from "./Reports/SalesReportPage.jsx";
 import { UserContext } from "../../Context/UserContext.jsx";
 import { useEffect } from "react";
 
@@ -43,6 +42,10 @@ function AdminView() {
         <Route path="/logout" element={<LogoutPage/>}/>
         <Route path="/registroPlatos" element={<DishRegisterPage/>}/>
         <Route path="/mesas" element={<ManageTables/>} />
+        <Route path="/reportes" element= {<Reports/>} />
+        <Route path="/reportes/platos" element= {<DishReportPage/>} />
+        <Route path="/reportes/ventas" element= {<SalesReportPage/>} />
+
       </Routes>
       <Footer />
     </div>

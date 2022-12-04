@@ -6,7 +6,7 @@ import { DataContext } from "../../Context/DataContext";
 
 const ProductCard = (props) => {
 
-  const photo_default = "https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg";
+  const photo_default = "https://i.pinimg.com/originals/15/50/ee/1550ee86d49cbcc3f530ac53d538cd60.jpg";
 
   const { id, name, value, description, photo_url } = props.item;
 
