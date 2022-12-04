@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import swal from "sweetalert";
 
 import { getRolesRequest } from "../../api/roles.api";
 import { createUserRequest } from "../../api/users.api";
@@ -38,22 +39,45 @@ function NewUserForm(props) {
     });
   }, [roles]);
 
+  const mostraralerta = (state) => {
+    if (state){
+      swal({
+        title: "Usuario creado con éxito!",
+        text: "El usuario ha sido creado con éxito",
+        icon: "success",
+        button: "Aceptar",
+      })
+    }else{
+      swal({
+        title: "Error!",
+        text: "No se pudo crear el usuario, verifica la información ingresada.",
+        icon: "error",
+        button: "Aceptar",
+      });
+    }
+    
+  };
+
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     const newUser = {
-      rut: event.target.rut.value,
+      rut: event.target.rut.value.replace(/\./g, ""),
       name: event.target.name.value,
       lastname: event.target.lastname.value,
       password: event.target.password.value,
       role: event.target.role.value,
       is_active: event.target.is_active.checked,
     };
-
+    console.log(newUser);
+    try {
     await createUserRequest(newUser).then((response) => {
-      console.log(response.json);
+      mostraralerta(true);
       // setMessage(response.data.message);
       setSeed(Math.random());
     });
+    } catch (error) {
+      mostraralerta(false);
+    }
   };
 
     // createUserRequest(newUser);
@@ -63,18 +87,18 @@ function NewUserForm(props) {
     <div>
       <form onSubmit={onSubmitHandler}>
         <label>Rut</label>
-        <input type="text" name="rut" defaultValue={user.rut} />
+        <input type="text" name="rut" placeholder = "12345678-9" defaultValue={user.rut} required maxLength = "10"/>
         <label>
           Name:
-          <input type="text" name="name" defaultValue={user.name} />
+          <input type="text" name="name" defaultValue={user.name} required minLength = "1" maxLength = "255"/>
         </label>
         <label>
           Lastname:
-          <input type="text" name="lastname" defaultValue={user.lastname} />
+          <input type="text" name="lastname" defaultValue={user.lastname} required minLength = "1" maxLength = "255"/>
         </label>
         <label>
           Password:
-          <input type="text" name="password" defaultValue={user.password} />
+          <input type="text" name="password" defaultValue={user.password} required minLength = "4" maxLength = "255"/>
         </label>
         <label>
           Role:
