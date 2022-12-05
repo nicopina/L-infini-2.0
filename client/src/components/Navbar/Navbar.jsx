@@ -176,7 +176,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar>
+    <AppBar style={{background:"#1b1919"}}>
       <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon
@@ -241,7 +241,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-            {user.role === null ? (
+            {user.role === null && table !== undefined? (
               <div className="cart" onClick={toggleMenu}>
                 <box-icon name="cart"></box-icon>
                 <span className="item_total">{carrito.length}</span>
@@ -280,7 +280,7 @@ function ResponsiveAppBar() {
               </MenuItem>
             ))}
 
-            {user.role === null ? (
+            {user.role === null && table !== undefined? (
               <div className="cart" onClick={toggleMenu}>
                 <box-icon name="cart"></box-icon>
                 <span className="item_total">{carrito.length}</span>
