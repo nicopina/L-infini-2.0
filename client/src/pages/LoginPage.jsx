@@ -33,12 +33,13 @@ function LoginPage() {
             window.location.reload().then(() => {
               navigate(from);
             });
+          } else {
+            setMessage("Usuario o contraseña incorrectos");
           }
         });
       } catch (error) {
         console.error(error);
       }
-      setMessage("Usuario o contraseña incorrectos");
     }
   }
 
