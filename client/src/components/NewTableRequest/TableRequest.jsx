@@ -8,16 +8,16 @@ function TableRequest(props) {
   let hour =
     date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 
-  let status = "";
-  switch (request.status) {
+  let state;
+  switch (request.state) {
     case 0:
-      status = "Pendiente";
+      state = "Pendiente";
       break;
     case 1:
-      status = "En proceso";
+      state = "En proceso";
       break;
     case 2:
-      status = "Finalizado";
+      state = "Finalizado";
       break;
   }
 
@@ -42,7 +42,7 @@ function TableRequest(props) {
       >
         <Row>
           <Col>Mesa: {request.table_id}</Col>
-          <Col>Estado: {status}</Col>
+          <Col>Estado: {state}</Col>
           <Col>Tipo: {type}</Col>
           <Col>Hora: {hour}</Col>
         </Row>
@@ -55,7 +55,7 @@ function TableRequest(props) {
               margin: "10px",
             }}
           >
-            <WaiterAssistanceButton />
+            <WaiterAssistanceButton data={request} />
           </Col>
         </Row>
       </Card>

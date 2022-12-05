@@ -6,7 +6,9 @@ import { promisePool } from "../db.js";
  */
 export const getRequests = async (req, res) => {
   try {
-    const [rows] = await promisePool.query("SELECT * FROM Tables_Requests ORDER BY state ASC, id ASC");
+    const [rows] = await promisePool.query(
+      "SELECT * FROM Tables_Requests ORDER BY state ASC, id ASC"
+    );
     res.json(rows);
   } catch (error) {
     console.log(error);
@@ -73,8 +75,9 @@ export const updateRequest = async (req, res) => {
     );
     if (result.affectedRows > 0) {
       res.status(200).json({ message: "Request updated" });
+    } else {
+      res.status(404).json({ message: "Request not found" });
     }
-    res.status(404).json({ message: "Request not found" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal server error" });
@@ -96,6 +99,18 @@ export const deleteRequest = async (req, res) => {
       res.status(200).json({ message: "Request deleted" });
     }
     res.status(404).json({ message: "Request not found" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const getPendingRequests = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT * FROM Tables_Requests WHERE state <> '2' ORDER BY updated_at ASC"
+    );
+    res.json(rows);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal server error" });

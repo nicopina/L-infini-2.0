@@ -15,14 +15,16 @@ function BillAssistanceButton() {
   }
   function ContactPageTest() {
     swal({
-      title: "Estas segura de que quieres pedir la cuenta?",
-      text: "una vez que lo hagas no podras volver a pedir la cuenta",
+      title: "¿Estás segur@ de que quieres pedir la cuenta?",
+      text: "Una vez que lo hagas no podrás volverlo a hacer.",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal("!Tu cuenta Ha sido solicitada con exito!", {
+        swal("!Muy pronto un mesero vendrá a ayudarte!", {
           icon: "success",
+        }).then(() => {
+          window.location.reload();
         });
       } else {
         swal("Tu cuenta no fue solicitada!", { icon: "error" });

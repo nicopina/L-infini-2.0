@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { getRequests } from "../../api/requests.api";
+import { getPendingRequests } from "../../api/requests.api";
 import TableRequest from "./TableRequest";
 
 var funcion = async function getTablesRequests() {
-  const response = await getRequests();
+  const response = await getPendingRequests();
   return response.data;
 };
 
