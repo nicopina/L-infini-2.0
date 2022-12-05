@@ -48,3 +48,7 @@ export const getProfitEntireMonth = async () => {
 export const getProfitByOneDate = async (date) => {
   return await axios.get(`${BASE_URL}/orderItems/profit/${date}`);
 }
+
+export const getProfitByDateRange = async (fecha_inicial, fecha_final) => {
+  return await axios.get(`${BASE_URL}/orderItems/profit/${fecha_inicial}/${fecha_final}`);
+}

@@ -230,3 +230,24 @@ export const getProfitByOneDate = async (req,res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export const getProfitByDateRange = async (req,res) => {
+  try {
+    
+    req.params.start_date = new Date(parseInt(req.params.start_date));
+    req.params.end_date = new Date(parseInt(req.params.end_date));
+    console.log("En Backend: Inicio: ",req.params.start_date,"Fin: ",req.params.end_date);
+  req.params.start_date = req.params.start_date.getFullYear() + "-" + (req.params.start_date.getMonth()+1) + "-01";
+  req.params.end_date = req.params.end_date.getFullYear() + "-" + (req.params.end_date.getMonth()+1) + "-" + req.params.end_date.getDate();
+    console.log("En Backend: Inicio: ",req.params.start_date,"Fin: ",req.params.end_date);
+
+    const [rows] = await promisePool.query(
+      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= date(?) AND date(OrderItems.created_at) <= date(?)",
+      [req.params.start_date, req.params.end_date]
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
