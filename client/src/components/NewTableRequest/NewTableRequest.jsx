@@ -19,14 +19,15 @@ function NewTableRequest() {
   }
   function ContactPageTest() {
     swal({
-      title: "Estas segura de que quieres pedir la cuenta?",
-      text: "una vez que lo hagas no podras volver a pedir la cuenta",
+      title: "¿Estás segur@ de solicitar asistencia?",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         swal("!Tu cuenta Ha sido solicitada con exito!", {
           icon: "success",
+        }).then(() => {
+          window.location.reload();
         });
       } else {
         swal("Tu cuenta no fue solicitada!", { icon: "error" });

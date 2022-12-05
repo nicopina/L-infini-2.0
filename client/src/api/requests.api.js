@@ -21,3 +21,7 @@ export const updateRequest = async (id, request) => {
 export const deleteRequest = async (id) => {
   return await axios.delete(`${BASE_URL}/requests/${id}`);
 };
+
+export const getPendingRequests = async () => {
+  return await axios.get(`${BASE_URL}/requests-pending`);
+};
