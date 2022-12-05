@@ -159,15 +159,6 @@ export const getOrderItemsTopBestNByDate = async (req,res) => {
 
     req.params.end_date = new Date(parseInt(req.params.end_date));
 
-    req.params.end_date.setHours(43,59,59,100);
-    console.log(req.params.end_date.getTime());
-
-
-    console.log(req.params.start_date);
-    console.log(req.params.start_date.getDate(), req.params.start_date.getMonth(), req.params.start_date.getFullYear());
-    console.log(req.params.end_date);
-    console.log(req.params.end_date.getDate(), req.params.end_date.getMonth(), req.params.end_date.getFullYear());
- 
 
     const [rows] = await promisePool.query(
       "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE OrderItems.created_at >= ? AND OrderItems.created_at <= ? GROUP BY OrderItems.dish_id ORDER BY quantity DESC LIMIT ?",
@@ -184,11 +175,15 @@ export const getOrderItemsTopBestNByDate = async (req,res) => {
 }
 
 export const getProfitToday = async (req,res) => {
-  
+  var hoy = new Date();
+  var fix = hoy.getTime() - (hoy.getTimezoneOffset() * 60000);
+  hoy = new Date(fix);
+
   try {
     const [rows] = await promisePool.query(
-      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= CURDATE() AND date(OrderItems.created_at) < CURDATE() + INTERVAL 1 DAY"
-    );
+      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) = date(?)"
+      ,[hoy]
+      ); 
     return res.json(rows);
   } catch (error) {
     console.log(error);
@@ -197,10 +192,15 @@ export const getProfitToday = async (req,res) => {
 }
 
 export const getProfitEntireMonth = async (req,res) => {
-    
+
+  var hoy = new Date();
+  var fix = hoy.getTime() - (hoy.getTimezoneOffset() * 60000);
+  hoy = new Date(fix);
+
     try {
       const [rows] = await promisePool.query(
-        "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= CURDATE() - interval (day(CURDATE())-1) day AND date(OrderItems.created_at)< CURDATE() + INTERVAL 1 DAY;"
+        "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= ? - interval (day(?)-1) day AND date(OrderItems.created_at)< ? + INTERVAL 1 DAY;"
+        ,[hoy,hoy,hoy]
       );
       return res.json(rows);
     } catch (error) {
@@ -210,14 +210,14 @@ export const getProfitEntireMonth = async (req,res) => {
   }
 
 export const getProfitByOneDate = async (req,res) => {
-
+/*
   console.log("Fecha_llegada:",req.params.date);
-  console.log("Fecha_llegada_FIX:",new Date(parseInt(req.params.date)));
+  console.log("Fecha_llegada_FIX:",new Date(parseInt(req.params.date)));*/
 
   //Format yyyy-mm-dd to query
   var aux =  new Date(parseInt(req.params.date));
   req.params.date = aux.getFullYear() + "-" + (aux.getMonth()+1) + "-" + aux.getDate();
-  console.log("Fecha_llegada_FIX_QUERY:",req.params.date);
+  //console.log("Fecha_llegada_FIX_QUERY:",req.params.date);
 
   try {
     const [rows] = await promisePool.query(

@@ -17,35 +17,39 @@ function DishMostSelledTimeRange(params) {
   const [fechas, setFechas] = React.useState(params.fechas);
 
   useEffect(() => {
-    const inicial_seg = fechas.fecha_inicial.getTime();
-    const final_seg = fechas.fecha_final.getTime();
+    const inicial_seg = fechas.fecha_inicial.getTime() +(fechas.fecha_inicial.getTimezoneOffset() * 60000);
+    const final_seg = fechas.fecha_final.getTime() + (fechas.fecha_final.getTimezoneOffset() * 60000);
     getOrderItemsTopBestNByDate(inicial_seg, final_seg, 10).then((response) => {
       setTop(response.data);
-      console.log(response.data);
+
     });
+
   }, [fechas]);
 
   function handlerFechaChange(e) {
-    console.log("hola" + e.target.id);
     const ident = e.target.id;
     const val = e.target.value;
+    var aux = new Date(val);
+    aux = aux.getTime() + (aux.getTimezoneOffset() * 60000);
+    var fix = new Date(aux);
 
     if (ident === "fecha_inicial") {
       setFechas({
-        fecha_inicial: new Date(val),
+        fecha_inicial: new Date(fix),
         fecha_final: fechas.fecha_final,
       });
     } else {
       setFechas({
         fecha_inicial: fechas.fecha_inicial,
-        fecha_final: new Date(val),
+        fecha_final: new Date(fix),
       });
     }
+
   }
 
   function formatear(fecha) {
     //yyyy-MM-dd
-    var dia = fecha.getDate() + 1;
+    var dia = fecha.getDate();
     var mes = fecha.getMonth() + 1;
     var anio = fecha.getFullYear();
     if (dia < 10) {

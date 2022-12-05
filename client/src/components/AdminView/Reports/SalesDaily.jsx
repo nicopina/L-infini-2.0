@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getProfitToday } from "../../../api/orderItems.api";
 import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
-import { getCountOrdersToday } from "../../../api/orders.api";
+import { getCountOrdersToday, getCountOrdersOneFullDate } from "../../../api/orders.api";
+
 
 function SalesDaily(params) {
   const [profitToday, setProfitToday] = useState(params.profitToday);
@@ -9,6 +10,9 @@ function SalesDaily(params) {
 
 
   useEffect(() => {
+
+
+
     getProfitToday().then((response) => {
       setProfitToday(response.data[0].profit);
     });

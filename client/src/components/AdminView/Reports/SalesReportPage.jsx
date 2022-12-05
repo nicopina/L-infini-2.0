@@ -1,6 +1,7 @@
 import React from "react";
 import SalesDaily from "./SalesDaily";
 import SalesActualMonth from "./SalesActualMonth";
+import SalesOfSelectedDay from "./SalesOfSelectedDay";
 
 import {
   getProfitToday,
@@ -12,7 +13,7 @@ import {
   getCountOrdersMonth,
   getCountOrdersOneFullDate,
 } from "../../../api/orders.api";
-import SalesOfSelectedDay from "./SalesOfSelectedDay";
+
 
 function SalesReportPage() {
 
@@ -22,6 +23,7 @@ function SalesReportPage() {
 
   var fecha_ms = fecha.getTime() + (fecha.getTimezoneOffset() * 60000);
 
+  var [profitToday, setProfitToday] = React.useState(0);
 
   var profitToday = 0;
   getProfitToday().then((response) => {
@@ -53,8 +55,7 @@ function SalesReportPage() {
   var countOrderItemsDay = 0;
   getCountOrdersOneFullDate(fecha.getTime()).then((response) => {
     countOrderItemsDay = response.data;
-    console.log("Contador.",fecha);
-    console.log("Contador.", countOrderItemsDay);
+    
   })
 
   return (
@@ -63,12 +64,17 @@ function SalesReportPage() {
       <SalesDaily
         profitToday={profitToday}
         countOrderItemsToday={countOrdersToday}
+        fecha = {fecha}
       />
       <SalesActualMonth
         profitEntireMonth={profitEntireMonth}
         countOrdersMonth={countOrdersMonth}
       />
-      <SalesOfSelectedDay fecha = {fecha} dayProfit = {dayProfit} countOrderItemsDay ={countOrderItemsDay}/>
+      <SalesOfSelectedDay 
+        fecha = {fecha}
+        dayProfit = {dayProfit}
+        countOrderItemsDay ={countOrderItemsDay}
+      />
     </div>
   );
 }
