@@ -40,10 +40,10 @@ function SalesDaily(params) {
     return dd + "/" + mm + "/" + yyyy;
   }
 
-  var formatedProfitToday = profitToday.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  var formatedProfitToday = profitToday? profitToday.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : 0;;
   
-  var formatedAverageProfitToday = parseInt(profitToday/countOrdersToday).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  var formatedCountOrdersToday = parseInt(countOrdersToday).toString();
+  var formatedAverageProfitToday = countOrdersToday ? parseInt(profitToday/countOrdersToday).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : 0;
+  var formatedCountOrdersToday = countOrdersToday ? parseInt(countOrdersToday).toString() : 0;
 
 
   return (
