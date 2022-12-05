@@ -176,7 +176,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar>
+    <AppBar style={{background:"#1b1919"}}>
       <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon

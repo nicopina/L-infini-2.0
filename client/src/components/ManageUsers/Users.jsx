@@ -12,6 +12,8 @@ import { DataGrid } from "@mui/x-data-grid";
 import IsActiveCheckbox from "./IsActiveCheckBox";
 import NewUserForm from "./NewUserForm";
 
+import './Users.css';
+
 function Users(props) {
   const [users, setUsers] = useState([]);
   const [seed , setSeed] = useState(0);
@@ -77,9 +79,11 @@ function Users(props) {
   ];
 
   return (
-    <>
+    <div className="users">
+      <h1>Usuarios</h1>
       <Box sx={{ height: 400, width: "100%" }} key={seed}>
         <DataGrid
+          className="users-table"
           rows={users}
           columns={columns}
           pageSize={5}
@@ -90,7 +94,7 @@ function Users(props) {
         />
       </Box>
       <NewUserForm setSeed={setSeed}/>
-    </>
+    </div>
   );
 }
 
