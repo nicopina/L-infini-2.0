@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Card } from "reactstrap";
 import { signInRequest } from "../api/auth.api.js";
 import { UserContext } from "../Context/UserContext.jsx";
 import "./LoginPage.css";
 
 function LoginPage() {
-  
   const [user, setUser] = useContext(UserContext);
   const [message, setMessage] = useState("");
 
@@ -19,18 +19,25 @@ function LoginPage() {
   });
 
   async function onSubmitHandler() {
-    try {
-      await signInRequest(body).then((response) => {
-        if (response.status === 200) {
-          //save token in local storage
-          localStorage.setItem("token", response.data);
-          //reload page
-          window.location.reload().then(() => {
-            navigate(from);
-          });
-        }
-      });
-    } catch (error) {
+    if (body.rut === "" || body.password === "") {
+      setMessage("Ingrese rut y contraseña");
+      return;
+    } else {
+      try {
+        await signInRequest(body).then((response) => {
+          if (response.status === 200) {
+            //save token in local storage
+            localStorage.setItem("token", response.data);
+            setMessage("Ingreso exitoso");
+            //reload page
+            window.location.reload().then(() => {
+              navigate(from);
+            });
+          }
+        });
+      } catch (error) {
+        console.error(error);
+      }
       setMessage("Usuario o contraseña incorrectos");
     }
   }
@@ -44,31 +51,71 @@ function LoginPage() {
   }
 
   return (
-    <div className="Login">
-      <h2>Login Page</h2>
-      <label>
-        <span>Ingrese RUT: </span>
-        <input
+    <Card className="login-card">
+      <form className="login-form">
+        <h1 className="login-title">Iniciar Sesión</h1>
+        <div className="login-inputs">
+          <input
+            className="login-input"
             type="text"
             name="rut"
-            value={body.rut}
+            placeholder="Rut"
             onChange={inputChangeHandler}
-            placeholder="XXXXXXXX-X"
+            minLength="8"
+            maxLength="12"
+            required
           />
-      </label>
-      <label>
-        <span>Ingrese contraseña</span>
-        <input
+          <input
+            className="login-input"
             type="password"
             name="password"
-            value={body.password}
+            placeholder="Contraseña"
             onChange={inputChangeHandler}
-            placeholder="********"
+            minLength="4"
+            required
           />
-      </label>
-      <p>{message}</p>
-      <div className="button" onClick={onSubmitHandler} value="Login">Login</div>   
-    </div>
+        </div>
+        <div className="login-buttons">
+          <button
+            className="login-button"
+            type="button"
+            onClick={onSubmitHandler}
+          >
+            Ingresar
+          </button>
+        </div>
+      </form>
+      <div className="message">
+        <p>{message}</p>
+      </div>
+    </Card>
+    // <div className="Login">
+    //   <h2>Login Page</h2>
+    //   <label>
+    //     <span>Ingrese RUT: </span>
+    //     <input
+    //         type="text"
+    //         name="rut"
+    //         value={body.rut}
+    //         onChange={inputChangeHandler}
+    //         placeholder="XXXXXXXX-X"
+    //         required
+    //       />
+    //   </label>
+    //   <label>
+    //     <span>Ingrese contraseña</span>
+    //     <input
+    //         type="password"
+    //         name="password"
+    //         value={body.password}
+    //         onChange={inputChangeHandler}
+    //         placeholder="********"
+    //         required
+    //       />
+    //   </label>
+    //   <p>{message}</p>
+    //   <div className="button" onClick={onSubmitHandler} value="Login">Login</div>
+    // </div>
   );
 }
 
