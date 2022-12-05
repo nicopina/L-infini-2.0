@@ -1,7 +1,7 @@
 * {
 	padding: 0px;
 	margin: 0;
-	box-sizing: border-box; 
+	box-sizing: border-box;
 }
 
 /* body {
@@ -24,10 +24,12 @@
 	border-radius: 2px;
 	padding: 20px;
 	box-shadow: rgba(0, 0, 0, 0.912) 0px 1px 4px;
+	border-radius: 5px;
 }
 
 .formulario > div {
 	margin-bottom: 20px;
+	border-radius: 5px;
 }
 
 .formulario label {
@@ -36,6 +38,7 @@
 	font-size: 14px;
 	margin-bottom: 5px;
 	color: #000000;
+	border-radius: 5px;
 }
 
 .formulario .Text-Box,
@@ -47,17 +50,20 @@
 	margin-bottom: 5px;
 	color: #020202;
     background-color: rgb(253, 253, 253);
+	border-radius: 5px;
 }
 
  .formulario input:focus {
 	outline: none;
 	border: 2px solid #0085FF;
+	border-radius: 5px;
 } 
 
 .formulario .error {
 	color: #e92b2d;
 	font-weight: 600;
 	font-size: 12px;
+	border-radius: 5px;
 }
 
 .formulario button[type="submit"] {
@@ -77,6 +83,7 @@
 
 .formulario button[type="submit"]:hover {
 	background: #0051ff;
+	border-radius: 5px;
 }
 
 .formulario .exito {
@@ -84,6 +91,7 @@
 	font-size: 14px;
 	padding-top: 20px;
 	color: #02a802;
+	border-radius: 5px;
 }
 
 
@@ -92,4 +100,5 @@
 	width: 100%;
     background-color: #fff;
     color: #000000;
+	border-radius: 5px;
 }

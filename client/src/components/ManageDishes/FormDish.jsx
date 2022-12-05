@@ -32,7 +32,11 @@ const Formulario = () => {
 				validate={(valores) => {
 					let errores = {};
 
-					// Validacion nombre
+					// Validacion description
+					if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.description)){
+						errores.description = 'La descripción solo puede contener letras y espacios';
+					}
+					// Validacion name
 					if((valores.name).length >21) {
 						errores.name = 'El nombre debe tener menos de 20 caracteres';
 					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
@@ -41,9 +45,10 @@ const Formulario = () => {
 					//validacion phot_url
 					if((valores.photo_url).length >255) {
 						errores.photo_url = 'El URL de la imagen no debe sobrepasar los 255 caracteres';
+					} else if(!/^(ftp|http|https):\/\/[^ "]+$/.test(valores.photo_url)) {
+						errores.photo_url = 'El URL de la imagen no es valido';
+
 					}
-
-
 					// validacion precio
 					if((valores.value).length > 6) {
 						errores.value = 'El precio debe ser inferior a $100.000';
@@ -112,6 +117,7 @@ const Formulario = () => {
 
 						<div>
 							<Field name="description" as="textarea" placeholder="Descripcion" maxlength="50" />
+							<ErrorMessage name="description" component={() => (<div className="error">{errors.description}</div>)} />
 						</div>
 
 						<div>
