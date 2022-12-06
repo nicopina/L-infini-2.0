@@ -51,7 +51,7 @@ export const createTable = async (req, res) => {
     ]);
     res.json({ message: "Table saved" });
   } catch (error) {
-    console.log(error);
+    res.status(400).json({ message: "Table not saved" });
   }
 };
 

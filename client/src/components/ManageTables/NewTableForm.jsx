@@ -1,6 +1,7 @@
 import { Card } from "@mui/material";
 import { createTableRequest } from "../../api/tables.api";
 import "./NewTableForm.css";
+import swal from "sweetalert";
 
 function NewTableForm(params) {
   async function handleAddTable(event) {
@@ -8,9 +9,24 @@ function NewTableForm(params) {
     const newTable = {
       id: event.target.id.value,
     };
-    createTableRequest(newTable).then((response) => {
-      params.setSeed(Math.random());
-    });
+    try {
+      await createTableRequest(newTable).then((response) => {
+        swal({
+          title: "Mesa agregada",
+          text: "La mesa ha sido agregada con éxito",
+          icon: "success",
+          button: "Aceptar",
+        })
+        params.setSeed(Math.random());
+      })
+    } catch (error) {
+      swal({
+        title: "Error!",
+        text: "No se pudo agregar la mesa, verifica la información ingresada.",
+        icon: "error",
+        button: "Aceptar",
+      })
+    }
   }
 
   return (
