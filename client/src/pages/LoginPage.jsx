@@ -28,6 +28,7 @@ function LoginPage() {
           if (response.status === 200) {
             //save token in local storage
             localStorage.setItem("token", response.data);
+            // localStorage.setItem("token-time")
             setMessage("Ingreso exitoso");
             //reload page
             window.location.reload().then(() => {
