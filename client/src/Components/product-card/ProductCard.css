@@ -1,22 +1,20 @@
  
 .card .face-back{
-
     background-color: rgb(255, 253, 253);
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 10px;
     overflow: hidden;
-    transition: 0.3;
+    transition: 3s;
     box-shadow: 5px 5px 10px 5px rgb(84, 82, 82);
 }
 
 .card .face-front {
     height: 100%;
     width: 100%;
-    transform: perspective(100px) rotateY(180deg);
+    transform: perspective(600px) rotateY(0deg);
     box-shadow: 1px 1px 5px 1px rgba(255, 253, 253,);
-    transition: 0.3;
     background-color: rgb(255, 253, 253);
 }
 .card img{
@@ -38,7 +36,7 @@
 
 .card .face-back {
     position: absolute;
-    transform: perspective(100px) rotateY(180deg);
+    transform: perspective(600px) rotateY(180deg);
     background-color: rgb(255, 253, 253);
     padding: 0px;
     color: #000000;
@@ -59,13 +57,13 @@
     line-height: 18em;
 }
 
-.card:hover.face-front {
+.card:focus.face-front {
 
-    transform: perspective(200px) rotateY(360deg);
+    transform: perspective(600px) rotateY(180deg);
 }
 
-.card:hover .face-back {
-    transform: perspective(200px) rotateY(360deg);
+.card:active .face-back {
+    transform: perspective(900px) rotateY(360deg);
 }
 
 .card .price{
