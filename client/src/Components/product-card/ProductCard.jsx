@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import{Card} from 'reactstrap';
 
 import "./ProductCard.css";
 
@@ -18,7 +19,8 @@ const ProductCard = (props) => {
   const addCarrito = valuee.addCarrito;
 
   return (
-    <div className="card">
+    // <div className="card">
+      <Card className="card">
       <div className="face-front">
         <img src={photo_url || photo_default}/>
 
@@ -45,7 +47,8 @@ const ProductCard = (props) => {
           <a href="#">description</a>
         </div>
       </div>
-    </div>
+      </Card>
+    // </div>
   );
 };
 
