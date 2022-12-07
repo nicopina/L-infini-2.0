@@ -182,7 +182,7 @@ export const getActiveOrderByTableId = async (req, res) => {
 export const getCountOrdersToday = async (req, res) => {
 
   var hoy = new Date();
-  var fix = hoy.getTime() - (hoy.getTimezoneOffset() * 60000);
+  var fix = hoy.getTime();
   hoy = new Date(fix);
 
   try {
@@ -201,6 +201,7 @@ export const getCountOrdersMonth = async (req, res) => {
   var hoy = new Date();
   var fix = hoy.getTime() - (hoy.getTimezoneOffset() * 60000);
   hoy = new Date(fix);
+
 
   try {
     const [rows] = await promisePool.query(
@@ -223,7 +224,7 @@ export const getCountOrdersOneFullDate = async (req, res) => {
 
   try {
     const [rows] = await promisePool.query(
-      "SELECT COUNT(*) AS count FROM Orders WHERE DATE(created_at) = ?",
+      "SELECT COUNT(*) AS count FROM Orders WHERE DATE(created_at) = date(?)",
       [req.params.date]
     );
     return res.json(rows[0].count);
