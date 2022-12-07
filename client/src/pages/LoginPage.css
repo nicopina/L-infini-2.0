@@ -75,10 +75,19 @@
   align-items: center;
   justify-content: center;
 }
+.login-title h1{
+  width: 280px;
+}
 
 /* optional reset for presentation */
 * {
   font-family: Arial;
   text-decoration: none;
   font-size: 20px;
+}
+
+@media (max-with: 768px) {
+  .login-card{
+    width: 250px;
+  }
 }
