@@ -79,9 +79,9 @@ function Users(props) {
   ];
 
   return (
-    <div className="users">
+    <div className="users-manager-container">
       <h1>Usuarios</h1>
-      <Box sx={{ height: 400, width: "100%" }} key={seed}>
+      <Box className="users-manager-box" sx={{ height: 400, width: "100%" }} key={seed}>
         <DataGrid
           className="users-table"
           rows={users}
