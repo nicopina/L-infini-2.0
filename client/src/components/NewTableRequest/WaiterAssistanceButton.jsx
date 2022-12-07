@@ -30,9 +30,12 @@ function WaiterAssistanceButton(props) {
   }
   return (
     <div>
+      <h1 style={{color:'white'}}>.</h1>
+      
       <button
         className="buttonGreen"
         onClick={() => buttonAction(message, props)}
+       
       >
         {name}
       </button>

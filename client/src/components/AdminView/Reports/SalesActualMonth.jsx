@@ -62,7 +62,7 @@ function SalesActualMonth(params){
             <Card>
             <CardImg
                     alt="Card image cap"
-                    src="https://crimint.org/wp-content/uploads/2019/05/header-reportes.jpg"
+                    src="https://www.bits.com.mx/wp-content/uploads/2017/09/report-charts-ss-1920.jpg"
                     style={{
                         height: 450,
                         opacity: 0.7,
@@ -71,16 +71,16 @@ function SalesActualMonth(params){
                     width="100%"
                 />
                 <CardHeader>
-                    <CardTitle tag="h3" style={{textAlign:'center',fontFamily:'Cursive'}}>
+                    <CardTitle tag="h3" style={{textAlign:'center'}}>
                         Reporte de Ventas del mes de {obtenerMesTexto()}
                     </CardTitle>
                 </CardHeader>
-                <CardBody style={{textAlign:'center',fontFamily:'Cursive'}}>
+                <CardBody style={{textAlign:'center'}}>
                     <ListGroup>
                     <ListGroupItem>
-                    <h3 style={{fontFamily:'Cursive'}}>Total de ventas del mes actual: ${formatedProfit}</h3>
-                    <h3 style={{fontFamily:'Cursive'}}>Total de pedidos realizados en el mes actual: {formatedCountOrdersMonth}</h3>
-                    <h3 style={{fontFamily:'Cursive'}}>Promedio de ventas por pedido en el mes actual: ${formatedAverageProfit}</h3>
+                    <h3 >Total de ventas del mes actual: ${formatedProfit}</h3>
+                    <h3 >Total de pedidos realizados en el mes actual: {formatedCountOrdersMonth}</h3>
+                    <h3 >Promedio de ventas por pedido en el mes actual: ${formatedAverageProfit}</h3>
                     </ListGroupItem>
                     <ListGroupItem>
                     <SalesLastMonth actualMonthProfit = {profitEntireMonth}/>

@@ -8,6 +8,7 @@ import { deleteTableRequest, updateTableRequest } from "../../api/tables.api";
 import { style } from "@mui/system";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import "./Tables.css";
+import { Card, CardHeader, CardTitle, CardBody, Form, Input,CardImg} from "reactstrap";
 
 function Tables() {
   const [tables, setTables] = useState([]);
@@ -30,7 +31,7 @@ function Tables() {
     {
       field: "delete",
       headerName: "Eliminar",
-      width: 200,
+      width: 145,
       textAlign: "center",
       Style: { textAlign: "center" },
       renderCell: (params) => (
@@ -49,8 +50,16 @@ function Tables() {
       flexDirection: "column",
     }}
     >
-      <h1>Mesas</h1>
-      <Box sx={{ height: 400, width: "100%" }} key={seed} 
+      <h1 style={{color:'black'}}>Mesas</h1>
+      <CardImg      alt="Card image cap"
+                    src="https://cdn.shopify.com/s/files/1/0264/4017/1594/products/WhatsAppImage2020-10-27at20.23.15_923x.jpg?v=1621366760"
+                    style={{
+                        height: 200,
+                        width: 300,
+                        opacity: 1,
+                    }}
+                    />
+      <Box sx={{ height: 400, width: '100%' }} key={seed} 
                 style={{
                   display: "flex",
                   alignItems: "center",

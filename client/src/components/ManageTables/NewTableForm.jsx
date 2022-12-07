@@ -30,14 +30,16 @@ function NewTableForm(params) {
   }
 
   return (
-    <Card className="new-table-card">
+    <Card className="new-table-card" style={{ width: '600px'}}>
       <form onSubmit={handleAddTable} className="new-table-form">
+        <h4 className="new-table-title">Agregar una mesa</h4>
         <div className="new-table-input-container">
-          <label className="new-table-label">ID</label>
+          <label className="new-table-label">ID:  </label>
           <input type="text" name="id" required maxLength={6} />
+
         </div>
-        <button className="button" type="submit">
-          Agrega mesa
+        <button className="buttongreen" type="submit">
+          Agregar
         </button>
       </form>
     </Card>
