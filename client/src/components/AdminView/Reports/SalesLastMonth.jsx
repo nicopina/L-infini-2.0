@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'reactstrap';
 import {getProfitByDateRange} from '../../../api/orderItems.api';
 
 
@@ -50,23 +51,27 @@ function SalesLastMonth(params){
     var formatedDiferencia = Math.round(diferencia);
     formatedDiferencia = formatedDiferencia.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+    var color = "";
+    var color2 = "black";
     if (diferencia > 0){
         //Verde
-        var texto = "El mes actual ha superado al mes anterior en $" + formatedDiferencia;
+        var texto2 = "El mes actual ha superado al mes anterior en:";
+        var texto = "$ "+formatedDiferencia;
+        var color = "green";
     }
     else{
         //Rojo
-        diferencia = diferencia * -1;
-        var texto = "El mes actual ha sido inferior al mes anterior en -$" + formatedDiferencia;
+        var texto2 = "El mes actual ha sido inferior al mes anterior en:";
+        var texto = "$ "+formatedDiferencia*-1;
+        color = "red";
 
     }
 
     return(
         <div>
-            <h1>Comparación a la fecha con el mes anterior</h1>
-            <h2>{texto}</h2>
-            
-            
+            <h2 style={{textAlign:'center',fontFamily:'Cursive',color:'black'}} >Comparación a la fecha con el mes anterior</h2>
+            <h4 style={{textAlign:'center',fontFamily:'Cursive',color:'black'}} >{texto2}</h4>
+            <h4 style={{color: color}}>{texto}</h4>           
         </div>
     );
 

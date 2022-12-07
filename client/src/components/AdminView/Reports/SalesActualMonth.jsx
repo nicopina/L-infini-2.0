@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {getProfitEntireMonth} from '../../../api/orderItems.api';
-import {Card, CardHeader, CardTitle, CardBody,CardImg} from 'reactstrap';
+import {Card, CardHeader, CardTitle, CardBody,CardImg, CardSubtitle, ListGroup, ListGroupItem} from 'reactstrap';
 import {getCountOrdersMonth} from '../../../api/orders.api';
 import SalesLastMonth from './SalesLastMonth';
 
@@ -62,7 +62,7 @@ function SalesActualMonth(params){
             <Card>
             <CardImg
                     alt="Card image cap"
-                    src="https://visme.co/blog/wp-content/uploads/2019/11/Header-9.jpg"
+                    src="https://crimint.org/wp-content/uploads/2019/05/header-reportes.jpg"
                     style={{
                         height: 450,
                         opacity: 0.7,
@@ -76,12 +76,16 @@ function SalesActualMonth(params){
                     </CardTitle>
                 </CardHeader>
                 <CardBody style={{textAlign:'center',fontFamily:'Cursive'}}>
+                    <ListGroup>
+                    <ListGroupItem>
                     <h3 style={{fontFamily:'Cursive'}}>Total de ventas del mes actual: ${formatedProfit}</h3>
                     <h3 style={{fontFamily:'Cursive'}}>Total de pedidos realizados en el mes actual: {formatedCountOrdersMonth}</h3>
                     <h3 style={{fontFamily:'Cursive'}}>Promedio de ventas por pedido en el mes actual: ${formatedAverageProfit}</h3>
-
+                    </ListGroupItem>
+                    <ListGroupItem>
                     <SalesLastMonth actualMonthProfit = {profitEntireMonth}/>
-                    
+                    </ListGroupItem>
+                    </ListGroup>
  
                 </CardBody>
             </Card>
