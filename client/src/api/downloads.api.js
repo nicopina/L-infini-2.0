@@ -8,3 +8,11 @@ export const createDownloadOrdersProfitCSV = async (download) => {
         },
     });
     }
+
+export const createDownloadOrderItemsCSV = async (download) => {
+    return await axios.get(`${BASE_URL}/downloads/order-items`, {
+        headers: {
+            "x-access-token": localStorage.getItem("token"),
+        },
+    });
+    }
