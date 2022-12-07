@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
 import { DataContext } from "../../Context/DataContext";
+import { Cart } from "../ShoppingCart/Cart";
+import {FiShoppingCart} from "react-icons/fi";
+
 
 const Emptypages = [{ name: "Iniciar Sesión", path: "/login" }];
 
@@ -142,19 +145,29 @@ function Navbar() {
 
   const responsiveNavbar = () => {
     return (
-      <div className="Navbar">
-        <div className="Navbar__linfini">∞ l'infini ∞</div>
-        <div className="Navbar-responsive__content">
-          <div className="Navbar-responsive__links">
-            {pages?.map((page, index) => (
+      <>
+        <div className="Navbar">
+          <div className="Navbar__linfini">∞ l'infini ∞</div>
+          <div className="Navbar-responsive__content">
+            <div className="Navbar-responsive__links">
+              {pages?.map((page, index) => (
                 <Link className="Navbar-responsive__link" to={page.path}>
-                {page.name}
-              </Link>
-            ))}
+                  {page.name}
+                </Link>
+              ))}
+            </div>
           </div>
-            {/* <div className="Navbar-responsive__button">xaa</div> */}
         </div>
-      </div>
+        {user.role === null && table !== undefined ? (
+              <div className="Navbar-responsive__cart" onClick={toggleMenu}>
+                <FiShoppingCart />
+                <span className="Navbar-responsive__item_total">{carrito.length}</span>
+                {menu ? <Cart /> : ""}
+              </div>
+            ) : (
+              ""
+            )}
+      </>
     );
   };
 
@@ -168,6 +181,15 @@ function Navbar() {
               {page.name}
             </Link>
           ))}
+          {user.role === null && table !== undefined ? (
+              <div className="Navbar__cart" onClick={toggleMenu}>
+                <FiShoppingCart />
+                <span className="Navbar__item_total">{carrito.length}</span>
+                {menu ? <Cart /> : ""}
+              </div>
+            ) : (
+              ""
+            )}
         </div>
       </div>
     );

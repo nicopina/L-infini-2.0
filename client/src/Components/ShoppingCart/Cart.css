@@ -38,7 +38,7 @@
 }
 .carrito.show{
     transform: translate(10%, -10%);
-    scale:(1.1);
+    scale:(1.5);
     opacity: 1;
     visibility: visible;
 }
