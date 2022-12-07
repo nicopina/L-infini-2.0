@@ -25,6 +25,8 @@ function SalesReportPage() {
 
   var [profitToday, setProfitToday] = React.useState(0);
 
+
+
   var profitToday = 0;
   getProfitToday().then((response) => {
     profitToday = response.data[0].profit;

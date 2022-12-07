@@ -12,33 +12,44 @@ export const UserProvider = (props) => {
     localStorage.getItem("table") || undefined
   );
 
-  useEffect(() => {
+  function removeData() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("table");
+    setUser({
+      rut: "",
+      name: "",
+      role: null,
+    });
+  }
+
+  async function verifyToken() {
     const token = localStorage.getItem("token");
     if (token !== null) {
       try {
-        getUserByTokenRequest(token).then((response) => {
-          if (response.status === 200) {
+        await getUserByTokenRequest(token).then((response) => {
+          if (response.status == 200) {
             localStorage.setItem("role", response.data.role);
             setUser({
               rut: response.data.rut,
               name: response.data.name,
               role: response.data.role,
             });
-          } else {
-            localStorage.removeItem("token");
-            localStorage.removeItem("role");
-            setUser({
-              rut: "",
-              name: "",
-              role: null,
-            });
+          } else if (response.status === 401) {
+            removeData();
           }
         });
       } catch (error) {
-        console.error(error);
-        localStorage.removeItem("token");
+        removeData();
       }
     }
+    else{
+        removeData();
+    }
+  }
+
+  useEffect(() => {
+    verifyToken();
   }, []);
 
   useEffect(() => {

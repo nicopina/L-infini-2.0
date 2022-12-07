@@ -70,7 +70,7 @@ function SalesActualMonth(params){
                     <h2>Total de pedidos realizados en el mes actual: {formatedCountOrdersMonth}</h2>
                     <h2>Promedio de ventas por pedido en el mes actual: ${formatedAverageProfit}</h2>
 
-                    <SalesLastMonth/>
+                    <SalesLastMonth actualMonthProfit = {profitEntireMonth}/>
                     
  
                 </CardBody>
