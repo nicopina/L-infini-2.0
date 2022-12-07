@@ -65,9 +65,9 @@ function SalesDaily(params) {
           </CardTitle>
         </CardHeader>
         <CardBody style={{textAlign:'center',fontFamily:'Cursive'}}>
-          <h3 style={{fontFamily:'Cursive'}}>Total de ventas del día de hoy: ${formatedProfitToday}</h3>
-           <h3 style={{fontFamily:'Cursive'}}>Total de pedidos realizados hoy: {formatedCountOrdersToday}</h3>
-           <h3 style={{fontFamily:'Cursive'}}>Promedio de ventas por pedido hoy: ${formatedAverageProfitToday}</h3>
+          <h3 >Total de ventas del día de hoy: ${formatedProfitToday}</h3>
+           <h3 >Total de pedidos realizados hoy: {formatedCountOrdersToday}</h3>
+           <h3 >Promedio de ventas por pedido hoy: ${formatedAverageProfitToday}</h3>
         </CardBody>
       </Card>
     </div>

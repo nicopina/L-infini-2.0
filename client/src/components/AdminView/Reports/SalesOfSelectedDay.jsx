@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Card, CardHeader, CardTitle, CardBody, Form, Input } from "reactstrap";
+import { Card, CardHeader, CardTitle, CardBody, Form, Input,CardImg} from "reactstrap";
 import { getProfitByOneDate } from "../../../api/orderItems.api";
 import {getCountOrdersOneFullDate} from "../../../api/orders.api";
 
@@ -77,27 +77,38 @@ function SalesOfSelectedDay(params) {
   return (
     <div>
       <Card className="card-chart">
+      <CardImg
+                    alt="Card image cap"
+                    src="https://images4.alphacoders.com/201/201716.jpg"
+                    style={{
+                        height: 450,
+                        opacity: 0.7,
+                    }}
+                    top
+                    width="100%"
+                />
         <CardHeader>
-          <CardTitle tag="h5">
+          
+          <CardTitle tag="h5" style={{textAlign:'center'}}>
             Reporte de Ventas de un día seleccionado
           </CardTitle>
 
-          <Form onChange={handlerFechaChange}>
+          <Form onChange={handlerFechaChange} style={{textAlign:'center'}}>
             <label>Seleccione un día</label>
             <Input
               type="date"
               name="date"
               id="date"
-              
+              style={{textAlign:'center'}}
                 value={formatear(fecha)}
             />
           </Form>
         </CardHeader>
         <CardBody>
           
-            <h2>Total de ventas del día seleccionado: ${formatear_dinero(dayProfit)}</h2>
-            <h2>Total de pedidos del día seleccionado: {formatear_dinero(countOrdersDay)}</h2>
-            <h2>Promedio de ingresos por pedido: ${calcular_formatear_promedio(dayProfit, countOrdersDay)}</h2>
+            <h3 style={{textAlign:'center',color:'black'}}>Total de ventas del día seleccionado: ${formatear_dinero(dayProfit)}</h3>
+            <h3 style={{textAlign:'center',color:'black'}}>Total de pedidos del día seleccionado: {formatear_dinero(countOrdersDay)}</h3>
+            <h3 style={{textAlign:'center',color:'black'}}>Promedio de ingresos por pedido: ${calcular_formatear_promedio(dayProfit, countOrdersDay)}</h3>
             
 
           
