@@ -159,8 +159,9 @@
         color: #fff;
         top: 10px;
         z-index: 6;
-        position: relative;
+        position: absolute;
         left: 90%;
+        width: 50px;
     }
     .Navbar-responsive__item_total{
         position: absolute;
