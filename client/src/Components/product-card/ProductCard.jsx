@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import "./ProductCard.css";
 
 import { DataContext } from "../../Context/DataContext";
+import { height } from "@mui/system";
 
 const ProductCard = (props) => {
 
@@ -19,7 +20,7 @@ const ProductCard = (props) => {
   return (
     <div className="card">
       <div className="face-front">
-        <img src={photo_url || photo_default} alt="#" />
+        <img src={photo_url || photo_default} style={height="100px"}/>
 
         <h6>{name}</h6>
 

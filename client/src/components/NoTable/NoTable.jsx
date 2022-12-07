@@ -15,20 +15,19 @@ function NoTable() {
 
   return (
     <div style={{"display":"flex", "alignItems":"center",'width':"100%","justifyContent":"center"}}>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ maxWidth: 845 }}>
       <CardMedia
         component="img"
         alt="green iguana"
-        height="140"
-        image="https://jcc2020.cl/wp-content/uploads/2020/07/hector-soza-2-jcc2020-eic-ucn-33.jpg"
+        height="400"
+        image="https://www.bcasual.cl/wp-content/uploads/2020/03/mesa-donatto.jpg"
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Sin mesa asignada
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {"Escanee el codigo QR para asignar una mesa <3"}
-        </Typography>
+      <CardContent> 
+        <div gutterBottom variant="h5" component="div" style={{textAlign:'center'}}>
+        </div>
+        <div variant="body2" color="text.secondary">
+           <h3 style={{color:'black',textAlign:'center',}}>Escanee el código Qr de su Mesa para ver la carta</h3>
+        </div>
       </CardContent>
     </Card>
     </div>
