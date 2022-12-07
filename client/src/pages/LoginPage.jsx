@@ -55,7 +55,9 @@ function LoginPage() {
   return (
     <Card className="login-card">
       <form className="login-form">
-        <h1 className="login-title">Iniciar Sesión</h1>
+        <div className="login-title">
+        <h1>Iniciar Sesión</h1>
+        </div>
         <div className="login-inputs">
           <input
             className="login-input"
