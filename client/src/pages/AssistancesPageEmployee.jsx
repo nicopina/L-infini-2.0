@@ -1,6 +1,6 @@
 import TablesRequestsList from "../components/NewTableRequest/TablesRequestsList";
 
-function AssistancesPage() {
+function AssistancesPageEmployee() {
   return (
     <div
       style={{
@@ -19,4 +19,4 @@ function AssistancesPage() {
   );
 }
 
-export default AssistancesPage;
+export default AssistancesPageEmployee;

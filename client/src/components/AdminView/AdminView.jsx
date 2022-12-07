@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-
 import ActiveOrdersPage from "../../pages/ActiveOrdersPage.jsx";
 import DishesPage from "../../pages/DishesPage.jsx";
 import ManageUsersPage from "../../pages/ManageUsersPage";
@@ -8,10 +7,8 @@ import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Static Components/Footer.jsx";
 import Navbar from "../Navbar/Navbar.jsx";
 import LogoutPage from "../../pages/LogoutPage.jsx";
-
 import { DataProvider } from '../../Context/Datacontext.jsx';
 import MenuPack from "../MenuPack/MenuPack.jsx";
-import AssistancesPage from "../../pages/AssistancesPage.jsx";
 import ManageTables from "../../pages/ManageTables.jsx";
 import DishRegisterPage from "../../pages/DishRegisterPage.jsx";
 import Reports from "../../pages/Reports";
@@ -20,6 +17,7 @@ import SalesReportPage from "./Reports/SalesReportPage.jsx";
 import { UserContext } from "../../Context/UserContext.jsx";
 import { useEffect } from "react";
 import DishCategoryRegisterPage from "../../pages/DishCategoryRegisterPage.jsx";
+import AssistancesPageEmployee from "../../pages/AssistancesPageEmployee.jsx";
 
 function AdminView() {
 
@@ -36,7 +34,7 @@ function AdminView() {
       <Routes >
         <Route path="*" element={<Navigate to='/menu'/>} />
         <Route path="/menu" element={<MenuPack/>} />
-        <Route path ="/asistencias" element={<AssistancesPage/>}/>
+        <Route path ="/asistencias" element={<AssistancesPageEmployee/>}/>
         <Route path="/pedidosActivos" element={<ActiveOrdersPage/>}/>
         <Route path="/platos" element={<DishesPage/>}/>
         <Route path="/usuarios" element={<ManageUsersPage/>}/>

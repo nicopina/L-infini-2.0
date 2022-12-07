@@ -5,9 +5,19 @@ import { Row, Col } from "reactstrap";
 import {useContext} from 'react';
 
 
-function AssistancePageTest() {
+function AssistancePageUser() {
 
-  const tableId = localStorage.getItem("TableId");
+  const tableId = localStorage.getItem("table");
+  const rol = localStorage.getItem("role");
+
+  //if role is null, dont show TablesRequestsList
+  if (rol === null) {
+    var showTablesRequestsList = false;
+  } else {
+    var showTablesRequestsList = true;
+  }
+  console.log("hola");
+
   return (
     <div>
       <h1>Asistencia Mesa: {tableId}</h1>
@@ -21,9 +31,18 @@ function AssistancePageTest() {
         </Col>
       </Row>
 
-      <TablesRequestsList />
+      {showTablesRequestsList ? (
+        <Row>
+          <Col>
+            <TablesRequestsList />
+          </Col>
+        </Row>
+      ) : (
+        <div></div>
+      )}
+      
     </div>
   );
 }
 
-export default AssistancePageTest;
+export default AssistancePageUser;
