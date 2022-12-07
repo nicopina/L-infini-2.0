@@ -73,12 +73,16 @@ const Formulario = () => {
 				{( {errors} ) => (
 					<Form className="formulario">
 						<div>
+							<h2 style={{color:'black',textAlign:'center'}}>Ingrese la información del plato</h2>
+						</div>
+						<div>
 							<label htmlFor="Dish">Plato</label>
 							<Field className="Text-Box"
 								type="text"
 								id="name" 
 								name="name" 
-								maxlength="100"
+								maxLength="100"
+								placeholder="Porotos con rienda"
 							/>
 							<ErrorMessage name="name" component={() => (<div className="error">{errors.name}</div>)} />
 						</div>
@@ -88,8 +92,8 @@ const Formulario = () => {
 								type="text" 
 								id="photo_url" 
 								name="photo_url" 
-								placeholder="" 
-								maxlength="255"
+								placeholder="http://www.ejemplo.com/imagen.jpg" 
+								maxLength="255"
 							/>
 							<ErrorMessage name="photo_url" component={() => (<div className="error">{errors.photo_url}</div>)} />
 			
@@ -118,7 +122,7 @@ const Formulario = () => {
 						</div>
 
 						<div>
-							<Field name="description" as="textarea" placeholder="Descripcion" maxlength="50" />
+							<Field name="description" as="textarea" placeholder="Ingrese una descripción sobre el contenido según su categoría" maxLength="255" />
 							<ErrorMessage name="description" component={() => (<div className="error">{errors.description}</div>)} />
 						</div>
 

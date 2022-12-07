@@ -20,7 +20,7 @@ function AssistancePageUser() {
 
   return (
     <div>
-      <h1>Asistencia Mesa: {tableId}</h1>
+      <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}> Asistencia Mesa: {tableId}</h1>
       <Row>
         <Col>
           <NewTableRequest />

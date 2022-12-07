@@ -63,7 +63,7 @@ function RegisterPage() {
         {" "}
         {errMessage}{" "}
       </p>
-      <h1>Register Page</h1>
+      <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}>Register Page</h1>
       <form>
         <label htmlFor="rut"> 
           Rut:

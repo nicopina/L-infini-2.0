@@ -1,4 +1,4 @@
-.button {
+.buttonf {
     display: inline-block;
     padding: 0.75rem 1.25rem;
     border-radius: 10rem;
@@ -11,33 +11,33 @@
     overflow: hidden;
     z-index: 1;
   }
-  .button:after {
+  .buttonf:after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0cf;
+    background-color: rgb(70, 70, 70);
     border-radius: 10rem;
     z-index: -2;
   }
-  .button:before {
+  .buttonf:before {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: #008fb3;
+    background-color: #00759c;
     transition: all 0.3s;
     border-radius: 10rem;
     z-index: -1;
   }
-  .button:hover {
+  .buttonf:hover {
     color: #fff;
   }
-  .button:hover:before {
+  .buttonf:hover:before {
     width: 100%;
   }
   

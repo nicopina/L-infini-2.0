@@ -39,7 +39,7 @@ function ActiveOrdersPage() {
           flexDirection: "column",
         }}
         >
-          <h1>Pedidos activos</h1>
+          <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}>Pedidos activos</h1>
           <Reload/>
         </Grid>
         {activeOrders.map((order, index) => (

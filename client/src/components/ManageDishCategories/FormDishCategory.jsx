@@ -40,8 +40,9 @@ const Formulario = () => {
 			>
 				{( {errors} ) => (
 					<Form className="formulario">
+						<h2 style={{color:'black',textAlign:'center'}}>Ingresar categoria de plato</h2>
 						<div>
-							<label htmlFor="Dishcategory">Plato</label>
+							<label htmlFor="Dishcategory">Categoria de Plato</label>
 							<Field className="Text-Box"
 								type="text"
 								id="name" 

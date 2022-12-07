@@ -56,7 +56,7 @@ function LoginPage() {
     <Card className="login-card">
       <form className="login-form">
         <div className="login-title">
-        <h1>Iniciar Sesión</h1>
+        <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}>Iniciar Sesión</h1>
         </div>
         <div className="login-inputs">
           <input

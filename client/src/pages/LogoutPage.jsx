@@ -16,7 +16,7 @@ function LogoutPage() {
         window.location.reload();
     }, []);
   return (
-    <div>LogoutPage</div>
+    <div style={{color:'black',textAlign:'center',alignItems:'center'}}>LogoutPage</div>
   )
 }
 
