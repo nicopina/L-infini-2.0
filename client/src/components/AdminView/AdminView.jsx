@@ -6,7 +6,8 @@ import DishesPage from "../../pages/DishesPage.jsx";
 import ManageUsersPage from "../../pages/ManageUsersPage";
 import NotFound from "../NotFound/NotFound.jsx";
 import Footer from "../Static Components/Footer.jsx";
-import Navbar from "../Navbar/Navbar.jsx";
+// import Navbar from "../Navbar/Navbar.jsx";
+import Navbar from "../Navbar/NewNavbar.jsx";
 import LogoutPage from "../../pages/LogoutPage.jsx";
 
 import { DataProvider } from '../../Context/Datacontext.jsx';

@@ -1,0 +1,114 @@
+.Navbar{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    /* overflow: hidden; */
+}
+.Navbar-responsive__links{
+    display: none;
+}
+
+.Navbar__linfini{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    width: 200px;
+    height: 60px;
+}
+
+.Navbar__links{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    list-style: none;
+}
+
+.Navbar__link{
+    margin: 5px 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.Navbar__link:hover{
+    color: #939393;
+    transition: .3s linear;
+}
+
+.Navbar__link:not(:hover){
+    transition: .3s linear;
+}
+
+
+@media screen and (max-width: 1370px){
+    .Navbar__links{
+        display: none;
+        transition: 2s;
+    }
+
+    .Navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: 5s linear;
+    }
+    
+    
+    .Navbar-responsive__links{
+        border-right: 10px solid blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-color: #000000;
+        position: relative;
+        z-index: 1;
+        top: 30px;
+        width: 250px;
+        right: 0;
+        padding-bottom: 15px;
+        transition: right .35s .2s ease-out;
+
+    }
+
+    .Navbar-responsive__content{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        right: 250px;
+    }
+
+    .Navbar-responsive__link{
+        margin: 5px 10px;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+    .Navbar-responsive__link:hover{
+        color: #939393;
+        transition: .3s linear;
+    }
+    .Navbar-responsive__link:not(:hover){
+        transition: .3s linear;
+    }
+    .Navbar-responsive__links:hover{
+        right: -230px;
+    }
+
+}
+

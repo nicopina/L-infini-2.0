@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar";
+// import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Static Components/Footer";
 import LoginPage from "./LoginPage";
 import NoTable from "../components/NoTable/NoTable";
 import NewAllocatedTable from "../components/NewAllocatedTable/NewAllocatedTable";
 import {useState} from 'react';
+import Navbar from "../components/Navbar/NewNavbar";
 
 function NoTablePage() {
   const [seed , setSeed] = useState(0);

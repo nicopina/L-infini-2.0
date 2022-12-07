@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Routes, Route, Navigate, useParams } from "react-router-dom";
-import Navbar from "../Navbar/Navbar.jsx";
+// import Navbar from "../Navbar/Navbar.jsx";
+import NavBar from "../Navbar/NewNavbar.jsx";
 import Footer from "../Static Components/Footer.jsx";
 
 import OrderPageTest from "../../pages/OrderPageTest.jsx";

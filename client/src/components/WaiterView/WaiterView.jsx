@@ -1,7 +1,8 @@
 import MenuPageTest from "../../pages/MenuPageTest";
 import ActiveOrdersPage from "../../pages/ActiveOrdersPage";
 import DishesPage from "../../pages/DishesPage";
-import Navbar from "../Navbar/Navbar";
+// import Navbar from "../Navbar/Navbar";
+import Navbar from "../Navbar/NewNavbar";
 import Footer from "../Static Components/Footer";
 import { Routes, Route , Navigate } from "react-router-dom";
 import LogoutPage from "../../pages/LogoutPage";
