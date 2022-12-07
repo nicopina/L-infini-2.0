@@ -56,7 +56,7 @@ export const signIn = async (req, res) => {
     );
     if (validPassword) {
       const token = jwt.sign({ id: user.rut, role: user.role }, config.SECRET, {
-        expiresIn: 60, //24 hours
+        expiresIn: 86400, //24 hours
       });
       return res.json(token);
     }
