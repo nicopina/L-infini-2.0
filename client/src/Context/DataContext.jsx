@@ -1,6 +1,7 @@
 import React,{useState,useEffect,createContext} from 'react'
 import { fastFoodProducts } from "../api/products";
 import{getActiveDishesRequest} from "../api/dishes.api";
+import { getDishesCategoriesRequest } from "../api/dishesCategories.api";
 
 
 //hacer atributo cantidad 1 en tabla orden y luego llamarla aqui para pasar por el value.
@@ -13,8 +14,16 @@ export const DataProvider=(props)=>{
     const[menu,setMenu]=useState(false); // inicializador de estado
     const[total,setTotal]=useState(0); // inicializador de estado
     const[carrito,setCarrito]=useState(JSON.parse(localStorage.getItem("dataCarrito"))||[]); // inicializador de estado
+    const[menuCategorias,setMenuCategorias]=useState([]); // inicializador de estado
 
-
+    useEffect(()=>{ 
+        getDishesCategoriesRequest().then((response) => {
+            if (response.status === 200) {
+                setMenuCategorias(response.data);
+            }
+        });
+    },[])
+    
    
     useEffect(()=>{
         getActiveDishesRequest().then((response) => {
@@ -61,6 +70,7 @@ export const DataProvider=(props)=>{
     },[carrito])
 
     const value={
+        menuCategorias:[menuCategorias],
         productos:[productos],
         menu:[menu,setMenu],
         addCarrito:addCarrito,

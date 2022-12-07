@@ -9,7 +9,6 @@ import { height } from "@mui/system";
 const ProductCard = (props) => {
 
   const role = localStorage.getItem("role");
-  console.log(role)
   const photo_default = "https://i.pinimg.com/originals/15/50/ee/1550ee86d49cbcc3f530ac53d538cd60.jpg";
 
   const { id, name, value, description, photo_url } = props.item;
