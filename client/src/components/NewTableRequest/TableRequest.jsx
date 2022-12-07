@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "reactstrap";
+import { Container, Row, Col, Card,CardImg, CardGroup } from "reactstrap";
 import WaiterAssistanceButton from "./WaiterAssistanceButton";
 
 function TableRequest(props) {
@@ -33,14 +33,30 @@ function TableRequest(props) {
 
   return (
     <div>
+      <CardGroup>
+        <card>
+        <CardImg     alt="Card image cap"
+                    src="https://www.buk.cl/hubfs/CL%20-%20Pillar%20Xtra%20-%20Control%20de%20Asistencia/implementar%20Control%20de%20asistencia%20burbuja.png"
+                    style={{
+                        height: 220,
+                        width: 220,
+                        opacity: 0.7,
+                    }}
+                    top
+                    />
+            </card>
       <Card
         key={request.id}
         style={{
           padding: "10px",
           margin: "10px",
+          display: "flex",
+          height: "200px",
+          justifyContent: "center",
+          width: "750px",
         }}
       >
-        <Row>
+        <Row >
           <Col>Mesa: {request.table_id}</Col>
           <Col>Estado: {state}</Col>
           <Col>Tipo: {type}</Col>
@@ -59,6 +75,7 @@ function TableRequest(props) {
           </Col>
         </Row>
       </Card>
+      </CardGroup>
     </div>
   );
 }
