@@ -24,7 +24,7 @@ function UserView() {
   return (
     <DataProvider>
       <div className="App">
-        <NavBar />
+        <Navbar />
         <Routes>
           <Route path="/newTable/:id" element={<NewAllocatedTable/>} />
           <Route path="*" element={<Navigate to="/menu" />} />
