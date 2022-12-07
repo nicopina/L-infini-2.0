@@ -20,7 +20,7 @@ const ProductCard = (props) => {
   return (
     <div className="card">
       <div className="face-front">
-        <img src={photo_url || photo_default} style={height="100px"}/>
+        <img src={photo_url || photo_default}/>
 
         <h6>{name}</h6>
 
