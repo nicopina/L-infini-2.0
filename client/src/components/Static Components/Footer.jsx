@@ -16,7 +16,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <footer style={{"bottom":"0", "width": "100%"}}>
+    <footer style={{ bottom: "0", width: "100%" }}>
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
@@ -24,28 +24,12 @@ function Footer() {
         color="white"
       >
         <Container maxWidth="lg">
-          <Grid container spacing={5}>
-            <Grid item xs={12} sm={4}>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Páginas Relacionadas</Box>
-              <Box>
-                <Link href="/" color="inherit">
-                  
-                </Link>
-              </Box>
-              <Box>
-                <a href="https://fixum.herokuapp.com/" color="inherit" target="_blank">
-                  FIXUM
-                </a>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-            </Grid>
-          </Grid>
           <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
             Ad Infinitum &reg; {new Date().getFullYear()}
-            <img src="https://cdn.discordapp.com/attachments/966850902319321183/1048086293642481746/Screenshot_2022-12-02_at_00.53.30-PhotoRoom-2.png" width="100px"/>
+            <img
+              src="https://cdn.discordapp.com/attachments/966850902319321183/1048086293642481746/Screenshot_2022-12-02_at_00.53.30-PhotoRoom-2.png"
+              width="100px"
+            />
           </Box>
         </Container>
       </Box>
