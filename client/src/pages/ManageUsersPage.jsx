@@ -6,7 +6,7 @@ function ManageUsersPage() {
 
   return (
     <div>
-      <h1>Manage Users</h1>
+      <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}>Manage Users</h1>
         <Users/>
         {/* <NewUserForm/> */}
     </div>

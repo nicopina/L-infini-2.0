@@ -9,7 +9,7 @@ function HomePageTest() {
     localStorage.setItem("TableId", tableId);
   return (
     <div>
-      <h1>Home</h1>
+      <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}>Home</h1>
       {window.location.href = "/menu"}
     </div>
   );

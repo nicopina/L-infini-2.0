@@ -17,7 +17,7 @@ function OrderState() {
 
   return (
     <div className='order-state__table'>
-      <h1>Estado de la Orden</h1>
+      <h1 style={{color:'black'}}>Estado de la Orden</h1>
       <Reload/>
       <div>
       </div>

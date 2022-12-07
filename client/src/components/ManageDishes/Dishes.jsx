@@ -41,7 +41,7 @@ function Dishes() {
         flexDirection: "column",
       }}
     >
-      <h1>Platos</h1>
+      <h1 style={{color:'black'}}>Platos</h1>
       <Card
         style={{
           padding: "0 10px 10px 10px",
