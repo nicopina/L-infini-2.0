@@ -8,6 +8,7 @@ import "./OrderState.css";
 function OrderState() {
   const [orders, setOrders] = useState([]);
 
+  let total = 0;
   useEffect(() => {
     const table = localStorage.getItem('table');
     getActiveOrderByTableIdRequest(table).then((response) => {
@@ -27,14 +28,20 @@ function OrderState() {
           <div className='order-state__card2'>
             <h4 style={{color:"black"}}>Productos</h4>
           {order.orderList.map((item, index) => (
+            total+=item.value*item.quantity,
             <div className='orderItem'>
               <img className='orderItemImage' src={item.photo_url}/>
+              <div className='orderItem'>
               <p className='orderItemText'>{item.quantity} {item.name}</p>
+              <p className='orderItemText'>${item.value*item.quantity}</p>
+              </div>
             </div>
           ))}
+          
           </div>
         </Card>
       ))}
+      <p>Subtotal: ${total}</p>
     </div>
   );
 }
