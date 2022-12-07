@@ -2,7 +2,9 @@ import React from 'react';
 import {getProfitByDateRange} from '../../../api/orderItems.api';
 
 
-function SalesLastMonth(){
+function SalesLastMonth(params){
+
+    var actualMonthProfit = params.actualMonthProfit;
 
    //Today
     var actual_date = new Date();
@@ -40,13 +42,30 @@ function SalesLastMonth(){
     }, []);
        
 
-    console.log("Inicio: " + first_day_last_month, "Fin: " + final_date);
+    //Condicionales para frase y colores.
+    console.log("Actual month profit ",actualMonthProfit);
+    console.log("Mes anterior:  ",profit);
+    var diferencia = actualMonthProfit - profit;
 
+    var formatedDiferencia = Math.round(diferencia);
+    formatedDiferencia = formatedDiferencia.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    if (diferencia > 0){
+        //Verde
+        var texto = "El mes actual ha superado al mes anterior en $" + formatedDiferencia;
+    }
+    else{
+        //Rojo
+        diferencia = diferencia * -1;
+        var texto = "El mes actual ha sido inferior al mes anterior en -$" + formatedDiferencia;
+
+    }
 
     return(
         <div>
-            <h1>Ultimo mes</h1>
-            ${profit}
+            <h1>Comparación a la fecha con el mes anterior</h1>
+            <h2>{texto}</h2>
+            
             
         </div>
     );
