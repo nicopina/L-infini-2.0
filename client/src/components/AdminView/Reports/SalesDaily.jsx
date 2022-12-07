@@ -60,7 +60,7 @@ function SalesDaily(params) {
                     width="100%"
                 />
         <CardHeader>
-          <CardTitle tag="h4" style={{textAlign:'center',fontFamily:'Cursive'}}>
+          <CardTitle tag="h4" style={{textAlign:'center',}}>
             Reporte de Ventas del día de hoy {formatearFecha(new Date())}
           </CardTitle>
         </CardHeader>

@@ -18,7 +18,7 @@ const MenuPack = () => {
 
   return (
     <div className="menu">
-      <h1>Menú</h1>
+      <h1 style={{color:'black'}}>Menú</h1>
       <Reload />
       <Container>
         <Row>
