@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProfitToday } from "../../../api/orderItems.api";
-import { Card, CardHeader, CardTitle, CardBody } from "reactstrap";
+import { Card, CardHeader, CardTitle, CardBody,CardImg } from "reactstrap";
 import { getCountOrdersToday, getCountOrdersOneFullDate } from "../../../api/orders.api";
 
 
@@ -47,17 +47,27 @@ function SalesDaily(params) {
 
 
   return (
-    <div>
-      <Card>
+    <div >
+      <Card color="secondary" outline >
+      <CardImg
+                    alt="Card image cap"
+                    src="https://kottke.org/plus/misc/images/calendar-dates-week.jpeg"
+                    style={{
+                        height: 450,
+                        opacity: 0.7,
+                    }}
+                    top
+                    width="100%"
+                />
         <CardHeader>
-          <CardTitle tag="h4">
+          <CardTitle tag="h4" style={{textAlign:'center',fontFamily:'Cursive'}}>
             Reporte de Ventas del día de hoy {formatearFecha(new Date())}
           </CardTitle>
         </CardHeader>
-        <CardBody>
-          <h2>Total de ventas del día de hoy: ${formatedProfitToday}</h2>
-           <h2>Total de pedidos realizados hoy: {formatedCountOrdersToday}</h2>
-           <h2>Promedio de ventas por pedido hoy: ${formatedAverageProfitToday}</h2>
+        <CardBody style={{textAlign:'center',fontFamily:'Cursive'}}>
+          <h3 style={{fontFamily:'Cursive'}}>Total de ventas del día de hoy: ${formatedProfitToday}</h3>
+           <h3 style={{fontFamily:'Cursive'}}>Total de pedidos realizados hoy: {formatedCountOrdersToday}</h3>
+           <h3 style={{fontFamily:'Cursive'}}>Promedio de ventas por pedido hoy: ${formatedAverageProfitToday}</h3>
         </CardBody>
       </Card>
     </div>
