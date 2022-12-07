@@ -49,7 +49,30 @@ function Reports(){
                         <Button  className="buttonpad" color="success" size='lg' href={`/reportes/ventas`}>Reporte de Ventas</Button>
                         </CardBody>
                     </Card>
-            </div>            
+            </div>    
+
+            <div>
+            <Card className="my-2">
+                 <CardImg
+                        alt="Card image cap"
+                        src="https://administrategia.com/wp-content/uploads/2019/09/reporte_1.jpg"
+                        style={{
+                            height: 600,opacity: 0.7
+                        }}
+                        top
+                        width="100%"
+                        />
+                        <CardBody className="cardbodyc">
+                        <CardTitle tag="h5">
+                            Descargas
+                        </CardTitle>
+                        <CardText>
+                            Aquí puedes descargar información general para realizar análisis.
+                        </CardText>
+                        <Button  className="buttonpad" color="success" size='lg' href={`/reportes/descargas`}>Descargas</Button>
+                        </CardBody>
+                    </Card>
+            </div>          
             
         </>
     )

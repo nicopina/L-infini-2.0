@@ -18,6 +18,7 @@ import { UserContext } from "../../Context/UserContext.jsx";
 import { useEffect } from "react";
 import DishCategoryRegisterPage from "../../pages/DishCategoryRegisterPage.jsx";
 import AssistancesPageEmployee from "../../pages/AssistancesPageEmployee.jsx";
+import DownloadsPage from "./Reports/DownloadsPage.jsx";
 
 function AdminView() {
 
@@ -45,6 +46,7 @@ function AdminView() {
         <Route path="/reportes/platos" element= {<DishReportPage/>} />
         <Route path="/registroCategoriaPlatos" element={<DishCategoryRegisterPage/>} />
         <Route path="/reportes/ventas" element= {<SalesReportPage/>} />
+        <Route path= "/reportes/descargas" element={<DownloadsPage/>}/>
 
       </Routes>
       <Footer />

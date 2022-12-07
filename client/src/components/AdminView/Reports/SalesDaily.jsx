@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProfitToday } from "../../../api/orderItems.api";
 import { Card, CardHeader, CardTitle, CardBody,CardImg } from "reactstrap";
 import { getCountOrdersToday, getCountOrdersOneFullDate } from "../../../api/orders.api";
+import OrderSalesCSV from "../../Downloads/OrderSalesCSV";
 
 
 function SalesDaily(params) {
@@ -62,6 +63,7 @@ function SalesDaily(params) {
         <CardHeader>
           <CardTitle tag="h4" style={{textAlign:'center',fontFamily:'Cursive'}}>
             Reporte de Ventas del día de hoy {formatearFecha(new Date())}
+            <OrderSalesCSV />
           </CardTitle>
         </CardHeader>
         <CardBody style={{textAlign:'center',fontFamily:'Cursive'}}>
