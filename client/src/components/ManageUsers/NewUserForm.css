@@ -1,44 +1,67 @@
-.new-user-container {
+.new-user-container{
+    min-width: 700px;
+}
+
+.new-user-input-container {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
+  flex-direction: row;
+  align-items: space-between;
   width: 100%;
   height: 100%;
-  padding: 20px;
-  max-width: 1000px;
-  margin: 50px 0;
-}
-.new-user-input {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-}
-/* 
-.new-user-input input{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-} */
-
-/* .new-user-form{
-    display: flex;
-   flex-direction: row;
+  /* max-width: 1000px; */
+  margin: 0 auto;
+  border: 1px solid black;
 }
 
-.new-user-form__column {
+.new-user-input-container-separator{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 400px;
+    width: 80%;
 }
-.new-user-form__row{
+
+.new-user-input-items {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 400px;
-} */
+    /* width: 80%; */
+    padding: 10px;
+    width: 350px;
+    margin: 5px;
+}
+
+.new-user-container:hover{
+    background-color: rgb(237, 237, 237);
+    transition: 0.3s linear;
+}
+
+.new-user-input-container:not(:hover){
+    transition: 0.3s linear;
+}
+
+.new-user-input-items input{
+    padding: 5px;
+}
+
+@media (max-width: 700px) {
+    .new-user-container{
+        min-width: 95%;
+        width: 95%;
+    }
+    .new-user-input-container{
+        flex-direction: column;
+        /* min-width: none; */
+        width: 95%;
+    }
+}
+
+@media (max-width: 415px){
+    .new-user-input-items{
+        flex-direction: column;
+        width: 95%;
+    }
+}
+ 
+
 
 
 

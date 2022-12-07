@@ -93,33 +93,6 @@ function LoginPage() {
         <p>{message}</p>
       </div>
     </Card>
-    // <div className="Login">
-    //   <h2>Login Page</h2>
-    //   <label>
-    //     <span>Ingrese RUT: </span>
-    //     <input
-    //         type="text"
-    //         name="rut"
-    //         value={body.rut}
-    //         onChange={inputChangeHandler}
-    //         placeholder="XXXXXXXX-X"
-    //         required
-    //       />
-    //   </label>
-    //   <label>
-    //     <span>Ingrese contraseña</span>
-    //     <input
-    //         type="password"
-    //         name="password"
-    //         value={body.password}
-    //         onChange={inputChangeHandler}
-    //         placeholder="********"
-    //         required
-    //       />
-    //   </label>
-    //   <p>{message}</p>
-    //   <div className="button" onClick={onSubmitHandler} value="Login">Login</div>
-    // </div>
   );
 }
 

@@ -176,80 +176,89 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar style={{background:"#1b1919"}}>
+    <AppBar style={{ background: "#1b1919" }}>
       <Container className="NavBar" maxWidth="xl">
         <Toolbar disableGutters>
           <AllInclusiveIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
           />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 300,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            l'infini
-          </Typography>
 
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "flex", md: "none" },
-              width: "100%",
-            }}
-          >
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+          {/* Content */}
+
+          <div className="Navbar__content">
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
               sx={{
-                display: { xs: "block", md: "none" },
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 300,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
               }}
             >
-              {pages?.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Link to={page.path}>{page.name}</Link>
-                </MenuItem>
-              ))}
-            </Menu>
-            {user.role === null && table !== undefined? (
-              <div className="cart" onClick={toggleMenu}>
-                <box-icon name="cart"></box-icon>
-                <span className="item_total">{carrito.length}</span>
+              l'infini
+            </Typography>
+
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "flex", md: "none" },
+                width: "100%",
+              }}
+            >
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <div className="Navbar__content__right">
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                  }}
+                >
+                  <div className="Navbar__content__items">
+                  {pages?.map((page, index) => (
+                    <MenuItem key={index} onClick={handleCloseNavMenu}>
+                      <Link to={page.path}>{page.name}</Link>
+                    </MenuItem>
+                  ))}
+                  </div>
+                </Menu>
+                {user.role === null && table !== undefined ? (
+                  <div className="cart" onClick={toggleMenu}>
+                    <box-icon name="cart"></box-icon>
+                    <span className="item_total">{carrito.length}</span>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
-            ) : (
-              ""
-            )}
-          </Box>
+            </Box>
+          </div>
           <AllInclusiveIcon
             sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
           />
@@ -280,7 +289,7 @@ function ResponsiveAppBar() {
               </MenuItem>
             ))}
 
-            {user.role === null && table !== undefined? (
+            {user.role === null && table !== undefined ? (
               <div className="cart" onClick={toggleMenu}>
                 <box-icon name="cart"></box-icon>
                 <span className="item_total">{carrito.length}</span>
