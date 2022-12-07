@@ -33,12 +33,14 @@ const Formulario = () => {
 					let errores = {};
 
 					// Validacion description
-					if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.description)){
+					if((valores.description).length > 255) {
+						errores.name = 'La descripción debe tener menos de 255 caracteres';
+					}else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.description)){
 						errores.description = 'La descripción solo puede contener letras y espacios';
 					}
 					// Validacion name
-					if((valores.name).length >21) {
-						errores.name = 'El nombre debe tener menos de 20 caracteres';
+					if((valores.name).length >100) {
+						errores.name = 'El nombre debe tener menos de 100 caracteres';
 					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
 						errores.name = 'El nombre solo puede contener letras y espacios'
 					}
@@ -76,7 +78,7 @@ const Formulario = () => {
 								type="text"
 								id="name" 
 								name="name" 
-								maxlength="20"
+								maxlength="100"
 							/>
 							<ErrorMessage name="name" component={() => (<div className="error">{errors.name}</div>)} />
 						</div>
