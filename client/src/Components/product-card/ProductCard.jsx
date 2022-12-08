@@ -42,9 +42,6 @@ const ProductCard = (props) => {
         <div className="description d-flex align-items-center">
           <p>{description}</p>
         </div>
-        <div className="link">
-          <a href="#">description</a>
-        </div>
       </div>
       </Card>
     // </div>

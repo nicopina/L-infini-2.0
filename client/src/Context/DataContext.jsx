@@ -2,6 +2,8 @@ import React,{useState,useEffect,createContext} from 'react'
 import { fastFoodProducts } from "../api/products";
 import{getActiveDishesRequest} from "../api/dishes.api";
 import { getDishesCategoriesRequest } from "../api/dishesCategories.api";
+import swal from 'sweetalert';
+
 
 
 //hacer atributo cantidad 1 en tabla orden y luego llamarla aqui para pasar por el value.
@@ -46,8 +48,20 @@ export const DataProvider=(props)=>{
             })
             data[0].cantidad=1; //agregar cantidad=1 a la data dado que se agrego al carrito
             setCarrito([...carrito,...data])
+            swal({
+                title: "Producto agregado al carrito",
+                text: "Puedes seguir añadiendo platos",
+                icon: "success",
+                button: false,
+                timer: 1000,
+              })
          }else{
-            alert("El producto ya se ha agregado al carrito")
+            swal({
+                title: "El producto ya se encuentra en el carrito",
+                icon: "error",
+                button: false,
+                timer: 1000,
+              })
          }
     }
     

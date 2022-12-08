@@ -6,6 +6,7 @@ import { DataContext } from "../../Context/DataContext";
 import { createOrderRequest } from "../../api/orders.api";
 import { getLastOrderIdRequest } from "../../api/orders.api";
 import { createOrderItemRequest } from "../../api/orderItems.api";
+import swal from "sweetalert";
 
 export const Cart = () => {
   const photo_default =
@@ -20,15 +21,34 @@ export const Cart = () => {
   };
 
   const removeProduct = (id) => {
-    if (window.confirm("¿Quieres eliminar este producto?")) {
-      carrito.forEach((item, index) => {
-        if (item.id === id) {
-          item.cantidad = 1;
-          carrito.splice(index, 1);
-        }
-      });
-      setCarrito([...carrito]);
-    }
+
+    swal({
+      title: "¿Estás seguro?",
+      icon: "info",
+      buttons: ["Cancelar", "Eliminar"],
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        carrito.forEach((item, index) => {
+          if (item.id === id) {
+            item.cantidad = 1;
+            carrito.splice(index, 1);
+          }
+        });
+        setCarrito([...carrito]);
+      }
+    });
+    
+
+    // if (window.confirm("¿Quieres eliminar este producto?")) {
+    //   carrito.forEach((item, index) => {
+    //     if (item.id === id) {
+    //       item.cantidad = 1;
+    //       carrito.splice(index, 1);
+    //     }
+    //   });
+    //   setCarrito([...carrito]);
+    // }
   };
   const resta = (id) => {
     carrito.forEach((item) => {
@@ -73,7 +93,13 @@ export const Cart = () => {
             });
             localStorage.removeItem("dataCarrito");
             setCarrito([]);
-            alert("Orden creada");
+            swal({
+              title: "Pedido realizado",
+              text: "En breve le traeremos su comida",
+              icon: "success",
+              button: false,
+              timer: 2000,
+            })
           }
         });
       }
