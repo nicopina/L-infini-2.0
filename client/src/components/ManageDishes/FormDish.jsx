@@ -17,7 +17,7 @@ const Formulario = () => {
 		}, []);
 
 	return (
-		<>
+		<div className="FormDish__container">
 			<Formik
 			
 			/*Para resetear formulario*/
@@ -73,7 +73,7 @@ const Formulario = () => {
 				{( {errors} ) => (
 					<Form className="formulario">
 						<div>
-							<h2 style={{color:'black',textAlign:'center'}}>Ingrese la información del plato</h2>
+							<h2>Ingrese la información del plato</h2>
 						</div>
 						<div>
 							<label htmlFor="Dish">Plato</label>
@@ -146,7 +146,7 @@ const Formulario = () => {
 
 			
 			</Formik>
-		</>
+		</div>
 	);
 }
  

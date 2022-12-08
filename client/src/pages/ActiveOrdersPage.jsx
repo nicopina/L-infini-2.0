@@ -18,11 +18,12 @@ function ActiveOrdersPage() {
   return (
     <div
       style={{
-        marginTop: "100px",
+        margin: "100px 0",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
+
       }}
      >
       <Grid
@@ -39,12 +40,25 @@ function ActiveOrdersPage() {
           flexDirection: "column",
         }}
         >
-          <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}>Pedidos activos</h1>
+          <h1 style={{color:'black',textAlign:'center',alignItems:'center', margin:'20px 0'}}>Pedidos activos</h1>
           <Reload/>
         </Grid>
-        {activeOrders.map((order, index) => (
+        { activeOrders.length > 0 ? (
+        activeOrders.map((order, index) => (
           <OrderActiveOrders order={order} key={index} />
-        ))}
+        )) ) : (
+          <Grid item xs={12} sm={12} lg={12}
+          style = {{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+          >
+            <h2 style={{color:'black',textAlign:'center',alignItems:'center', margin:'20px 0'}}>No hay pedidos activos</h2>
+          </Grid>
+        )
+      }
       </Grid>
     </div>
   );

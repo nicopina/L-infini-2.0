@@ -11,7 +11,7 @@ const Formulario = () => {
 	
 	
 	return (
-		<>
+		<div className='FormDishCategory__container'>
 			<Formik
 			/*Para resetear formulario*/
 				initialValues={{
@@ -59,7 +59,7 @@ const Formulario = () => {
 
 			
 			</Formik>
-		</>
+		</div>
 	);
 }
  
