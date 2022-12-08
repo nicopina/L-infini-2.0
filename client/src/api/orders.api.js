@@ -56,3 +56,7 @@ export const getOrdersPendingPayment = async () => {
 export const getDailyIncomeMonth = async (month) => {
   return await axios.get(`${BASE_URL}/orders-daily-income-month`);
 }
+
+export const getOrdersByDayRequest = async (date) => {
+  return await axios.get(`${BASE_URL}/orders-by-day/${date}`);
+}

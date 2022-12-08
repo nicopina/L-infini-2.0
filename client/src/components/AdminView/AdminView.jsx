@@ -23,6 +23,7 @@ import DownloadsPage from "./Reports/DownloadsPage.jsx";
 import OrdersPendingPaymentPage from "../../pages/OrdersPendingPaymentPage.jsx";
 import ModifyDish from "../ManageDishes/ModifyDish.jsx";
 import DishCategories from "../ManageDishCategories/DishCategories.jsx";
+import SalesRecord from "../Sales Record/SalesRecord.jsx";
 
 function AdminView() {
 
@@ -54,6 +55,7 @@ function AdminView() {
         <Route path="/modificarCategoriaPlatos" element = {<DishCategories/>} />
         <Route path="/reportes/ventas" element= {<SalesReportPage/>} />
         <Route path= "/reportes/descargas" element={<DownloadsPage/>}/>
+        <Route path="/historialVentas" element={<SalesRecord/>}/>
       </Routes>
       <Footer />
     </div>
