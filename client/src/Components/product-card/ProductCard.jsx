@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import{Card,CardSubtitle,CardText,CardImg, CardTitle} from 'reactstrap';
+import{Card} from 'reactstrap';
 
 import "./ProductCard.css";
 
@@ -12,20 +12,23 @@ const ProductCard = (props) => {
   const photo_default = "https://i.pinimg.com/originals/15/50/ee/1550ee86d49cbcc3f530ac53d538cd60.jpg";
 
   const { id, name, value, description, photo_url } = props.item;
-  var nombre = props.item.name;
 
   
   const valuee = useContext(DataContext);
   const addCarrito = valuee.addCarrito;
 
   return (
+    // <div className="card">
       <Card className="card">
       <div className="face-front">
         <img src={photo_url || photo_default}/>
-        <CardTitle>{nombre}</CardTitle>
+
+        <h6>{name}</h6>
+
         <div className="d-flex align-items-center justify-content-between">
           <span className="price d-flex align-items-center">
             {""}
+            Price:$<span>{value}</span>
           </span>
           {role === null ? (
           <button className="shopping_icon" onClick={() => addCarrito(id)}>
@@ -35,12 +38,16 @@ const ProductCard = (props) => {
         </div>
       </div>
 
-      <div className="face-back">
-        <div className="description">
-           {description}
+      <div className="face-back d-flex align-items-center justify-content-between">
+        <div className="description d-flex align-items-center">
+          <p>{description}</p>
+        </div>
+        <div className="link">
+          <a href="#">description</a>
         </div>
       </div>
       </Card>
+    // </div>
   );
 };
 

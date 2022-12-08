@@ -142,7 +142,6 @@ function Navbar() {
   const [carrito] = value.carrito;
 
   const toggleMenu = () => {
-    console.log("click");
     setMenu(!menu);
   };
 
@@ -189,10 +188,12 @@ function Navbar() {
             </Link>
           ))}
           {user.role === null && table !== undefined ? (
+            // <a className="Navbar__cart" href="../carrito">
             <div className="Navbar__cart" onClick={toggleMenu}>
               <FiShoppingCart />
               <span className="Navbar__item_total">{carrito.length}</span>
-              {menu ? <Cart /> : ""}
+              {/* {menu ? <Cart /> : ""} */}
+            {/* </a> */}
             </div>
           ) : (
             ""

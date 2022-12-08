@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import ProductCard from "../Product-card/ProductCard";
 
 import { DataContext } from "../../Context/DataContext";
@@ -11,15 +11,22 @@ const MenuPack = () => {
   const value = useContext(DataContext);
 
   const [productos, setProductos] = useState([]);
-  const [filter,setFilter] = useState('Comidas');
-
+  const [filter,setFilter] = useState(localStorage.getItem("filter"));
 
   useEffect(() => {
-    setProductos(value.productos[0]);
+    value.menuCategorias[0].forEach(element => {
+      if(element.name === filter){
+        setProductos(value.productos[0].filter((item) => item.category === element.id));
+      }
+    });
+    if(filter === ''){
+      setProductos(value.productos[0]);
+    }
   }, [value]);
 
 
   useEffect(() => {
+    localStorage.setItem("filter", filter);
     value.menuCategorias[0].forEach(element => {
       if(element.name === filter){
         setProductos(value.productos[0].filter((item) => item.category === element.id));
@@ -40,10 +47,10 @@ const MenuPack = () => {
           <Col lg="12" className="text-center mb-4">
             {
               value.menuCategorias[0].map((item, index) => (
-                <button key={index} className="btn" onClick={()=>setFilter(item.name)}>{item.name}</button>
+                <Button key={index} outline color="primary" onClick={()=>setFilter(item.name)}>{item.name}</Button>
               ))
             }
-            <button className="btn" onClick={()=>setFilter('sinFiltro')}>Todo</button>
+            <Button outline color="primary" onClick={()=>setFilter('sinFiltro')}>Todo</Button>
           </Col>
           {productos.length === 0 ? (
             <Col lg="12" className="text-center mb-4">
