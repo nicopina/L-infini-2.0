@@ -7,6 +7,7 @@ import {
   updateDishRequest,
 } from "../../api/dishes.api";
 import ItemDish from "./ItemDish";
+import './Dishes.css'
 
 function Dishes() {
   const [dishes, setDishes] = useState([]);
@@ -25,8 +26,10 @@ function Dishes() {
     }, [seed]);
 
   const changeState = (dish) => {
-    dish.is_active = !dish.is_active;
-    updateDishRequest(dish.id, dish).then((response) => {
+    const newDishUpdate = {
+      is_active : !dish.is_active
+    }
+    updateDishRequest(dish.id, newDishUpdate).then((response) => {
       setSeed(seed + 1);
     });
   };
@@ -65,6 +68,7 @@ function Dishes() {
           <ItemDish dish={dish} changeState={changeState} key={index} setSeed={setSeed}/>
         ))}
       </Card>
+      <a className="Dishes__button" href="./modificarPlatos">Modificar plato</a>
     </div>
   );
 }

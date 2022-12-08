@@ -61,7 +61,7 @@ function Users(props) {
       headerName: "Eliminar",
       width: 150,
       renderCell: (params) => (
-        <button onClick={() => updateHandler(params.row)}>
+        <button onClick={() => deleteHandler(params.row)}>
           Eliminar
         </button>
       ),

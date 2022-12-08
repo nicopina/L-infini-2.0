@@ -5,7 +5,6 @@ import "./ItemDish.css";
 
 function ItemDish(params) {
   function handlerDelete() {
-    // console.log(params.dish.id);
     deleteDishRequest(params.dish.id).then((response) => {
       params.setSeed(params.seed + 1);
     });
