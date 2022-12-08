@@ -13,6 +13,7 @@ import {
   getCountOrdersMonth,
   getCountOrdersOneFullDate,
   getOrdersPendingPayment,
+  getDailyIncomeMonth,
 } from "../controllers/orders.controller.js";
 
 const router = Router();
@@ -30,6 +31,6 @@ router.get("/orders/count/today", getCountOrdersToday);
 router.get("/orders/count/actual_month", getCountOrdersMonth);
 router.get("/orders/count/:date", getCountOrdersOneFullDate);
 router.get("/orders-pending-payment", getOrdersPendingPayment);
-
+router.get("/orders-daily-income-month", getDailyIncomeMonth);
 
 export default router;
