@@ -135,6 +135,26 @@ export const deleteOrder = async (req, res) => {
   }
 };
 
+
+export const getOrdersPendingPayment = async (req, res) => {
+  try {
+    
+    const [rows] = await promisePool.query(
+      "SELECT Orders.id as id, Orders.created_at as created_at, Orders.state as state, Orders.table_id as id_table, SUM(OrderItems.quantity * Dishes.value) as total FROM Orders INNER JOIN OrderItems ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON OrderItems.dish_id = Dishes.id WHERE Orders.state = 2 GROUP BY Orders.id"
+    );
+    const ordersPendingPayment = [];
+    for (const order of rows) {
+      req.params.id = order.id;
+      const orderList = await getOrderItemsByOrderId(req);
+      ordersPendingPayment.push({ ...order, orderList });
+    }
+    return res.json(ordersPendingPayment);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const getIfAllItemsAreOk = async (req, res) => {
   try {
     const [rows] = await promisePool.query(

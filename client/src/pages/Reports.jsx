@@ -55,9 +55,9 @@ function Reports(){
             <Card className="my-2">
                  <CardImg
                         alt="Card image cap"
-                        src="https://administrategia.com/wp-content/uploads/2019/09/reporte_1.jpg"
+                        src="https://d29jy8ovkd5kcx.cloudfront.net/wp-content/uploads/2021/11/29093133/092.jpg"
                         style={{
-                            height: 600,opacity: 0.7
+                            height: 500,opacity: 0.7
                         }}
                         top
                         width="100%"
@@ -69,7 +69,7 @@ function Reports(){
                         <CardText>
                             Aquí puedes descargar información general para realizar análisis.
                         </CardText>
-                        <Button  className="buttonpad" color="success" size='lg' href={`/reportes/descargas`}>Descargas</Button>
+                        <Button  className="buttonpad" color="info" size='lg' href={`/reportes/descargas`}>Descargas</Button>
                         </CardBody>
                     </Card>
             </div>          

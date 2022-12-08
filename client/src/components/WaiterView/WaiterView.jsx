@@ -12,6 +12,7 @@ import Notifications from "../Notifications/Notifications";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext.jsx";
 import AssistancesPageEmployee from "../../pages/AssistancesPageEmployee";
+import OrdersPendingPaymentPage from "../../pages/OrdersPendingPaymentPage";
 
 function WaiterView() {
   const [user , setUser , table , setTable] = useContext(UserContext)
@@ -28,6 +29,7 @@ function WaiterView() {
         <Route path="/menu" element={<MenuPack />} />
         <Route path="/asistencias" element={<AssistancesPageEmployee />} />
         <Route path="/pedidosActivos" element={<ActiveOrdersPage />} />
+        <Route path="/pedidosPendientes" element={<OrdersPendingPaymentPage />} />
         <Route path="/platos" element={<DishesPage />} />
         <Route path="/logout" element={<LogoutPage />} />
         <Route path="*" element={<Navigate to='/menu'/>}  />

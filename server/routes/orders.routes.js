@@ -12,6 +12,7 @@ import {
   getCountOrdersToday,
   getCountOrdersMonth,
   getCountOrdersOneFullDate,
+  getOrdersPendingPayment,
 } from "../controllers/orders.controller.js";
 
 const router = Router();
@@ -28,6 +29,7 @@ router.get("/active-orders/:id", getActiveOrderByTableId);
 router.get("/orders/count/today", getCountOrdersToday);
 router.get("/orders/count/actual_month", getCountOrdersMonth);
 router.get("/orders/count/:date", getCountOrdersOneFullDate);
+router.get("/orders-pending-payment", getOrdersPendingPayment);
 
 
 export default router;

@@ -35,13 +35,13 @@ const Formulario = () => {
 					// Validacion description
 					if((valores.description).length > 255) {
 						errores.name = 'La descripción debe tener menos de 255 caracteres';
-					}else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.description)){
+					}else if(!/^[a-zA-ZÀ-ÿ\s]{1,255}$/.test(valores.description)){
 						errores.description = 'La descripción solo puede contener letras y espacios';
 					}
 					// Validacion name
 					if((valores.name).length >100) {
 						errores.name = 'El nombre debe tener menos de 100 caracteres';
-					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.name)) {
+					} else if(!/^[a-zA-ZÀ-ÿ\s]{1,100}$/.test(valores.name)) {
 						errores.name = 'El nombre solo puede contener letras y espacios'
 					}
 					//validacion phot_url
@@ -139,7 +139,7 @@ const Formulario = () => {
 						</div>
 
 						<button type="submit">Enviar</button>
-						{formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
+						{formularioEnviado && <p className="exito">Plato agregado con éxito!</p>}
 					</Form>
 				)}
 

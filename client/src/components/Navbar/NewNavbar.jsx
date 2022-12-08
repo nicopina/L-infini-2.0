@@ -44,6 +44,10 @@ const Waiterpages = [
     path: "/pedidosActivos",
   },
   {
+    name: "Pedidos Pendientes",
+    path: "/pedidosPendientes",
+  },
+  {
     name: "Platos",
     path: "/platos",
   },
@@ -80,6 +84,10 @@ const Adminpages = [
   {
     name: "Pedidos Activos",
     path: "/pedidosActivos",
+  },
+  {
+    name: "Pedidos Pendientes",
+    path: "/pedidosPendientes",
   },
   {
     name: "Platos",
@@ -149,7 +157,7 @@ function Navbar() {
           <div className="Navbar-responsive__content">
             <div className="Navbar-responsive__links">
               {pages?.map((page, index) => (
-                <Link className="Navbar-responsive__link" to={page.path}>
+                <Link key={index} className="Navbar-responsive__link" to={page.path}>
                   {page.name}
                 </Link>
               ))}
@@ -179,17 +187,14 @@ function Navbar() {
         <div className="Navbar__linfini">∞ l'infini ∞</div>
         <div className="Navbar__links">
           {pages?.map((page, index) => (
-            <Link className="Navbar__link" to={page.path}>
+            <Link key={index} className="Navbar__link" to={page.path}>
               {page.name}
             </Link>
           ))}
           {user.role === null && table !== undefined ? (
-            // <a className="Navbar__cart" href="../carrito">
             <div className="Navbar__cart" onClick={toggleMenu}>
               <FiShoppingCart />
               <span className="Navbar__item_total">{carrito.length}</span>
-              {/* {menu ? <Cart /> : ""} */}
-            {/* </a> */}
             </div>
           ) : (
             ""

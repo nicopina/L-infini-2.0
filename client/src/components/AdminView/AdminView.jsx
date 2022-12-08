@@ -20,6 +20,8 @@ import { useEffect } from "react";
 import DishCategoryRegisterPage from "../../pages/DishCategoryRegisterPage.jsx";
 import AssistancesPageEmployee from "../../pages/AssistancesPageEmployee.jsx";
 import DownloadsPage from "./Reports/DownloadsPage.jsx";
+import OrdersPendingPaymentPage from "../../pages/OrdersPendingPaymentPage.jsx";
+import ModifyDish from "../ManageDishes/ModifyDish.jsx";
 
 function AdminView() {
 
@@ -38,7 +40,9 @@ function AdminView() {
         <Route path="/menu" element={<MenuPack/>} />
         <Route path ="/asistencias" element={<AssistancesPageEmployee/>}/>
         <Route path="/pedidosActivos" element={<ActiveOrdersPage/>}/>
+        <Route path="/pedidosPendientes" element={<OrdersPendingPaymentPage />} />
         <Route path="/platos" element={<DishesPage/>}/>
+        <Route path="/modificarPlatos" element={<ModifyDish/>} />
         <Route path="/usuarios" element={<ManageUsersPage/>}/>
         <Route path="/logout" element={<LogoutPage/>}/>
         <Route path="/registroPlatos" element={<DishRegisterPage/>}/>
