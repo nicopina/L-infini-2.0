@@ -6,9 +6,9 @@ import { getOrderItemsByOrderId } from "./orderItems.controller.js";
  * @param res - the response object
  * @returns An array of order.
  */
-export const getOrders = async (req,res) => {
+export const getOrders = async (req, res) => {
   try {
-    console.log('here');
+    console.log("here");
     const [rows] = await promisePool.query("SELECT * FROM Orders");
     // const orders = [];
     // for (const order of rows) {
@@ -56,10 +56,9 @@ export const createOrder = async (req, res) => {
   try {
     req.body.created_at = new Date();
     req.body.updated_at = new Date();
-    const [result] = await promisePool.query(
-      "INSERT INTO Orders SET ?",
-      [req.body]
-    );
+    const [result] = await promisePool.query("INSERT INTO Orders SET ?", [
+      req.body,
+    ]);
     return res.json({ message: "Orders saved" });
   } catch (error) {
     console.log(error);
@@ -117,7 +116,7 @@ export const deleteOrder = async (req, res) => {
  * @param res - The response object containing the active orders as JSON.
  * @returns An array of active orders.
  */
- export const getActiveOrders = async (req, res) => {
+export const getActiveOrders = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
       "SELECT * FROM Orders WHERE state = 0"
@@ -135,10 +134,15 @@ export const deleteOrder = async (req, res) => {
   }
 };
 
-
+/**
+ * It gets all the orders that are pending payment, and for each order it gets the order items and the
+ * dishes that are in the order items.
+ * @param req - {
+ * @param res - {
+ * @returns An array of objects.
+ */
 export const getOrdersPendingPayment = async (req, res) => {
   try {
-    
     const [rows] = await promisePool.query(
       "SELECT Orders.id as id, Orders.created_at as created_at, Orders.state as state, Orders.table_id as id_table, SUM(OrderItems.quantity * Dishes.value) as total FROM Orders INNER JOIN OrderItems ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON OrderItems.dish_id = Dishes.id WHERE Orders.state = 1 GROUP BY Orders.id"
     );
@@ -155,19 +159,32 @@ export const getOrdersPendingPayment = async (req, res) => {
   }
 };
 
+/**
+ * It returns all the items from the OrderItems table that have a state of 2 and an order_id of the
+ * order_id that was passed in the request.
+ * @param req - the request object
+ * @param res - the response object
+ * @returns An array of objects.
+ */
 export const getIfAllItemsAreOk = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
       "SELECT * FROM OrderItems WHERE state = 2 AND order_id = ?",
       [req.params.id]
-      );
-      return res.json(rows);
+    );
+    return res.json(rows);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
+/**
+ * Get the last order id from the database and return it as a JSON object.
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns The last order id from the Orders table.
+ */
 export const getLastOrderId = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
@@ -178,8 +195,14 @@ export const getLastOrderId = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
+/**
+ * It gets the active orders by table id, and then for each order it gets the order items by order id.
+ * @param req - {
+ * @param res - {
+ * @returns An array of objects.
+ */
 export const getActiveOrderByTableId = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
@@ -197,50 +220,67 @@ export const getActiveOrderByTableId = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
+/**
+ * It returns the number of orders that were created today.
+ * </code>
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns The number of orders that have been created today.
+ */
 export const getCountOrdersToday = async (req, res) => {
-
   var hoy = new Date();
   var fix = hoy.getTime();
   hoy = new Date(fix);
 
   try {
     const [rows] = await promisePool.query(
-      "SELECT COUNT(*) AS count FROM Orders WHERE date(created_at) = date(?)"
-      , [hoy]
+      "SELECT COUNT(*) AS count FROM Orders WHERE date(created_at) = date(?)",
+      [hoy]
     );
     return res.json(rows[0].count);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
+/**
+ * It returns the number of orders created in the last month.
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns The number of orders in the last month.
+ */
 export const getCountOrdersMonth = async (req, res) => {
   var hoy = new Date();
-  var fix = hoy.getTime() - (hoy.getTimezoneOffset() * 60000);
+  var fix = hoy.getTime() - hoy.getTimezoneOffset() * 60000;
   hoy = new Date(fix);
-
 
   try {
     const [rows] = await promisePool.query(
-      "SELECT COUNT(*) AS count FROM Orders WHERE date(created_at) >= DATE_SUB(?, INTERVAL 1 MONTH)"
-      , [hoy]
+      "SELECT COUNT(*) AS count FROM Orders WHERE date(created_at) >= DATE_SUB(?, INTERVAL 1 MONTH)",
+      [hoy]
     );
     return res.json(rows[0].count);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
+/**
+ * I'm trying to get the count of orders from a specific date.
+ * </code>
+ * @param req - {
+ * @param res - {
+ */
 export const getCountOrdersOneFullDate = async (req, res) => {
-  
-  console.log("Time ORDERS:",req.params.date);
-  var aux =  new Date(parseInt(req.params.date));
-  req.params.date = aux.getFullYear() + "-" + (aux.getMonth()+1) + "-" + aux.getDate();
-  console.log("Fecha_ ORDERS_FIX_QUERY:",req.params.date);
+  console.log("Time ORDERS:", req.params.date);
+  var aux = new Date(parseInt(req.params.date));
+  req.params.date =
+    aux.getFullYear() + "-" + (aux.getMonth() + 1) + "-" + aux.getDate();
+  console.log("Fecha_ ORDERS_FIX_QUERY:", req.params.date);
 
   try {
     const [rows] = await promisePool.query(
@@ -252,20 +292,24 @@ export const getCountOrdersOneFullDate = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
+};
 
-}
-
-
+/**
+ * It returns the daily income of the current month.
+ * </code>
+ * @param req - The request object.
+ * @param res - The response object.
+ * @returns The query result.
+ */
 export const getDailyIncomeMonth = async (req, res) => {
-
   var hoy = new Date();
   var mes = hoy.getMonth() + 1;
-  console.log("Mes:",mes);
+  console.log("Mes:", mes);
 
   try {
     const [rows] = await promisePool.query(
-      "SELECT DAY(Orders.created_at) as Dia, SUM(Dishes.value*OrderItems.quantity) as Ingreso FROM Orders INNER JOIN OrderItems ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON Dishes.id = OrderItems.dish_id WHERE MONTH(Orders.created_at) = ? GROUP BY DAY(Orders.created_at) ORDER BY DAY(Orders.created_at) ASC"
-      , [mes]
+      "SELECT DAY(Orders.created_at) as Dia, SUM(Dishes.value*OrderItems.quantity) as Ingreso FROM Orders INNER JOIN OrderItems ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON Dishes.id = OrderItems.dish_id WHERE MONTH(Orders.created_at) = ? GROUP BY DAY(Orders.created_at) ORDER BY DAY(Orders.created_at) ASC",
+      [mes]
     );
     return res.json(rows);
   } catch (error) {
@@ -274,6 +318,12 @@ export const getDailyIncomeMonth = async (req, res) => {
   }
 }
 
+/**
+ * It gets all the orders from the database that were created on the date specified in the request
+ * @param req - the request object
+ * @param res - the response object
+ * @returns An array of objects.
+ */
 export const getOrdersByDay = async (req, res) => {
   try {
     const [rows] = await promisePool.query(

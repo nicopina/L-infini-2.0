@@ -28,7 +28,7 @@ export const getDish = async (req, res) => {
  * @param res - The response object.
  * @returns An array of all the dishes in the database.
  */
-export const getDishes = async (req,res) => {
+export const getDishes = async (req, res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM Dishes");
     return res.json(rows);
@@ -104,6 +104,12 @@ export const deleteDish = async (req, res) => {
   }
 };
 
+/**
+ * It gets all the dishes from the database that are active
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns An array of objects.
+ */
 export const getActiveDishes = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
@@ -114,4 +120,4 @@ export const getActiveDishes = async (req, res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};

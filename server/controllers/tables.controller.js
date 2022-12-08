@@ -1,6 +1,5 @@
 import { promisePool } from "../db.js";
 
-
 /**
  * It's a function that takes in a request and a response, and then it tries to get the rows from the
  * database, and then it sends the rows back to the client.
