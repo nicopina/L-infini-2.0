@@ -89,6 +89,7 @@
     display:inline-flex;
     justify-content: center;
     cursor: pointer;
+    margin-top: auto;
    
 
    
@@ -98,7 +99,7 @@
     fill: white;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .shopping_icon{
         display: grid;
         height: 10px;
