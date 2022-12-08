@@ -106,10 +106,6 @@ const Adminpages = [
     path: "/reportes",
   },
   {
-    name: "Registro Categoria Platos",
-    path: "/registroCategoriaPlatos",
-  },
-  {
     name: "Salir",
     path: "/logout",
   },

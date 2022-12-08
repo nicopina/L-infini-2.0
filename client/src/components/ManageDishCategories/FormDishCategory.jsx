@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {createDishCategoryRequest} from '../../api/dishesCategories.api';
+import {Link} from 'react-router-dom';
 
 
 import "./FormDishCategory.css";
@@ -12,7 +13,6 @@ const Formulario = () => {
 	return (
 		<>
 			<Formik
-			
 			/*Para resetear formulario*/
 				initialValues={{
 					name: '',
@@ -47,7 +47,7 @@ const Formulario = () => {
 								type="text"
 								id="name" 
 								name="name" 
-								maxlength="20"
+								maxLength="20"
 							/>
 							<ErrorMessage name="name" component={() => (<div className="error">{errors.name}</div>)} />
 						</div>
