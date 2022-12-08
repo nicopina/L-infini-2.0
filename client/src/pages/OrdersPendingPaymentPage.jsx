@@ -11,6 +11,14 @@ function OrdersPendingPaymentPage(){
         getOrdersPendingPayment().then((response) => {
             setPendingOrders(response.data);
         });
+        const interval = setInterval(() => {
+            getOrdersPendingPayment().then((response) => {
+                setPendingOrders(response.data);
+            });
+        }, 7000);
+        // getOrdersPendingPayment().then((response) => {
+        //     setPendingOrders(response.data);
+        // });
     }, []);
 
 

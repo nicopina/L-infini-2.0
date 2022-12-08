@@ -3,16 +3,19 @@ import { SendMessage } from "./notification";
 import { getActiveOrdersRequest } from "../../api/orders.api";
 
 const NotificationsChef = () => {
+  const[lastRequests, setLastRequests] = useState(JSON.parse(localStorage.getItem("lastRequests")));
   var awaitTimeSec = 10;
   useEffect(() => {
     const interval = setInterval(() => {
+      if(lastRequests < response.data.length){
+        SendMessage();
+        setLastRequests(response.data.length);
+        localStorage.setItem("lastRequests", JSON.stringify(lastRequests));
+      }
       getActiveOrdersRequest().then((response) => {
-        var lastRequests = JSON.parse(localStorage.getItem("lastRequests"));
         if(lastRequests < response.data.length){
           SendMessage();
-          console.log(response.data.length);
-          console.log(lastRequests);
-          lastRequests = response.data.length;
+          setLastRequests(response.data.length);
           localStorage.setItem("lastRequests", JSON.stringify(lastRequests));
         }
       });
