@@ -16,7 +16,6 @@ function Dishes() {
   const [seed, setSeed] = useState(0);
   const [user] = useContext(UserContext);
 
-
   useEffect(() => {
     getDishesRequest().then((response) => {
       setDishes(response.data);
@@ -50,13 +49,23 @@ function Dishes() {
     >
       <h1 style={{ color: "black" }}>Platos</h1>
       {user.role == 1 ? (
-        <div>
-          <Link className="Dishes__button" to="/modificarPlatos">
-            Modificar plato
-          </Link>
-          <Link className="Dishes__button" to="/registroPlatos">
-            Registrar plato
-          </Link>
+        <div className="Dishes-buttons__container">
+          <div className="Dishes-buttons__container-row">
+            <Link className="Dishes__button" to="/modificarPlatos">
+              Gestionar platos
+            </Link>
+            <Link className="Dishes__button" to="/registroPlatos">
+              Registrar plato
+            </Link>
+          </div>
+          <div className="Dishes-buttons__container-row">
+            <Link className="Dishes__button" to="/modificarCategoriaPlatos">
+              Gestionar Categoria de Plato
+            </Link>
+            <Link className="Dishes__button" to="/registroCategoriaPlatos">
+              Registrar Categoria de Plato
+            </Link>
+          </div>
         </div>
       ) : (
         ""

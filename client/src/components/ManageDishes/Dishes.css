@@ -8,6 +8,8 @@
     transition: all 0.3s ease;
     text-decoration: none;
     color: #000;
+    text-align: center;
+    margin: 10px;
 }
 
 .Dishes__button:hover{
@@ -20,3 +22,27 @@
     background-color: #ccc;
     transition: all 0.3s ease;
 }
+
+.Dishes-buttons__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 0 0;
+
+}
+.Dishes-buttons__container-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 0 0;
+
+}
+
+
+/* @media (max-with: 900px) {
+    .Dishes-buttons__container{
+        flex-direction: column;
+    }
+} */

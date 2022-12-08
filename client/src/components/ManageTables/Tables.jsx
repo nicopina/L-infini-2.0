@@ -38,6 +38,7 @@ function Tables() {
         <button className="buttonred" onClick={() => handleDelete(params.row)}>Borrar</button>
       ),
     },
+
   ];
 
   return (

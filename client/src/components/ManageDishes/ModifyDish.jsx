@@ -81,6 +81,7 @@ function ModifyDish() {
 
   return (
     <div className="dish-manager-container">
+      <h1 className="dish-manager-title">Modificar platos</h1>
       <Box className="dish-manager-box" sx={{ height: 400, width: "100%" }} key={seed}>
         <DataGrid
           className="dish-table"
