@@ -273,3 +273,28 @@ export const getDailyIncomeMonth = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export const getOrdersByDay = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT * FROM Orders WHERE DATE(created_at) = date(?)"
+      , [req.params.date]
+    );
+    if (rows.length > 0) {
+      //save the orderitems of each order
+      const orders = [];
+      for (const order of rows) {
+        req.params.id = order.id;
+        const orderList = await getOrderItemsByOrderId(req);
+        orders.push({ ...order, orderList });
+      }
+      return res.json(orders);
+    } else {
+      return res.status(404).json({ message: "No orders found" });
+    }
+          // return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
