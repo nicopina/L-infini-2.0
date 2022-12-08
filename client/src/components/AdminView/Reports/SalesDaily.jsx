@@ -63,7 +63,6 @@ function SalesDaily(params) {
         <CardHeader>
           <CardTitle tag="h4" style={{textAlign:'center',}}>
             Reporte de Ventas del día de hoy {formatearFecha(new Date())}
-            <OrderSalesCSV />
           </CardTitle>
         </CardHeader>
         <CardBody style={{textAlign:'center',fontFamily:'Cursive'}}>

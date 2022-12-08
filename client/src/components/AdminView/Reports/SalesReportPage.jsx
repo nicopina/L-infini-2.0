@@ -13,6 +13,8 @@ import {
   getCountOrdersMonth,
   getCountOrdersOneFullDate,
 } from "../../../api/orders.api";
+import BusyHoursReport from "./BusyHoursReport";
+import SalesMonthChart from "./SalesMonthChart";
 
 
 function SalesReportPage() {
@@ -77,7 +79,12 @@ function SalesReportPage() {
         dayProfit = {dayProfit}
         countOrderItemsDay ={countOrderItemsDay}
       />
+
+      <BusyHoursReport />
+      <SalesMonthChart />
+      
     </div>
+    
   );
 }
 

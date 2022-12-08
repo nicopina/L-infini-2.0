@@ -248,3 +248,17 @@ export const getProfitByDateRange = async (req,res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
+
+export const getItemsSoldByHour = async (req,res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT HOUR(OrderItems.created_at) AS hour, SUM(OrderItems.quantity) AS quantity FROM OrderItems GROUP BY hour ORDER BY hour ASC"
+    );
+
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}

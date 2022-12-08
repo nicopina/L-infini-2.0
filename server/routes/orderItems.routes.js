@@ -14,6 +14,8 @@ import {
     getProfitEntireMonth,
     getProfitByOneDate,
     getProfitByDateRange,
+    getItemsSoldByHour,
+    
 } from "../controllers/orderItems.controller.js";
 
 const router = Router();
@@ -31,6 +33,8 @@ router.get("/orderItems/profit/today", getProfitToday);
 router.get("/orderItems/profit/actual_month",getProfitEntireMonth);
 router.get("/orderItems/profit/:date",getProfitByOneDate);
 router.get("/orderItems/profit/:start_date/:end_date",getProfitByDateRange);
+router.get("/orderItems-quantity-hour",getItemsSoldByHour);
+
 
 
 

@@ -254,3 +254,22 @@ export const getCountOrdersOneFullDate = async (req, res) => {
   }
 
 }
+
+
+export const getDailyIncomeMonth = async (req, res) => {
+
+  var hoy = new Date();
+  var mes = hoy.getMonth() + 1;
+  console.log("Mes:",mes);
+
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT DAY(Orders.created_at) as Dia, SUM(Dishes.value*OrderItems.quantity) as Ingreso FROM Orders INNER JOIN OrderItems ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON Dishes.id = OrderItems.dish_id WHERE MONTH(Orders.created_at) = ? GROUP BY DAY(Orders.created_at) ORDER BY DAY(Orders.created_at) ASC"
+      , [mes]
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}
