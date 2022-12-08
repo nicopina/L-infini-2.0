@@ -1,16 +1,5 @@
 import TopNLeastSelled from "./TopNLeastSelled";
 import TopNMostSelled from "./TopNMostSelled";
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
-  ListGroup,
-  ListGroupItem,
-  Row,
-  Container,
-  CardColumns,
-} from "reactstrap";
 import React from "react";
 import DishMostSelledTimeRange from "./DishMostSelledTimeRange";
 

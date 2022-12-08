@@ -27,8 +27,8 @@ const ProductCard = (props) => {
 
         <div className="d-flex align-items-center justify-content-between">
           <span className="price d-flex align-items-center">
-            {""}
-            Price:$<span>{value}</span>
+            {/* {""} */}
+            Price:<span>{"$"+value}</span>
           </span>
           {role === null ? (
           <button className="shopping_icon" onClick={() => addCarrito(id)}>

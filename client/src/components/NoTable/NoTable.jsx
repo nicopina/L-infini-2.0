@@ -26,7 +26,7 @@ function NoTable() {
         <div gutterBottom variant="h5" component="div" style={{textAlign:'center'}}>
         </div>
         <div variant="body2" color="text.secondary">
-           <h3 style={{color:'black',textAlign:'center',}}>Escanee el código Qr de su Mesa para ver la carta</h3>
+           <h3 style={{color:'black',textAlign:'center',}}>Escanear el código Qr de su mesa para visualizar la carta</h3>
         </div>
       </CardContent>
     </Card>

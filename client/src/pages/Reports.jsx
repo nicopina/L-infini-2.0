@@ -1,9 +1,6 @@
-
-import { BASE_URL } from "../config";
 import { Button,Card,CardBody,CardTitle,CardSubtitle,CardText,CardImg } from "reactstrap";
 import "./Reports.css";
-import { borderRadius } from "@mui/system";
-import { CiSaveDown1 } from "react-icons/ci";
+
 function Reports(){
     return (
         <>
@@ -23,7 +20,7 @@ function Reports(){
                             Reporte de Platos
                         </CardTitle>
                         <CardText>
-                            Aqui se muestran los reportes de los platos mas vendidos y los menos vendidos.
+                            Aquí se muestran los reportes de los platos más vendidos y los menos vendidos.
                         </CardText>
                         <Button className="buttonpad" color="danger" size='lg' href={`/reportes/platos`}>Reporte de Platos</Button>
                         </CardBody>
@@ -45,7 +42,7 @@ function Reports(){
                             Reporte de Ventas
                         </CardTitle>
                         <CardText>
-                            Aqui se muestran los reportes de las ventas realizadas.
+                            Aquí se muestran los reportes de las ventas realizadas.
                         </CardText>
                         <Button  className="buttonpad" color="success" size='lg' href={`/reportes/ventas`}>Reporte de Ventas</Button>
                         </CardBody>
@@ -78,14 +75,5 @@ function Reports(){
         </>
     )
 }
-/* <div className="container">
-<h1>Reportes</h1>
-</div>
-<div className="centrado">
-<Button className="" color="primary" size='lg' href={`/reportes/platos`}>Reporte de Platos</Button>
-</div>
-<div className="centrado">
-<Button color="primary" size='lg' href={`/reportes/ventas`}>Reporte de Ventas</Button>
-</div> */
 
 export default Reports;
