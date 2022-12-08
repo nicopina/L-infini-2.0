@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Card, Row, Col } from "reactstrap";
 import {
   getDishesRequest,
@@ -7,11 +7,15 @@ import {
   updateDishRequest,
 } from "../../api/dishes.api";
 import ItemDish from "./ItemDish";
-import './Dishes.css'
+import { Link } from "react-router-dom";
+import { UserContext } from "../../Context/UserContext";
+import "./Dishes.css";
 
 function Dishes() {
   const [dishes, setDishes] = useState([]);
   const [seed, setSeed] = useState(0);
+  const [user] = useContext(UserContext);
+
 
   useEffect(() => {
     getDishesRequest().then((response) => {
@@ -21,14 +25,14 @@ function Dishes() {
 
   useEffect(() => {
     getDishesRequest().then((response) => {
-        setDishes(response.data);
-        });
-    }, [seed]);
+      setDishes(response.data);
+    });
+  }, [seed]);
 
   const changeState = (dish) => {
     const newDishUpdate = {
-      is_active : !dish.is_active
-    }
+      is_active: !dish.is_active,
+    };
     updateDishRequest(dish.id, newDishUpdate).then((response) => {
       setSeed(seed + 1);
     });
@@ -44,7 +48,19 @@ function Dishes() {
         flexDirection: "column",
       }}
     >
-      <h1 style={{color:'black'}}>Platos</h1>
+      <h1 style={{ color: "black" }}>Platos</h1>
+      {user.role == 1 ? (
+        <div>
+          <Link className="Dishes__button" to="/modificarPlatos">
+            Modificar plato
+          </Link>
+          <Link className="Dishes__button" to="/registroPlatos">
+            Registrar plato
+          </Link>
+        </div>
+      ) : (
+        ""
+      )}
       <Card
         style={{
           padding: "0 10px 10px 10px",
@@ -65,10 +81,14 @@ function Dishes() {
           <Col>Eliminar</Col>
         </Row>
         {dishes.map((dish, index) => (
-          <ItemDish dish={dish} changeState={changeState} key={index} setSeed={setSeed}/>
+          <ItemDish
+            dish={dish}
+            changeState={changeState}
+            key={index}
+            setSeed={setSeed}
+          />
         ))}
       </Card>
-      <a className="Dishes__button" href="./modificarPlatos">Modificar plato</a>
     </div>
   );
 }

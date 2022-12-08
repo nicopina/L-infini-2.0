@@ -36,7 +36,7 @@ const ContactForm = () => {
 
   return (
     <div className="contact">
-      <h1>Contacto</h1>
+      <h1 style={{color:'black'}}>Contacto</h1>
       <Card className="contact-card">
         <form className="contact-form" onSubmit={formData}>
           <label form="email">
