@@ -1,6 +1,7 @@
 import {updateOrderItemRequest} from "../../api/orderItems.api";
 import {useState} from "react";
 import { useEffect } from "react";
+import "./OrderActiveOrders.css";
 function StateButton (props) {
     const [state, setState] = useState(props.item.state);
     const [color, setColor] = useState('red');
@@ -46,7 +47,7 @@ function StateButton (props) {
 
     return (
         <div>
-            <button onClick={(e) => {onButtonClick(e)}} style={{'backgroundColor':color,color:'black',borderRadius: "10px"}}>{text}</button>
+            <button  onClick={(e) => {onButtonClick(e)}} style={{'backgroundColor':color,color:'black',borderRadius: "10px"}}>{text}</button>
         </div>
     );
 }

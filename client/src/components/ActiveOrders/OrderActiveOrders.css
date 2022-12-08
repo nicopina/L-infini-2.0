@@ -18,7 +18,7 @@
 /* p {
     color: red;
 } */
-.button {
+.buttona {
     display: inline-block;
     padding: 0.75rem 1.25rem;
     border-radius: 10rem;
@@ -33,7 +33,7 @@
     align-items: rigth;
 
   }
-  .button:after {
+  .buttona:after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -44,7 +44,7 @@
     border-radius: 10rem;
     z-index: -2;
   }
-  .button:before {
+  .buttona:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -56,10 +56,10 @@
     border-radius: 10rem;
     z-index: -1;
   }
-  .button:hover {
+  .buttona:hover {
     color: #fff;
   }
-  .button:hover:before {
+  .buttona:hover:before {
     width: 100%;
   }
   
