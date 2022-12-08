@@ -5,6 +5,13 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import * as config from "../config.js";
 
+/**
+ * It checks if the user exists, if not, it creates a new user, if it does, it returns an error.
+ * </code>
+ * @param req
+ * @param res
+ * @returns The token is being returned.
+ */
 export const signUp = async (req, res) => {
   try {
     const { rut, password, name, lastname, is_active, role } = req.body;
@@ -43,6 +50,14 @@ export const signUp = async (req, res) => {
   }
 };
 
+/**
+ * It takes the rut and password from the request body, checks if the rut exists in the database, if it
+ * does, it checks if the password matches the one in the database, if it does, it creates a token and
+ * sends it back to the client
+ * @param req - request
+ * @param res - {
+ * @returns The token is being returned.
+ */
 export const signIn = async (req, res) => {
   const response = await promisePool.query(
     "SELECT * FROM Users WHERE rut = ?",
@@ -65,6 +80,12 @@ export const signIn = async (req, res) => {
   return res.status(400).json({ message: "Incorrect data" });
 };
 
+/**
+ * It gets the user by the token that is sent in the request
+ * @param req - the request object
+ * @param res - {
+ * @returns The user object
+ */
 export const getUserByToken = async (req, res) => {
   try {
     const token = req.params.token;
@@ -90,6 +111,11 @@ export const getUserByToken = async (req, res) => {
   }
 };
 
+/**
+ * It takes a password, generates a salt, and then hashes the password with the salt.
+ * @param password - The password to be encrypted.
+ * @returns The hashed password.
+ */
 export const encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);

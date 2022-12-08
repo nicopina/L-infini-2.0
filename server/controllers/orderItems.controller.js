@@ -5,7 +5,7 @@ import { promisePool } from "../db.js";
  * @param res - The response object.
  * @returns An array of orderItems.
  */
-export const getOrderItems = async (req,res) => {
+export const getOrderItems = async (req, res) => {
   try {
     const [rows] = await promisePool.query("SELECT * FROM OrderItems");
     return res.json(rows);
@@ -107,7 +107,7 @@ export const deleteOrderItem = async (req, res) => {
  * @param id - the id of the orderItem summary
  * @returns An array of orderItems.
  */
-export const getOrderItemsByOrderId = async (req,res) => {
+export const getOrderItemsByOrderId = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
       "SELECT * FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE OrderItems.order_id = ?",
@@ -121,102 +121,133 @@ export const getOrderItemsByOrderId = async (req,res) => {
   }
 };
 
-export const getOrderItemsTopBestN = async (req,res) => {
+/**
+ * This function returns the top N best selling dishes from the database.
+ * @param req - the request object
+ * @param res - the response object
+ * @returns The top N dishes by quantity ordered.
+ */
+export const getOrderItemsTopBestN = async (req, res) => {
   try {
-    
     const [rows] = await promisePool.query(
       "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id GROUP BY OrderItems.dish_id ORDER BY quantity DESC LIMIT ?",
       [parseInt(req.params.n)]
-
     );
     return res.json(rows);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
-
-export const getOrderItemsTopWorstN = async (req,res) => {
+/**
+ * This function returns the top n worst selling dishes in the database.
+ * @param req - the request object
+ * @param res - the response object
+ * @returns The top N dishes with the least amount of orders.
+ */
+export const getOrderItemsTopWorstN = async (req, res) => {
   try {
-    
     const [rows] = await promisePool.query(
       "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id GROUP BY OrderItems.dish_id ORDER BY quantity ASC LIMIT ?",
       [parseInt(req.params.n)]
-
     );
     return res.json(rows);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
-export const getOrderItemsTopBestNByDate = async (req,res) => {
+/**
+ * It returns the top N best selling dishes by quantity, between a start and end date.
+ * @param req - {
+ * @param res - the response object
+ * @returns An array of objects.
+ */
+export const getOrderItemsTopBestNByDate = async (req, res) => {
   try {
-
     req.params.start_date = new Date(parseInt(req.params.start_date));
 
     req.params.end_date = new Date(parseInt(req.params.end_date));
 
-
     const [rows] = await promisePool.query(
       "SELECT Dishes.name, Dishes.value, SUM(OrderItems.quantity) AS quantity FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE OrderItems.created_at >= ? AND OrderItems.created_at <= ? GROUP BY OrderItems.dish_id ORDER BY quantity DESC LIMIT ?",
       [req.params.start_date, req.params.end_date, parseInt(req.params.n)]
-
     );
     return res.json(rows);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
-
   }
-    
-}
+};
 
-export const getProfitToday = async (req,res) => {
+/**
+ * I'm trying to get the sum of the value of the dishes multiplied by the quantity of the order items,
+ * but only for the dishes that were ordered today.
+ * </code>
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns The sum of the value of the dishes multiplied by the quantity of the order items.
+ */
+export const getProfitToday = async (req, res) => {
   var hoy = new Date();
-  var fix = hoy.getTime() - (hoy.getTimezoneOffset() * 60000);
+  var fix = hoy.getTime() - hoy.getTimezoneOffset() * 60000;
   hoy = new Date(fix);
 
   try {
     const [rows] = await promisePool.query(
-      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) = date(?)"
-      ,[hoy]
-      ); 
+      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) = date(?)",
+      [hoy]
+    );
     return res.json(rows);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
-export const getProfitEntireMonth = async (req,res) => {
-
+/**
+ * I want to get the sum of the value of the dishes multiplied by the quantity of the order items,
+ * where the date of the order items is greater than or equal to the first day of the month and less
+ * than the first day of the next month.
+ * </code>
+ * @param req - request
+ * @param res - the response object
+ * @returns The sum of the value of the dishes multiplied by the quantity of the order items.
+ */
+export const getProfitEntireMonth = async (req, res) => {
   var hoy = new Date();
-  var fix = hoy.getTime() - (hoy.getTimezoneOffset() * 60000);
+  var fix = hoy.getTime() - hoy.getTimezoneOffset() * 60000;
   hoy = new Date(fix);
 
-    try {
-      const [rows] = await promisePool.query(
-        "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= ? - interval (day(?)-1) day AND date(OrderItems.created_at)< ? + INTERVAL 1 DAY;"
-        ,[hoy,hoy,hoy]
-      );
-      return res.json(rows);
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({ message: "Internal server error" });
-    }
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT SUM(Dishes.value * OrderItems.quantity) AS profit FROM Dishes INNER JOIN OrderItems ON Dishes.id = OrderItems.dish_id WHERE date(OrderItems.created_at) >= ? - interval (day(?)-1) day AND date(OrderItems.created_at)< ? + INTERVAL 1 DAY;",
+      [hoy, hoy, hoy]
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
   }
+};
 
-export const getProfitByOneDate = async (req,res) => {
-/*
+/**
+ * It gets the profit of a restaurant by a specific date.
+ * @param req - the request object
+ * @param res - {
+ * @returns The sum of the value of the dishes multiplied by the quantity of the order items.
+ */
+export const getProfitByOneDate = async (req, res) => {
+  /*
   console.log("Fecha_llegada:",req.params.date);
   console.log("Fecha_llegada_FIX:",new Date(parseInt(req.params.date)));*/
 
   //Format yyyy-mm-dd to query
-  var aux =  new Date(parseInt(req.params.date));
-  req.params.date = aux.getFullYear() + "-" + (aux.getMonth()+1) + "-" + aux.getDate();
+  var aux = new Date(parseInt(req.params.date));
+  req.params.date =
+    aux.getFullYear() + "-" + (aux.getMonth() + 1) + "-" + aux.getDate();
   //console.log("Fecha_llegada_FIX_QUERY:",req.params.date);
 
   try {
@@ -229,11 +260,16 @@ export const getProfitByOneDate = async (req,res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
-export const getProfitByDateRange = async (req,res) => {
+/**
+ * It returns the sum of the value of each dish multiplied by the quantity of each dish sold
+ * @param req - {
+ * @param res - {
+ * @returns The sum of the value of each dish multiplied by the quantity of each dish.
+ */
+export const getProfitByDateRange = async (req, res) => {
   try {
-    
     req.params.start_date = new Date(parseInt(req.params.start_date));
     req.params.end_date = new Date(parseInt(req.params.end_date));
 
@@ -247,10 +283,15 @@ export const getProfitByDateRange = async (req,res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
 
-
-export const getItemsSoldByHour = async (req,res) => {
+/**
+ * It returns the number of items sold by hour
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns An array of objects.
+ */
+export const getItemsSoldByHour = async (req, res) => {
   try {
     const [rows] = await promisePool.query(
       "SELECT HOUR(OrderItems.created_at) AS hour, SUM(OrderItems.quantity) AS quantity FROM OrderItems GROUP BY hour ORDER BY hour ASC"
@@ -261,4 +302,4 @@ export const getItemsSoldByHour = async (req,res) => {
     console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
