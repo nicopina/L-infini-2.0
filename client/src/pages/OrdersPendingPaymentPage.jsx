@@ -1,9 +1,7 @@
 import React from 'react';
-
+import './OrdersPendingPaymentsPage.css'
 import {getOrdersPendingPayment} from '../api/orders.api';
 import PendingPaymentOrdersList from '../components/PendingPaymentOrders/PendingPaymentOrdersList';
-//Este componente es el que se encarga de mostrar los pedidos pendientes de pago, es decir, todas las orders que tienen state = 2
-//Usa el mismo estilo que ActiveOrders, pero con un componente diferente
 
 function OrdersPendingPaymentPage(){
 
@@ -17,8 +15,8 @@ function OrdersPendingPaymentPage(){
 
 
     return (
-        <div>
-            <h1>OrdersPendingPaymentPage</h1>
+        <div className='ordenadito'>
+            <h1 style={{color:'black'}}>Lista de ordenes pendientes </h1>
             <PendingPaymentOrdersList PendingOrders={PendingOrders}/>
         </div>
     )

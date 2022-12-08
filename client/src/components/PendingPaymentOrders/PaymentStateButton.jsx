@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Button } from "reactstrap";
 import {updateOrderRequest} from "../../api/orders.api";
 
 function PaymentStateButton(params){
@@ -50,7 +50,7 @@ function PaymentStateButton(params){
 
     return (
         <div>
-            <button style={{backgroundColor: color}} onClick={handlePaymentState}>{text}</button>
+            <Button color="info" style={{backgroundColor: color}} onClick={handlePaymentState}>{text}</Button>
         </div>
     )
 }

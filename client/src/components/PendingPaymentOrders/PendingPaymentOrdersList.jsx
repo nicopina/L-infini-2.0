@@ -15,7 +15,6 @@ function PendingPaymentOrdersList(params){
     }
     return (
         <div>
-            <h1>PendingPaymentOrdersList</h1>
             <ul>
                 {params.PendingOrders.map((order) => {
                     return <ItemPendingPaymentOrder order={order}/>

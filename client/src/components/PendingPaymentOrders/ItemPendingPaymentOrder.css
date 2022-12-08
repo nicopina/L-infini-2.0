@@ -1,0 +1,9 @@
+.cardPetit {
+  display: flex;
+  max-width: 500px;
+  max-height: 500px;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #fff;
+}
