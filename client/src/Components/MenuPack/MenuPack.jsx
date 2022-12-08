@@ -19,7 +19,7 @@ const MenuPack = () => {
         setProductos(value.productos[0].filter((item) => item.category === element.id));
       }
     });
-    if(filter === ''){
+    if(filter == '' || filter == null){
       setProductos(value.productos[0]);
     }
   }, [value]);
