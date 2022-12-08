@@ -140,7 +140,7 @@ export const getOrdersPendingPayment = async (req, res) => {
   try {
     
     const [rows] = await promisePool.query(
-      "SELECT Orders.id as id, Orders.created_at as created_at, Orders.state as state, Orders.table_id as id_table, SUM(OrderItems.quantity * Dishes.value) as total FROM Orders INNER JOIN OrderItems ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON OrderItems.dish_id = Dishes.id WHERE Orders.state = 2 GROUP BY Orders.id"
+      "SELECT Orders.id as id, Orders.created_at as created_at, Orders.state as state, Orders.table_id as id_table, SUM(OrderItems.quantity * Dishes.value) as total FROM Orders INNER JOIN OrderItems ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON OrderItems.dish_id = Dishes.id WHERE Orders.state = 1 GROUP BY Orders.id"
     );
     const ordersPendingPayment = [];
     for (const order of rows) {
