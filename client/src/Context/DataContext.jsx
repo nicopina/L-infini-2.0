@@ -16,6 +16,7 @@ export const DataProvider=(props)=>{
     const[carrito,setCarrito]=useState(JSON.parse(localStorage.getItem("dataCarrito"))||[]); // inicializador de estado
     const[menuCategorias,setMenuCategorias]=useState([]); // inicializador de estado
 
+
     useEffect(()=>{ 
         getDishesCategoriesRequest().then((response) => {
             if (response.status === 200) {

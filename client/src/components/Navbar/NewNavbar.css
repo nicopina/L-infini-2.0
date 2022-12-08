@@ -83,6 +83,15 @@
     background-color: crimson;
 }
 
+.Navbar-responsive__item_total{
+    display: none;
+}
+
+.Navbar-responsive__cart{
+    display: none;
+}
+
+
 
 @media screen and (max-width: 1370px){
     .Responsive-Navbar{
@@ -156,6 +165,7 @@
         margin: 0 10px;
         cursor: pointer;
         position: relative; */
+        display: flex;
         color: #fff;
         top: 10px;
         z-index: 6;
@@ -164,6 +174,7 @@
         width: 50px;
     }
     .Navbar-responsive__item_total{
+        display: flex;
         position: absolute;
         /* top: -15px;
         right: -10px; */
