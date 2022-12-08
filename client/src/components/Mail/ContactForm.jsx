@@ -26,7 +26,10 @@ const ContactForm = () => {
             text: "Te enviaremos una respuesta en breve al correo que nos has proporcionado.",
             icon: "success",
             button: "Aceptar",
-          });
+          })
+          .then(() => {
+              window.location.reload();
+            })
         },
         (error) => {
           console.log(error.text);
