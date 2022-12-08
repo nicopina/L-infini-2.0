@@ -13,6 +13,11 @@ function ActiveOrdersPage() {
     getActiveOrdersRequest().then((response) => {
       setActiveOrders(response.data);
     });
+    const interval = setInterval(() => {
+      getActiveOrdersRequest().then((response) => {
+        setActiveOrders(response.data);
+      });
+    }, 7000);
   }, []);
 
   return (
