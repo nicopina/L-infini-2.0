@@ -4,8 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../Context/UserContext";
 import { DataContext } from "../../Context/DataContext";
 import { Cart } from "../ShoppingCart/Cart";
-import {FiShoppingCart} from "react-icons/fi";
-
+import { FiShoppingCart } from "react-icons/fi";
 
 const Emptypages = [{ name: "Iniciar Sesión", path: "/login" }];
 
@@ -159,14 +158,18 @@ function Navbar() {
           </div>
         </div>
         {user.role === null && table !== undefined ? (
-              <div className="Navbar-responsive__cart" onClick={toggleMenu}>
-                <FiShoppingCart />
-                <span className="Navbar-responsive__item_total">{carrito.length}</span>
-                {menu ? <Cart /> : ""}
-              </div>
-            ) : (
-              ""
-            )}
+          <>
+            <div className="Navbar-responsive__cart" onClick={toggleMenu}>
+              <FiShoppingCart />
+              <span className="Navbar-responsive__item_total">
+                {carrito.length}
+              </span>
+            </div>
+          </>
+        ) : (
+          ""
+        )}
+        {menu ? <Cart /> : ""}
       </>
     );
   };
@@ -182,14 +185,14 @@ function Navbar() {
             </Link>
           ))}
           {user.role === null && table !== undefined ? (
-              <div className="Navbar__cart" onClick={toggleMenu}>
-                <FiShoppingCart />
-                <span className="Navbar__item_total">{carrito.length}</span>
-                {menu ? <Cart /> : ""}
-              </div>
-            ) : (
-              ""
-            )}
+            <div className="Navbar__cart" onClick={toggleMenu}>
+              <FiShoppingCart />
+              <span className="Navbar__item_total">{carrito.length}</span>
+              {menu ? <Cart /> : ""}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );
