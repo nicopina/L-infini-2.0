@@ -21,6 +21,10 @@ function OrderActiveOrders(props) {
     });
   }
 
+  //Formatear fecha
+  //props.order.created_at = props.order.created_at.substring(0,10) + " " + props.order.created_at.substring(11,19);
+  //
+
   function orderMade() {
     const order = {
       id: props.order.id,
@@ -87,7 +91,7 @@ function OrderActiveOrders(props) {
         lg={3}
         style={{ backgroundColor: "#E2E1E1", margin: "15px", padding: "1px" , borderRadius: "10px"}}
       >
-        <p>{props.order.created_at}</p>
+        <p>{props.order.created_at.substring(0,10) + " " + props.order.created_at.substring(11,19)}</p>
       </Grid>
       {props.order.orderList.map((item, index) => (
         <ItemActiveOrder
