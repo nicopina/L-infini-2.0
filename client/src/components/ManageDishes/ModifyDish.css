@@ -1,0 +1,12 @@
+.dish-manager-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 95%;
+    height: 100%;
+    margin: 50px auto;
+}
+.dish-manager-container DataGrid{
+    margin: auto;
+}

@@ -1,0 +1,22 @@
+.Dishes__button{
+    margin: 0 0 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #000;
+}
+
+.Dishes__button:hover{
+    color: #000;
+    background-color: #ccc;
+    transition: all 0.3s ease;
+}
+
+.Dishes__button:active{
+    background-color: #ccc;
+    transition: all 0.3s ease;
+}

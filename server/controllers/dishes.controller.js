@@ -65,6 +65,7 @@ export const createDish = async (req, res) => {
  * @returns a json object with a message if the dish was updated, otherwise it returns an error message.
  */
 export const updateDish = async (req, res) => {
+  console.log(req.body);
   try {
     req.body.updated_at = new Date();
     const [result] = await promisePool.query(
