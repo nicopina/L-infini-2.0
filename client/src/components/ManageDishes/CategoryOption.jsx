@@ -16,9 +16,7 @@ function CategoryOption(props) {
     const newDishUpdate = {
       category: parseInt(event.target.value),
     };
-    updateDishRequest(dish.id, newDishUpdate).then((response) => {
-        props.setSeed(props.seed + 1);
-    });
+    updateDishRequest(dish.id, newDishUpdate)
   };
 
   return (
