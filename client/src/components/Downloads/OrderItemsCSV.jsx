@@ -1,6 +1,6 @@
 import React from "react";
 import {createDownloadOrderItemsCSV} from "../../api/downloads.api";
-
+import { Button } from "reactstrap";
 function OrderItemsCSV(params) {
 
     var exportCSVFile = params.exportCSVFile;
@@ -13,7 +13,7 @@ function OrderItemsCSV(params) {
 
   return (
     <div>
-        <button onClick={downloadOrderItemsCSV}>Descargar CSV Detalle de Pedidos</button>
+        <Button color="success" onClick={downloadOrderItemsCSV}>Descargar CSV Detalle de Pedidos</Button>
     </div>
   );
 }
