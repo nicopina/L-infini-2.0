@@ -28,7 +28,7 @@ export function sendMessages(array) {
         theme: "darkblue",
         native: true, // when using native, your OS will handle theming.
       });
+      console.log("notificado");
     }
   });
-  console.log("notificado");
 }

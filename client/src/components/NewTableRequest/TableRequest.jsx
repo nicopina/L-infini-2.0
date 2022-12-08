@@ -35,7 +35,7 @@ function TableRequest(props) {
   return (
     <div className="TableRequest__container">
       <CardGroup>
-        <div>
+        {/* <div>
           <CardImg
             className="TableRequest__image"
             alt="Card image cap"
@@ -47,7 +47,7 @@ function TableRequest(props) {
             }}
             top
           />
-        </div>
+        </div> */}
         <Card
           key={request.id}
           style={{

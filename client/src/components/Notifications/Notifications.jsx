@@ -6,6 +6,9 @@ const Notifications = () => {
   var awaitTimeSec = 10;
 
   useEffect(() => {
+    getRequests().then((response) => {
+      sendMessages(response.data);
+    });
     const interval = setInterval(() => {
       getRequests().then((response) => {
         sendMessages(response.data);
