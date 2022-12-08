@@ -11,7 +11,7 @@ function AssistancesPageEmployee() {
         flexDirection: "column",
       }}
     >
-      <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}>Asistencias</h1>
+      <h1 style={{color:'black',textAlign:'center',alignItems:'center', margin:'50px 0'}}>Asistencias</h1>
       <div>
         <TablesRequestsList />
       </div>

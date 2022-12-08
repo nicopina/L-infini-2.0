@@ -54,7 +54,6 @@ function AdminView() {
         <Route path="/modificarCategoriaPlatos" element = {<DishCategories/>} />
         <Route path="/reportes/ventas" element= {<SalesReportPage/>} />
         <Route path= "/reportes/descargas" element={<DownloadsPage/>}/>
-
       </Routes>
       <Footer />
     </div>
