@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Grid, Button } from "@mui/material";
+import { Grid} from "@mui/material";
 import { useEffect } from "react";
 import "./OrderActiveOrders.css";
+import { Button } from 'reactstrap';
 function OrderDeliveredButton (props) {
     const [checked, setChecked] = useState(props.checked);
 
@@ -10,14 +11,14 @@ function OrderDeliveredButton (props) {
     }, [props.checked]);
 
     return (
-        <Button
+      <div>
+        <Button color="success"
         onClick={props.orderMade}
-        //variant="contained"
         disabled={!checked}
-        className="button"
       >
         OK
       </Button>
+      </div>
     )
 }
 

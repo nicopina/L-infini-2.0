@@ -13,7 +13,7 @@ function ItemActiveOrder(props) {
   return (
     <Grid
       container
-      backgroundColor="#000000"
+      backgroundColor="#85865B"
       margin="5px 10px"
       alignContent={"center"}
       justifyContent={"center"}
@@ -27,7 +27,7 @@ function ItemActiveOrder(props) {
         md={3}
         lg={3}
         style={{
-          backgroundColor: "#E2E1E1",
+          backgroundColor: "#BEC081",
           margin: "10px",
           padding: "10px",
           color: "black",
@@ -42,7 +42,7 @@ function ItemActiveOrder(props) {
         md={4}
         lg={3}
         style={{
-          backgroundColor: "#E2E1E1",
+          backgroundColor: "#BEC081",
           margin: "10px",
           padding: "1px",
           color: "black",
@@ -60,7 +60,7 @@ function ItemActiveOrder(props) {
         md={2}
         lg={3}
         style={{
-          backgroundColor: "#E2E1E1",
+          backgroundColor: "#BEC081",
           margin: "10px",
           padding: "1px",
           color: "black",
@@ -75,7 +75,7 @@ function ItemActiveOrder(props) {
         md={1}
         lg={1}
         style={{
-          backgroundColor: "#000000",
+          backgroundColor: "#85865B",
           margin: "10px",
           padding: "1px",
           color: "black",

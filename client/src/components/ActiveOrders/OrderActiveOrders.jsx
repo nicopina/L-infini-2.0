@@ -58,7 +58,7 @@ function OrderActiveOrders(props) {
       className = 'center'
       alignContent={"center"}
       justifyContent={"center"}
-      backgroundColor="#000000"
+      backgroundColor="#BEC081"
       margin="5px 10px"
       borderRadius="10px"
       textAlign={"center"}
@@ -69,7 +69,7 @@ function OrderActiveOrders(props) {
         xs={12}
         sm={3}
         lg={3}
-        style={{ backgroundColor: "#E2E1E1", margin: "15px", padding: "1px", borderRadius: "10px" }}
+        style={{ backgroundColor: "#85865B", margin: "15px", padding: "1px", borderRadius: "10px" }}
       >
         <p>ID:{props.order.id}</p>
       </Grid>
@@ -79,7 +79,7 @@ function OrderActiveOrders(props) {
         xs={12}
         sm={4}
         lg={5}
-        style={{ backgroundColor: "#E2E1E1", margin: "15px", padding: "1px", borderRadius: "10px" }}
+        style={{ backgroundColor: "#85865B", margin: "15px", padding: "1px", borderRadius: "10px" }}
       >
         <p>Mesa {props.order.table_id}</p>
       </Grid>
@@ -89,7 +89,7 @@ function OrderActiveOrders(props) {
         xs={12}
         sm={3}
         lg={3}
-        style={{ backgroundColor: "#E2E1E1", margin: "15px", padding: "1px" , borderRadius: "10px"}}
+        style={{ backgroundColor: "#85865B", margin: "15px", padding: "1px" , borderRadius: "10px"}}
       >
         <p>{props.order.created_at.substring(0,10) + " " + props.order.created_at.substring(11,19)}</p>
       </Grid>
@@ -105,7 +105,7 @@ function OrderActiveOrders(props) {
         xs={12}
         md={12}
         lg={12}
-        backgroundColor="#000000"
+        backgroundColor="#85865B"
         margin="10px"
         borderRadius={"10px"}
         alignContent={"center"}
