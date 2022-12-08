@@ -14,7 +14,7 @@ function ItemPendingPaymentOrder(params){
             <CardBody style={{textAlign:"center"}}>
             <p>ID: {params.order.id}</p>
             <p>Estado: {params.order.state}</p>
-            <p>Total: {params.order.total}</p>
+            <p>Total: ${params.order.total}</p>
             <p>Fecha: {params.order.created_at.substring(0,10) + " " + params.order.created_at.substring(11,19)}</p>
             <PaymentStateButton item={params.order}/>
             </CardBody>
