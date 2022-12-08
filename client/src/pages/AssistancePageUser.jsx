@@ -1,9 +1,7 @@
 import TablesRequestsList from "../components/NewTableRequest/TablesRequestsList";
-import NewTableRequest from "../components/NewTableRequest/NewTableRequest";
-import BillAssistanceButton from "../components/NewTableRequest/BillAssistanceButton";
 import { Row, Col } from "reactstrap";
 import {useContext} from 'react';
-
+import UserAssistanceButtons from "../components/UserAssistanceButtons/UserAssistanceButtons";
 
 function AssistancePageUser() {
 
@@ -16,20 +14,11 @@ function AssistancePageUser() {
   } else {
     var showTablesRequestsList = true;
   }
-  console.log("hola");
 
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'column' , alignItems: 'center'}}>
       <h1 style={{color:'black',textAlign:'center',alignItems:'center'}}> Asistencia Mesa: {tableId}</h1>
-      <Row>
-        <Col>
-          <NewTableRequest />
-        </Col>
-
-        <Col>
-          <BillAssistanceButton />
-        </Col>
-      </Row>
+      <UserAssistanceButtons />
 
       {showTablesRequestsList ? (
         <Row>
@@ -40,7 +29,6 @@ function AssistancePageUser() {
       ) : (
         <div></div>
       )}
-      
     </div>
   );
 }

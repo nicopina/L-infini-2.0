@@ -158,13 +158,6 @@
         right: -230px;
     }
     .Navbar-responsive__cart{
-        /* display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-        margin: 0 10px;
-        cursor: pointer;
-        position: relative; */
         display: flex;
         color: #fff;
         top: 10px;
