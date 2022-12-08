@@ -24,13 +24,13 @@ function NewTableRequest() {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        swal("!Tu cuenta Ha sido solicitada con exito!", {
+        swal("!Tu solicitud Ha sido recibida con exito!", {
           icon: "success",
         }).then(() => {
           window.location.reload();
         });
       } else {
-        swal("Tu cuenta no fue solicitada!", { icon: "error" });
+        swal("Tu solicitud no fue enviada!", { icon: "error" });
       }
     });
   }

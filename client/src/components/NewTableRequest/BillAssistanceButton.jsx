@@ -16,7 +16,7 @@ function BillAssistanceButton() {
   function ContactPageTest() {
     swal({
       title: "¿Estás segur@ de que quieres pedir la cuenta?",
-      text: "Una vez que lo hagas no podrás volverlo a hacer.",
+      text: "Solo se enviará una solicitud por pedido.",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
