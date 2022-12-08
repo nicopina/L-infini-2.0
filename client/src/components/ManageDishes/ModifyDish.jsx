@@ -55,7 +55,7 @@ function ModifyDish() {
       field: "category",
       headerName: "Categoria",
       width: 250,
-      renderCell: (params) => <CategoryOption params={params} setSeed={setSeed} />,
+      renderCell: (params) => <CategoryOption params={params}/>,
     },
     {
         field: "delete",
