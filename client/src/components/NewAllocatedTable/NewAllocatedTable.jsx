@@ -17,7 +17,7 @@ function NewAllocatedTable() {
  //funcion notificacion swal
   function notificacion(){
     swal({
-      title: "Su mesa se asignó con exito",
+      title: "Su mesa se asignó con éxito",
       text: "Será redirigido al menú en breve",
       icon: "info",
       button: false,

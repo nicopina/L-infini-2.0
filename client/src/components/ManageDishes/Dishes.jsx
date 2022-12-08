@@ -52,18 +52,18 @@ function Dishes() {
         <div className="Dishes-buttons__container">
           <div className="Dishes-buttons__container-row">
             <Link className="Dishes__button" to="/modificarPlatos">
-              Gestionar platos
+              Gestionar Platos
             </Link>
             <Link className="Dishes__button" to="/registroPlatos">
-              Registrar plato
+              Registrar Plato
             </Link>
           </div>
           <div className="Dishes-buttons__container-row">
             <Link className="Dishes__button" to="/modificarCategoriaPlatos">
-              Gestionar Categoria de Plato
+              Gestionar Categoría de Plato
             </Link>
             <Link className="Dishes__button" to="/registroCategoriaPlatos">
-              Registrar Categoria de Plato
+              Registrar Categoría de Plato
             </Link>
           </div>
         </div>
