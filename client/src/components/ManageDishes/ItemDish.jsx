@@ -29,11 +29,13 @@ function ItemDish(params) {
             onChange={() => params.changeState(params.dish)}
           />
         </Col>
+        {params.role == 1 ? (
         <Col className="dish-item-column-delete">
           <button className="delete-button" onClick={handlerDelete}>
             Eliminar
           </button>
         </Col>
+        ) : ''}
       </Row>
     </div>
   );

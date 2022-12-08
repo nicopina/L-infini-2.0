@@ -87,7 +87,8 @@ function Dishes() {
           <Col></Col>
           <Col>Plato</Col>
           <Col>Estado</Col>
-          <Col>Eliminar</Col>
+          {user.role == 1 ? <Col>Elimnar</Col> : ""}
+          {/* <Col>Eliminar</Col> */}
         </Row>
         {dishes.map((dish, index) => (
           <ItemDish
@@ -95,6 +96,7 @@ function Dishes() {
             changeState={changeState}
             key={index}
             setSeed={setSeed}
+            role={user.role}
           />
         ))}
       </Card>
