@@ -8,11 +8,11 @@ function PaymentStateButton(params){
     const [color , setColor] = React.useState("");
     const [text, setText] = React.useState("");
 
-    if (state === 2){
+    if (state === 1){
 
         const [color , setColor] = React.useState("red");
         const [text, setText] = React.useState("Pago Pendiente");
-    }else if(state === 3){
+    }else if(state === 2){
 
         const [color , setColor] = React.useState("green");
         const [text, setText] = React.useState("Pago Listo");
@@ -24,11 +24,11 @@ function PaymentStateButton(params){
 
     React.useEffect(() => {
         switch (state) {
-            case 2:
+            case 1:
                 setColor("red");
                 setText("Pago Pendiente");
                 break;
-            case 3:
+            case 2:
                 setColor("green");
                 setText("Pago Listo");
                 break;
@@ -38,16 +38,13 @@ function PaymentStateButton(params){
     }, [state]);
 
     function handlePaymentState(){
-        //Cambiar los estaddos de la orden
-        //Si el estado es 2, cambiarlo a 3
-        //Si el estado es 3, cambiarlo a 2
 
-        if(state === 2){
-            setState(3);
-            updateOrderRequest(params.item.id, {state: 3});
-        }else if(state === 3){
+        if(state === 1){
             setState(2);
             updateOrderRequest(params.item.id, {state: 2});
+        }else if(state === 2){
+            setState(1);
+            updateOrderRequest(params.item.id, {state: 1});
         }
     }
 
