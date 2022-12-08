@@ -17,8 +17,19 @@
     background: #57fc05f4;
 }  */
 
+.FormDishCategory__container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 auto;
+	max-width: 500px;
+}
+
 .formulario {
-	min-width: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 600px;
 	margin-top: 50px;
 	background: #fff;
 	border-radius: 2px;
