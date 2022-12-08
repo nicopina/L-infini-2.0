@@ -48,3 +48,7 @@ export const getCountOrdersMonth = async () => {
 export const getCountOrdersOneFullDate = async (date) => {
   return await axios.get(`${BASE_URL}/orders/count/${date}`);
 }
+
+export const getOrdersPendingPayment = async () => {
+  return await axios.get(`${BASE_URL}/orders-pending-payment`);
+}

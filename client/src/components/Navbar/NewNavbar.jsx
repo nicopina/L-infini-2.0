@@ -44,6 +44,10 @@ const Waiterpages = [
     path: "/pedidosActivos",
   },
   {
+    name: "Pedidos Pendientes",
+    path: "/pedidosPendientes",
+  },
+  {
     name: "Platos",
     path: "/platos",
   },
