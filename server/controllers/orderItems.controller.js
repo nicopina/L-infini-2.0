@@ -285,3 +285,22 @@ export const getItemsSoldByHour = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const getProfitByAllDates = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT DATE(Orders.created_at) as fecha, SUM(OrderItems.quantity*Dishes.value) as profit FROM OrderItems INNER JOIN Orders ON Orders.id = OrderItems.order_id INNER JOIN Dishes ON Dishes.id = OrderItems.dish_id GROUP BY DATE(Orders.created_at) ORDER BY DATE(Orders.created_at) ASC;"
+    );
+
+    //Extraer dia, mes y año de la fecha en campo aparte en json
+    for (let i = 0; i < rows.length; i++) {
+      rows[i].day = rows[i].fecha.getDate();
+      rows[i].month = rows[i].fecha.getMonth() + 1;
+      rows[i].year = rows[i].fecha.getFullYear();
+    }
+
+    return res.json(rows);
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}

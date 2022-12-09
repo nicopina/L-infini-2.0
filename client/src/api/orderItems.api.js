@@ -56,3 +56,7 @@ export const getProfitByDateRange = async (fecha_inicial, fecha_final) => {
 export const getItemsSoldByHour = async () => {
   return await axios.get(`${BASE_URL}/orderItems-quantity-hour`);
 }
+
+export const getProfitByAllDates = async () => {
+  return await axios.get(`${BASE_URL}/orderItems-profit-all-dates`);
+}
