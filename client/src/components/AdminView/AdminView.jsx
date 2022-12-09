@@ -57,7 +57,7 @@ function AdminView() {
         <Route path="/modificarCategoriaPlatos" element = {<DishCategories/>} />
         <Route path="/reportes/ventas" element= {<SalesReportPage/>} />
         <Route path= "/reportes/descargas" element={<DownloadsPage/>}/>
-        <Route path="/historialVentas" element={<SalesRecord/>}/>
+        <Route path="/reportes/historialVentas" element={<SalesRecord/>}/>
         <Route path= "/reportes/graficos" element={<ChartsPage/>}/>
       </Routes>
       <Footer />

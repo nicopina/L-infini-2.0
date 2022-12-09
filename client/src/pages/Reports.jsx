@@ -93,6 +93,28 @@ function Reports(){
                         <Button  className="buttonpad" color="info" size='lg' href={`/reportes/descargas`}>Descargas</Button>
                         </CardBody>
                     </Card>
+            </div>         
+            <div>
+            <Card className="my-2">
+                 <CardImg
+                        alt="Card image cap"
+                        src="https://cdn.discordapp.com/attachments/1049863590594756638/1050575956621930506/4fd86f4e-f807-44e4-bdc4-34da4a88da2b.png"
+                        style={{
+                            height: 250,opacity: 0.7
+                        }}
+                        top
+                        width="100%"
+                        />
+                        <CardBody className="cardbodyc">
+                        <CardTitle tag="h5">
+                            Historial de Ventas
+                        </CardTitle>
+                        <CardText>
+                            Aquí puedes ver el historial de ventas realizadas.
+                        </CardText>
+                        <Button  className="buttonpad" color="secondary" size='lg' href={`/reportes/historialVentas`}>Historial</Button>
+                        </CardBody>
+                    </Card>
             </div>          
             
         </>
