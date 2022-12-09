@@ -32,22 +32,71 @@ function SalesMonthChart(){
     }
     , []);
 
+    //Añade los . a los miles
+    function formateo_dinero(dinero) {
+        return dinero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    ////Color haitiano: forest green
+    var backgroundColor = [];
+    for (var i = 0; i < labels.length; i++) {
+        backgroundColor.push("rgba(34, 139, 34, 0.2)");
+    }
+
+    //Color: forest green mas oscuro
+    var borderColor = [];
+    
+    for (var i = 0; i < labels.length; i++) {
+        borderColor.push("rgba(34, 139, 34, 1)");     
+    }
+
     const data = {
         labels: labels,
         datasets: [
             {
                 label: 'Ingreso diario en el mes actual',
                 data: datos,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor:  backgroundColor,
+                borderColor: borderColor,
                 borderWidth: 1,
             },
         ],
     };
+    
+
+
+    var options = {
+        responsive: true,
+        scales: {
+            y: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Ingresos por día',
+                    size: 40
+                },
+                //ticks van con %
+                ticks: {
+                    callback: function (value, index, values) {
+                        return "$"+formateo_dinero(value);
+                    }
+                }
+            },
+            x: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Día del mes'
+                }
+            }
+        }
+    };
 
     return (
         <div>
-            <Bar data={data} />
+            <Bar data={data} 
+                options={options}
+            />
         </div>
     );
 
