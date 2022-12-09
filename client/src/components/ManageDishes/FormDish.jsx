@@ -102,8 +102,8 @@ const Formulario = () => {
 						<div>
                             <label htmlFor="category">Categoria</label>
 							<Field className="Lista" name="category" as="select">
-								{dishCategory.map((category) => (
-									<option key={category.id} value={category.id}>
+								{dishCategory.map((category, index) => (
+									<option key={index} value={category.id}>
 										{category.name}
 									</option>
 								))}
