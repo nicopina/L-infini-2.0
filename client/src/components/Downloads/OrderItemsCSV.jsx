@@ -8,7 +8,7 @@ function OrderItemsCSV(params) {
 
     const downloadOrderItemsCSV = async () => {
         const { data } = await createDownloadOrderItemsCSV();
-        exportCSVFile (data.headers, data.rows, "order-items");
+        exportCSVFile (data.headers, data.rows, "pedidos_detalle");
     };
 
   return (

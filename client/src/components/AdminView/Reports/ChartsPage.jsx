@@ -2,6 +2,8 @@ import React from "react";
 import BusyHoursReport from "./BusyHoursReport";
 import SalesMonthChart from "./SalesMonthChart";
 import { Card, Container } from "reactstrap";
+import CategoryChart from "./CategoryChart";
+
 function ChartsPage() {
   function beforePrintHandler() {
     for (let id in Chart.instances) {
@@ -52,6 +54,24 @@ function ChartsPage() {
             <SalesMonthChart />
           </Card>
         </div>
+        <div>
+            
+          <Card 
+            style={{
+              width: "100%",
+              height: "70%",
+              margin: "5px 0 0 0",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <CategoryChart />
+          </Card>
+        
+        </div>
+
       </div>
     </Container>
   );
