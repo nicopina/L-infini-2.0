@@ -55,6 +55,7 @@ function ModifyDish() {
       field: "category",
       headerName: "Categoria",
       width: 250,
+      editable: true,
       renderCell: (params) => <CategoryOption params={params}/>,
     },
     {
