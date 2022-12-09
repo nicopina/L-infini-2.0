@@ -10,7 +10,6 @@ export const getDishCategories = async (req, res) => {
     const [rows] = await promisePool.query("SELECT * FROM DishCategories");
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -32,7 +31,6 @@ export const getDishCategory = async (req, res) => {
     }
     return res.status(404).json({ message: "Dish not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -53,7 +51,6 @@ export const createDishCategories = async (req, res) => {
     );
     return res.json({ message: "Dish saved" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -76,7 +73,6 @@ export const updateDishCategories = async (req, res) => {
     }
     res.status(404).json({ message: "Dish not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -98,7 +94,6 @@ export const deleteDishCategories = async (req, res) => {
     }
     return res.status(404).json({ message: "Dish not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };

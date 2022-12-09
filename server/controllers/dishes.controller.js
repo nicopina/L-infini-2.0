@@ -18,7 +18,6 @@ export const getDish = async (req, res) => {
     }
     return res.status(404).json({ message: "Dish not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -33,7 +32,6 @@ export const getDishes = async (req, res) => {
     const [rows] = await promisePool.query("SELECT * FROM Dishes");
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -53,7 +51,6 @@ export const createDish = async (req, res) => {
     ]);
     return res.json({ message: "Dish saved" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -65,7 +62,6 @@ export const createDish = async (req, res) => {
  * @returns a json object with a message if the dish was updated, otherwise it returns an error message.
  */
 export const updateDish = async (req, res) => {
-  console.log(req.body);
   try {
     req.body.updated_at = new Date();
     const [result] = await promisePool.query(
@@ -77,7 +73,6 @@ export const updateDish = async (req, res) => {
     }
     res.status(404).json({ message: "Dish not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -99,7 +94,6 @@ export const deleteDish = async (req, res) => {
     }
     return res.status(404).json({ message: "Dish not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -117,7 +111,6 @@ export const getActiveDishes = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };

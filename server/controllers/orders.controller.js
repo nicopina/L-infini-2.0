@@ -8,7 +8,6 @@ import { getOrderItemsByOrderId } from "./orderItems.controller.js";
  */
 export const getOrders = async (req, res) => {
   try {
-    console.log("here");
     const [rows] = await promisePool.query("SELECT * FROM Orders");
     // const orders = [];
     // for (const order of rows) {
@@ -17,7 +16,6 @@ export const getOrders = async (req, res) => {
     // }
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -41,7 +39,6 @@ export const getOrder = async (req, res) => {
     }
     return res.status(404).json({ message: "Order not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -61,7 +58,6 @@ export const createOrder = async (req, res) => {
     ]);
     return res.json({ message: "Orders saved" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -84,7 +80,6 @@ export const updateOrder = async (req, res) => {
     }
     return res.status(404).json({ message: "Orders not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -106,7 +101,6 @@ export const deleteOrder = async (req, res) => {
     }
     return res.status(404).json({ message: "Orders not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -129,7 +123,6 @@ export const getActiveOrders = async (req, res) => {
     }
     return res.json(activeOrders);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -154,7 +147,6 @@ export const getOrdersPendingPayment = async (req, res) => {
     }
     return res.json(ordersPendingPayment);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -174,7 +166,6 @@ export const getIfAllItemsAreOk = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -192,7 +183,6 @@ export const getLastOrderId = async (req, res) => {
     );
     return res.json(rows[0].id);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -217,7 +207,6 @@ export const getActiveOrderByTableId = async (req, res) => {
     }
     return res.json(activeOrders);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -241,7 +230,6 @@ export const getCountOrdersToday = async (req, res) => {
     );
     return res.json(rows[0].count);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -264,7 +252,6 @@ export const getCountOrdersMonth = async (req, res) => {
     );
     return res.json(rows[0].count);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -276,11 +263,9 @@ export const getCountOrdersMonth = async (req, res) => {
  * @param res - {
  */
 export const getCountOrdersOneFullDate = async (req, res) => {
-  console.log("Time ORDERS:", req.params.date);
   var aux = new Date(parseInt(req.params.date));
   req.params.date =
     aux.getFullYear() + "-" + (aux.getMonth() + 1) + "-" + aux.getDate();
-  console.log("Fecha_ ORDERS_FIX_QUERY:", req.params.date);
 
   try {
     const [rows] = await promisePool.query(
@@ -289,7 +274,6 @@ export const getCountOrdersOneFullDate = async (req, res) => {
     );
     return res.json(rows[0].count);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -304,7 +288,6 @@ export const getCountOrdersOneFullDate = async (req, res) => {
 export const getDailyIncomeMonth = async (req, res) => {
   var hoy = new Date();
   var mes = hoy.getMonth() + 1;
-  console.log("Mes:", mes);
 
   try {
     const [rows] = await promisePool.query(
@@ -313,7 +296,6 @@ export const getDailyIncomeMonth = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 }
@@ -344,7 +326,6 @@ export const getOrdersByDay = async (req, res) => {
     }
           // return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 }

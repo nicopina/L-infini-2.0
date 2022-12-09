@@ -11,7 +11,6 @@ export const getRequests = async (req, res) => {
     );
     res.json(rows);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -34,7 +33,6 @@ export const getRequest = async (req, res) => {
     }
     res.status(404).json({ message: "Request not found" });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -56,7 +54,6 @@ export const createRequest = async (req, res) => {
     );
     res.json({ message: "Request saved" });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -79,7 +76,6 @@ export const updateRequest = async (req, res) => {
       res.status(404).json({ message: "Request not found" });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -100,7 +96,6 @@ export const deleteRequest = async (req, res) => {
     }
     res.status(404).json({ message: "Request not found" });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -112,7 +107,6 @@ export const getPendingRequests = async (req, res) => {
     );
     res.json(rows);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };

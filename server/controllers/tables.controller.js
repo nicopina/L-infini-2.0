@@ -10,7 +10,7 @@ export const getTables = async (req, res) => {
     const [rows] = await promisePool.query("SELECT * FROM Tables");
     res.json(rows);
   } catch (error) {
-    console.log(error);
+    res.json({ message: "Internal server error" });
   }
 };
 
@@ -32,7 +32,7 @@ export const getTable = async (req, res) => {
     }
     res.status(404).json({ message: "Table not found" });
   } catch (error) {
-    console.log(error);
+    res.json({ message: "Internal server error" });
   }
 };
 
@@ -71,7 +71,7 @@ export const updateTable = async (req, res) => {
     }
     res.status(404).json({ message: "Table not found" });
   } catch (error) {
-    console.log(error);
+    res.json({ message: "Internal server error" })
   }
 };
 
@@ -91,6 +91,6 @@ export const deleteTable = async (req, res) => {
     }
     res.status(404).json({ message: "Table not found" });
   } catch (error) {
-    console.log(error);
+    res.json({ message: "Internal server error" });
   }
 };

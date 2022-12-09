@@ -5,7 +5,6 @@ export const getUsers = async (req, res) => {
     const [rows] = await promisePool.query("SELECT * FROM Users");
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -21,7 +20,6 @@ export const getUser = async (req, res) => {
     }
     return res.status(404).json({ message: "User not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -33,7 +31,6 @@ export const createUser = async (req, res) => {
     ]);
     return res.json({ message: "User saved" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 };

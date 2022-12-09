@@ -10,7 +10,6 @@ export const getOrderItems = async (req, res) => {
     const [rows] = await promisePool.query("SELECT * FROM OrderItems");
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -32,7 +31,6 @@ export const getOrderItem = async (req, res) => {
     }
     return res.status(404).json({ message: "OrderItem not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -52,7 +50,6 @@ export const createOrderItem = async (req, res) => {
     ]);
     return res.json({ message: "OrderItem saved" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -75,7 +72,6 @@ export const updateOrderItem = async (req, res) => {
     }
     res.status(404).json({ message: "OrderItem not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -97,7 +93,6 @@ export const deleteOrderItem = async (req, res) => {
     }
     return res.status(404).json({ message: "OrderItem not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -116,7 +111,6 @@ export const getOrderItemsByOrderId = async (req, res) => {
     return rows;
     // return res.status(404).json({ message: "Order not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -135,7 +129,6 @@ export const getOrderItemsTopBestN = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -154,7 +147,6 @@ export const getOrderItemsTopWorstN = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -177,7 +169,6 @@ export const getOrderItemsTopBestNByDate = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -202,7 +193,6 @@ export const getProfitToday = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -228,7 +218,6 @@ export const getProfitEntireMonth = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -240,15 +229,11 @@ export const getProfitEntireMonth = async (req, res) => {
  * @returns The sum of the value of the dishes multiplied by the quantity of the order items.
  */
 export const getProfitByOneDate = async (req, res) => {
-  /*
-  console.log("Fecha_llegada:",req.params.date);
-  console.log("Fecha_llegada_FIX:",new Date(parseInt(req.params.date)));*/
 
   //Format yyyy-mm-dd to query
   var aux = new Date(parseInt(req.params.date));
   req.params.date =
     aux.getFullYear() + "-" + (aux.getMonth() + 1) + "-" + aux.getDate();
-  //console.log("Fecha_llegada_FIX_QUERY:",req.params.date);
 
   try {
     const [rows] = await promisePool.query(
@@ -257,7 +242,6 @@ export const getProfitByOneDate = async (req, res) => {
     );
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -280,7 +264,6 @@ export const getProfitByDateRange = async (req, res) => {
 
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -299,7 +282,6 @@ export const getItemsSoldByHour = async (req, res) => {
 
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };

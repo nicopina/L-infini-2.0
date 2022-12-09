@@ -101,13 +101,11 @@ export const getUserByToken = async (req, res) => {
     return res.status(404).json({ message: "User not found" });
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {
-      console.log("holaaa");
       // if the error thrown is because the JWT is unauthorized, return a 401 error
       return res.status(401).end();
     }
     // otherwise, return a bad request error
     return res.status(400).end();
-    // return res.status(500).json({ message: "Internal server error" });
   }
 };
 

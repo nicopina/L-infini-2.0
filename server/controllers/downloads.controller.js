@@ -22,7 +22,6 @@ export const getOrdersProfit = async (req, res) => {
     //Res = rows, headers
     return res.json({ rows, headers });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -48,7 +47,6 @@ export const getOrderItems = async (req, res) => {
     const [rows] = await promisePool.query(query);
     return res.json({ rows, headers });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };

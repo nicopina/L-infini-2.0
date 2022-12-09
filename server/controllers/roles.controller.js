@@ -11,7 +11,6 @@ export const getRoles = async (req, res) => {
     const [rows] = await promisePool.query("SELECT * FROM Roles");
     return res.json(rows);
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -32,7 +31,6 @@ export const getRole = async (req, res) => {
     }
     return res.status(404).json({ message: "Role not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -56,7 +54,6 @@ export const createRole = async (req, res) => {
     ]);
     return res.json({ message: "Role saved" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -79,7 +76,6 @@ export const updateRole = async (req, res) => {
     }
     res.status(404).json({ message: "Role not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -100,7 +96,6 @@ export const deleteRole = async (req, res) => {
     }
     res.status(404).json({ message: "Role not found" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -122,7 +117,6 @@ export const roleExists = async (req, res) => {
     }
     return false;
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -138,7 +132,6 @@ export const countRoles = async () => {
     );
     return rows[0].count;
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
