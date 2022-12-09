@@ -13,13 +13,29 @@ function DishReportPage() {
   }
 
   var hoy = new Date();
- 
+
   const [number, setNumber] = React.useState(5);
   const [number_2, setNumber_2] = React.useState(5);
 
   const [fechas, setFechas] = React.useState({
-    fecha_inicial: new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() -5, 0, 0, 0, 0), 
-    fecha_final: new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate(), 0, 0, 0, 0),
+    fecha_inicial: new Date(
+      hoy.getFullYear(),
+      hoy.getMonth(),
+      hoy.getDate() - 5,
+      0,
+      0,
+      0,
+      0
+    ),
+    fecha_final: new Date(
+      hoy.getFullYear(),
+      hoy.getMonth(),
+      hoy.getDate(),
+      0,
+      0,
+      0,
+      0
+    ),
   });
 
   return (

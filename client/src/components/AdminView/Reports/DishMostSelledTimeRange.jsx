@@ -60,14 +60,6 @@ function DishMostSelledTimeRange(params) {
     return fecha_formateada;
   }
 
-  /*
-    function verificarFechaAlert(){
-        var fecha = document.getElementById("fecha").value;
-        var fecha2 = document.getElementById("fecha2").value;
-        if(fecha > fecha2){
-            alert("La fecha inicial no puede ser mayor a la fecha final");
-        }
-    }*/
 
   return (
     <Card key="top5date">
