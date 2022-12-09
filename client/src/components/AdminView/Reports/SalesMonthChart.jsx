@@ -34,7 +34,7 @@ function SalesMonthChart() {
     });
   }, []);
 
-  //Añade los . a los miles
+
   function formateo_dinero(dinero) {
     return dinero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
@@ -44,7 +44,7 @@ function SalesMonthChart() {
     backgroundColor.push("rgba(34, 139, 34, 0.2)");
   }
 
-  //Color: forest green mas oscuro
+
   var borderColor = [];
 
   for (var i = 0; i < labels.length; i++) {
