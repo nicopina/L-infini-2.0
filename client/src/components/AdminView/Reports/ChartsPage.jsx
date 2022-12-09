@@ -8,14 +8,13 @@ function ChartsPage() {
   function beforePrintHandler() {
     for (let id in Chart.instances) {
       Chart.instances[id].resize(10, 10);
-
     }
   }
 
   //Container usa todo el espacio lateral
   return (
     <Container
-        fluid
+      fluid
       style={{
         width: "100%",
         display: "flex",
@@ -27,10 +26,14 @@ function ChartsPage() {
     >
       <div
         style={{
-            width: "90%",
-            }}
+          width: "90%",
+        }}
       >
-        <h2 style={{ margin: "100px 0 0 0", textAlign: "center", color: "black" }}>Gráficos</h2>
+        <h2
+          style={{ margin: "100px 0 0 0", textAlign: "center", color: "black" }}
+        >
+          Gráficos
+        </h2>
 
         <div>
           <Card
@@ -55,8 +58,7 @@ function ChartsPage() {
           </Card>
         </div>
         <div>
-            
-          <Card 
+          <Card
             style={{
               width: "100%",
               height: "70%",
@@ -69,9 +71,7 @@ function ChartsPage() {
           >
             <CategoryChart />
           </Card>
-        
         </div>
-
       </div>
     </Container>
   );
