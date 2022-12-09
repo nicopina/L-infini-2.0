@@ -32,7 +32,7 @@ const ContactForm = () => {
             })
         },
         (error) => {
-          console.log(error.text);
+          console.error(error.text);
         }
       );
   };

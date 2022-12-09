@@ -32,3 +32,7 @@ export const deleteDishCategoryRequest = async (id) => {
     },
   });
 };
+
+export const getDishCategoriesProfitRequest = async () => {
+  return await axios.get(`${BASE_URL}/dishesCategory-profit`);
+};

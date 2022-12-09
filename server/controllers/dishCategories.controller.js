@@ -97,3 +97,20 @@ export const deleteDishCategories = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+
+/**
+ * It gets the profit of each dish category
+ * @param res - The response object that contains the profit of each dish category.
+ * @returns a json object with the profit of each dish category.
+ * */
+export const getDishCategoriesProfit = async (req, res) => {
+  try {
+    const [rows] = await promisePool.query(
+      "SELECT DishCategories.name as category, DishCategories.id as cat_id, SUM(Dishes.value*OrderItems.dish_id) as profit FROM OrderItems INNER JOIN Dishes ON Dishes.id = OrderItems.dish_id INNER JOIN DishCategories ON DishCategories.id = Dishes.category GROUP BY DishCategories.id;"
+    );
+    return res.json(rows);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+}

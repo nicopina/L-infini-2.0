@@ -32,7 +32,7 @@ const Formulario = () => {
 				}}
 				onSubmit={(valores, {resetForm}) => {
 					resetForm();
-					console.log('Formulario enviado');
+
 					createDishCategoryRequest(valores);
 					cambiarFormularioEnviado(true);
 					setTimeout(() => cambiarFormularioEnviado(false), 5000);

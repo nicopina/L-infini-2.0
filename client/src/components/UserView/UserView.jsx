@@ -22,7 +22,7 @@ import ReleaseTable from "./ReleaseTable.jsx";
 
 function UserView() {
   const [user, setUser, table, setTable] = useContext(UserContext);
-  console.log("UserView");
+
   return (
     <DataProvider>
       <div className="App">

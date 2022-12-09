@@ -8,9 +8,9 @@ function IsActiveCheckbox (props) {
     const isActiveHandler = (user) => {
         user.is_active = !user.is_active;
         updateUserRequest(user.rut, user);
-        console.log(user.is_active);
+
     };
-    // console.log(props);
+
     
     return (
         <input

@@ -12,16 +12,16 @@ var funcion = async function getTablesRequests() {
 function TablesRequestsList() {
   const [requests, setRequests] = React.useState([]);
 
-  //Actualizar esta lista cada x segundos
+
   useEffect(() => {
     funcion().then((response) => {
       setRequests(response);
-      // console.log("Actualizando lista de solicitudes de asistencia");
+
     });
     const interval = setInterval(() => {
       funcion().then((response) => {
         setRequests(response);
-        // console.log("Actualizando lista de solicitudes de asistencia");
+
       });
     }, 7000);
     return () => clearInterval(interval);
