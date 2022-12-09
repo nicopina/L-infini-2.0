@@ -14,7 +14,7 @@ function RoleOption(props) {
     const roleHandler = (user, event) => {
         user.role = event.target.value;
         updateUserRequest(user.rut, user);
-        console.log(user.role);
+
     };
     
     return (

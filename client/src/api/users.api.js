@@ -22,7 +22,7 @@ export const getUserRequest = async (rut) => {
 };
 
 export const updateUserRequest = async (rut, user) => {
-  // console.log(localStorage.getItem("token"));
+
   return await axios.put(`${BASE_URL}/users/${rut}`, user , {
     headers: {
       "x-access-token": localStorage.getItem("token"),

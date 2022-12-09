@@ -19,7 +19,7 @@ function TopNLeastSelled(params) {
   const [top, setTop] = React.useState([]);
 
   useEffect(() => {
-    console.log("aa" + number_2);
+
     getOrderItemsTopWorstN(number_2).then((response) => {
       setTop(response.data);
     });
@@ -27,7 +27,7 @@ function TopNLeastSelled(params) {
   }, [number_2]);
 
   function handlerOnChange(event) {
-    console.log(event.target.value + " newValue");
+
     setNumber_2(event.target.value);
   }
 

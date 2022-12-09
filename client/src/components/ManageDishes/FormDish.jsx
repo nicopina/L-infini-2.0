@@ -64,7 +64,7 @@ const Formulario = () => {
 				}}
 				onSubmit={(valores, {resetForm}) => {
 					resetForm();
-					console.log('Formulario enviado');
+
 					createDishRequest(valores);
 					cambiarFormularioEnviado(true);
 					setTimeout(() => cambiarFormularioEnviado(false), 5000);

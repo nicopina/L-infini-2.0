@@ -26,8 +26,7 @@ function CategoryChart(){
         }
         setLabels(labels);
         setDatos(datos);
-        console.log(labels);
-        console.log(datos);
+
     }, []);
 
     var colores = [];

@@ -76,7 +76,7 @@ export const Cart = () => {
           table_id: localStorage.getItem("table"),
           state: 0,
         };
-        // console.log(newOrder);
+
         createOrderRequest(newOrder).then((response) => {
           if (response.status === 200) {
             carrito.map((item) => {

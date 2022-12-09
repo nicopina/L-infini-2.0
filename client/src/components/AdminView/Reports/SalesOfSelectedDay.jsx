@@ -24,7 +24,7 @@ function SalesOfSelectedDay(params) {
         
         getCountOrdersOneFullDate(fecha_ms + (fecha.getTimezoneOffset() * 60000)
             ).then((response) => {
-            console.log("Contador.",response.data);
+
             setCountOrdersDay(response.data);
         });
         
@@ -36,7 +36,7 @@ function SalesOfSelectedDay(params) {
         var aux = new Date(val);
         aux = aux.getTime() + (aux.getTimezoneOffset() * 60000);
         var fix = new Date(aux);
-        console.log("FECHA FIXED:",fix);
+
         setFecha(new Date(fix));
         
     }

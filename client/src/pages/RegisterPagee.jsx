@@ -35,15 +35,13 @@ function RegisterPage() {
 
   useEffect(() => {
     const result = USER_REGEX.test(user);
-    console.log(result);
-    console.log(user);
+
     setValidName(result);
   }, [user]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
-    console.log(result);
-    console.log(pwd);
+
     setValidPwd(result);
     const match = pwd === pwd2;
     setValidPwd2(match);

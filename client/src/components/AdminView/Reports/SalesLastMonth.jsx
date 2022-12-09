@@ -12,23 +12,23 @@ function SalesLastMonth(params){
 
     //Last day of the month
     var last_day_month = new Date(actual_date.getFullYear(), actual_date.getMonth() + 1, 0);
-    console.log("Last day month ",last_day_month);
+
 
     //Progress of the month
     var month_progress = (actual_date.getDate() / last_day_month.getDate());
-    console.log("Month progress ",month_progress);
+
 
     //Last day of last month
     var last_day_last_month = new Date(actual_date.getFullYear(), actual_date.getMonth(), 0);
-    console.log("Last day last month ",last_day_last_month);
+ 
 
     //First day of last month (FIRST)
     var first_day_last_month = new Date(actual_date.getFullYear(), actual_date.getMonth()-1, 1, 0, 0, 0, 0);
-    console.log("First day last month ",first_day_last_month);
+
 
     //Equivalent day of last month (LAST)
     var equivalent_day_last_month = Math.round(last_day_last_month.getDate() * month_progress);
-    console.log("Equivalent day last month ",equivalent_day_last_month);
+
 
     var final_date = new Date(actual_date.getFullYear(), actual_date.getMonth()-1, equivalent_day_last_month, 0, 0, 0, 0);
 
@@ -44,8 +44,7 @@ function SalesLastMonth(params){
        
 
     //Condicionales para frase y colores.
-    console.log("Actual month profit ",actualMonthProfit);
-    console.log("Mes anterior:  ",profit);
+
     var diferencia = actualMonthProfit - profit;
 
     var formatedDiferencia = Math.round(diferencia);

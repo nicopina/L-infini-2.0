@@ -32,7 +32,7 @@ function BillAssistanceButton() {
     });
   }
   function createBill() {
-    console.log(request);
+
     createRequest(request);
   }
   return (

@@ -70,7 +70,7 @@ function NewUserForm(props) {
       role: event.target.role.value,
       is_active: event.target.is_active.checked,
     };
-    console.log(newUser);
+
     try {
       await createUserRequest(newUser).then((response) => {
         mostraralerta(true);

@@ -157,7 +157,6 @@ function ResponsiveAppBar() {
   const [carrito] = value.carrito;
 
   const toggleMenu = () => {
-    console.log("click");
     setMenu(!menu);
   };
 

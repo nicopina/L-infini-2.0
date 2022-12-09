@@ -20,7 +20,7 @@ function TopNMostSelled(params) {
   const [top, setTop] = React.useState([]);
 
   useEffect(() => {
-    console.log("aa" + number);
+
     getOrderItemsTopBestN(number).then((response) => {
       setTop(response.data);
     });
@@ -28,7 +28,7 @@ function TopNMostSelled(params) {
   }, [number]);
 
   function handlerOnChange(event) {
-    console.log(event.target.value + " newValue");
+
     setNumber(event.target.value);
   }
 

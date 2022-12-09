@@ -8,7 +8,7 @@ function ChartsPage() {
   function beforePrintHandler() {
     for (let id in Chart.instances) {
       Chart.instances[id].resize(10, 10);
-      console.log(Chart.instances[id]);
+
     }
   }
 
