@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {getDailyIncomeMonth} from '../../../api/orders.api';
 import {Bar} from 'react-chartjs-2';
 
+
 function SalesMonthChart(){
 
     var cantidad_dias_mes_actual = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
@@ -37,7 +38,7 @@ function SalesMonthChart(){
         return dinero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
 
-    ////Color haitiano: forest green
+
     var backgroundColor = [];
     for (var i = 0; i < labels.length; i++) {
         backgroundColor.push("rgba(34, 139, 34, 0.2)");
@@ -73,9 +74,9 @@ function SalesMonthChart(){
                 title: {
                     display: true,
                     text: 'Ingresos por día',
-                    size: 40
+
                 },
-                //ticks van con %
+
                 ticks: {
                     callback: function (value, index, values) {
                         return "$"+formateo_dinero(value);
@@ -93,8 +94,9 @@ function SalesMonthChart(){
     };
 
     return (
-        <div>
-            <Bar data={data} 
+        <div style={{width: "100%", height: "100%"}}>
+            <h3 style={{color: "black", textAlign:"center"}}>Reporte de Ingresos Diarios del Mes Actual</h3>
+            <Bar data={data}
                 options={options}
             />
         </div>

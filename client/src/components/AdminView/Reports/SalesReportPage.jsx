@@ -80,8 +80,6 @@ function SalesReportPage() {
         countOrderItemsDay ={countOrderItemsDay}
       />
 
-      <BusyHoursReport />
-      <SalesMonthChart />
       
     </div>
     

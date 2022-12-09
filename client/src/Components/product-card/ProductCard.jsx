@@ -17,6 +17,10 @@ const ProductCard = (props) => {
   const valuee = useContext(DataContext);
   const addCarrito = valuee.addCarrito;
 
+  function formatearPrecio(precio) {
+    return precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
   return (
     // <div className="card">
       <Card className="card">
@@ -28,7 +32,7 @@ const ProductCard = (props) => {
         <div className="d-flex align-items-center justify-content-between">
           <span className="price d-flex align-items-center">
             {/* {""} */}
-            Price:<span>{"$"+value}</span>
+            Precio:<span>{"$"+formatearPrecio(value)}</span>
           </span>
           {role === null ? (
           <button className="shopping_icon" onClick={() => addCarrito(id)}>

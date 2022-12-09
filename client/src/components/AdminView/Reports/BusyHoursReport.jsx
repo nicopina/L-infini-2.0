@@ -125,15 +125,12 @@ function BusyHoursReport(){
 
 
     return (
-    
-        <div>
-            <h2 style={{color: "black", textAlign:"center"}}>Reporte de Horas de Mayor Concurrencia</h2>
-            <Bar data={data}
-                options={options}
-            />
-        </div>
-    );
 
+        <div style={{width: "100%", height: "100%"}}>
+            <h3 style={{color: "black", textAlign:"center"}}>Reporte de Horas de Mayor Demanda</h3>
+            <Bar data={data} options={options} />
+        </div>
+    )
 }
 
 export default BusyHoursReport;
