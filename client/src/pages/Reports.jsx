@@ -10,7 +10,7 @@ function Reports(){
                         alt="Card image cap"
                         src="https://astelus.com/wp-content/viajes/platos-mas-importantes-alrededor-del-mundo.jpg"
                         style={{
-                            height: 600,opacity: 0.7
+                            height: 250,opacity: 0.7
                         }}
                         top
                         width="100%"
@@ -32,7 +32,7 @@ function Reports(){
                         alt="Card image cap"
                         src="https://administrategia.com/wp-content/uploads/2019/09/reporte_1.jpg"
                         style={{
-                            height: 600,opacity: 0.7
+                            height: 250,opacity: 0.7
                         }}
                         top
                         width="100%"
@@ -47,6 +47,29 @@ function Reports(){
                         <Button  className="buttonpad" color="success" size='lg' href={`/reportes/ventas`}>Reporte de Ventas</Button>
                         </CardBody>
                     </Card>
+            </div>  
+
+            <div>
+            <Card className="my-2">
+                 <CardImg
+                        alt="Card image cap"
+                        src="https://img.besthqwallpapers.com/Uploads/11-4-2020/128534/finance-concepts-charts-background-with-graphs-stock-exchanges-money.jpg"
+                        style={{
+                            height: 250,opacity: 0.7
+                        }}
+                        top
+                        width="100%"
+                        />
+                        <CardBody className="cardbodyc">
+                        <CardTitle tag="h5">
+                            Gráficos
+                        </CardTitle>
+                        <CardText>
+                            Aquí hay gráficos con información útil para tu restaurant.
+                        </CardText>
+                        <Button  className="buttonpad" color="warning" size='lg' href={`/reportes/graficos`}>Reporte de Gráficos</Button>
+                        </CardBody>
+                    </Card>
             </div>    
 
             <div>
@@ -55,7 +78,7 @@ function Reports(){
                         alt="Card image cap"
                         src="https://d29jy8ovkd5kcx.cloudfront.net/wp-content/uploads/2021/11/29093133/092.jpg"
                         style={{
-                            height: 500,opacity: 0.7
+                            height: 250,opacity: 0.7
                         }}
                         top
                         width="100%"

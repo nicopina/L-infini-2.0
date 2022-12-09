@@ -26,6 +26,10 @@ const Userpages = [
     path: "/contacto",
   },
   {
+    name: "Salir",
+    path: "/salir",
+  },
+  {
     name: "Iniciar Sesión",
     path: "/login",
   },

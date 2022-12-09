@@ -54,21 +54,21 @@ function SalesDaily(params) {
                     alt="Card image cap"
                     src="https://kottke.org/plus/misc/images/calendar-dates-week.jpeg"
                     style={{
-                        height: 450,
+                        height: 250,
                         opacity: 0.7,
                     }}
                     top
                     width="100%"
                 />
         <CardHeader>
-          <CardTitle tag="h4" style={{textAlign:'center',}}>
+          <CardTitle tag="h3" style={{textAlign:'center',}}>
             Reporte de Ventas del día de hoy {formatearFecha(new Date())}
           </CardTitle>
         </CardHeader>
         <CardBody style={{textAlign:'center',fontFamily:'Cursive'}}>
-          <h3 >Total de ventas del día de hoy: ${formatedProfitToday}</h3>
-           <h3 >Total de pedidos realizados hoy: {formatedCountOrdersToday}</h3>
-           <h3 >Promedio de ventas por pedido hoy: ${formatedAverageProfitToday}</h3>
+          <h4 >Total de ventas del día de hoy: ${formatedProfitToday}</h4>
+           <h4 >Total de pedidos realizados hoy: {formatedCountOrdersToday}</h4>
+           <h4 >Promedio de ventas por pedido hoy: ${formatedAverageProfitToday}</h4>
         </CardBody>
       </Card>
     </div>

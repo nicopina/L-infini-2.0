@@ -81,7 +81,7 @@ function SalesOfSelectedDay(params) {
                     alt="Card image cap"
                     src="https://images4.alphacoders.com/201/201716.jpg"
                     style={{
-                        height: 450,
+                        height: 250,
                         opacity: 0.7,
                     }}
                     top
@@ -106,9 +106,9 @@ function SalesOfSelectedDay(params) {
         </CardHeader>
         <CardBody>
           
-            <h3 style={{textAlign:'center',color:'black'}}>Total de ventas del día seleccionado: ${formatear_dinero(dayProfit)}</h3>
-            <h3 style={{textAlign:'center',color:'black'}}>Total de pedidos del día seleccionado: {formatear_dinero(countOrdersDay)}</h3>
-            <h3 style={{textAlign:'center',color:'black'}}>Promedio de ingresos por pedido: ${calcular_formatear_promedio(dayProfit, countOrdersDay)}</h3>
+            <h4 style={{textAlign:'center',color:'black'}}>Total de ventas del día seleccionado: ${formatear_dinero(dayProfit)}</h4>
+            <h4 style={{textAlign:'center',color:'black'}}>Total de pedidos del día seleccionado: {formatear_dinero(countOrdersDay)}</h4>
+            <h4 style={{textAlign:'center',color:'black'}}>Promedio de ingresos por pedido: ${calcular_formatear_promedio(dayProfit, countOrdersDay)}</h4>
             
 
           
