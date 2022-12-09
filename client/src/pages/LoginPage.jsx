@@ -39,7 +39,8 @@ function LoginPage() {
           }
         });
       } catch (error) {
-        console.error(error);
+        // console.error(error);
+        setMessage("Usuario o contraseña incorrectos");
       }
     }
   }
