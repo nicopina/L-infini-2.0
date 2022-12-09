@@ -59,12 +59,12 @@ function SalesActualMonth(params){
 
     return(
         <div>
-            <Card>
+            <Card outline color = "secondary">
             <CardImg
                     alt="Card image cap"
                     src="https://www.bits.com.mx/wp-content/uploads/2017/09/report-charts-ss-1920.jpg"
                     style={{
-                        height: 450,
+                        height: 250,
                         opacity: 0.7,
                     }}
                     top
@@ -78,9 +78,9 @@ function SalesActualMonth(params){
                 <CardBody style={{textAlign:'center'}}>
                     <ListGroup>
                     <ListGroupItem>
-                    <h3 >Total de ventas del mes actual: ${formatedProfit}</h3>
-                    <h3 >Total de pedidos realizados en el mes actual: {formatedCountOrdersMonth}</h3>
-                    <h3 >Promedio de ventas por pedido en el mes actual: ${formatedAverageProfit}</h3>
+                    <h4 >Total de ventas del mes actual: ${formatedProfit}</h4>
+                    <h4 >Total de pedidos realizados en el mes actual: {formatedCountOrdersMonth}</h4>
+                    <h4 >Promedio de ventas por pedido en el mes actual: ${formatedAverageProfit}</h4>
                     </ListGroupItem>
                     <ListGroupItem>
                     <SalesLastMonth actualMonthProfit = {profitEntireMonth}/>

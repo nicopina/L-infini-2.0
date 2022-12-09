@@ -69,7 +69,7 @@ function SalesLastMonth(params){
 
     return(
         <div>
-            <h2 style={{textAlign:'center',color:'black'}} >Comparación a la fecha con el mes anterior</h2>
+            <h4 style={{textAlign:'center',color:'black'}} >Comparación a la fecha con el mes anterior</h4>
             <h4 style={{textAlign:'center',color:'black'}} >{texto2}</h4>
             <h4 style={{color: color}}>{texto}</h4>           
         </div>

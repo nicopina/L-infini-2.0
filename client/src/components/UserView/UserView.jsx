@@ -18,6 +18,7 @@ import OrderState from "../OrderState/OrderState.jsx";
 import NewAllocatedTable from "../NewAllocatedTable/NewAllocatedTable.jsx";
 import AssistancePageUser from "../../pages/AssistancePageUser.jsx";
 import CartPage from "../../pages/CartPage.jsx";
+import ReleaseTable from "./ReleaseTable.jsx";
 
 function UserView() {
   const [user, setUser, table, setTable] = useContext(UserContext);
@@ -33,6 +34,7 @@ function UserView() {
           <Route path="/pedidos" element={<OrderState />} />
           <Route path="/asistencia" element={<AssistancePageUser />} />
           <Route path="/contacto" element={<ContactPageTest />} />
+          <Route path="/salir" element={<ReleaseTable/>} />
           {/* <Route path="/carrito" element={<CartPage/>} /> */}
           <Route path="/login" element={<LoginPage />} />
         </Routes>

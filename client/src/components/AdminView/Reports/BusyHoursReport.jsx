@@ -127,7 +127,7 @@ function BusyHoursReport(){
     return (
     
         <div>
-            <h1>Reporte de Horas de Mayor Concurrencia</h1>
+            <h2 style={{color: "black", textAlign:"center"}}>Reporte de Horas de Mayor Concurrencia</h2>
             <Bar data={data}
                 options={options}
             />
